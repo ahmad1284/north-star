@@ -1,4 +1,24 @@
-# North Star — web client
+# North Star — web client + guidance pages
+
+## The pages
+
+| File | Route | What it is |
+|---|---|---|
+| `index.html` | `/` | The tool: combination → grades → interests → grouped results |
+| `barua.html` | `/barua` | Ahmad Sadri's letter — the founding document, in Swahili as written |
+| `maswali.html` | `/maswali` | The questions to carry to a campus visit (print/screenshot friendly) |
+| `dunia-ya-kazi.html` | `/dunia-ya-kazi` | The four ACT work-interest areas, explained for Tanzania |
+
+**Why the guidance pages exist.** The engine answers "can I get in?". It cannot answer what
+a course is really like, what it costs, or what people in it say — and those facts are in no
+document we can parse. So the tool does what the letter does: it says it doesn't know, and
+hands the student the questions. In the results, an unknown fact renders as
+*"hatujui — uliza"* linking to `/maswali`, not as a bare dash.
+
+Routes are declared explicitly in `api.py` (not a `StaticFiles` mount) so no request can
+traverse the filesystem — a property the security review verified; keep it.
+
+## The client
 
 One self-contained HTML file. No framework, no build step, no dependencies, no external
 requests: everything (styles, script, favicon) is inline, so the page works on a slow

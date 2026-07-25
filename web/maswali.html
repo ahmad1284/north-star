@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maswali ya kuuliza — North Star</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
+    --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#fff; --chip:#eef2f6; --gold:#b7791f;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
+           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; --gold:#d9a441; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:660px;margin:0 auto;padding:16px 16px 40px}
+  nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  nav a{font-size:.85rem;text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
+  nav a.here{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  h1{font-size:1.4rem;margin:.4rem 0 .2rem}
+  .lede{color:var(--muted);font-size:.92rem;margin:0 0 8px}
+  .tip{background:var(--chip);border:1px solid var(--line);border-radius:12px;
+    padding:12px 14px;font-size:.9rem;margin:16px 0 24px}
+  h2{font-size:1.05rem;margin:26px 0 4px;display:flex;align-items:center;gap:8px}
+  h2 .n{background:var(--accent);color:var(--accent-ink);border-radius:8px;
+    width:1.6rem;height:1.6rem;display:inline-flex;align-items:center;justify-content:center;
+    font-size:.85rem;flex:none}
+  .who{color:var(--muted);font-size:.84rem;margin:0 0 8px 2.2rem}
+  ul.q{list-style:none;padding:0;margin:0 0 4px}
+  ul.q li{background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:.6rem .8rem;margin-bottom:6px;font-size:.97rem}
+  ul.q li .why{display:block;color:var(--muted);font-size:.82rem;margin-top:.25rem}
+  .callout{border-left:3px solid var(--gold);
+    background:color-mix(in srgb, var(--gold) 8%, transparent);
+    padding:.7rem .9rem;border-radius:0 8px 8px 0;margin:24px 0;font-size:.94rem}
+  footer{color:var(--muted);font-size:.8rem;margin-top:30px;
+    border-top:1px solid var(--line);padding-top:12px}
+  footer a{color:var(--accent)}
+  @media print{
+    nav,.tip,footer{display:none}
+    body{background:#fff;color:#000}
+    ul.q li{border-color:#999;break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="./">← Rudi kwenye kifaa</a>
+    <a href="barua">Barua</a>
+    <a href="maswali" class="here">Maswali ya kuuliza</a>
+    <a href="dunia-ya-kazi">Dunia ya kazi</a>
+  </nav>
+
+  <h1>Maswali ya kuuliza</h1>
+  <p class="lede">North Star inakwambia kozi gani unaweza kuomba. Haya ni maswali
+  <b>ambayo hakuna kitabu kinajibu</b> — inabidi uulize watu.</p>
+
+  <div class="tip">
+    📱 <b>Piga screenshot ya ukurasa huu</b> kabla ya kwenda chuoni. Hauhitaji internet
+    kuutumia. Ukiwa na simu tu na maswali haya, umeshaanza.
+  </div>
+
+  <h2><span class="n">1</span> Kuhusu kozi yenyewe</h2>
+  <p class="who">Uliza: mwanafunzi yeyote wa kozi hiyo, au ofisi ya udahili.</p>
+  <ul class="q">
+    <li>Hii kozi ndio nini hasa? Mnasoma nini kwa siku?
+      <span class="why">Jina la kozi haliambii kila kitu. "Bachelor of Science in X" inaweza kuwa tofauti kabisa na unavyofikiri.</span></li>
+    <li>Mnasoma miaka mingapi? Kuna field/practical?
+      <span class="why">North Star inakuonyesha miaka — hakiki kama ni sahihi mwaka huu.</span></li>
+    <li>Somo gani gumu zaidi mwaka wa kwanza? Wangapi walikata tamaa?
+      <span class="why">Hili linakuambia ukweli ambao brosha haitakuambia.</span></li>
+  </ul>
+
+  <h2><span class="n">2</span> Kuhusu gharama</h2>
+  <p class="who">Uliza: ofisi ya fedha ya chuo — si mtandaoni tu.</p>
+  <ul class="q">
+    <li>Ada ya mwaka ni shilingi ngapi kwa mwaka huu?
+      <span class="why">Ada hubadilika kila mwaka. Namba ya mtandaoni inaweza kuwa ya miaka mitatu iliyopita.</span></li>
+    <li>Zaidi ya ada, nalipa nini kingine? (usajili, mtihani, bima, hosteli, chakula, vitabu)
+      <span class="why">Mara nyingi hivi vinazidi ada yenyewe. Uliza jumla, si ada peke yake.</span></li>
+    <li>Mkopo unapatikana kwa kozi hii? Unalipa asilimia ngapi?
+      <span class="why">Swali la barua: <i>asilimia ngapi inaenda kwenye mkopo?</i></span></li>
+  </ul>
+
+  <h2><span class="n">3</span> Kuhusu maisha baada ya kumaliza</h2>
+  <p class="who">Uliza: mtu ambaye <b>tayari amemaliza</b> kozi hiyo — si mwalimu, si brosha.</p>
+  <ul class="q">
+    <li>Ulichukua muda gani kupata kazi baada ya kumaliza?
+      <span class="why">Jibu la kweli hutoka kwa aliyepitia, si kwa anayeuza kozi.</span></li>
+    <li>Unafanya nini kazini kwa siku halisi?
+      <span class="why">Watu wengi hushangaa kuwa kazi ni tofauti na kozi.</span></li>
+    <li>Mshahara wa kuanzia ni kiasi gani, kwa uzoefu wako?
+      <span class="why">Uliza kwa heshima. Wengi watajibu kama umeuliza vizuri.</span></li>
+    <li>Kama ungerudi nyuma, ungesoma kozi hii tena?
+      <span class="why">Hili ndilo swali bora kuliko yote. Sikiliza kwa makini jibu.</span></li>
+  </ul>
+
+  <h2><span class="n">4</span> Maswali ya kujiuliza mwenyewe</h2>
+  <p class="who">Hakuna wa kukujibu haya — ni yako.</p>
+  <ul class="q">
+    <li>Nafurahia kufanya nini hata bila kulipwa?</li>
+    <li>Ninaipenda hii kozi, au napenda watu wanavyoiheshimu?</li>
+    <li>Nataka kufanya kazi na <b>watu</b>, <b>mawazo</b>, <b>takwimu</b>, au <b>vifaa</b>?
+      <span class="why">Hili linaelezwa kwenye <a href="dunia-ya-kazi">Dunia ya kazi</a>.</span></li>
+  </ul>
+
+  <div class="callout">
+    <b>Njia ya barua:</b> vunja siku moja, nenda vyuo viwili au vitatu, ongea na wanafunzi
+    watano. Si lazima uwe na miadi. Kaa tu pale wanapokaa, na uulize.
+    <i>The more people you talk to, the more utakuwa exposed to new interesting things.</i>
+  </div>
+
+  <footer>
+    Maswali haya yametoka kwenye <a href="barua">barua ya Ahmad Sadri</a>.
+    <a href="./">Rudi kwenye kifaa</a>
+  </footer>
+</div>
+</body>
+</html>

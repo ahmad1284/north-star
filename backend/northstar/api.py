@@ -83,19 +83,49 @@ _WEB_DIR = Path(
 )
 
 
-@app.get("/", include_in_schema=False)
-def client() -> FileResponse:
-    """Serve the bundled web client, if one is present next to the backend."""
-    page = _WEB_DIR / "index.html"
+def _serve(filename: str) -> FileResponse:
+    """Serve one known page from the web directory.
+
+    Deliberately NOT a StaticFiles mount: every servable file is named here, so
+    there is no path a request can traverse. `filename` is never taken from
+    user input.
+    """
+    page = _WEB_DIR / filename
     if not page.is_file():
         # Log the path for the operator; don't hand the filesystem layout to
         # a stranger.
-        print(f"[north-star] no web client at {page} (set NORTH_STAR_WEB_DIR)")
+        print(f"[north-star] missing page {page} (set NORTH_STAR_WEB_DIR)")
         raise HTTPException(
             status_code=404,
             detail="No web client is deployed here. The API is documented at /docs.",
         )
     return FileResponse(page, media_type="text/html")
+
+
+@app.get("/", include_in_schema=False)
+def client() -> FileResponse:
+    """Serve the bundled web client, if one is present next to the backend."""
+    return _serve("index.html")
+
+
+# Guidance pages. The engine answers "can I get in?"; these carry the questions
+# it cannot answer — which the letter says the student should go and ask.
+@app.get("/barua", include_in_schema=False)
+def letter() -> FileResponse:
+    """Ahmad Sadri's letter to Form 6 graduates — the founding document."""
+    return _serve("barua.html")
+
+
+@app.get("/maswali", include_in_schema=False)
+def questions() -> FileResponse:
+    """The questions to carry to a campus visit."""
+    return _serve("maswali.html")
+
+
+@app.get("/dunia-ya-kazi", include_in_schema=False)
+def world_of_work() -> FileResponse:
+    """The four work-interest areas, explained."""
+    return _serve("dunia-ya-kazi.html")
 
 
 @app.get("/health")

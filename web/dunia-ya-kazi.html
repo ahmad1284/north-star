@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="sw">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dunia ya kazi — North Star</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
+    --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#fff; --chip:#eef2f6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
+           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .wrap{max-width:660px;margin:0 auto;padding:16px 16px 40px}
+  nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  nav a{font-size:.85rem;text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
+  nav a.here{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  h1{font-size:1.4rem;margin:.4rem 0 .2rem}
+  .lede{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+  p{margin:0 0 1em}
+  .areas{display:grid;gap:12px;margin:18px 0 26px}
+  .area{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .area h3{margin:0 0 .3rem;font-size:1.05rem;display:flex;align-items:center;gap:8px}
+  .area .sw{color:var(--muted);font-weight:400;font-size:.9rem}
+  .area p{margin:.3rem 0 .5rem;font-size:.95rem}
+  .area .eg{font-size:.86rem;color:var(--muted)}
+  .area .eg b{color:var(--ink);font-weight:600}
+  .note{background:var(--chip);border:1px solid var(--line);border-radius:12px;
+    padding:14px 16px;font-size:.93rem;margin:24px 0}
+  .note a{color:var(--accent);font-weight:600}
+  h2{font-size:1.1rem;margin:26px 0 6px}
+  footer{color:var(--muted);font-size:.8rem;margin-top:30px;
+    border-top:1px solid var(--line);padding-top:12px}
+  footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <a href="./">← Rudi kwenye kifaa</a>
+    <a href="barua">Barua</a>
+    <a href="maswali">Maswali ya kuuliza</a>
+    <a href="dunia-ya-kazi" class="here">Dunia ya kazi</a>
+  </nav>
+
+  <h1>Dunia ya kazi: njia nne</h1>
+  <p class="lede">Kuna maelfu ya kazi duniani. Lakini karibu zote zinaingia kwenye njia
+  nne tu. Ukijua njia yako, orodha ndefu inakuwa fupi.</p>
+
+  <p>Watafiti wa ACT walipanga kazi zote kwa kutumia swali moja rahisi:
+  <b>unafanya kazi zaidi na nini?</b> Sio "unapenda somo gani" — bali <i>siku yako ya
+  kazi inaonekanaje</i>.</p>
+
+  <div class="areas">
+    <div class="area">
+      <h3>💡 Mawazo <span class="sw">· Ideas</span></h3>
+      <p>Kufanya kazi na maneno, hesabu, sanaa, nadharia, ubunifu. Unatengeneza kitu
+      kipya au unaelewa kitu kigumu.</p>
+      <p class="eg">Mfano: <b>mwandishi, mbunifu (architect), mtaalamu wa hesabu,
+      mtafiti, msanii, mwanasheria wa kutunga hoja</b></p>
+    </div>
+    <div class="area">
+      <h3>🤝 Watu <span class="sw">· People</span></h3>
+      <p>Kusaidia, kufundisha, kutibu, kuuza, kuongoza. Siku yako imejaa watu, na
+      mafanikio yako yanategemea uhusiano.</p>
+      <p class="eg">Mfano: <b>daktari, mwalimu, muuguzi, mshauri, meneja,
+      mtaalamu wa maendeleo ya jamii</b></p>
+    </div>
+    <div class="area">
+      <h3>📊 Takwimu <span class="sw">· Data</span></h3>
+      <p>Kufanya kazi na namba, kumbukumbu, hesabu za fedha, taratibu. Unapanga
+      taarifa mpaka zieleweke.</p>
+      <p class="eg">Mfano: <b>mhasibu, mchumi, mtaalamu wa takwimu, benki,
+      ukaguzi, ugavi</b></p>
+    </div>
+    <div class="area">
+      <h3>🔧 Vifaa <span class="sw">· Things</span></h3>
+      <p>Kufanya kazi na mashine, vifaa, majengo, mimea, wanyama. Mwisho wa siku
+      kuna kitu unaweza kukigusa.</p>
+      <p class="eg">Mfano: <b>mhandisi, fundi, mkulima, daktari wa mifugo,
+      mtaalamu wa maabara, ujenzi</b></p>
+    </div>
+  </div>
+
+  <h2>Kozi nyingi ni mchanganyiko</h2>
+  <p>Udaktari ni <b>Watu</b> na <b>Vifaa</b>. Uhandisi ni <b>Vifaa</b> na <b>Mawazo</b>.
+  Uhasibu ni <b>Takwimu</b> na <b>Watu</b>. Hii ndio maana North Star inakuruhusu
+  kuchagua zaidi ya moja.</p>
+
+  <h2>Kwa nini hili linasaidia</h2>
+  <p>Wanafunzi wengi huchagua kozi kwa <i>jina</i> — kwa sababu inaheshimika, au kwa
+  sababu rafiki anasoma hiyo. Lakini utakaa kwenye kazi hiyo miaka thelathini, si
+  kwenye jina lake.</p>
+  <p>Mtu anayependa <b>Vifaa</b> akiingia kazi ya <b>Takwimu</b> atachoka — hata kama
+  mshahara ni mzuri, hata kama alipata alama za juu. Swali sio "naweza?" bali
+  "nitafurahia?"</p>
+
+  <div class="note">
+    <p style="margin:0 0 .5rem"><b>North Star inatumia njia hizi nne.</b></p>
+    <p style="margin:0">Ukiziweka kwenye kifaa, tutakuonyesha pia <b>daraja</b> — kozi
+    unazozipenda ambazo bado hukidhi vigezo vyake, na kinachokosekana. Ni njia ya
+    kuona milango isiyokuwa mbele yako.</p>
+    <p style="margin:.7rem 0 0"><a href="./">→ Jaribu na matokeo yako</a></p>
+  </div>
+
+  <footer>
+    Njia nne zimetoka <a href="https://davetgc.com/Worldwork.htm" rel="noopener">World of
+    Work Map</a> ya ACT. Maelezo na mifano yamewekwa kwa mazingira ya Tanzania.
+    <a href="./">Rudi kwenye kifaa</a>
+  </footer>
+</div>
+</body>
+</html>

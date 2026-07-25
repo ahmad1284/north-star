@@ -3,6 +3,7 @@
 import re
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
 from northstar.api import _WEB_DIR, app
@@ -41,6 +42,58 @@ def test_client_has_no_third_party_dependencies():
         and "www.w3.org" not in u  # SVG xmlns is an identifier, not a fetch
     ]
     assert not external, f"unexpected external resources: {external}"
+
+
+GUIDANCE_PAGES = {
+    "/barua": "Ahmad Sadri",          # the letter, attributed
+    "/maswali": "Maswali ya kuuliza",  # the questions to carry
+    "/dunia-ya-kazi": "Mawazo",        # the four work-interest areas
+}
+
+
+@pytest.mark.parametrize("path,marker", GUIDANCE_PAGES.items())
+def test_guidance_pages_are_served(path, marker):
+    """What the engine can't answer, these pages hand back to the student."""
+    r = client.get(path)
+    assert r.status_code == 200
+    assert "text/html" in r.headers["content-type"]
+    assert marker in r.text
+
+
+@pytest.mark.parametrize("path", list(GUIDANCE_PAGES) + ["/"])
+def test_every_page_links_back_into_the_tool(path):
+    """A student must never reach a dead end."""
+    body = client.get(path).text
+    assert 'href="./"' in body or 'href="maswali"' in body
+
+
+@pytest.mark.parametrize("path", GUIDANCE_PAGES)
+def test_guidance_pages_load_no_external_resources(path):
+    """Same rule as the client: everything inline, so the pages work on a poor
+    connection. A hyperlink to a cited source is fine — a *fetched* resource
+    (script, stylesheet, font, image) is not."""
+    body = client.get(path).text
+    assert "<script" not in body, "guidance pages need no JavaScript at all"
+    assert '<link rel="stylesheet"' not in body
+    assert "url(http" not in body  # no remote CSS assets
+    assert "<img" not in body
+
+
+def test_unknown_facts_prompt_the_student_instead_of_showing_a_dash():
+    """The heart of this cycle: cost/salary are unknown for almost every
+    programme, and that gap is the letter's own call to action — not a
+    rendering failure."""
+    body = client.get("/").text
+    assert "hatujui" in body, "an unknown fact must say so, and say what to do"
+    assert 'href="maswali"' in body
+
+
+def test_no_path_traversal_via_the_new_routes():
+    """The guidance routes are explicitly named, not a static mount — the
+    security review verified traversal is impossible and it must stay that way."""
+    for attack in ("/barua/../../etc/passwd", "/maswali/%2e%2e/%2e%2e/etc/passwd",
+                   "/dunia-ya-kazi/../api.py", "/../backend/northstar/api.py"):
+        assert client.get(attack).status_code in (307, 404), attack
 
 
 def test_api_is_usable_without_a_client(monkeypatch, tmp_path):

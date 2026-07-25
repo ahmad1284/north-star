@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="sw">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -66,6 +66,13 @@
   .more{width:100%;padding:.6rem;border:1px dashed var(--line);border-radius:10px;background:none;
     color:var(--accent);cursor:pointer;font-size:.9rem;margin:2px 0 6px}
   .err{color:var(--bad);font-weight:600}
+  .unknown{color:var(--muted);font-style:italic}
+  .unknown a{color:var(--accent)}
+  .ask{margin:.7rem 0 0;font-size:.85rem;color:var(--muted)}
+  .ask a{color:var(--accent);font-weight:600;white-space:nowrap}
+  .topnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
+  .topnav a{font-size:.8rem;text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem}
   footer{color:var(--muted);font-size:.8rem;margin:28px 0 12px;border-top:1px solid var(--line);padding-top:10px}
 </style>
 </head>
@@ -74,6 +81,11 @@
   <header>
     <h1>🌟 North Star</h1>
     <p>Umemaliza Form Six? Weka combination na matokeo yako — uone kozi <b>unazoweza kusoma</b>, na labda chache ambazo hujawahi kuzifikiria.</p>
+    <div class="topnav">
+      <a href="barua">📜 Barua iliyoanzisha hii</a>
+      <a href="maswali">❓ Maswali ya kuuliza</a>
+      <a href="dunia-ya-kazi">🧭 Dunia ya kazi</a>
+    </div>
   </header>
 
   <form id="f">
@@ -92,7 +104,8 @@
 
     <fieldset>
       <legend>3 · Unavutiwa na nini? <span style="font-weight:400;color:var(--muted)">(hiari)</span></legend>
-      <p class="hint">Ukichagua, tutaonyesha pia “daraja” — kozi unazozipenda ambazo bado hukidhi vigezo, na kinachokosekana.</p>
+      <p class="hint">Ukichagua, tutaonyesha pia “daraja” — kozi unazozipenda ambazo bado hukidhi vigezo, na kinachokosekana.
+        <a href="dunia-ya-kazi" style="color:var(--accent)">Hizi njia nne ni nini?</a></p>
       <div class="chips" id="interests"></div>
     </fieldset>
 
@@ -104,7 +117,8 @@
   <footer>
     Data: TCU Undergraduate Admission Guidebook 2026/27. Kozi zilizoandikwa
     <i>auto-extracted</i> zimesomwa kwa programu — <b>hakikisha na chuo husika</b>.
-    North Star inakupa mwanga, si jibu la mwisho: uliza maswali, tembelea vyuo, ongea na wanafunzi.
+    North Star inakupa mwanga, si jibu la mwisho: <a href="maswali" style="color:var(--accent)">uliza maswali</a>,
+    tembelea vyuo, ongea na wanafunzi — kama <a href="barua" style="color:var(--accent)">barua</a> inavyosema.
   </footer>
 </div>
 
@@ -114,6 +128,12 @@
 // angle brackets" is not a safety property worth relying on — escape it.
 const esc = v => (v == null ? '' : String(v).replace(/[&<>"']/g,
   c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+
+// An unknown fact is not a broken field — it is the thing the student has to
+// go and ask. Say so, rather than printing a dash and moving on.
+const fact = v => v == null
+  ? '<span class="unknown">hatujui — <a href="maswali">uliza</a></span>'
+  : esc(v);
 
 // Where the North Star API lives. Empty = same origin (the backend serves this
 // page at /). Set window.NORTH_STAR_API before this script — or edit here — to
@@ -252,11 +272,13 @@ function card(r){
         <ul>${p.additional_requirements.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:''}
       <h4>Kuhusu kozi</h4>
       <dl class="facts">
-        <dt>Ni nini?</dt><dd>${esc(p.checklist.what_is_it??'—')}</dd>
-        <dt>Gharama</dt><dd>${esc(p.checklist.cost??'—')}</dd>
-        <dt>Muda hadi ajira</dt><dd>${esc(p.checklist.time_to_employment??'—')}</dd>
-        <dt>Mshahara</dt><dd>${esc(p.checklist.salary??'—')}</dd>
+        <dt>Ni nini?</dt><dd>${fact(p.checklist.what_is_it)}</dd>
+        <dt>Gharama</dt><dd>${fact(p.checklist.cost)}</dd>
+        <dt>Muda hadi ajira</dt><dd>${fact(p.checklist.time_to_employment)}</dd>
+        <dt>Mshahara</dt><dd>${fact(p.checklist.salary)}</dd>
       </dl>
+      <p class="ask">Hatujui haya yote — hayapo kwenye kitabu cha TCU.
+        <a href="maswali">Chukua maswali ya kuuliza →</a></p>
       <div class="src">Chanzo: ${esc(p.source)} · Vigezo kamili: “${esc(p.requirement_text)}”</div>
     </div>`;
   return det;

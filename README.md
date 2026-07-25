@@ -30,7 +30,7 @@ Each programme carries: why they qualify (rule by rule), how strongly, the insti
 duration, capacity, the guidebook page it came from, and a provenance badge if the entry
 was machine-extracted rather than human-verified.
 
-**Knowledge base:** 356 programmes across 39 institutions (Zanzibar + mainland), from the
+**Knowledge base:** 362 programmes across 39 institutions (Zanzibar + mainland), from the
 TCU 2026/27 Bachelor's Degree Admission Guidebook.
 
 ## Run it
@@ -38,12 +38,15 @@ TCU 2026/27 Bachelor's Degree Admission Guidebook.
 ```bash
 cd backend
 pip install -e ".[dev]"
-pytest                                  # 48 tests
+pytest                                  # 101 tests
 uvicorn northstar.api:app               # http://127.0.0.1:8000
 ```
 
-- **http://127.0.0.1:8000/** — the web client (mobile-first, Swahili + English)
-- **http://127.0.0.1:8000/docs** — interactive API documentation
+- **http://127.0.0.1:8000/** — the tool (mobile-first, Swahili + English)
+- **/barua** — Ahmad Sadri's letter, the founding document
+- **/maswali** — the questions to carry to a campus visit
+- **/dunia-ya-kazi** — the four work-interest areas explained
+- **/docs** — interactive API documentation
 
 No database, no build step, no API keys. One process.
 
@@ -60,8 +63,8 @@ runtime — so it runs on the cheapest tier of anything that takes a container
 a non-root user, and its healthcheck fails if the knowledge base doesn't load —
 a North Star serving zero programmes should look broken, not fine.
 
-Dependencies are pinned in `backend/requirements.txt`; CI (`.github/workflows/tests.yml`)
-runs the suite and separately re-validates the knowledge base on every push, so
+Dependencies are pinned in `backend/requirements.txt`; CI (`ci/github-workflow-tests.yml`,
+see `ci/README.md` to activate) runs the suite and separately re-validates the knowledge base on every push, so
 a corrupt rule file fails the build instead of reaching a student.
 
 Before putting it in front of strangers, read the limitations below — the
@@ -79,8 +82,9 @@ backend/         The product: engine + API  (see backend/README.md for the API r
     ranking.py   Grouping into For you / Discoveries / Bridge / Other
     api.py       FastAPI transport (thin — no logic lives here)
   scripts/       extract_guidebook.py — PDF → structured programme data
-  tests/         48 tests, including six student personas as regressions
-web/             The client — a single self-contained HTML page (see web/README.md)
+  tests/         101 tests, including six student personas as regressions
+web/             The client + guidance pages: barua (the letter), maswali (questions to
+                 carry to a campus), dunia-ya-kazi (the four work areas). See web/README.md
 RESEARCH.md      What's left: the open research questions and how to attack them
 .ai-dlc/         How this was built: intents, discovery, reflections (AI-DLC method)
 ```
@@ -98,7 +102,7 @@ touching the engine.
 
 ## Principles that shaped it (don't undo these by accident)
 
-1. **Never invent data.** Unknown fields are `null` and render as "—". A machine-parsed
+1. **Never invent data.** Unknown fields are `null` and shown as unknown. A machine-parsed
    rule is flagged as such. Anything the extractor couldn't parse cleanly is quarantined
    in `data/extraction_review.json` and **never served**.
 2. **Always explain.** Every result carries the rules it passed or failed. A student
@@ -109,25 +113,31 @@ touching the engine.
    overwhelm, just do it in style"*) — but grouped, ranked, and progressively disclosed.
 5. **Rank in TCU's own currency.** Ordering uses the admission points a student brings to
    a programme's defining subjects — not an invented score.
+6. **What the engine can't compute, hand back to the student.** An unknown fact is not a
+   broken field; it is the thing they must go and ask. Say so, and say who to ask.
 
 ## Where the project stands
 
 - **The engine is finished.** Every requirement shape the guidebook uses is now enforced
   data, not prose: subject slots, grade floors, points thresholds, and cross-slot
   constraints (`must_include`, `subsidiary_from`, `subsidiary_all`,
-  `if_not_matched_subsidiary`). 63 tests, swept in both error directions.
+  `if_not_matched_subsidiary`). Swept in both error directions; audited by four
+  independent review agents (see `.ai-dlc/finish-engine-and-ship/review.md`).
 - **It ships.** Dockerfile, pinned dependencies, CI, healthcheck.
 - **Five conditions remain unencodable** — three sentences the PDF truncated mid-clause,
   two offering an O-level alternative we can't see. They surface as `conditional`
   ("you qualify *if* …"), never as a plain yes.
-- **The course information is the gap.** Cost, time-to-employment, salary and insider
-  notes are empty for all programmes; descriptions exist for 30 of 362. These are the
-  letter's own questions and none of them are in the guidebook — they have to be
-  gathered. See **[RESEARCH.md](RESEARCH.md)** (R1).
+- **The course information is not a gap we try to fill.** Cost, time-to-employment,
+  salary and insider notes are unknown for almost every programme, and none of them exist
+  in any document we can parse. Rather than invent them or wait on a data-collection
+  project that never finishes, the tool **says so and tells the student how to find out** —
+  `/maswali` turns the letter's checklist into questions they carry to a campus. That is
+  the letter's own method, and it needs no data we don't have.
 
 **Honest readiness call:** ready for a student *with you sitting beside them* (that's
-R4 — validation). Not yet ready for a stranger who finds it alone, because it answers
-"can I get in?" well and "should I go?" not at all.
+R4 — validation). It answers "can I get in?" itself, and for "should I go?" it does what
+the letter does: hands the student the questions and points them at the people who can
+answer.
 
 ## Picking this up later
 
