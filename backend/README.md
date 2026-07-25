@@ -123,9 +123,12 @@ Errors: invalid input → `422` with a list of problems
 Known limitations (deliberate, documented):
 - `additional_requirements` (O-level conditions, fitness tests) are surfaced
   to the user but not machine-evaluated — the MVP input is A-level only.
-- The seed covers 30 real programmes across 8 institutions (SUZA, MUHAS,
-  UDSM, SUA, ARU, IFM, Mzumbe) — representative, not complete. More
-  transcription widens it; the schema absorbs it without code changes.
+- The knowledge base holds 356 programmes across 39 institutions: 30
+  human-curated plus 326 machine-extracted from the guidebook by
+  `scripts/extract_guidebook.py` (flagged `machine_parsed` in the API so
+  clients can show provenance). ~311 guidebook rows whose requirement text
+  didn't parse cleanly sit in `data/extraction_review.json` — kept with raw
+  text and page refs for human review, never served as fact.
 
 ## Layout
 
