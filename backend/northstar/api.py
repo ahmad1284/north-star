@@ -28,6 +28,14 @@ class MatchRequest(BaseModel):
         description="subject_id -> A-level grade (A..E principal, S subsidiary, F fail)",
         examples=[{"physics": "C", "chemistry": "B", "biology": "A"}],
     )
+    interests: list[str] | None = Field(
+        default=None,
+        description="Optional ACT World of Work interest areas the student is "
+        "drawn to (see GET /interests). Adds interest annotations and a "
+        "'bridge' group: interest-matched programmes they are not eligible "
+        "for, with reasons for what it would take.",
+        examples=[["things", "ideas"]],
+    )
 
 
 @app.get("/health")
@@ -41,6 +49,11 @@ def subjects() -> dict:
         "subjects": [{"id": sid, "name": name} for sid, name in kb.subjects.items()],
         "grades": sorted(kb.scale.points, key=lambda g: -kb.scale.points[g]),
     }
+
+
+@app.get("/interests")
+def interests() -> dict:
+    return {"areas": list(kb.interest_areas.values())}
 
 
 @app.get("/combinations")
@@ -79,8 +92,14 @@ def programmes() -> dict:
 @app.post("/match")
 def match(req: MatchRequest) -> dict:
     problems = validate_profile(kb, req.grades)
+    if req.interests:
+        problems += [
+            f"unknown interest area: '{a}'"
+            for a in req.interests
+            if a not in kb.interest_areas
+        ]
     if problems:
         raise HTTPException(status_code=422, detail=problems)
     profile = StudentProfile(grades=req.grades)
     results = evaluate_all(kb, profile)
-    return rank_and_group(kb, profile, results)
+    return rank_and_group(kb, profile, results, interests=req.interests)

@@ -1,0 +1,25 @@
+{
+  "description": "Work interest areas from the ACT World of Work Map (used as-is, not invented; see https://davetgc.com/Worldwork.htm — Ahmad's input #2). The map organizes work by four primary interests: working with Ideas, People, Data, or Things. 'tag_areas' maps our programme tags onto those areas so every programme resolves to at least one interest area.",
+  "areas": [
+    { "id": "ideas", "name": "Ideas", "description": "Abstract work: words, equations, art, music, theories, design." },
+    { "id": "people", "name": "People", "description": "Helping, serving, teaching, caring, persuading, leading." },
+    { "id": "data", "name": "Data", "description": "Facts, numbers, files, accounts, business procedures." },
+    { "id": "things", "name": "Things", "description": "Machines, tools, materials, structures, plants and animals." }
+  ],
+  "tag_areas": {
+    "medicine": ["people", "things"],
+    "health": ["people", "things"],
+    "science": ["ideas", "things"],
+    "engineering": ["things", "ideas"],
+    "ict": ["ideas", "data", "things"],
+    "education": ["people", "ideas"],
+    "arts": ["ideas", "people"],
+    "design": ["ideas", "things"],
+    "social": ["people", "data"],
+    "business": ["data", "people"],
+    "economics": ["data", "ideas"],
+    "law": ["people", "data"],
+    "agriculture": ["things", "data"],
+    "environment": ["things", "data"]
+  }
+}

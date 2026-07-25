@@ -119,6 +119,19 @@ def load_programmes(known_subjects: set[str], scale: GradeScale) -> list[Program
     return programmes
 
 
+def load_interests() -> tuple[dict[str, dict], dict[str, frozenset[str]]]:
+    """Returns (areas by id, programme-tag -> interest areas)."""
+    raw = _read("interests.json")
+    areas = {a["id"]: a for a in raw["areas"]}
+    tag_areas: dict[str, frozenset[str]] = {}
+    for tag, area_ids in raw["tag_areas"].items():
+        for a in area_ids:
+            if a not in areas:
+                raise DataError(f"interests.json: tag '{tag}' maps to unknown area '{a}'")
+        tag_areas[tag] = frozenset(area_ids)
+    return areas, tag_areas
+
+
 class KnowledgeBase:
     """Everything the engine knows, loaded and validated once."""
 
@@ -127,6 +140,19 @@ class KnowledgeBase:
         self.subjects = load_subjects()
         self.combinations = load_combinations(set(self.subjects))
         self.programmes = load_programmes(set(self.subjects), self.scale)
+        self.interest_areas, self.tag_areas = load_interests()
+        for p in self.programmes:
+            if not self.programme_areas(p.tags):
+                raise DataError(
+                    f"programme {p.id}: tags {sorted(p.tags)} resolve to no interest area"
+                )
+
+    def programme_areas(self, tags: frozenset[str]) -> frozenset[str]:
+        """Interest areas (ACT World of Work) a set of programme tags maps to."""
+        out: set[str] = set()
+        for t in tags:
+            out |= self.tag_areas.get(t, frozenset())
+        return frozenset(out)
 
 
 def load_knowledge_base() -> KnowledgeBase:

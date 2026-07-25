@@ -27,11 +27,18 @@ uvicorn northstar.api:app   # serves on http://127.0.0.1:8000
 ### `POST /match` — the main endpoint
 
 Request: subject ids (see `GET /subjects`) mapped to A-level grades
-(`A B C D E` principal · `S` subsidiary · `F` fail).
+(`A B C D E` principal · `S` subsidiary · `F` fail), plus optional
+`interests` — ACT World of Work areas (`ideas` / `people` / `data` / `things`,
+see `GET /interests`).
 
 ```bash
 curl -s localhost:8000/match -X POST -H 'content-type: application/json' \
   -d '{"grades": {"physics": "B", "chemistry": "A", "biology": "A"}}'
+
+# with interests → adds annotations + the "bridge" group
+curl -s localhost:8000/match -X POST -H 'content-type: application/json' \
+  -d '{"grades": {"history": "B", "kiswahili": "A", "literature_in_english": "C"},
+       "interests": ["things"]}'
 ```
 
 Response shape:
@@ -42,7 +49,10 @@ Response shape:
   "groups": {
     "for_you":        [ /* eligible + strong fit, in expected areas   */ ],
     "discoveries":    [ /* eligible + strong fit, OUTSIDE the expected path */ ],
-    "other_eligible": [ /* everything else they qualify for — nothing hidden */ ]
+    "other_eligible": [ /* everything else they qualify for — nothing hidden */ ],
+    "bridge":         [ /* only when interests sent: programmes matching what the
+                           student WANTS but is not eligible for, with reasons
+                           spelling out exactly what it would take */ ]
   },
   "counts": { "eligible": 13, "for_you": 8, "discoveries": 5, "other_eligible": 0, "not_eligible": 9 }
 }
@@ -90,6 +100,7 @@ Errors: invalid input → `422` with a list of problems
 |---|---|
 | `GET /subjects` | Subject ids + display names, and the valid grade letters |
 | `GET /combinations` | Common combinations (PCB, PCM, EGM, …) with their subjects |
+| `GET /interests` | ACT World of Work interest areas (Ideas / People / Data / Things) |
 | `GET /programmes` | The full programme catalogue with requirements & checklists |
 | `GET /health` | Liveness + programme count |
 

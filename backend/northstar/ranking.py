@@ -37,8 +37,17 @@ def _obvious_tags(kb: KnowledgeBase, profile: StudentProfile) -> frozenset[str]:
 
 
 def rank_and_group(
-    kb: KnowledgeBase, profile: StudentProfile, results: list[ProgrammeResult]
+    kb: KnowledgeBase,
+    profile: StudentProfile,
+    results: list[ProgrammeResult],
+    interests: list[str] | None = None,
 ) -> dict:
+    """Group and rank results. `interests` (optional) = ACT World of Work area
+    ids the student says they're drawn to (ideas/people/data/things). When
+    given, aligned results are annotated and a `bridge` group is added:
+    interest-matched programmes the student is NOT eligible for, with the
+    engine's reasons spelling out what it would take. Without interests, the
+    output is exactly the cycle-1 shape (fully backward compatible)."""
     obvious = _obvious_tags(kb, profile)
     eligible = [r for r in results if r.eligible]
     ineligible = [r for r in results if not r.eligible]
@@ -65,7 +74,7 @@ def rank_and_group(
     for group in (for_you, discoveries, other):
         group.sort(key=key)
 
-    return {
+    out = {
         "obvious_areas": sorted(obvious),
         "groups": {
             "for_you": [r.to_dict() for r in for_you],
@@ -80,3 +89,32 @@ def rank_and_group(
             "not_eligible": len(ineligible),
         },
     }
+
+    if interests:
+        wanted = frozenset(interests)
+        # Annotate eligible results that align with the stated interests.
+        for group in out["groups"].values():
+            for d in group:
+                areas = kb.programme_areas(frozenset(d["programme"]["tags"]))
+                matched = sorted(areas & wanted)
+                if matched:
+                    d["interest_match"] = matched
+        # The Bridge: what the student WANTS but cannot (yet) enter — with the
+        # engine's reasons saying exactly what is missing. Honest, not hidden.
+        bridge = [
+            r for r in ineligible
+            if kb.programme_areas(r.programme.tags) & wanted
+        ]
+        bridge.sort(key=lambda r: (
+            -len(kb.programme_areas(r.programme.tags) & wanted),
+            r.programme.name,
+        ))
+        out["groups"]["bridge"] = [
+            {**r.to_dict(), "interest_match": sorted(
+                kb.programme_areas(r.programme.tags) & wanted)}
+            for r in bridge
+        ]
+        out["counts"]["bridge"] = len(bridge)
+        out["interests"] = sorted(wanted)
+
+    return out
