@@ -6,8 +6,8 @@
 - `letter-to-form-6-graduates.txt` — Ahmad Sadri's letter to Form 6 graduates (Swahili). Input #1.
 
 ## Pending file uploads
-- **TCU undergraduate handbook** — PDF (not yet uploaded).
-- **"World of work"** — image + link (not yet uploaded / link not yet pasted).
+- **TCU undergraduate handbook** — PDF (not yet uploaded). Source page: https://tcu.go.tz/services/admissions-coordination-and-database-management/admission-guidebooks/undergraduate
+- **"World of work"** — image (not yet uploaded). Link: https://davetgc.com/Worldwork.htm (site: https://davetgc.com/)
 
 ## References & ideas provided
 - **careervillage.org** — reference product/site.
@@ -18,6 +18,14 @@
 - **Constraint: simplify for the end user** — keep the user experience simple regardless of backend complexity.
 - **NACTVET** — National Council for Technical and Vocational Education and Training (Tanzania) — vocational/technical pathways, source data.
 - **Expert system design** — considering building this AI-*less* (a rules-based expert system) rather than / alongside an LLM. Reference book: *Systems Analysis and Design* — Kendall & Kendall (to confirm).
+- **Links provided:**
+  - https://davetgc.com/Worldwork.htm — "World of work" resource.
+  - https://davetgc.com/ — parent site.
+  - https://tcu.go.tz/services/admissions-coordination-and-database-management/admission-guidebooks/undergraduate — TCU undergraduate admission guidebooks (official source).
+- **Cal Newport books (career philosophy):**
+  - *How to Be a High School Superstar* — idea: add a track on the platform for students **still in school** to become better students (Newport's example of a "B student" who got into Stanford). Expands audience beyond just Form 6 graduates.
+  - *So Good They Can't Ignore You* — "career capital / skills over passion" thesis.
+- **Dr. Tareq Al-Suwaidan** — talks/ideas on choosing a career; a channel/video where he speaks with university students. To-do: get a summary of his career-choice advice.
 
 ## Open questions to revisit (not answered here)
 - Delivery channel: WhatsApp vs web app vs mobile app.
