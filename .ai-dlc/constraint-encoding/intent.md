@@ -50,8 +50,13 @@ a flat "eligible" when unverifiable conditions remain:
       passes (tested with the constraint's own subjects)
 - [x] Results expose `conditional` + the unverified conditions; a programme with no
       unverifiable conditions reports `conditional: false`
-- [x] Extraction parses these shapes into constraints; count of A-level constraints left
+- [~] Extraction parses these shapes into constraints; count of A-level constraints left
       unencoded in `additional_requirements` drops to ~0 (report the number honestly)
+      → **PARTIAL: 25 → 13 programmes, not ~0.** The remaining four shapes (conjunctive
+      subsidiary, "if not X then Y", multi-subject floor lists, PDF-truncated sentences)
+      each need their own logic and tests. Not eligibility-unsafe: all 13 now surface as
+      `conditional: true`, so students are warned rather than misled. Carried to
+      RESEARCH.md R1b rather than silently ticked.
 - [x] Web client distinguishes conditional from unconditional eligibility
 - [x] Whole suite passes; persona regressions unchanged except where the fix is correct
 
