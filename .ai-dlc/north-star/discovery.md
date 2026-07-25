@@ -112,9 +112,12 @@ Decision (Ahmad): build the **backend first** for a fast dev cycle, then extend 
   foundation for both.
 - Core stays **channel-agnostic**; channels are just clients.
 - **Constraint (hard):** *simplify for the end user regardless of backend complexity.*
-- Stack (to confirm at execution): lean toward one language end-to-end (e.g. TypeScript —
-  shared types for a future web UI + easy JSON/Meta webhooks; Python also viable, esp. for
-  data work + future RAG). Final call at start of Execution.
+- **Stack (decided by Ahmad): Python** — strong for the data-transcription work and the
+  future LLM+RAG layer. FastAPI for the API layer (thin transport over a pure core).
+- **Seed breadth (decided): representative subset** — enough real programmes to exercise every
+  rule path (health + non-health, PCB/PCM/EGM/HGE, Zanzibar + mainland institutions).
+- **Execution mode (decided): full autonomy to green** — run all units, drive to passing
+  tests + draft PR, check in only on real blockers.
 
 ## Backend approach (open decision — user raised this explicitly)
 Two philosophies the user named — best treated as **layers, not either/or**:
