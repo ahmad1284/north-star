@@ -1,5 +1,9 @@
 name: tests
 
+# The job only reads code and runs tests; deny everything else.
+permissions:
+  contents: read
+
 on:
   push:
     branches: ["**"]

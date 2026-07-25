@@ -22,9 +22,14 @@ EXPOSE 8000
 
 # Fail the container if the knowledge base won't load or the API is down —
 # a North Star serving no programmes is worse than one that is visibly broken.
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD python -c "import urllib.request,json,sys; \
-d=json.load(urllib.request.urlopen('http://127.0.0.1:8000/health')); \
+# Probes $PORT, not a hardcoded 8000 — hosts like Render/Railway/Cloud Run
+# inject it, and a healthcheck on the wrong port fails forever and puts the
+# container in a restart loop. The timeout keeps a saturated server failing
+# fast instead of hanging the check.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+    CMD python -c "import os,urllib.request,json,sys; \
+u='http://127.0.0.1:'+os.environ.get('PORT','8000')+'/health'; \
+d=json.load(urllib.request.urlopen(u, timeout=4)); \
 sys.exit(0 if d.get('programmes',0) > 0 else 1)"
 
 WORKDIR /app/backend

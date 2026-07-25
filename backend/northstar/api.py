@@ -7,9 +7,10 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
+from fastapi.middleware.gzip import GZipMiddleware
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic import BaseModel, Field
 
 from .engine import evaluate_all, validate_profile
@@ -26,9 +27,30 @@ app = FastAPI(
     version="0.1.0",
 )
 
+# The largest legitimate request is a handful of subjects and interests —
+# well under a kilobyte. Bodies are buffered in memory before validation, so
+# without a ceiling one unauthenticated request can exhaust a small container.
+MAX_BODY_BYTES = 64 * 1024
+
+
+@app.middleware("http")
+async def limit_body_size(request: Request, call_next):
+    declared = request.headers.get("content-length")
+    if declared is not None and declared.isdigit() and int(declared) > MAX_BODY_BYTES:
+        return JSONResponse(
+            status_code=413,
+            content={"detail": f"Request too large (limit {MAX_BODY_BYTES} bytes)."},
+        )
+    return await call_next(request)
+
+
+# Results are large JSON and students are often on slow mobile connections.
+app.add_middleware(GZipMiddleware, minimum_size=1000)
+
 # The API serves public, read-only reference data and takes no credentials, so
 # any client origin may call it — a client hosted apart from the API (or opened
-# from disk) still works.
+# from disk) still works. `allow_credentials` stays off: a wildcard origin must
+# never be paired with cookies.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -66,10 +88,12 @@ def client() -> FileResponse:
     """Serve the bundled web client, if one is present next to the backend."""
     page = _WEB_DIR / "index.html"
     if not page.is_file():
+        # Log the path for the operator; don't hand the filesystem layout to
+        # a stranger.
+        print(f"[north-star] no web client at {page} (set NORTH_STAR_WEB_DIR)")
         raise HTTPException(
             status_code=404,
-            detail="No web client found. The API itself is at /docs. "
-            f"Looked in {_WEB_DIR} (override with NORTH_STAR_WEB_DIR).",
+            detail="No web client is deployed here. The API is documented at /docs.",
         )
     return FileResponse(page, media_type="text/html")
 
@@ -135,6 +159,10 @@ def match(req: MatchRequest) -> dict:
             if a not in kb.interest_areas
         ]
     if problems:
+        # Cap the echo: every problem quotes the caller's own input back, so an
+        # unbounded list turns a bad request into an amplification vector.
+        if len(problems) > 20:
+            problems = problems[:20] + [f"… and {len(problems) - 20} more problems"]
         raise HTTPException(status_code=422, detail=problems)
     profile = StudentProfile(grades=req.grades)
     results = evaluate_all(kb, profile)

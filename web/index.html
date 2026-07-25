@@ -109,6 +109,12 @@
 </div>
 
 <script>
+// Everything below is interpolated into innerHTML. Most of it is
+// machine-extracted guidebook text, so "the source PDF happens to contain no
+// angle brackets" is not a safety property worth relying on — escape it.
+const esc = v => (v == null ? '' : String(v).replace(/[&<>"']/g,
+  c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])));
+
 // Where the North Star API lives. Empty = same origin (the backend serves this
 // page at /). Set window.NORTH_STAR_API before this script — or edit here — to
 // point the client at an API hosted elsewhere, e.g. "http://127.0.0.1:8000".
@@ -191,9 +197,9 @@ $('#f').onsubmit = async (e)=>{
     if(state.interests.size) body.interests=[...state.interests];
     const r = await fetch(url('match'),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
     const data = await r.json();
-    if(!r.ok){ out.innerHTML = `<p class="err">${(data.detail||[]).join('; ')||'Hitilafu.'}</p>`; return; }
+    if(!r.ok){ out.innerHTML = `<p class="err">${esc((data.detail||[]).join('; ')||'Hitilafu.')}</p>`; return; }
     render(data, out);
-  } catch(err){ out.innerHTML = `<p class="err">Network error: ${err}</p>`; }
+  } catch(err){ out.innerHTML = `<p class="err">Network error: ${esc(err)}</p>`; }
   finally { $('#go').disabled=false; }
 };
 function render(data, out){
@@ -206,7 +212,7 @@ function render(data, out){
   for(const [key,title,desc] of GROUPS){
     const list = data.groups[key]; if(!list || !list.length) continue;
     const h = document.createElement('h2'); h.className='group';
-    h.innerHTML = `${title} <span class="count">${list.length}</span>`;
+    h.innerHTML = `${esc(title)} <span class="count">${list.length}</span>`;
     const d = document.createElement('p'); d.className='groupdesc'; d.textContent=desc;
     out.append(h,d);
     const N = 6;
@@ -224,7 +230,7 @@ function card(r){
   const det=document.createElement('details'); det.className='card';
   const pct=Math.round(r.strength*100);
   const badges=[];
-  if(r.interest_match) badges.push(`<span class="badge match">inalingana na: ${r.interest_match.join(', ')}</span>`);
+  if(r.interest_match) badges.push(`<span class="badge match">inalingana na: ${esc(r.interest_match.join(', '))}</span>`);
   if(r.conditional) badges.push(`<span class="badge cond">unastahili KAMA… · conditional</span>`);
   if(r.eligible) badges.push(`<span class="badge">nguvu ${pct}%</span>`);
   if(p.duration_years) badges.push(`<span class="badge">miaka ${p.duration_years}</span>`);
@@ -232,26 +238,26 @@ function card(r){
   if(p.machine_parsed) badges.push(`<span class="badge auto">auto-extracted · hakikisha</span>`);
   det.innerHTML = `
     <summary>
-      <div class="title">${p.name}</div>
-      <div class="sub">${p.institution} · ${p.location||''}</div>
+      <div class="title">${esc(p.name)}</div>
+      <div class="sub">${esc(p.institution)} · ${esc(p.location||'')}</div>
       <div class="badges">${badges.join('')}</div>
     </summary>
     <div class="body">
       <h4>${r.eligible?(r.conditional?'Unastahili, KAMA masharti haya yametimia':'Kwa nini unastahili'):'Kinachokosekana'}</h4>
-      <ul>${r.reasons.filter(x=>x.rule!=='unverified_condition').map(x=>`<li class="${x.ok?'ok':''}">${x.detail}</li>`).join('')}</ul>
+      <ul>${r.reasons.filter(x=>x.rule!=='unverified_condition').map(x=>`<li class="${x.ok?'ok':''}">${esc(x.detail)}</li>`).join('')}</ul>
       ${r.conditional?`<div class="cond-note"><b>Hatuwezi kuthibitisha haya</b> (yako nje ya taarifa tulizonazo za A-Level):
-        <ul>${r.unverified_conditions.map(t=>`<li>${t}</li>`).join('')}</ul>
+        <ul>${r.unverified_conditions.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
         Hakikisha mwenyewe kabla ya kuomba.</div>`:''}
       ${p.additional_requirements.length?`<h4>Vigezo vya ziada (hakikisha mwenyewe)</h4>
-        <ul>${p.additional_requirements.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}
+        <ul>${p.additional_requirements.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>`:''}
       <h4>Kuhusu kozi</h4>
       <dl class="facts">
-        <dt>Ni nini?</dt><dd>${p.checklist.what_is_it??'—'}</dd>
-        <dt>Gharama</dt><dd>${p.checklist.cost??'—'}</dd>
-        <dt>Muda hadi ajira</dt><dd>${p.checklist.time_to_employment??'—'}</dd>
-        <dt>Mshahara</dt><dd>${p.checklist.salary??'—'}</dd>
+        <dt>Ni nini?</dt><dd>${esc(p.checklist.what_is_it??'—')}</dd>
+        <dt>Gharama</dt><dd>${esc(p.checklist.cost??'—')}</dd>
+        <dt>Muda hadi ajira</dt><dd>${esc(p.checklist.time_to_employment??'—')}</dd>
+        <dt>Mshahara</dt><dd>${esc(p.checklist.salary??'—')}</dd>
       </dl>
-      <div class="src">Chanzo: ${p.source} · Vigezo kamili: “${p.requirement_text}”</div>
+      <div class="src">Chanzo: ${esc(p.source)} · Vigezo kamili: “${esc(p.requirement_text)}”</div>
     </div>`;
   return det;
 }

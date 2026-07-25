@@ -49,7 +49,12 @@ def test_api_is_usable_without_a_client(monkeypatch, tmp_path):
     monkeypatch.setattr("northstar.api._WEB_DIR", tmp_path)
     r = client.get("/")
     assert r.status_code == 404
-    assert "NORTH_STAR_WEB_DIR" in r.json()["detail"]
+    detail = r.json()["detail"]
+    assert "/docs" in detail, "should point the visitor at the API instead"
+    # Security: the response must not hand a stranger the filesystem layout or
+    # internal env-var names — those go to the operator's log, not the client.
+    assert str(tmp_path) not in detail
+    assert "NORTH_STAR_WEB_DIR" not in detail
     assert client.get("/health").status_code == 200
     assert client.post(
         "/match", json={"grades": {"physics": "B", "chemistry": "A", "biology": "A"}}

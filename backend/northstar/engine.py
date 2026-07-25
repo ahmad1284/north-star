@@ -110,7 +110,10 @@ def _best_assignment(
         if not _satisfies_assignment_constraints(kb, profile, perm, constraints):
             continue
         pts = sum(kb.scale.points_for(profile.grades[s]) for s in perm)
-        if best is None or pts > best[0]:
+        # Highest points wins; ties broken lexicographically so the same
+        # student always gets the same assignment — and therefore the same
+        # explanation — regardless of the order a client sent their subjects.
+        if best is None or pts > best[0] or (pts == best[0] and perm < best[1]):
             best = (pts, perm)
     return best[1] if best else None
 
@@ -326,11 +329,25 @@ def evaluate_all(kb: KnowledgeBase, profile: StudentProfile) -> list[ProgrammeRe
     return [evaluate_programme(kb, profile, p) for p in kb.programmes]
 
 
+# A NECTA candidate sits 3 principal subjects plus General Studies and the odd
+# subsidiary. The cap is generous headroom for that — and it bounds the
+# assignment search, which is factorial in the number of subjects submitted.
+# Without it a stranger can post all 27 known subjects and make one request
+# ~25x more expensive than a real student's, on an endpoint with no auth.
+MAX_SUBJECTS = 8
+
+
 def validate_profile(kb: KnowledgeBase, grades: dict[str, str]) -> list[str]:
     """Return a list of problems with a raw grades dict (empty = valid)."""
     problems = []
     if not grades:
         problems.append("no subjects given")
+    if len(grades) > MAX_SUBJECTS:
+        problems.append(
+            f"too many subjects: {len(grades)} (maximum {MAX_SUBJECTS}). "
+            "Enter the subjects you sat at A-level."
+        )
+        return problems  # don't do the expensive per-subject work on a flood
     for subject, grade in grades.items():
         if subject not in kb.subjects:
             problems.append(f"unknown subject: '{subject}'")

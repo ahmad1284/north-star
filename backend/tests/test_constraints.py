@@ -5,6 +5,8 @@ passes must be in Physics or Chemistry or Biology" was displayed to students
 but never enforced, so the engine reported people eligible who were not.
 """
 
+import re
+
 import pytest
 
 from northstar.engine import evaluate_programme
@@ -177,18 +179,161 @@ def test_conditional_subsidiary_prefers_an_assignment_that_satisfies_it(kb):
 
 
 def test_unencodable_conditions_stay_conditional_not_enforced(kb):
-    """The 5 remaining prose conditions are unencodable for stated reasons
-    (3 truncated by the PDF, 2 with O-level escape clauses). They must surface
-    as `conditional`, never be silently enforced or silently dropped."""
-    truncated_or_olevel = {"AR003", "AR026", "JC007", "DM041", "DM045"}
-    present = {p.code for p in kb.programmes} & truncated_or_olevel
-    assert present, "expected these programmes in the knowledge base"
-    for code in present:
+    """The remaining prose conditions are unencodable for stated reasons
+    (truncated by the PDF, or carrying an O-level escape clause). They must
+    surface as `conditional`, and must NEVER be silently turned into an
+    enforced rule — that would reject students who satisfy the real thing."""
+    codes = {"AR003", "AR026", "JC007", "DM041", "DM045"}
+    present = {p.code for p in kb.programmes} & codes
+    assert present == codes, f"missing from knowledge base: {codes - present}"
+    for code in codes:
         p = next(x for x in kb.programmes if x.code == code)
         assert p.unverified_conditions, f"{code} must keep its condition visible"
+        encoded_from = {c.source_text for c in p.constraints}
+        for cond in p.unverified_conditions:
+            assert cond not in encoded_from, (
+                f"{code}: an unencodable condition was turned into a hard rule"
+            )
+
+
+def test_no_constraint_is_encoded_from_an_olevel_sentence(kb):
+    """Invariant, independent of which regex enforces it: a sentence offering
+    an O-level alternative is only half-checkable, so it must never become an
+    enforced constraint."""
+    olevel = re.compile(r"\bo-level|\bordinary\s+level|\bo\s*'?\s*level", re.IGNORECASE)
+    offenders = [
+        (p.code, c.source_text)
+        for p in kb.programmes
+        for c in p.constraints
+        if c.source_text and olevel.search(c.source_text)
+    ]
+    assert not offenders, f"constraints encoded from O-level sentences: {offenders}"
+
+
+# --- real-data anchors -------------------------------------------------------
+# Mutation testing showed the synthetic tests above pass even when every
+# subsidiary_all / if_not_matched constraint is stripped from the real
+# knowledge base. These tie the engine to actual guidebook rules.
+
+def test_zu024_regression_conjunctive_floor_is_not_a_choice(kb):
+    """Found by the cycle-7 correctness review: 'A minimum of D grades in
+    Chemistry and Biology' was parsed as a CHOICE, so a student with Biology
+    at E was told they qualified. Both subjects are required."""
+    p = prog(kb, "ZU024")
+    assert any(c.kind == "subsidiary_all" for c in p.constraints)
+    for bad in ({"chemistry": "C", "biology": "E", "physics": "C"},
+                {"chemistry": "E", "biology": "C", "physics": "C"}):
+        assert not evaluate_programme(kb, StudentProfile(grades=bad), p).eligible
+    ok = {"chemistry": "D", "biology": "D", "physics": "E"}
+    assert evaluate_programme(kb, StudentProfile(grades=ok), p).eligible
+
+
+def test_ar031_requires_both_physics_and_maths(kb):
+    """Real subsidiary_all: 'a subsidiary pass in Physics and Mathematics'."""
+    p = prog(kb, "AR031")
+    assert any(c.kind == "subsidiary_all" for c in p.constraints)
+    only_one = StudentProfile(grades={"advanced_mathematics": "B", "geography": "B"})
+    assert not evaluate_programme(kb, only_one, p).eligible
+    both = StudentProfile(
+        grades={"advanced_mathematics": "B", "physics": "B", "geography": "B"}
+    )
+    assert evaluate_programme(kb, both, p).eligible
+
+
+def test_dm006_accepts_economics_as_a_trigger(kb):
+    """DM006 is the only real programme with MULTIPLE trigger subjects
+    ({advanced_mathematics, economics}) — a truncated trigger list would go
+    unnoticed without this."""
+    p = prog(kb, "DM006")
+    cond = next(c for c in p.constraints if c.kind == "if_not_matched_subsidiary")
+    assert cond.trigger_subjects == frozenset({"advanced_mathematics", "economics"})
+    # qualifies via the economics trigger, holding no maths at all
+    student = StudentProfile(grades={"economics": "C", "commerce": "D", "accountancy": "C"})
+    assert evaluate_programme(kb, student, p).eligible
 
 
 # --- data integrity ---------------------------------------------------------
+
+def test_a_failed_subject_is_not_a_subsidiary_pass(kb):
+    """`_holds` treats anything but F as a pass; mutation testing showed
+    nothing caught F being accepted, because existing tests used ABSENT
+    subjects rather than failed ones."""
+    for kind in ("subsidiary_from", "subsidiary_all"):
+        p = _synthetic((Constraint(kind, frozenset({"geography"})),))
+        failed = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "F"})
+        assert not evaluate_programme(kb, failed, p).eligible, kind
+        passed = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "S"})
+        assert evaluate_programme(kb, passed, p).eligible, kind
+
+
+def test_grade_floors_are_enforced_on_the_new_constraint_kinds(kb):
+    """`min_grade` was dead-untested on both new kinds."""
+    all_kind = _synthetic((
+        Constraint("subsidiary_all", frozenset({"geography"}), min_grade="C"),
+    ))
+    weak = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "E"})
+    assert not evaluate_programme(kb, weak, all_kind).eligible
+    ok = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "C"})
+    assert evaluate_programme(kb, ok, all_kind).eligible
+
+    cond_kind = _synthetic((
+        Constraint("if_not_matched_subsidiary", frozenset({"geography"}),
+                   min_grade="C", trigger_subjects=frozenset({"biology"})),
+    ))
+    weak2 = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "E"})
+    assert not evaluate_programme(kb, weak2, cond_kind).eligible
+    ok2 = StudentProfile(grades={"physics": "A", "chemistry": "A", "geography": "C"})
+    assert evaluate_programme(kb, ok2, cond_kind).eligible
+
+
+def test_conditional_reason_text_matches_which_branch_fired(kb):
+    """README principle 2 is 'always explain' — the explanation IS the product,
+    so the wrong branch of the message is a real defect."""
+    p = _synthetic((
+        Constraint("if_not_matched_subsidiary", frozenset({"geography"}),
+                   trigger_subjects=frozenset({"physics"}), source_text="x"),
+    ))
+    used = StudentProfile(grades={"physics": "B", "chemistry": "B"})
+    detail = next(x.detail for x in evaluate_programme(kb, used, p).reasons
+                  if x.rule == "conditional_subsidiary")
+    assert "does not apply" in detail
+
+    not_used = StudentProfile(grades={"chemistry": "B", "biology": "B", "geography": "S"})
+    detail2 = next(x.detail for x in evaluate_programme(kb, not_used, p).reasons
+                   if x.rule == "conditional_subsidiary")
+    assert "does not apply" not in detail2
+
+
+def test_result_is_independent_of_grade_entry_order(kb):
+    """Ties in the assignment search must not depend on the order a client
+    happened to send the subjects, or the same student sees different
+    explanations on different devices."""
+    p = prog(kb, "ZU024")
+    a = StudentProfile(grades={"chemistry": "B", "biology": "B", "physics": "B"})
+    b = StudentProfile(grades={"physics": "B", "biology": "B", "chemistry": "B"})
+    ra, rb = evaluate_programme(kb, a, p), evaluate_programme(kb, b, p)
+    assert ra.eligible == rb.eligible
+    assert ra.matched_subjects == rb.matched_subjects
+
+
+def test_loader_rejects_conditional_without_trigger_subjects():
+    from northstar import loader
+    with pytest.raises(DataError, match="trigger_subjects"):
+        loader._parse_constraint(
+            {"kind": "if_not_matched_subsidiary", "subjects": ["physics"]},
+            "p1", {"physics"},
+        )
+
+
+def test_loader_rejects_unknown_trigger_subject():
+    from northstar import loader
+    with pytest.raises(DataError, match="unknown subject"):
+        loader._parse_constraint(
+            {"kind": "if_not_matched_subsidiary", "subjects": ["physics"],
+             "trigger_subjects": ["astrology"]},
+            "p1", {"physics"},
+        )
+
 
 def test_constraints_validate_against_known_subjects(tmp_path, monkeypatch):
     from northstar import loader

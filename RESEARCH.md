@@ -82,6 +82,22 @@ positives, 0 false negatives**.
 O-level grades — which would be a product decision (more typing for the student) as much
 as an engineering one. The truncated ones need better PDF extraction first (R2).
 
+## R1c — Two latent engine issues (not currently reachable)
+
+Found by the cycle-7 delegated review, deliberately not fixed because neither can affect a
+student today. Fix them before the conditions that make them latent change:
+
+1. **The failure path lists non-blocking constraints as failed.** When no valid assignment
+   exists, `engine.py` reports *every* `must_include` / `if_not_matched_subsidiary`
+   constraint with `ok=False` without re-testing which one actually blocked — so a student
+   could be told to go and get Geography when the real gap is Advanced Mathematics. That
+   violates "always explain". **Latent because** no served programme carries two or more
+   assignment-kind constraints. Fix: re-run `_best_assignment` with each constraint singly
+   and report only those that admit no assignment.
+2. **Bare "Mathematics" maps to Advanced Mathematics only.** Newly load-bearing now that
+   AR031/AR033/AR035's constraints are enforced rather than prose: a student whose maths is
+   *Basic Applied* Mathematics is rejected. Needs a deliberate decision, not a silent map.
+
 ## R2 — Triage the 311 quarantined rows
 
 `data/extraction_review.json` holds every guidebook row whose requirement text did not

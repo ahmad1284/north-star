@@ -15221,7 +15221,7 @@
    "points_basis": "slots",
    "constraints": [
     {
-     "kind": "subsidiary_from",
+     "kind": "subsidiary_all",
      "subjects": [
       "chemistry",
       "biology"

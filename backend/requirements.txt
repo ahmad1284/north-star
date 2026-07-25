@@ -1,5 +1,9 @@
 # Pinned runtime dependencies for reproducible deploys.
 # These are the versions the 63-test suite is verified against.
+# NOTE: this is a name-allowlisted freeze, not a full lock - a few transitive
+# deps (annotated-types, typing-inspection, annotated-doc) still float. For a
+# real deployment prefer: pip-compile --generate-hashes, installed with
+# pip install --require-hashes.
 # Regenerate after upgrading: pip freeze | grep -iE '^(fastapi|uvicorn|starlette|pydantic|anyio|sniffio|idna|click|h11|typing)'
 fastapi==0.140.0
 uvicorn==0.51.0
@@ -9,5 +13,7 @@ pydantic_core==2.46.4
 anyio==4.14.2
 click==8.4.2
 h11==0.16.0
-idna==3.11
+# idna 3.11 carried GHSA-65pc-fj4g-8rjx (ReDoS). Not reachable in this service
+# (no outbound calls, idna.encode is never given user input) but pinned clean.
+idna==3.18
 typing_extensions==4.16.0

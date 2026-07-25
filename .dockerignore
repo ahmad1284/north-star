@@ -9,3 +9,10 @@ inputs
 .venv
 *.log
 backend/tests
+
+# never bake credentials into an image, even if one is dropped locally
+**/.env
+**/*.pem
+**/*.key
+**/*credentials*
+backend/scripts

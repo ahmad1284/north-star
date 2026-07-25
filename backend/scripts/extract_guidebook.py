@@ -116,7 +116,10 @@ def norm(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     # The PDF renders level references inconsistently: "O-Level", "O - Level",
     # "O'level", "A- level". Canonicalise so poison checks and patterns match.
-    text = re.sub(r"\b([OA])\s*['’-]?\s*[Ll]evels?\b", r"\1-Level", text)
+    # The letter stays case-SENSITIVE on purpose: matching a lowercase "a"
+    # would rewrite the ordinary article ("achieve a level of skill"). The word
+    # itself is case-insensitive so "O-LEVEL" canonicalises too.
+    text = re.sub(r"\b([OA])\s*['’-]?\s*(?i:levels?)\b", r"\1-Level", text)
     return text
 
 
@@ -330,7 +333,7 @@ def parse_requirement(text: str) -> tuple[list[dict] | None, float | None, list[
 # A sentence offering an O-level alternative ("... or a D in ordinary level
 # Mathematics") is only half-checkable: we never see O-level results, so
 # enforcing the A-level half alone would reject students who satisfy the rule.
-OLEVEL_ESCAPE_RE = re.compile(r"o-level|ordinary\s+level|o\s*'?\s*level", re.IGNORECASE)
+OLEVEL_ESCAPE_RE = re.compile(r"\bo-level|\bordinary\s+level|\bo\s*'?\s*level", re.IGNORECASE)
 
 MUST_INCLUDE_RE = re.compile(
     r"\bone of the (?:two|three)\s+(?:principal|passes|principal level passes|principal passes)"
@@ -371,6 +374,30 @@ FLOOR_CLAUSE_RE = re.compile(
 )
 
 
+# An explicit choice marker overrides the separator: "one of the following:
+# Geography, Physics and Advanced Mathematics" is a CHOICE despite the "and".
+CHOICE_MARKER_RE = re.compile(r"one of the following|any one of|either|\bone of\b", re.IGNORECASE)
+
+
+def list_semantics(raw_list: str) -> str:
+    """Is this subject list conjunctive ("all of") or a choice ("one of")?
+
+    Decided in ONE place because getting it wrong is a student-facing bug in
+    both directions: reading a choice as conjunctive hides real options, and
+    reading a conjunction as a choice tells a student they qualify when they
+    do not. Detection runs on the name-protected text so that subjects whose
+    own names contain "and" are not mistaken for conjunctions.
+    """
+    protected = protect_names(raw_list)
+    if CHOICE_MARKER_RE.search(protected):
+        return "choice"
+    has_or = bool(re.search(r"\bor\b|/", protected, re.IGNORECASE))
+    has_and = bool(re.search(r"\band\b", protected, re.IGNORECASE))
+    if has_and and not has_or:
+        return "all"
+    return "choice"
+
+
 def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
     """Pull encodable cross-slot constraints out of prose sentences.
 
@@ -384,6 +411,11 @@ def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
         low = norm(s)
         # never encode advisory language as a hard rule
         if re.search(r"preference|priority|may be considered", low, re.I):
+            remaining.append(s)
+            continue
+        # A sentence offering an O-level alternative is only half-checkable,
+        # whichever pattern would match it — guard once, for every branch.
+        if OLEVEL_ESCAPE_RE.search(low):
             remaining.append(s)
             continue
         consumed = False
@@ -413,7 +445,7 @@ def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
                     consumed = True
         # Conditional: "if one of the principal passes is not X, need subsidiary in Y".
         # Skip when there is an O-level escape clause — we can't check that half.
-        if not consumed and not OLEVEL_ESCAPE_RE.search(low):
+        if not consumed:
             m = IF_NOT_MATCHED_RE.search(low)
             if m:
                 trig = parse_subject_list(m.group("trigger"))
@@ -427,14 +459,21 @@ def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
 
         # Multi-clause floors: "C grade in Chemistry and D grade in Biology and
         # E grade in Physics, Maths, ..." -> one holding requirement per clause.
-        if not consumed and not OLEVEL_ESCAPE_RE.search(low):
+        if not consumed:
             clauses = FLOOR_CLAUSE_RE.findall(low)
             if len(clauses) >= 2:
-                parsed = [(g, parse_subject_list(lst)) for g, lst in clauses]
-                if all(subs for _, subs in parsed):
-                    for grade, subs in parsed:
+                parsed = [(g, raw, parse_subject_list(raw)) for g, raw in clauses]
+                if all(subs for _, _, subs in parsed):
+                    for grade, raw, subs in parsed:
+                        # "D grades in Chemistry and Biology" needs BOTH;
+                        # "E grade in Physics, Maths or Geography" needs one.
+                        kind = (
+                            "subsidiary_all"
+                            if list_semantics(raw) == "all" and len(subs) > 1
+                            else "subsidiary_from"
+                        )
                         constraints.append({
-                            "kind": "subsidiary_from", "subjects": subs,
+                            "kind": kind, "subjects": subs,
                             "min_grade": grade.upper(), "source_text": s,
                         })
                     consumed = True
@@ -445,24 +484,17 @@ def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
             # OR an O-level grade" is not fully checkable), and only when the
             # alternatives are joined by "or" — "Physics and Mathematics" means
             # BOTH, and encoding it as a choice would be too permissive.
-            if m and not OLEVEL_ESCAPE_RE.search(low):
+            if m:
                 raw_list = m.group("list")
                 subs = parse_subject_list(raw_list)
-                # detect conjunction on the PROTECTED text, so "Science and
-                # Practice of Agriculture" isn't mistaken for an "and" list
-                protected = protect_names(raw_list)
-                has_or = bool(re.search(r"\bor\b|/", protected, re.I))
-                has_and = bool(re.search(r"\band\b", protected, re.I))
-                if subs and has_and and not has_or:
-                    # "Physics AND Mathematics" — both required
-                    constraints.append(
-                        {"kind": "subsidiary_all", "subjects": subs, "source_text": s}
+                if subs:
+                    kind = (
+                        "subsidiary_all"
+                        if list_semantics(raw_list) == "all" and len(subs) > 1
+                        else "subsidiary_from"
                     )
-                    consumed = True
-                elif subs and not has_and:
-                    # a choice list (or a single subject)
                     constraints.append(
-                        {"kind": "subsidiary_from", "subjects": subs, "source_text": s}
+                        {"kind": kind, "subjects": subs, "source_text": s}
                     )
                     consumed = True
         if not consumed:
