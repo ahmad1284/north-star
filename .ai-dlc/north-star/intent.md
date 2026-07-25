@@ -40,26 +40,26 @@ Scope boundaries for THIS intent (MVP = the backend):
   "still-in-school" (Newport) track. Loan boards (ZHELB/HESLB) are explicitly **not modeled**.
 
 ## Success Criteria
-- [ ] The API accepts a request with the student's NECTA subject combination and grades and
+- [x] The API accepts a request with the student's NECTA subject combination and grades and
       returns structured JSON (single canonical grade→points scale; A-level year not required).
-- [ ] The engine computes eligibility from curated seed data covering at least the common
+- [x] The engine computes eligibility from curated seed data covering at least the common
       combinations (PCB, PCM, EGM, HGE, …), using the real TCU rule structure (defining
       subjects, min principal passes, min points, per-subject grade floors).
-- [ ] The engine derives a **strength score** per programme from the student's NECTA grades
+- [x] The engine derives a **strength score** per programme from the student's NECTA grades
       (grades in the subjects the programme values), used for ranking — not just pass/fail.
-- [ ] Output is **ranked and grouped** — **"For you"** and **"Discoveries"** (eligible
+- [x] Output is **ranked and grouped** — **"For you"** and **"Discoveries"** (eligible
       strong-fit programmes likely outside the student's radar) — structured so a future client
       can present it richly ("rich, but in style"), not as a flat list.
-- [ ] Each result carries machine-readable reasons: WHY eligible (which requirement was met)
+- [x] Each result carries machine-readable reasons: WHY eligible (which requirement was met)
       and WHY IT FITS (which strengths) — so any client can explain the recommendation.
-- [ ] Each programme includes the letter's checklist fields (duration, cost, institutions
+- [x] Each programme includes the letter's checklist fields (duration, cost, institutions
       offering it, indicative time-to-employment, indicative salary) — filled where data
       exists, clearly marked where it doesn't. (Loan boards are NOT modeled.)
-- [ ] The engine is a pure, channel-agnostic core module, separate from the API/transport, so
+- [x] The engine is a pure, channel-agnostic core module, separate from the API/transport, so
       the same logic backs a future web UI and WhatsApp client.
-- [ ] Data (combinations, grade points by year, programmes, requirements) lives in structured
+- [x] Data (combinations, grade points by year, programmes, requirements) lives in structured
       files (JSON/YAML) so non-developers can update it and more TCU/NACTVET data can slot in.
-- [ ] All tests for the rules + scoring engine pass (decisions covered by unit tests); the API
+- [x] All tests for the rules + scoring engine pass (decisions covered by unit tests); the API
       is runnable locally and callable (e.g. via curl) without any UI.
 
 ## Open dependencies / risks
