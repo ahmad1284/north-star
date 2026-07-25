@@ -34,6 +34,40 @@ Design implication: the tool should **widen and inform** the decision, not spit 
 3. **DUE-DILIGENCE each option** — "is this course right for me?"
    → answer the letter's checklist per program, grounded in official data + real voices.
 
+## The three lenses (core conceptual model)
+A student's best-fit options are the intersection of three lenses — the product's value is in
+the OVERLAPS and GAPS, not any single lens:
+- **Eligibility** — what TCU / NECTA / NACTVET rules permit.
+- **Strengths / aptitude** — what the student is demonstrably good at. Inferable directly from
+  their **NECTA subject grades** (e.g. strong Chemistry + Biology). A signal, not just a filter.
+- **Interests** — what genuinely draws them (World of Work), *including interests beyond the
+  subjects they studied*.
+
+Regions that matter:
+| Region | Meaning | Feature |
+|--------|---------|---------|
+| Eligible ∩ Strong ∩ Interested | confident best-fit | **"For you"** lead recommendations |
+| Eligible ∩ Strong, low prior awareness | strength opens an unconsidered course | **"Discoveries"** (serendipity) |
+| Interested but NOT eligible / outside combination | wants it but can't (yet) | **"Bridge"** — foundation programs, alt combinations, honest "what it'd take" |
+| Eligible but neither strong nor interested | filler | **downranked / hidden** (anti-paralysis) |
+
+## Anti-analysis-paralysis principle (hard design rule)
+Widening horizons (the letter's "exposure") must NOT overwhelm. The lever is disciplined
+OUTPUT, not fewer inputs:
+- Never dump the full eligible list. Show a small ranked set: a few "For you", 2–3
+  "Discoveries", an optional "Stretch/Bridge".
+- Progressive disclosure — details on demand, one clear primary action.
+- Sensible defaults; full list only if explicitly requested.
+
+## HESLB as a first-class dimension (not just a repayment %)
+In Tanzania, HESLB loan **availability and priority** often decides whether a student can
+afford a program at all. Treat per program:
+- `loan_available` / priority tier (some programmes are prioritized for government loans),
+- indicative coverage (full / partial),
+- indicative repayment burden (% of salary) — shown as indicative, never invented.
+Affordability is frequently the real constraint, so this can act as both an attribute and a
+signal in ranking.
+
 ## The letter's checklist = the per-program data model
 For any course/program the student weighs:
 - What *is* this course, really?  ·  Duration (years)  ·  Where offered (TCU unis + abroad;

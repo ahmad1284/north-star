@@ -19,32 +19,48 @@ vocational/technical (NACTVET) tracks. See `discovery.md` for full domain synthe
 
 ## Solution
 A mobile-first web app where a student enters their NECTA subject combination and grades and
-immediately sees the programs they qualify for — each shown with the letter's due-diligence
-checklist (duration, cost, where offered, time-to-employment, salary, HESLB loan %, insider
-notes). Eligibility is computed by a **deterministic, explainable rules engine** (expert-system
-style) running client-side over curated data — no AI, no server. Core logic is kept
-channel-agnostic so a WhatsApp layer and an LLM+RAG chat layer can wrap it later.
+immediately sees a **small, ranked** set of programs — not a data dump — organized as
+**"For you"** (eligible + a strong grade-based fit) and **"Discoveries"** (eligible programs
+their strengths open up that they likely never considered). Each program shows the letter's
+due-diligence checklist, with **HESLB loan availability/priority** treated as a first-class
+factor. Eligibility and strength-scoring are computed by a **deterministic, explainable rules
+engine** (expert-system style) running client-side over curated data — no AI, no server. Core
+logic is channel-agnostic so a WhatsApp layer and an LLM+RAG chat layer can wrap it later.
+
+See `discovery.md` for the three-lens model (Eligibility / Strengths / Interests) and the
+anti-analysis-paralysis output rule.
 
 Scope boundaries for THIS intent (MVP):
-- IN: eligibility matching, program results with the due-diligence checklist, explainable
-  "why you qualify / why not" reasons, mobile-first web UI.
-- OUT (deferred, tracked for later intents): World of Work interests explorer, LLM+RAG chat,
-  WhatsApp channel, CareerVillage-style Q&A, "still-in-school" (Newport) track.
+- IN: eligibility matching; **strength scoring derived from NECTA grades**; **"Discoveries"**
+  (serendipitous strong-fit programs); **disciplined ranked output** (small sets, progressive
+  disclosure — the anti-paralysis rule); per-program due-diligence checklist with **HESLB
+  loan availability/priority** as a first-class dimension; explainable "why you qualify /
+  why this fits" reasons; mobile-first web UI.
+- OUT (deferred to the NEXT intent — the World of Work interests layer, which unlocks the
+  "Bridge" for interests beyond a student's subjects): interests capture, interest-based
+  "Bridge" recommendations, LLM+RAG chat, WhatsApp channel, CareerVillage-style Q&A,
+  "still-in-school" (Newport) track.
 
 ## Success Criteria
 - [ ] A student can enter a NECTA A-level subject combination and grades in a simple mobile UI.
-- [ ] The app returns the set of programs they are eligible for, from curated seed data
-      covering at least the common combinations (PCB, PCM, EGM, HGE, …).
-- [ ] Each result explains WHY the student qualifies (which rule/requirement was met).
+- [ ] The app computes eligibility from curated seed data covering at least the common
+      combinations (PCB, PCM, EGM, HGE, …).
+- [ ] The app derives a **strength score** per program from the student's NECTA grades
+      (e.g. grades in subjects the program values), used for ranking — not just pass/fail.
+- [ ] Results are presented as a **small ranked set**, split into **"For you"** and
+      **"Discoveries"** (eligible strong-fit programs likely outside the student's radar),
+      never a full undifferentiated dump (anti-paralysis rule).
+- [ ] Each result explains WHY (which requirement was met) and WHY IT FITS (which strengths).
 - [ ] Each program shows the letter's checklist fields (duration, cost, institutions offering
-      it, indicative time-to-employment, indicative salary, HESLB loan note) — filled where
-      data exists, clearly marked where it doesn't.
-- [ ] The eligibility logic is separated from the UI (channel-agnostic core module) so it can
-      be reused by a future WhatsApp/chat layer.
-- [ ] Data (combinations, grade points, programs, requirements) lives in structured files
-      (JSON/YAML) so non-developers can update it and real TCU/NACTVET data can slot in.
+      it, indicative time-to-employment, indicative salary) and **HESLB loan
+      availability/priority** — filled where data exists, clearly marked where it doesn't.
+- [ ] The eligibility + scoring logic is separated from the UI (channel-agnostic core module)
+      so it can be reused by a future WhatsApp/chat layer.
+- [ ] Data (combinations, grade points, programs, requirements, HESLB flags) lives in
+      structured files (JSON/YAML) so non-developers can update it and real TCU/NACTVET data
+      can slot in.
 - [ ] Runs with no backend server (static hosting / opens from a link) and works on a phone.
-- [ ] All tests for the rules engine pass (eligibility decisions covered by unit tests).
+- [ ] All tests for the rules + scoring engine pass (decisions covered by unit tests).
 
 ## Open dependencies / risks
 - Real eligibility rules require the **TCU undergraduate handbook** (PDF not yet uploaded) and
@@ -54,7 +70,9 @@ Scope boundaries for THIS intent (MVP):
   clearly sourced, never invented.
 
 ## Units
-- unit-01 — Data schema + seed dataset (combinations, grade points, programs, requirements)
-- unit-02 — Eligibility rules engine (channel-agnostic core) + tests
-- unit-03 — Mobile-first web UI (input → explained results)
-- unit-04 — Program detail view with the letter's due-diligence checklist
+- unit-01 — Data schema + seed dataset (combinations, grade points, programs, requirements,
+  strength-weighting per program, HESLB flags)
+- unit-02 — Eligibility + strength-scoring engine (channel-agnostic core) + tests
+- unit-03 — Ranking & output shaping ("For you" / "Discoveries", anti-paralysis small sets)
+- unit-04 — Mobile-first web UI (input → explained, ranked results)
+- unit-05 — Program detail view with the letter's checklist + HESLB dimension
