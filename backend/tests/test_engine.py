@@ -84,13 +84,25 @@ def test_any_slot_accepts_any_principal(kb):
     assert r.eligible
 
 
-def test_additional_requirements_surface_in_reasons(kb):
+def test_unverifiable_conditions_make_the_verdict_conditional(kb):
+    """Mining Engineering states an O-level condition we cannot check, so the
+    answer must be a qualified yes, not a plain one."""
     student = StudentProfile(
         grades={"physics": "B", "chemistry": "B", "advanced_mathematics": "B"}
     )
     r = evaluate_programme(kb, student, prog(kb, "udsm-bsc-mining-engineering"))
     assert r.eligible
-    assert any(x.rule == "additional_requirements" for x in r.reasons)
+    assert r.conditional
+    assert r.unverified_conditions
+    assert any(x.rule == "unverified_condition" for x in r.reasons)
+
+
+def test_programme_without_extra_conditions_is_not_conditional(kb):
+    student = StudentProfile(grades={"physics": "B", "chemistry": "A", "biology": "A"})
+    r = evaluate_programme(kb, student, prog(kb, "suza-doctor-of-medicine"))
+    assert r.eligible
+    assert not r.conditional
+    assert r.unverified_conditions == ()
 
 
 def test_evaluate_all_covers_every_programme(kb):

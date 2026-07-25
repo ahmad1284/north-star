@@ -34,7 +34,7 @@
    "institution": "Ardhi University (ARU)",
    "code": "AR018",
    "name": "Bachelor of Science in Urban and Regional Planning",
-   "requirement_text": "Two principal level passes in any of the following subjects: Physics, Chemistry, Biology, Advanced Mathematics, Geography, Economics, Computer Science Commerce or Accountancy. In addition, an applicant must have at least a subsidiary level pass in Basic Applied Mathematics at A-level or a minimum of D grade in Advanced Mathematics at A-level or a minimum of \"C\" grade in Basic Mathematics at O-Level.",
+   "requirement_text": "Two principal level passes in any of the following subjects: Physics, Chemistry, Biology, Advanced Mathematics, Geography, Economics, Computer Science Commerce or Accountancy. In addition, an applicant must have at least a subsidiary level pass in Basic Applied Mathematics at A-Level or a minimum of D grade in Advanced Mathematics at A-Level or a minimum of \"C\" grade in Basic Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -47,12 +47,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and either Physics or Geography or Chemistry or Computer Science or Economics or Business Studies or Accountancy in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and either Physics or Geography or Chemistry or Computer Science or Economics or Business Studies or Accountancy in A-Level'",
    "page": 35,
    "institution": "Ardhi University (ARU)",
    "code": "AR020",
    "name": "Bachelor of Science in Information Systems Management",
-   "requirement_text": "Two principal passes in Mathematics and either Physics or Geography or Chemistry or Computer Science or Economics or Business Studies or Accountancy in A-level.",
+   "requirement_text": "Two principal passes in Mathematics and either Physics or Geography or Chemistry or Computer Science or Economics or Business Studies or Accountancy in A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -61,7 +61,7 @@
    "institution": "Ardhi University (ARU)",
    "code": "AR022",
    "name": "Bachelor of Science in Accounting and Finance",
-   "requirement_text": "Two Principal passes in any of the following subjects: History, Geography, Economics, Commerce, Advanced Mathematics, Accountancy, Physics, Chemistry, Biology, Agriculture, Computer Science, Business Studies, Fine Arts, Music, Theatre Arts, Textile Garment Construction, Sport or Nutrition. In addition, an applicant must have at least a subsidiary level pass in Advanced Mathematics or Basic Applied Mathematics at A-level or a minimum of \"D\" grade in Basic Mathematics and a minimum of 'D' grade in English Language at O- Level or a pass in English/English Literature at A-level.",
+   "requirement_text": "Two Principal passes in any of the following subjects: History, Geography, Economics, Commerce, Advanced Mathematics, Accountancy, Physics, Chemistry, Biology, Agriculture, Computer Science, Business Studies, Fine Arts, Music, Theatre Arts, Textile Garment Construction, Sport or Nutrition. In addition, an applicant must have at least a subsidiary level pass in Advanced Mathematics or Basic Applied Mathematics at A-Level or a minimum of \"D\" grade in Basic Mathematics and a minimum of 'D' grade in English Language at O-Level or a pass in English/English Literature at A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -79,7 +79,7 @@
    "institution": "Ardhi University (ARU)",
    "code": "AR028",
    "name": "Bachelor of Science in Construction Management",
-   "requirement_text": "Two Principal pass in at least two of the following subjects; Mathematics, Physics, Chemistry, Biology, Computer Science, Economics and Accountancy. An applicant must have at least a Subsidiary level pass in Mathematics at A-level and at least \"C\" Pass in Physics or Mathematics at O' level.",
+   "requirement_text": "Two Principal pass in at least two of the following subjects; Mathematics, Physics, Chemistry, Biology, Computer Science, Economics and Accountancy. An applicant must have at least a Subsidiary level pass in Mathematics at A-Level and at least \"C\" Pass in Physics or Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -88,16 +88,16 @@
    "institution": "Ardhi University (ARU)",
    "code": "AR029",
    "name": "Bachelor of Science in Building Surveying and Construction Maintenance",
-   "requirement_text": "Two Principal in at least two of the following subjects; Mathematics, Physics, Computer Science, Chemistry, Economics, Geography and Accounts at grade D or above. In addition, an applicant must have at least a Subsidiary level pass in Mathematics at A' level and at least a Pass in Physics at O' level.",
+   "requirement_text": "Two Principal in at least two of the following subjects; Mathematics, Physics, Computer Science, Chemistry, Economics, Geography and Accounts at grade D or above. In addition, an applicant must have at least a Subsidiary level pass in Mathematics at A-Level and at least a Pass in Physics at O-Level.",
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and either Physics, Geography, Chemistry, Computer Science, Economics, Business Studies, Accountancy at A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and either Physics, Geography, Chemistry, Computer Science, Economics, Business Studies, Accountancy at A-Level'",
    "page": 39,
    "institution": "Ardhi University (ARU)",
    "code": "AR030",
    "name": "Bachelor of Science in Data Science and Artificial Intelligence",
-   "requirement_text": "Two principal passes in Mathematics and either Physics, Geography, Chemistry, Computer Science, Economics, Business Studies, Accountancy at A-level.",
+   "requirement_text": "Two principal passes in Mathematics and either Physics, Geography, Chemistry, Computer Science, Economics, Business Studies, Accountancy at A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -106,7 +106,7 @@
    "institution": "Ardhi University (ARU)",
    "code": "AR034",
    "name": "Bachelor of Business Administration",
-   "requirement_text": "Two principal passes in the following subjects: History, Geography, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Agriculture, Computer Science, Business Studies, Fine Arts, Music, Theatre Arts, Textile Garment Construction, Sports or Nutrition. In addition an applicant must have a pass in English at Grade \"D\" or above in O'level or a pass in English/English Literature at A'level.",
+   "requirement_text": "Two principal passes in the following subjects: History, Geography, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Agriculture, Computer Science, Business Studies, Fine Arts, Music, Theatre Arts, Textile Garment Construction, Sports or Nutrition. In addition an applicant must have a pass in English at Grade \"D\" or above in O-Level or a pass in English/English Literature at A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -182,12 +182,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any two subjects at A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any two subjects at A-Level'",
    "page": 44,
    "institution": "Catholic University of Mbeya (CUoM)",
    "code": "CM003",
    "name": "Bachelor of laws",
-   "requirement_text": "Two principal passes in any two subjects at A-level.",
+   "requirement_text": "Two principal passes in any two subjects at A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -281,30 +281,30 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Physics and Advanced Mathematics An applicant must have at least a pass in Basic Mathematics and Physics at O - Level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Physics and Advanced Mathematics An applicant must have at least a pass in Basic Mathematics and Physics at O-Level'",
    "page": 63,
    "institution": "Dar es Salaam Institute of Technology (DIT)",
    "code": "DT001",
    "name": "Bachelor of Engineering in Civil Engineering",
-   "requirement_text": "Two principal passes in Physics and Advanced Mathematics An applicant must have at least a pass in Basic Mathematics and Physics at O - Level.",
+   "requirement_text": "Two principal passes in Physics and Advanced Mathematics An applicant must have at least a pass in Basic Mathematics and Physics at O-Level.",
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: \"Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O' Level including Basic Mathematics and Physics\"",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O-Level including Basic Mathematics and Physics'",
    "page": 64,
    "institution": "Dar es Salaam Institute of Technology (DIT)",
    "code": "DT007",
    "name": "Bachelor of Technology in Laboratory Science",
-   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O' Level including Basic Mathematics and Physics.",
+   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O-Level including Basic Mathematics and Physics.",
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: \"Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O' Level, including Basic Mathematics and Physics\"",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O-Level, including Basic Mathematics and Physics'",
    "page": 65,
    "institution": "Dar es Salaam Institute of Technology (DIT)",
    "code": "DTM001",
    "name": "Bachelor of technology in laboratory science",
-   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O' Level, including Basic Mathematics and Physics.",
+   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry and Biology, with not less than four passes at O-Level, including Basic Mathematics and Physics.",
    "points_cell": "4.0"
   },
   {
@@ -358,7 +358,7 @@
    "institution": "Dar es Salaam Tumaini University (DarTU)",
    "code": "TD017",
    "name": "Bachelor of Science in Computer Science (Cybersecurity)",
-   "requirement_text": "Two principal passes, one in Advanced Mathematics or Computer Science/Studies and one of the following subjects: Physics, Biology, Geography, Economics, or Chemistry. In addition, a candidate MUST have a principal pass in Advanced Mathematics or subsidiary in Basic Applied Mathematics in A-level or at least a 'D' grade in Mathematics/ Physics at O'level.",
+   "requirement_text": "Two principal passes, one in Advanced Mathematics or Computer Science/Studies and one of the following subjects: Physics, Biology, Geography, Economics, or Chemistry. In addition, a candidate MUST have a principal pass in Advanced Mathematics or subsidiary in Basic Applied Mathematics in A-Level or at least a 'D' grade in Mathematics/ Physics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -394,7 +394,7 @@
    "institution": "Eastern Africa Statistical Training Centre (EASTC)",
    "code": "EA004",
    "name": "Bachelor Degree in Agricultural Statistics and Economics",
-   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry, Biology, Accountancy, Agriculture, Geography, Economics, Computers, Commerce, Nutrition, Business Studies, Education, Food & Nutrition and Computer Science. If one of the principal passes is not in Advanced Mathematics, a Subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Mathematics at O- Level is required.",
+   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics, Physics, Chemistry, Biology, Accountancy, Agriculture, Geography, Economics, Computers, Commerce, Nutrition, Business Studies, Education, Food & Nutrition and Computer Science. If one of the principal passes is not in Advanced Mathematics, a Subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Mathematics at O-Level is required.",
    "points_cell": "4.0"
   },
   {
@@ -529,7 +529,7 @@
    "institution": "Institute of Rural Development Planning (IRDP)",
    "code": "RD013",
    "name": "Bachelor Degree in Land Management and Valuation",
-   "requirement_text": "Two Principal level passes in any of the following subjects: Geography, Economics, Advanced Mathematics, History, English Literature, Commerce, Accountancy, Physics, Biology, Computer Science or Chemistry. In addition, an applicant must have at least a subsidiary level pass in Advanced Mathematics or Basic Applied Mathematics at A- level or a minimum of \"C\" grade in Basic Mathematics and a minimum of 'D' grade in English Language at O-Level",
+   "requirement_text": "Two Principal level passes in any of the following subjects: Geography, Economics, Advanced Mathematics, History, English Literature, Commerce, Accountancy, Physics, Biology, Computer Science or Chemistry. In addition, an applicant must have at least a subsidiary level pass in Advanced Mathematics or Basic Applied Mathematics at A-Level or a minimum of \"C\" grade in Basic Mathematics and a minimum of 'D' grade in English Language at O-Level",
    "points_cell": "4.0"
   },
   {
@@ -682,7 +682,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB004",
    "name": "Bachelor of Technology in Architecture",
-   "requirement_text": "Two principal passes at least \"D\" grade in Advanced Mathematics and Physics or Chemistry or Geography. in addition, an applicant must have minimum pass of \"D\" grade in Mathematics, Physics, Chemistry/Geography at O level.",
+   "requirement_text": "Two principal passes at least \"D\" grade in Advanced Mathematics and Physics or Chemistry or Geography. in addition, an applicant must have minimum pass of \"D\" grade in Mathematics, Physics, Chemistry/Geography at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -727,7 +727,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB010",
    "name": "Bachelor of Computer Science",
-   "requirement_text": "Two principal passes of Advanced Mathematics and Physics or Chemistry at a minimum of \"D\" grade. In addition, an applicant must have a minimum pass of \"D\" grade in Basic Mathematics and English at O- level.",
+   "requirement_text": "Two principal passes of Advanced Mathematics and Physics or Chemistry at a minimum of \"D\" grade. In addition, an applicant must have a minimum pass of \"D\" grade in Basic Mathematics and English at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -736,7 +736,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB011",
    "name": "Bachelor of Science in Information and Communication Technology",
-   "requirement_text": "Two Principal passes in the following subjects: Advanced Mathematics, Physics, Geography, Biology, Chemistry and Economics at a minimum of \"D\" grade. In addition, an applicant must have a minimum pass of \"D\" grade in Basic Mathematics and English at O- level",
+   "requirement_text": "Two Principal passes in the following subjects: Advanced Mathematics, Physics, Geography, Biology, Chemistry and Economics at a minimum of \"D\" grade. In addition, an applicant must have a minimum pass of \"D\" grade in Basic Mathematics and English at O-Level",
    "points_cell": "4.0"
   },
   {
@@ -745,7 +745,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB012",
    "name": "Bachelor of Technical Education in Electrical and Electronics Engineering",
-   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A' level must have credit at \"O\" level",
+   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A-Level must have credit at \"O\" level",
    "points_cell": "4.0"
   },
   {
@@ -754,7 +754,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB013",
    "name": "Bachelor of Technical Education in Mechanical Engineering",
-   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A' level must have credit at 'O' level.",
+   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A-Level must have credit at 'O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -763,7 +763,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB014",
    "name": "Bachelor of Technical Education in Civil Engineering",
-   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A' level must have credit at 'O' level.",
+   "requirement_text": "Two principal passes (D and above) of a minimum in Physics and Mathematics. Those without at least E grade in Chemistry at 'A-Level must have credit at 'O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -785,12 +785,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes of at least \"D\" grade in Mathematics and Physics at A-level; In addition, an applicant must have a minimum of \"D\" in Mathematics, Physics and Chemistry at O level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes of at least \"D\" grade in Mathematics and Physics at A-Level; In addition, an applicant must have a minimum of \"D\" in Mathematics, Physics and Chemistry at O-Level'",
    "page": 131,
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB017",
    "name": "Bachelor of Engineering in Data Science",
-   "requirement_text": "Two principal passes of at least \"D\" grade in Mathematics and Physics at A-level; In addition, an applicant must have a minimum of \"D\" in Mathematics, Physics and Chemistry at O level.",
+   "requirement_text": "Two principal passes of at least \"D\" grade in Mathematics and Physics at A-Level; In addition, an applicant must have a minimum of \"D\" in Mathematics, Physics and Chemistry at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -799,7 +799,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB018",
    "name": "Bachelor of Science in Food Science and Technology",
-   "requirement_text": "Two principal passes in Chemistry and one of the following: Biology, Physics, Nutrition, Agriculture, Advanced Mathematics or Geography at a minimum of \"D\" grade. In addition, an applicant must have a minimum of \"D\" grade in Physics or Chemistry, Biology and Basic Mathematics at O- level.",
+   "requirement_text": "Two principal passes in Chemistry and one of the following: Biology, Physics, Nutrition, Agriculture, Advanced Mathematics or Geography at a minimum of \"D\" grade. In addition, an applicant must have a minimum of \"D\" grade in Physics or Chemistry, Biology and Basic Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -871,7 +871,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB029",
    "name": "Bachelor of Applied Informatics in Industrial Automation",
-   "requirement_text": "Two principal passes in Physics, Geography, Biology, Chemistry, Mathematics or Computer / Computer Science. Those without Advanced Mathematics Pass must have at least a principal pass in Basic Applied Mathematics at A-level and a",
+   "requirement_text": "Two principal passes in Physics, Geography, Biology, Chemistry, Mathematics or Computer / Computer Science. Those without Advanced Mathematics Pass must have at least a principal pass in Basic Applied Mathematics at A-Level and a",
    "points_cell": "4.0"
   },
   {
@@ -907,7 +907,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB034",
    "name": "Bachelor of Science in Mechatronics Engineering",
-   "requirement_text": "Two passes at D or above in Mathematics and Physics. In Addition an applicant must have \"C\" or above in English, Mathematics, Physics and Chemistry at O' level.",
+   "requirement_text": "Two passes at D or above in Mathematics and Physics. In Addition an applicant must have \"C\" or above in English, Mathematics, Physics and Chemistry at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -988,7 +988,7 @@
    "institution": "Mbeya University of Science and Technology (MUST)",
    "code": "MB045",
    "name": "Bachelor of Science in Environmental Engineering",
-   "requirement_text": "Two principal passes of at least \"D\" grade in Mathematics, Physics, Chemistry or Biology. In addition, an applicant must have minimum pass of D in Mathematics, Physics and Chemistry at O level.",
+   "requirement_text": "Two principal passes of at least \"D\" grade in Mathematics, Physics, Chemistry or Biology. In addition, an applicant must have minimum pass of D in Mathematics, Physics and Chemistry at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -1280,12 +1280,12 @@
    "points_cell": "4.5"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary in any subject at A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary in any subject at A-Level'",
    "page": 178,
    "institution": "Mzumbe University (MU)",
    "code": "MU014",
    "name": "Bachelor of Public Administration in Local Government Management",
-   "requirement_text": "Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary in any subject at A-level.",
+   "requirement_text": "Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary in any subject at A-Level.",
    "points_cell": "4.5"
   },
   {
@@ -1330,7 +1330,7 @@
    "institution": "Mzumbe University (MU)",
    "code": "MU019",
    "name": "Bachelor of Science in Economics – Economic Policy and Planning",
-   "requirement_text": "Two principal passes in History, Geography, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Sciences, Nutrition, Business Studies or Economics. Where the subjects passed do not include Mathematics, Biology, Agriculture, Accountancy, Physics, Chemistry, History, Nutrition or Economics, an applicant must have obtained at least a credit pass in Basic Mathematics at O- Level.",
+   "requirement_text": "Two principal passes in History, Geography, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Sciences, Nutrition, Business Studies or Economics. Where the subjects passed do not include Mathematics, Biology, Agriculture, Accountancy, Physics, Chemistry, History, Nutrition or Economics, an applicant must have obtained at least a credit pass in Basic Mathematics at O-Level.",
    "points_cell": "4.5"
   },
   {
@@ -1343,12 +1343,12 @@
    "points_cell": "4.5"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes and one subsidiary at A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes and one subsidiary at A-Level'",
    "page": 181,
    "institution": "Mzumbe University (MU)",
    "code": "MU021",
    "name": "Bachelor of Public Administration in Records, Archives and Information Management",
-   "requirement_text": "Two principal passes and one subsidiary at A-level.",
+   "requirement_text": "Two principal passes and one subsidiary at A-Level.",
    "points_cell": "4.5"
   },
   {
@@ -1366,7 +1366,7 @@
    "institution": "Mzumbe University (MU)",
    "code": "MU023",
    "name": "Bachelor of Science in Information and Communication Technology with Business",
-   "requirement_text": "Two principal passes in History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary. If one of the principals do not include Advanced Mathematics, an applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics at A- Level AND a minimum of \"C\" grade in Basic Mathematics at O-Level.",
+   "requirement_text": "Two principal passes in History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition and one subsidiary. If one of the principals do not include Advanced Mathematics, an applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics at A-Level AND a minimum of \"C\" grade in Basic Mathematics at O-Level.",
    "points_cell": "4.5"
   },
   {
@@ -1393,25 +1393,25 @@
    "institution": "Mzumbe University (MU)",
    "code": "MU026",
    "name": "Bachelor of Science in Industrial Engineering Management",
-   "requirement_text": "Two principal passes in Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Economics, Geography, Computer Science or Nutrition and one subsidiary. If one of the principals do not include Advanced Mathematics, an applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics at A- Level. In addition, an applicant MUST HAVE a minimum of \"C\" grade in Basic Mathematics or a \"D\" grade in Additional Mathematics at O-Level.",
+   "requirement_text": "Two principal passes in Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Economics, Geography, Computer Science or Nutrition and one subsidiary. If one of the principals do not include Advanced Mathematics, an applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics at A-Level. In addition, an applicant MUST HAVE a minimum of \"C\" grade in Basic Mathematics or a \"D\" grade in Additional Mathematics at O-Level.",
    "points_cell": "4.5"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: \"Two principal passes and one subsidiary in any subject at A 'level\"",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes and one subsidiary in any subject at A-Level'",
    "page": 184,
    "institution": "Mzumbe University (MU)",
    "code": "MU028",
    "name": "Bachelor of Public Administration in Youth Development and Leadership",
-   "requirement_text": "Two principal passes and one subsidiary in any subject at A 'level. Where the principal passes do not include English; the applicant MUST HAVE obtained at least a \"D\" grade in English at O-Level.",
+   "requirement_text": "Two principal passes and one subsidiary in any subject at A-Level. Where the principal passes do not include English; the applicant MUST HAVE obtained at least a \"D\" grade in English at O-Level.",
    "points_cell": "4.5"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: \"Two principal passes and one subsidiary at the A 'level\"",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes and one subsidiary at the A-Level'",
    "page": 184,
    "institution": "Mzumbe University (MU)",
    "code": "MU029",
    "name": "Bachelor of Health Systems in Monitoringand Evaluation",
-   "requirement_text": "Two principal passes and one subsidiary at the A 'level. Where the principal passes do not include English and Mathematics an applicant MUST HAVE obtained at least a credit in English Language and Mathematics at 'O' level.",
+   "requirement_text": "Two principal passes and one subsidiary at the A-Level. Where the principal passes do not include English and Mathematics an applicant MUST HAVE obtained at least a credit in English Language and Mathematics at 'O-Level.",
    "points_cell": "4.5"
   },
   {
@@ -1420,7 +1420,7 @@
    "institution": "Mzumbe University (MU)",
    "code": "MU030",
    "name": "Bachelor of Environmental Management",
-   "requirement_text": "Two principal passes in the following subjects: Geography, Biology, Physics; Agriculture, History Economics, Chemistry, Mathematics. The applicant must have obtained at least a credit in Geography at 'O' level.",
+   "requirement_text": "Two principal passes in the following subjects: Geography, Biology, Physics; Agriculture, History Economics, Chemistry, Mathematics. The applicant must have obtained at least a credit in Geography at 'O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -1460,12 +1460,12 @@
    "points_cell": "4.5"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and Physics and those without at least a subsidiary in Chemistry at A Level must have a credit pass at O- Level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Mathematics and Physics and those without at least a subsidiary in Chemistry at A-Level must have a credit pass at O-Level'",
    "page": 192,
    "institution": "National Institute of Transport (NIT)",
    "code": "NT003",
    "name": "Bachelor Degree in Automobile Engineering",
-   "requirement_text": "Two principal passes in Mathematics and Physics and those without at least a subsidiary in Chemistry at A Level must have a credit pass at O- Level.",
+   "requirement_text": "Two principal passes in Mathematics and Physics and those without at least a subsidiary in Chemistry at A-Level must have a credit pass at O-Level.",
    "points_cell": "4.0 -"
   },
   {
@@ -1501,7 +1501,7 @@
    "institution": "National Institute of Transport (NIT)",
    "code": "NT020",
    "name": "Bachelor's degree in electrical and",
-   "requirement_text": "Two principal passes in Advanced Mathematics, Physics or Chemistry. In addition, an applicant must have four passes at O' level in Basic",
+   "requirement_text": "Two principal passes in Advanced Mathematics, Physics or Chemistry. In addition, an applicant must have four passes at O-Level in Basic",
    "points_cell": "4.0"
   },
   {
@@ -1609,7 +1609,7 @@
    "institution": "Ruaha Catholic University (RUCU)",
    "code": "RU006",
    "name": "Bachelor of Science in Software Engineering",
-   "requirement_text": "Two principal passes in Mathematics and either computer studies, physics, chemistry, Biology and Geography. In addition, an applicant must have at least four (4) credit passes at O-level including Basic Mathematics or Additional Mathematics.",
+   "requirement_text": "Two principal passes in Mathematics and either computer studies, physics, chemistry, Biology and Geography. In addition, an applicant must have at least four (4) credit passes at O-Level including Basic Mathematics or Additional Mathematics.",
    "points_cell": "4.0"
   },
   {
@@ -1739,12 +1739,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Textile and Garment Construction or Fine Art or any science subjects in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Textile and Garment Construction or Fine Art or any science subjects in A-Level'",
    "page": 224,
    "institution": "Sokoine University of Agriculture (SUA)",
    "code": "SU039",
    "name": "Bachelor of Textiles and Clothing with Education",
-   "requirement_text": "Two principal passes in Textile and Garment Construction or Fine Art or any science subjects in A-level.",
+   "requirement_text": "Two principal passes in Textile and Garment Construction or Fine Art or any science subjects in A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -1964,12 +1964,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in in any subjects in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in in any subjects in A-Level'",
    "page": 282,
    "institution": "Teofilo Kisanji University (TEKU)",
    "code": "TK007",
    "name": "Bachelor of Arts in Social Work",
-   "requirement_text": "Two principal passes in in any subjects in A-level.",
+   "requirement_text": "Two principal passes in in any subjects in A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -1982,12 +1982,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any subjects in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any subjects in A-Level'",
    "page": 282,
    "institution": "Teofilo Kisanji University (TEKU)",
    "code": "TK013",
    "name": "Bachelor of Laws",
-   "requirement_text": "Two principal passes in any subjects in A-level.",
+   "requirement_text": "Two principal passes in any subjects in A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2018,12 +2018,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any subjects in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any subjects in A-Level'",
    "page": 290,
    "institution": "University of Arusha (UoA)",
    "code": "UA007",
    "name": "Bachelor of Arts in Theology",
-   "requirement_text": "Two principal passes in any subjects in A-level.",
+   "requirement_text": "Two principal passes in any subjects in A-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2063,12 +2063,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Advanced Mathematics and Physics or Chemistry or Geography in A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Advanced Mathematics and Physics or Chemistry or Geography in A-Level'",
    "page": 295,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD015",
    "name": "Bachelor of Science in Electrical Engineering",
-   "requirement_text": "Two principal passes in Advanced Mathematics and Physics or Chemistry or Geography in A-level. Those without at least a Subsidiary pass in Chemistry must have a Credit at O-Level.",
+   "requirement_text": "Two principal passes in Advanced Mathematics and Physics or Chemistry or Geography in A-Level. Those without at least a Subsidiary pass in Chemistry must have a Credit at O-Level.",
    "points_cell": "4 .0"
   },
   {
@@ -2077,7 +2077,7 @@
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD018",
    "name": "Bachelor of Science in Textile Design and Technology",
-   "requirement_text": "Two passes of at least 'D' grade at A-Level in any Science, Fine Art, Textile and Garment Construction, Geography, Economics or English Language subjects. Applicants without a Subsidiary grade in Mathematics at A-level must have at least \"C\" grade Mathematics at 0-level.",
+   "requirement_text": "Two passes of at least 'D' grade at A-Level in any Science, Fine Art, Textile and Garment Construction, Geography, Economics or English Language subjects. Applicants without a Subsidiary grade in Mathematics at A-Level must have at least \"C\" grade Mathematics at 0-level.",
    "points_cell": "4 .0"
   },
   {
@@ -2090,12 +2090,12 @@
    "points_cell": "4 .0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Chemistry and in any appropriate subjects in the A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Chemistry and in any appropriate subjects in the A-Level'",
    "page": 298,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD025",
    "name": "Bachelor of Science in Chemistry",
-   "requirement_text": "Two principal passes in Chemistry and in any appropriate subjects in the A-level. In addition: The applicant should have a C grade or above in chemistry at O-level.",
+   "requirement_text": "Two principal passes in Chemistry and in any appropriate subjects in the A-Level. In addition: The applicant should have a C grade or above in chemistry at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2117,21 +2117,21 @@
    "points_cell": "5 from 3 40 subjects"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at C grade or above at A-level with at least C in English at O-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at C grade or above at A-Level with at least C in English at O-Level'",
    "page": 301,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD038",
    "name": "Bachelor of Arts in Mass Communication and Multimedia Studies",
-   "requirement_text": "Two principal passes at C grade or above at A-level with at least C in English at O-level.",
+   "requirement_text": "Two principal passes at C grade or above at A-Level with at least C in English at O-Level.",
    "points_cell": "5 from 3 40 subjects"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at C grade or above in any A- Level subjects'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at C grade or above in any A-Level subjects'",
    "page": 302,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD039",
    "name": "Bachelor of Arts in Public Relations and Strategic Communication",
-   "requirement_text": "Two principal passes at C grade or above in any A- Level subjects. In addition, candidates must have C grade in English or Kiswahili at O-level.",
+   "requirement_text": "Two principal passes at C grade or above in any A-Level subjects. In addition, candidates must have C grade in English or Kiswahili at O-Level.",
    "points_cell": "5 from 3 subjects"
   },
   {
@@ -2153,12 +2153,12 @@
    "points_cell": "5 from 3 subjects"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal level passes in Mathematics and Physics and at least a subsidiary pass in Chemistry at A-level or a Credit pass at O-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal level passes in Mathematics and Physics and at least a subsidiary pass in Chemistry at A-Level or a Credit pass at O-Level'",
    "page": 309,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD055",
    "name": "Bachelor of Science in Mechanical Engineering",
-   "requirement_text": "Two Principal level passes in Mathematics and Physics and at least a subsidiary pass in Chemistry at A-level or a Credit pass at O-level.",
+   "requirement_text": "Two Principal level passes in Mathematics and Physics and at least a subsidiary pass in Chemistry at A-Level or a Credit pass at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2176,7 +2176,7 @@
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD061",
    "name": "Bachelor of Science in Petroleum Chemistry",
-   "requirement_text": "Two Principal passes one in Chemistry and another in any of the following subjects: Biology, Physics, Advanced Mathematics, Nutrition, Agriculture or Geography. In addition: The applicant should have a C grade or above in chemistry and physics at O-level.",
+   "requirement_text": "Two Principal passes one in Chemistry and another in any of the following subjects: Biology, Physics, Advanced Mathematics, Nutrition, Agriculture or Geography. In addition: The applicant should have a C grade or above in chemistry and physics at O-Level.",
    "points_cell": "4 .0"
   },
   {
@@ -2198,21 +2198,21 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal passes in Arts subjects plus a credit pass in General Studies at A-level, and credit passes in Biology and Civics at O-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal passes in Arts subjects plus a credit pass in General Studies at A-Level, and credit passes in Biology and Civics at O-Level'",
    "page": 312,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD066",
    "name": "Bachelor of Social Work",
-   "requirement_text": "Two Principal passes in Arts subjects plus a credit pass in General Studies at A-level, and credit passes in Biology and Civics at O-level",
+   "requirement_text": "Two Principal passes in Arts subjects plus a credit pass in General Studies at A-Level, and credit passes in Biology and Civics at O-Level",
    "points_cell": "5 from 3 subjects"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal passes in Arts or Science subjects plus a credit in Biology at O-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two Principal passes in Arts or Science subjects plus a credit in Biology at O-Level'",
    "page": 312,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD067",
    "name": "Bachelor of Arts in Psychology",
-   "requirement_text": "Two Principal passes in Arts or Science subjects plus a credit in Biology at O-level",
+   "requirement_text": "Two Principal passes in Arts or Science subjects plus a credit in Biology at O-Level",
    "points_cell": "5 from 3 subjects"
   },
   {
@@ -2257,7 +2257,7 @@
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD074",
    "name": "Bachelor of Science in Food Science and Technology",
-   "requirement_text": "Two Principal passes from Chemistry and any of the following subjects: Mathematics, Biology, Nutrition, Physics, and Geography. A credit in Mathematics at \"O level\" and a subsidiary pass at \"A level\" is compulsory.",
+   "requirement_text": "Two Principal passes from Chemistry and any of the following subjects: Mathematics, Biology, Nutrition, Physics, and Geography. A credit in Mathematics at \"O-Level\" and a subsidiary pass at \"A-Level\" is compulsory.",
    "points_cell": "4 .0"
   },
   {
@@ -2279,12 +2279,12 @@
    "points_cell": "6 .0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in language subjects in the following: Chinese, Kiswahili, English, French, Arabic at A-level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in language subjects in the following: Chinese, Kiswahili, English, French, Arabic at A-Level'",
    "page": 318,
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD085",
    "name": "Bachelor of Arts with Education (Chinese and English)",
-   "requirement_text": "Two principal passes in language subjects in the following: Chinese, Kiswahili, English, French, Arabic at A-level. If one of the principal passes is not Chinese, an applicant must have an \"A\" grade in Chinese at O-Level.",
+   "requirement_text": "Two principal passes in language subjects in the following: Chinese, Kiswahili, English, French, Arabic at A-Level. If one of the principal passes is not Chinese, an applicant must have an \"A\" grade in Chinese at O-Level.",
    "points_cell": "5 from 3 subjects"
   },
   {
@@ -2311,7 +2311,7 @@
    "institution": "University of Dar es Salaam (UDSM)",
    "code": "UD090",
    "name": "Bachelor of Science in Business Information Technology",
-   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics and Physics or Chemistry, or Computer Science or Business Studies or Economics or any other Business-related subject. Those without at least a Subsidiary Pass in Advanced Mathematics must have a Credit at O- Level",
+   "requirement_text": "Two principal passes in the following subjects: Advanced Mathematics and Physics or Chemistry, or Computer Science or Business Studies or Economics or any other Business-related subject. Those without at least a Subsidiary Pass in Advanced Mathematics must have a Credit at O-Level",
    "points_cell": "4 .0"
   },
   {
@@ -2423,12 +2423,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects at A level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects at A-Level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science'",
    "page": 333,
    "institution": "University of Dodoma (UDOM)",
    "code": "DM027",
    "name": "Bachelor of Arts in Economics",
-   "requirement_text": "Two principal passes in the following subjects at A level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Basic Mathematics at O-level.",
+   "requirement_text": "Two principal passes in the following subjects at A-Level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Basic Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2468,12 +2468,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects at A-level: History, Geography, Kiswahili, Fasihi ya Kiswahili English Language, Literature in English, French, Arabic, Chinese, Fine Arts, Theater Arts, Music, Textile and Garment Construction, Sports, Economics, Commerce, Accountancy, Business Studies, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Nutrition, Food and Human Nutrition, Islamic Knowledge or Divinity'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects at A-Level: History, Geography, Kiswahili, Fasihi ya Kiswahili English Language, Literature in English, French, Arabic, Chinese, Fine Arts, Theater Arts, Music, Textile and Garment Construction, Sports, Economics, Commerce, Accountancy, Business Studies, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Nutrition, Food and Human Nutrition, Islamic Knowledge or Divinity'",
    "page": 340,
    "institution": "University of Dodoma (UDOM)",
    "code": "DM039",
    "name": "Bachelor of Commerce in Tourism and Hospitality Management",
-   "requirement_text": "Two principal passes in the following subjects at A-level: History, Geography, Kiswahili, Fasihi ya Kiswahili English Language, Literature in English, French, Arabic, Chinese, Fine Arts, Theater Arts, Music, Textile and Garment Construction, Sports, Economics, Commerce, Accountancy, Business Studies, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Nutrition, Food and Human Nutrition, Islamic Knowledge or Divinity. If one of the principal",
+   "requirement_text": "Two principal passes in the following subjects at A-Level: History, Geography, Kiswahili, Fasihi ya Kiswahili English Language, Literature in English, French, Arabic, Chinese, Fine Arts, Theater Arts, Music, Textile and Garment Construction, Sports, Economics, Commerce, Accountancy, Business Studies, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science, Nutrition, Food and Human Nutrition, Islamic Knowledge or Divinity. If one of the principal",
    "points_cell": "4.0"
   },
   {
@@ -2545,7 +2545,7 @@
    "institution": "University of Dodoma (UDOM)",
    "code": "DM064",
    "name": "Bachelor of Science in Petroleum Engineering",
-   "requirement_text": "Two principal passes in Advanced Mathematics and Physics and at least a subsidiary pass in Chemistry. Those without a principal or subsidiary pass in Chemistry MUST HAVE at least a \"D\" grade in Chemistry at O-level.",
+   "requirement_text": "Two principal passes in Advanced Mathematics and Physics and at least a subsidiary pass in Chemistry. Those without a principal or subsidiary pass in Chemistry MUST HAVE at least a \"D\" grade in Chemistry at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2567,12 +2567,12 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at \"D\" grade in Physics and one from the following subjects: Advanced Mathematics, Chemistry, Biology, Computer Science or Geography at A level'",
+   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes at \"D\" grade in Physics and one from the following subjects: Advanced Mathematics, Chemistry, Biology, Computer Science or Geography at A-Level'",
    "page": 352,
    "institution": "University of Dodoma (UDOM)",
    "code": "DM078",
    "name": "Bachelor of Science in Environmental Engineering",
-   "requirement_text": "Two principal passes at \"D\" grade in Physics and one from the following subjects: Advanced Mathematics, Chemistry, Biology, Computer Science or Geography at A level. Those without Mathematics subject at A-level must have subsidiary pass for Basic Applied Mathematics at A-Level or a minimum of \"C\" grade Mathematics at O-level.",
+   "requirement_text": "Two principal passes at \"D\" grade in Physics and one from the following subjects: Advanced Mathematics, Chemistry, Biology, Computer Science or Geography at A-Level. Those without Mathematics subject at A-Level must have subsidiary pass for Basic Applied Mathematics at A-Level or a minimum of \"C\" grade Mathematics at O-Level.",
    "points_cell": "5.0"
   },
   {
@@ -2581,7 +2581,7 @@
    "institution": "University of Dodoma (UDOM)",
    "code": "DM079",
    "name": "Environmental Sciences",
-   "requirement_text": "Advanced Mathematics, Physics, Chemistry, Biology, Geography or Agriculture. Candidates should also pass Mathematics at O-level.",
+   "requirement_text": "Advanced Mathematics, Physics, Chemistry, Biology, Geography or Agriculture. Candidates should also pass Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2653,7 +2653,7 @@
    "institution": "University of Dodoma (UDOM)",
    "code": "DM093",
    "name": "Bachelor of Science in Biomedical Engineering",
-   "requirement_text": "Three principal passes with at least \"D\" grade in Physics, Chemistry, Mathematics, Biology, or Computer Science. In addition: Direct applicants MUST possess five credit passes in the following subjects at Ordinary level Secondary Education (O-level): Mathematics, Chemistry, Biology, Physics and English.",
+   "requirement_text": "Three principal passes with at least \"D\" grade in Physics, Chemistry, Mathematics, Biology, or Computer Science. In addition: Direct applicants MUST possess five credit passes in the following subjects at Ordinary level Secondary Education (O-Level): Mathematics, Chemistry, Biology, Physics and English.",
    "points_cell": "6.0"
   },
   {
@@ -2680,7 +2680,7 @@
    "institution": "Water Institute (WI)",
    "code": "WD002",
    "name": "Bachelor Degree in Hydrogeology and Drilling",
-   "requirement_text": "Advanced Certificate of Secondary Education with two principal passes in the following subjects: Physics, Advanced Mathematics, Chemistry and or Geography. If one of the passes is not in Advanced Mathematics, at least a Subsidiary pass in Basic Applied Mathematics at A' level or Basic Mathematics at O' level is required.",
+   "requirement_text": "Advanced Certificate of Secondary Education with two principal passes in the following subjects: Physics, Advanced Mathematics, Chemistry and or Geography. If one of the passes is not in Advanced Mathematics, at least a Subsidiary pass in Basic Applied Mathematics at A-Level or Basic Mathematics at O-Level is required.",
    "points_cell": "4.0"
   },
   {

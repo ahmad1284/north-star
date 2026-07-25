@@ -33,6 +33,9 @@ CODE_RE = re.compile(r"^[A-Z]{2,4}\d{3}$")
 
 # ---- subject vocabulary (longest-match-first) -------------------------------
 SUBJECT_VARIANTS: dict[str, str] = {
+    "basic applied mathematics": "basic_applied_mathematics",
+    "basic applied mathematic": "basic_applied_mathematics",  # PDF truncation
+    "basic applied maths": "basic_applied_mathematics",
     "advanced mathematics": "advanced_mathematics",
     "advance mathematics": "advanced_mathematics",
     "advanced mathematic": "advanced_mathematics",
@@ -76,7 +79,10 @@ SUBJECT_VARIANTS: dict[str, str] = {
     "business": "business_studies",
 }
 # tokens that invalidate a principal-pass list if they appear inside it
-POISON = ("basic applied mathematics", "basic mathematics", "o-level", "o level")
+# "Basic Mathematics" is an O-level subject and "o-level" clauses are outside
+# our input scope; Basic Applied Mathematics is a real A-level subject we now
+# model, so it is no longer poison.
+POISON = ("basic mathematics", "o-level", "o level")
 
 # ---- tag inference from programme name --------------------------------------
 TAG_KEYWORDS = [
@@ -106,7 +112,11 @@ TAG_KEYWORDS = [
 def norm(text: str) -> str:
     text = text.replace("’", "'").replace("‘", "'")
     text = text.replace("“", '"').replace("”", '"').replace("''", '"')
-    return re.sub(r"\s+", " ", text).strip()
+    text = re.sub(r"\s+", " ", text).strip()
+    # The PDF renders level references inconsistently: "O-Level", "O - Level",
+    # "O'level", "A- level". Canonicalise so poison checks and patterns match.
+    text = re.sub(r"\b([OA])\s*['’-]?\s*[Ll]evels?\b", r"\1-Level", text)
+    return text
 
 
 def map_subject(item: str) -> str | None:
@@ -122,6 +132,8 @@ def parse_subject_list(text: str) -> list[str] | None:
     """Parse 'History, Geography, Kiswahili or English Language' -> ids.
     Returns None if any item is unrecognized."""
     low = norm(text).lower()
+    low = re.sub(r"^(?:any\s+)?one of the following subjects?:?\s*", "", low)
+    low = re.sub(r"^the following subjects?:?\s*", "", low)
     if any(p in low for p in POISON):
         return None
     parts = re.split(r",|\bor\b|\band\b|/", low)
@@ -291,6 +303,93 @@ def parse_requirement(text: str) -> tuple[list[dict] | None, float | None, list[
         if not applied:
             additional.append(s)
     return slots, pts, additional, ""
+
+
+# Cross-slot conditions that used to be dropped into additional_requirements
+# and therefore never enforced. Only encoded when EVERY subject named is one we
+# model — enforcing a partial alternatives list would reject students who
+# actually satisfy the guidebook rule.
+MUST_INCLUDE_RE = re.compile(
+    r"\bone of the (?:two|three)\s+(?:principal|passes|principal level passes|principal passes)"
+    r"[^.]*?\bmust be (?:in|a pass in)\s+(?P<list>[^.]+)",
+    re.IGNORECASE,
+)
+SUBSIDIARY_RE = re.compile(
+    r"\bat least a subsidiary(?: level)? pass in\s+(?P<list>[^.]+)",
+    re.IGNORECASE,
+)
+# "must have a principal pass in one of the following subjects: X, Y or Z"
+PRINCIPAL_ONE_OF_RE = re.compile(
+    r"\bmust have\s+(?:a\s+)?principal pass(?:es)? in one of the following subjects?:?\s*"
+    r"(?P<list>[^.]+)",
+    re.IGNORECASE,
+)
+# "a minimum of 'E' grade in either Chemistry or Geography at A-Level"
+FLOOR_ONE_OF_RE = re.compile(
+    r"minimum of\s*[\"']?([A-E])[\"']?\s*grade\s+in\s+(?:either\s+)?(?P<list>[^.]+?)"
+    r"\s*at\s*A-?\s?level",
+    re.IGNORECASE,
+)
+
+
+def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
+    """Pull encodable cross-slot constraints out of prose sentences.
+
+    Returns (constraints, sentences_that_remain_prose). A sentence is only
+    consumed when it parses completely; anything else stays visible as an
+    unverified condition.
+    """
+    constraints: list[dict] = []
+    remaining: list[str] = []
+    for s in additional:
+        low = norm(s)
+        # never encode advisory language as a hard rule
+        if re.search(r"preference|priority|may be considered", low, re.I):
+            remaining.append(s)
+            continue
+        consumed = False
+        for rx in (MUST_INCLUDE_RE, PRINCIPAL_ONE_OF_RE):
+            m = rx.search(low)
+            if m:
+                subs = parse_subject_list(m.group("list"))
+                if subs:
+                    constraints.append(
+                        {"kind": "must_include", "subjects": subs, "source_text": s}
+                    )
+                    consumed = True
+                    break
+        if not consumed:
+            m = FLOOR_ONE_OF_RE.search(low)
+            if m:
+                subs = parse_subject_list(m.group("list"))
+                if subs:
+                    # "must have a minimum of 'E' in either Chemistry or
+                    # Geography" is a HOLDING requirement — the subject need
+                    # not be one of the passes counted toward the slots — so it
+                    # is subsidiary_from with a floor, not must_include.
+                    constraints.append({
+                        "kind": "subsidiary_from", "subjects": subs,
+                        "min_grade": m.group(1).upper(), "source_text": s,
+                    })
+                    consumed = True
+        if not consumed:
+            m = SUBSIDIARY_RE.search(low)
+            # Only when the sentence has no O-level fallback clause ("subsidiary
+            # OR an O-level grade" is not fully checkable), and only when the
+            # alternatives are joined by "or" — "Physics and Mathematics" means
+            # BOTH, and encoding it as a choice would be too permissive.
+            if m and not re.search(r"o-level", low, re.I):
+                raw_list = m.group("list")
+                is_choice = re.search(r"\bor\b|/", raw_list, re.I) or "," not in raw_list
+                subs = parse_subject_list(raw_list)
+                if subs and is_choice and not re.search(r"\band\b", raw_list, re.I):
+                    constraints.append(
+                        {"kind": "subsidiary_from", "subjects": subs, "source_text": s}
+                    )
+                    consumed = True
+        if not consumed:
+            remaining.append(s)
+    return constraints, remaining
 
 
 def infer_tags(name: str) -> list[str]:
@@ -465,6 +564,7 @@ def build(rows: list[dict], curated_codes: set[str], known_subjects: set[str]) -
         if not tags:
             reject(row, "no tags inferrable from name (interest mapping would fail)")
             continue
+        constraints, additional = extract_constraints(additional)
         cap_m = re.search(r"\d+", row["capacity_cell"])
         dur_m = re.search(r"\d+(?:\.\d+)?", row["duration_cell"])
         slug = re.sub(r"[^a-z0-9]+", "-", row["name"].lower()).strip("-")[:60]
@@ -480,6 +580,7 @@ def build(rows: list[dict], curated_codes: set[str], known_subjects: set[str]) -
             "slots": slots,
             "min_points": min_points,
             "points_basis": basis,
+            "constraints": constraints,
             "additional_requirements": additional,
             "capacity": int(cap_m.group()) if cap_m else None,
             "duration_years": float(dur_m.group()) if dur_m else None,

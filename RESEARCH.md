@@ -62,6 +62,26 @@ blank one — a student may choose a life path on it.
 
 ---
 
+## R1b — Finish encoding the constraints still in prose
+
+Cycle 6 moved cross-slot conditions out of prose and into enforced data
+(`must_include`, `subsidiary_from`), fixing a false-positive class where students were
+told they qualified when they did not. **13 programmes still carry an A-level condition
+in prose** (down from 25). They now surface as `conditional: true`, so nobody is misled —
+but they are not enforced. The remaining shapes:
+
+| Shape | Example | Why it's still prose |
+|---|---|---|
+| Conjunctive subsidiary | *"subsidiary pass in Physics **and** Mathematics"* | Needs an ALL variant; encoding as a choice would be too permissive |
+| Conditional rule | *"if one of the principal passes is not Advanced Mathematics, must have a subsidiary in it"* | Genuinely different logic: a rule that fires based on the assignment |
+| Multi-subject floors | *"C in Chemistry **and** D in Biology **and** E in Physics"* | One sentence, several different floors |
+| PDF-truncated | *"…subsidiary level pass in"* (sentence cut off) | Can't encode what isn't there — fix extraction first |
+
+**Careful:** each new shape must ship with a test proving it rejects the right students
+*and* accepts the right ones. The reviewer pass on cycle 6 caught a false negative where
+a *holding* requirement was encoded as an *assignment* requirement — see
+`data/README.md` for the distinction.
+
 ## R2 — Triage the 311 quarantined rows
 
 `data/extraction_review.json` holds every guidebook row whose requirement text did not

@@ -38,6 +38,30 @@ class Slot:
 
 
 @dataclass(frozen=True)
+class Constraint:
+    """A condition that applies across the whole requirement, not to one slot.
+
+    - ``must_include``: at least one of the subjects satisfying the slots must
+      come from this set (e.g. "one of the two principal passes must be in
+      Physics or Chemistry or Biology"). The subject still counts toward the
+      slots — this is a filter on the assignment, not an extra position.
+    - ``subsidiary_from``: the student must hold a subsidiary (S) pass or better
+      in one of these subjects.
+
+    Only encode a constraint when every alternative it names is a subject we
+    model. If any alternative is unknown to us we cannot fairly enforce it —
+    enforcing a partial list would reject students who satisfy the real rule.
+    """
+
+    kind: str  # "must_include" | "subsidiary_from"
+    subjects: frozenset[str]
+    source_text: str = ""
+    # Optional grade floor: the qualifying subject must also meet this grade
+    # (e.g. "a minimum of 'E' grade in either Chemistry or Geography").
+    min_grade: str | None = None
+
+
+@dataclass(frozen=True)
 class Programme:
     id: str
     code: str
@@ -55,6 +79,11 @@ class Programme:
     checklist: dict[str, str | None]
     source: str
     machine_parsed: bool = False  # extracted by script (vs human-curated)
+    constraints: tuple[Constraint, ...] = ()
+    # Conditions the guidebook states that we cannot check from A-level input
+    # (O-level grades, fitness tests, interviews). Never silently dropped:
+    # they make a result `conditional` rather than plainly eligible.
+    unverified_conditions: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -93,6 +122,11 @@ class ProgrammeResult:
     strength_detail: str = ""
     matched_subjects: tuple[str, ...] = ()
     matched_points: float = 0.0
+    # True when the student meets everything we CAN check, but the guidebook
+    # states further conditions we cannot verify from A-level grades. Clients
+    # should say "you qualify IF …", not "you qualify".
+    conditional: bool = False
+    unverified_conditions: tuple[str, ...] = ()
 
     def to_dict(self) -> dict:
         p = self.programme
@@ -118,4 +152,6 @@ class ProgrammeResult:
             "strength_detail": self.strength_detail,
             "matched_subjects": list(self.matched_subjects),
             "matched_points": self.matched_points,
+            "conditional": self.conditional,
+            "unverified_conditions": list(self.unverified_conditions),
         }

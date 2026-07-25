@@ -90,6 +90,8 @@ Each programme result:
     "source": "TCU 2026/27 guidebook, p.237 (SUZA)"
   },
   "eligible": true,
+  "conditional": false,                   // true = "you qualify IF …" (see below)
+  "unverified_conditions": [],            // conditions we cannot check from A-level grades
   "reasons": [                            // machine-readable explanation, always present
     { "rule": "subject_requirement", "ok": true, "detail": "Subject requirements met with: Chemistry (A), Biology (A), Physics (B)." },
     { "rule": "minimum_points",      "ok": true, "detail": "You have 14 points (subjects defining admission); minimum required is 6." }
@@ -129,9 +131,21 @@ Errors: invalid input → `422` with a list of problems
    14 points into Medicine outranks 10 points into a two-subject programme.
    Strength breaks ties.
 
+**Three verdicts, not two.** `eligible: true, conditional: false` is a plain yes.
+`eligible: true, conditional: true` means the student meets everything we can
+check, but the guidebook states conditions we cannot verify from A-level grades
+(O-level results, fitness tests) — listed in `unverified_conditions`. Clients
+must render this as "you qualify **if** …". `eligible: false` is a no, with the
+failing rule in `reasons`.
+
 Known limitations (deliberate, documented):
 - `additional_requirements` (O-level conditions, fitness tests) are surfaced
-  to the user but not machine-evaluated — the MVP input is A-level only.
+  to the user but not machine-evaluated — the MVP input is A-level only. These
+  now drive `conditional`, so eligibility is never overstated.
+- 13 programmes still carry an *A-level* condition in prose that we could in
+  principle encode (conjunctive subsidiary rules, "if not X then Y" shapes,
+  multi-subject grade-floor lists, and PDF-truncated sentences). They surface
+  as `conditional`, so the student is warned rather than misled.
 - The knowledge base holds 356 programmes across 39 institutions: 30
   human-curated plus 326 machine-extracted from the guidebook by
   `scripts/extract_guidebook.py` (flagged `machine_parsed` in the API so

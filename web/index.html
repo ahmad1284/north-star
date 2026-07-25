@@ -53,6 +53,9 @@
   .badge{font-size:.74rem;border-radius:6px;padding:.12rem .5rem;background:var(--chip);color:var(--muted)}
   .badge.match{background:var(--accent);color:var(--accent-ink)}
   .badge.auto{border:1px solid var(--gold);color:var(--gold);background:transparent}
+  .badge.cond{border:1px solid var(--gold);color:var(--gold);background:transparent;font-weight:600}
+  .body .cond-note{border-left:3px solid var(--gold);padding:.4rem .6rem;margin:.6rem 0;
+    background:color-mix(in srgb, var(--gold) 8%, transparent);border-radius:0 6px 6px 0}
   .body{padding:0 14px 12px;border-top:1px dashed var(--line);font-size:.9rem}
   .body h4{margin:.8rem 0 .3rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
   .body ul{margin:.2rem 0;padding-left:1.2rem}
@@ -222,6 +225,7 @@ function card(r){
   const pct=Math.round(r.strength*100);
   const badges=[];
   if(r.interest_match) badges.push(`<span class="badge match">inalingana na: ${r.interest_match.join(', ')}</span>`);
+  if(r.conditional) badges.push(`<span class="badge cond">unastahili KAMA… · conditional</span>`);
   if(r.eligible) badges.push(`<span class="badge">nguvu ${pct}%</span>`);
   if(p.duration_years) badges.push(`<span class="badge">miaka ${p.duration_years}</span>`);
   if(p.capacity) badges.push(`<span class="badge">nafasi ${p.capacity}</span>`);
@@ -233,8 +237,11 @@ function card(r){
       <div class="badges">${badges.join('')}</div>
     </summary>
     <div class="body">
-      <h4>${r.eligible?'Kwa nini unastahili':'Kinachokosekana'}</h4>
-      <ul>${r.reasons.map(x=>`<li class="${x.ok?'ok':''}">${x.detail}</li>`).join('')}</ul>
+      <h4>${r.eligible?(r.conditional?'Unastahili, KAMA masharti haya yametimia':'Kwa nini unastahili'):'Kinachokosekana'}</h4>
+      <ul>${r.reasons.filter(x=>x.rule!=='unverified_condition').map(x=>`<li class="${x.ok?'ok':''}">${x.detail}</li>`).join('')}</ul>
+      ${r.conditional?`<div class="cond-note"><b>Hatuwezi kuthibitisha haya</b> (yako nje ya taarifa tulizonazo za A-Level):
+        <ul>${r.unverified_conditions.map(t=>`<li>${t}</li>`).join('')}</ul>
+        Hakikisha mwenyewe kabla ya kuomba.</div>`:''}
       ${p.additional_requirements.length?`<h4>Vigezo vya ziada (hakikisha mwenyewe)</h4>
         <ul>${p.additional_requirements.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}
       <h4>Kuhusu kozi</h4>

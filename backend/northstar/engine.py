@@ -25,7 +25,7 @@ from __future__ import annotations
 from itertools import permutations
 
 from .loader import KnowledgeBase
-from .models import Programme, ProgrammeResult, Reason, Slot, StudentProfile
+from .models import Constraint, Programme, ProgrammeResult, Reason, Slot, StudentProfile
 
 
 def _positions(slots: tuple[Slot, ...]) -> list[Slot]:
@@ -46,22 +46,56 @@ def _fits(kb: KnowledgeBase, subject: str, grade: str, slot: Slot) -> bool:
     return True
 
 
+def _satisfies_must_include(
+    kb: KnowledgeBase,
+    profile: StudentProfile,
+    assignment: tuple[str, ...],
+    constraints: tuple[Constraint, ...],
+) -> bool:
+    """Every must_include constraint is met by this particular assignment."""
+    for c in constraints:
+        if c.kind != "must_include":
+            continue
+        ok = any(
+            s in c.subjects
+            and (c.min_grade is None or kb.scale.at_least(profile.grades[s], c.min_grade))
+            for s in assignment
+        )
+        if not ok:
+            return False
+    return True
+
+
 def _best_assignment(
-    kb: KnowledgeBase, profile: StudentProfile, slots: tuple[Slot, ...]
+    kb: KnowledgeBase,
+    profile: StudentProfile,
+    slots: tuple[Slot, ...],
+    constraints: tuple[Constraint, ...] = (),
 ) -> tuple[str, ...] | None:
-    """Best (highest-points) assignment of distinct student subjects to all
-    slot positions, or None if impossible. Sizes are tiny (<=4 subjects,
-    <=3 positions) so exhaustive search is fine and obviously correct."""
+    """Best (highest-points) assignment of distinct student subjects to all slot
+    positions that ALSO satisfies the must_include constraints, or None if no
+    such assignment exists. Sizes are tiny (<=4 subjects, <=3 positions) so
+    exhaustive search is fine and obviously correct.
+
+    Constraints are applied during the search, not after it: picking the
+    highest-points assignment first and then testing the constraint would
+    wrongly reject a student who has a valid — if lower-scoring — assignment.
+    """
     positions = _positions(slots)
     subjects = list(profile.grades)
     if len(subjects) < len(positions):
         return None
     best: tuple[float, tuple[str, ...]] | None = None
     for perm in permutations(subjects, len(positions)):
-        if all(_fits(kb, subj, profile.grades[subj], pos) for subj, pos in zip(perm, positions)):
-            pts = sum(kb.scale.points_for(profile.grades[s]) for s in perm)
-            if best is None or pts > best[0]:
-                best = (pts, perm)
+        if not all(
+            _fits(kb, subj, profile.grades[subj], pos) for subj, pos in zip(perm, positions)
+        ):
+            continue
+        if not _satisfies_must_include(kb, profile, perm, constraints):
+            continue
+        pts = sum(kb.scale.points_for(profile.grades[s]) for s in perm)
+        if best is None or pts > best[0]:
+            best = (pts, perm)
     return best[1] if best else None
 
 
@@ -90,7 +124,7 @@ def evaluate_programme(
     kb: KnowledgeBase, profile: StudentProfile, programme: Programme
 ) -> ProgrammeResult:
     result = ProgrammeResult(programme=programme, eligible=False)
-    matched = _best_assignment(kb, profile, programme.slots)
+    matched = _best_assignment(kb, profile, programme.slots, programme.constraints)
 
     if matched is None:
         for slot in programme.slots:
@@ -106,12 +140,25 @@ def evaluate_programme(
                     " Note: one subject cannot count twice across requirements.",
                 )
             )
+        # Distinguish "slots unfillable" from "slots fillable but a
+        # must_include constraint blocks every valid assignment" — the student
+        # deserves to know which wall they hit.
+        if programme.constraints and _best_assignment(kb, profile, programme.slots):
+            for c in programme.constraints:
+                if c.kind != "must_include":
+                    continue
+                names = ", ".join(sorted(kb.subjects[s] for s in c.subjects))
+                floor = f" at grade {c.min_grade} or better" if c.min_grade else ""
+                result.reasons.append(
+                    Reason(
+                        rule="must_include",
+                        ok=False,
+                        detail=f"At least one of your qualifying passes must be in: "
+                        f"{names}{floor}. " + (c.source_text or ""),
+                    )
+                )
         result.reasons.append(
-            Reason(
-                rule="overall",
-                ok=False,
-                detail="Subject requirements not met.",
-            )
+            Reason(rule="overall", ok=False, detail="Subject requirements not met.")
         )
         return result
 
@@ -127,6 +174,48 @@ def evaluate_programme(
         )
     )
 
+    constraints_ok = True
+    for c in programme.constraints:
+        names = ", ".join(sorted(kb.subjects[s] for s in c.subjects))
+        if c.kind == "must_include":
+            # guaranteed by _best_assignment, recorded so the student sees it
+            result.reasons.append(
+                Reason(
+                    rule="must_include",
+                    ok=True,
+                    detail=f"One of your qualifying passes is in {names}, as required.",
+                )
+            )
+        elif c.kind == "subsidiary_from":
+            # A holding requirement: the student must HAVE one of these
+            # subjects at the required grade. It need not be one of the
+            # passes counted toward the slots.
+            floor = c.min_grade
+            held = sorted(
+                s for s in c.subjects
+                if s in profile.grades
+                and (
+                    kb.scale.at_least(profile.grades[s], floor)
+                    if floor
+                    else profile.grades[s] != "F"
+                )
+            )
+            ok = bool(held)
+            constraints_ok = constraints_ok and ok
+            need = f"grade {floor} or better" if floor else "at least a subsidiary pass"
+            result.reasons.append(
+                Reason(
+                    rule="subsidiary_requirement",
+                    ok=ok,
+                    detail=(
+                        f"You have {kb.subjects[held[0]]} ({profile.grades[held[0]]}), "
+                        f"which satisfies the requirement of {need}."
+                        if ok
+                        else f"Requires {need} in: {names}."
+                    ),
+                )
+            )
+
     pts, basis_desc = _points_for_basis(kb, profile, programme, matched)
     pts_ok = pts >= programme.min_points
     result.reasons.append(
@@ -138,7 +227,7 @@ def evaluate_programme(
         )
     )
 
-    result.eligible = pts_ok
+    result.eligible = pts_ok and constraints_ok
     if result.eligible:
         n = len(matched)
         achieved = sum(kb.scale.points_for(profile.grades[s]) for s in matched)
@@ -147,13 +236,30 @@ def evaluate_programme(
         result.strength_detail = (
             f"{achieved:g} of {5 * n:g} possible points in {matched_names}"
         )
-        if programme.additional_requirements:
+        # Conditions we cannot check from A-level grades make this a
+        # qualified yes, not a plain one.
+        result.unverified_conditions = programme.unverified_conditions
+        result.conditional = bool(programme.unverified_conditions)
+        if result.conditional:
             result.reasons.append(
                 Reason(
-                    rule="additional_requirements",
+                    rule="unverified_condition",
+                    ok=False,
+                    detail="You meet everything we can check, but this programme also "
+                    "requires (we cannot verify from A-level grades): "
+                    + " ".join(programme.unverified_conditions),
+                )
+            )
+        advisory = [
+            s for s in programme.additional_requirements
+            if s not in programme.unverified_conditions
+        ]
+        if advisory:
+            result.reasons.append(
+                Reason(
+                    rule="additional_notes",
                     ok=True,
-                    detail="Also check (not auto-verified): "
-                    + " ".join(programme.additional_requirements),
+                    detail="Also note: " + " ".join(advisory),
                 )
             )
     return result

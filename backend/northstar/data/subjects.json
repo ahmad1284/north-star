@@ -5,6 +5,7 @@
     { "id": "chemistry", "name": "Chemistry" },
     { "id": "biology", "name": "Biology" },
     { "id": "advanced_mathematics", "name": "Advanced Mathematics" },
+    { "id": "basic_applied_mathematics", "name": "Basic Applied Mathematics" },
     { "id": "computer_science", "name": "Computer Science" },
     { "id": "geography", "name": "Geography" },
     { "id": "history", "name": "History" },

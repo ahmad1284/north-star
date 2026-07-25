@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from .models import Combination, GradeScale, Programme, Slot
+from .models import Combination, Constraint, GradeScale, Programme, Slot
 
 DATA_DIR = Path(__file__).parent / "data"
 
@@ -81,6 +81,56 @@ def _parse_slot(raw: dict, prog_id: str, known_subjects: set[str], grades: set[s
     return Slot(choose=choose, subjects=subjects, min_grade=min_grade)
 
 
+CONSTRAINT_KINDS = ("must_include", "subsidiary_from")
+
+# A prose condition that is advisory rather than a hard rule: it changes a
+# student's chances, not their eligibility, so it must not make a result
+# "conditional".
+_ADVISORY = ("preference", "priority", "given high", "may be considered")
+
+
+def _parse_constraint(
+    raw: dict, prog_id: str, known_subjects: set[str], grades: set[str] | None = None
+) -> Constraint:
+    kind = raw.get("kind")
+    if kind not in CONSTRAINT_KINDS:
+        raise DataError(f"programme {prog_id}: unknown constraint kind '{kind}'")
+    subjects = raw.get("subjects") or []
+    if not subjects:
+        raise DataError(f"programme {prog_id}: constraint '{kind}' has no subjects")
+    for s in subjects:
+        if s not in known_subjects:
+            raise DataError(f"programme {prog_id}: constraint references unknown subject '{s}'")
+    min_grade = raw.get("min_grade")
+    if min_grade is not None and grades is not None and min_grade not in grades:
+        raise DataError(f"programme {prog_id}: constraint has unknown min_grade '{min_grade}'")
+    return Constraint(
+        kind=kind,
+        subjects=frozenset(subjects),
+        source_text=raw.get("source_text", ""),
+        min_grade=min_grade,
+    )
+
+
+def _unverified(additional: tuple[str, ...]) -> tuple[str, ...]:
+    """Which stated conditions we cannot check from A-level grades alone.
+
+    Everything left in `additional_requirements` is by definition unevaluated,
+    so the only question is whether it is a *condition* (affects eligibility)
+    or advice (affects chances). Notes we wrote about the data itself are not
+    guidebook conditions and are excluded.
+    """
+    out = []
+    for s in additional:
+        low = s.lower()
+        if any(a in low for a in _ADVISORY):
+            continue
+        if low.startswith(("guidebook lists", "requirement text truncated")):
+            continue
+        out.append(s)
+    return tuple(out)
+
+
 def _parse_programme(p: dict, known_subjects: set[str], grades: set[str]) -> Programme:
     pid = p["id"]
     if p["points_basis"] not in ("slots", "best_three"):
@@ -88,6 +138,7 @@ def _parse_programme(p: dict, known_subjects: set[str], grades: set[str]) -> Pro
     slots = tuple(_parse_slot(s, pid, known_subjects, grades) for s in p["slots"])
     if not slots:
         raise DataError(f"programme {pid}: no requirement slots")
+    additional = tuple(p.get("additional_requirements", []))
     return Programme(
         id=pid,
         code=p["code"],
@@ -99,12 +150,17 @@ def _parse_programme(p: dict, known_subjects: set[str], grades: set[str]) -> Pro
         slots=slots,
         min_points=float(p["min_points"]),
         points_basis=p["points_basis"],
-        additional_requirements=tuple(p.get("additional_requirements", [])),
+        additional_requirements=additional,
         capacity=p.get("capacity"),
         duration_years=p.get("duration_years"),
         checklist=p.get("checklist", {}),
         source=p.get("source", ""),
         machine_parsed=bool(p.get("machine_parsed", False)),
+        constraints=tuple(
+            _parse_constraint(c, pid, known_subjects, grades)
+            for c in p.get("constraints", [])
+        ),
+        unverified_conditions=_unverified(additional),
     )
 
 
