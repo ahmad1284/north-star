@@ -1,0 +1,579 @@
+{
+  "description": "Researched checklist data proposed for merge into the knowledge base. Not yet merged.",
+  "researched_at": "2026-07-25",
+  "scope": "The 40 highest-capacity programmes across northstar/data/programmes.json and programmes_extracted.json (capacity 1000 down to 285), covering 17 institutions.",
+  "method": "Programmes ranked by the `capacity` field across both knowledge-base files, then grouped by institution. For each institution the fee figure was taken only from a document published by that institution itself: an official fee-structure PDF, a joining-instruction PDF, an official prospectus, or the fee table on the institution's own website. PDFs were read directly (text layer, or page images where the PDF was a scan). Aggregator and SEO sites (mabumbe, eduloaded, applyscholars, wazaelimu, darasahuru, studocu, unirank, unipage, etc.) were used ONLY to locate candidate URLs and were never used as a fee source; several of them carried figures that the official documents contradicted. Where an institution's own site could not be reached or carried no fee figure, `cost` is null. `what_is_it` is written from general knowledge of the discipline and makes no Tanzania-specific salary or employment claim.",
+  "cost_field_notes": {
+    "amount_tzs": "Tuition only, for Tanzanian/local students. It excludes examination, registration, TCU/NACTVET quality-assurance, student-union, NHIF, accommodation, meals and book allowances, which most of these institutions bill separately. Total payable is meaningfully higher than tuition at every institution here.",
+    "basis": "'per_year' = the source states this amount as tuition for one year of study. 'total_programme' = the source states this amount as tuition for the whole programme (used for the Open University of Tanzania, which prices per unit rather than per year).",
+    "year": "The academic year the source document states. Where the source carries no academic year, this is recorded explicitly as 'not stated on source' plus the retrieval date, rather than being guessed.",
+    "source_url": "Page or document that carries the figure. `document_url` is given additionally where the figure lives in a PDF linked from that page."
+  },
+  "proposals": [
+    {
+      "code": "SA005",
+      "name": "Bachelor of Arts with Education",
+      "institution": "St. Augustine University of Tanzania (SAUT)",
+      "capacity": 1000,
+      "what_is_it": "A teaching degree in arts subjects: you study subjects such as history, geography, Kiswahili, English or literature to degree level, and at the same time learn how to teach them — lesson planning, assessment and classroom management. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1260000,
+        "basis": "per_year",
+        "year": "2025/26",
+        "source_url": "https://www.saut.ac.tz/fee-structure",
+        "document_url": "https://www.saut.ac.tz/saut_website/public/storage/feePdf/z6NZfRJ3urqTGCoWkq0ct2rqLj5PbikJn9FYNu8j.pdf"
+      },
+      "notes": "SAUT publishes one tuition figure for all undergraduate degree programmes except engineering: TZS 1,260,000 in year 1 and in each later year. Total payable to the university in year 1 is TZS 1,550,600 including administrative fees, plus TZS 50,400 NHIF medical capitation."
+    },
+    {
+      "code": "TK002",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Teofilo Kisanji University (TEKU)",
+      "capacity": 700,
+      "what_is_it": "A teaching degree in arts subjects: you study subjects such as history, geography, Kiswahili or English to degree level, and at the same time learn how to teach them. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1200000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25 (the site's current almanac is 2025/26)",
+        "source_url": "https://www.teku.ac.tz/fee_structure.php"
+      },
+      "notes": "TEKU's own fee page lists 'Bachelor of Arts with Education (BAED)' at 1,200,000 under the column 'FEE AMOUNT PER ANNUM'. The page does not state which academic year it applies to — flag this to a human before it is shown to students."
+    },
+    {
+      "code": "MK001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Tumaini University Makumira (TUMA)",
+      "capacity": 600,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning the craft of teaching — how people learn, how to plan a lesson and how to assess a class. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "2025/26",
+        "source_url": "https://makumira.ac.tz/fee_structure/",
+        "document_url": "https://makumira.ac.tz/docs/FEE_STRUCTURE/Fee%20Structure%20BAED%202025_26.pdf"
+      },
+      "notes": "The fee sheet is billed per semester: tuition TZS 750,000 in semester 1 and 750,000 in semester 2, i.e. 1,500,000 per year. The document is a scan stamped by the TUMA Bursar on 01 Aug 2025 and its instalment deadlines run Nov 2025 to Feb 2026, confirming 2025/26. Total payable without accommodation is TZS 1,053,000 + 785,000 in first year."
+    },
+    {
+      "code": "RU001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Ruaha Catholic University (RUCU)",
+      "capacity": 600,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them, including a period of teaching practice in a real school. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1400000,
+        "basis": "per_year",
+        "year": "2025/2026",
+        "source_url": "https://www.rucu.ac.tz/Fees_Structure.html",
+        "document_url": "https://rucu.ac.tz/storage/documents/01KEA3KCTYJEJS4SYMQVYC3FAV.pdf"
+      },
+      "notes": "From the section headed 'FEE STRUCTURE FOR DEGREE COURSES 2025/2026', table 'BACHELOR OF ARTS WITH EDUCATION - BAED'. Tuition is 1,400,000 in each of years 1-3; total payable direct to the university is 1,750,000 per year."
+    },
+    {
+      "code": "JC001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Jordan University College (JUCo)",
+      "capacity": 500,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1280000,
+        "basis": "per_year",
+        "year": "2025/2026",
+        "source_url": "https://www.juco.ac.tz/index.php/fee_structure",
+        "document_url": "https://www.juco.ac.tz/jslabtec/documents/Bachelor%20Deree%20Prommes%20fee%20structure%20-%202025-2026.pdf"
+      },
+      "notes": "The fee sheet is headed 'Academic Year: 2025/2026', class 'First Year', and covers the programme group 'BAED, BASo, BAECo, BAEDRS, BScPC, BLRIM & BScCS'. Tuition 1,280,000; total with administrative fees 1,715,000. Figure is for first year — later years were not checked."
+    },
+    {
+      "code": "SJ001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "St. John's University of Tanzania (SJUT)",
+      "capacity": 500,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1200000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://www.sjut.ac.tz/admissions/fee-structure"
+      },
+      "notes": "SJUT's fee page is rendered by JavaScript; the figure comes from the page's own data under the heading 'Degree Programs Annual Tuition Fees', row 'Bachelor of Arts with Education (BAEd), 3 Years, 1,200,000 TZS'. No academic year is stated anywhere on the page — flag to a human. SJUT's older prospectus PDF URLs 404 since the site was rebuilt."
+    },
+    {
+      "code": "SJ002",
+      "name": "Bachelor of Science with Education",
+      "institution": "St. John's University of Tanzania (SJUT)",
+      "capacity": 500,
+      "what_is_it": "A teaching degree in science subjects: you study subjects such as biology, chemistry, physics or mathematics to degree level, and at the same time learn how to teach them, including laboratory and practical work. Graduates most commonly teach science in secondary schools, and also work in curriculum, education administration and science-communication roles.",
+      "cost": {
+        "amount_tzs": 1300000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://www.sjut.ac.tz/admissions/fee-structure"
+      },
+      "notes": "Same source and same caveat as SJ001. Row: 'Bachelor of Science with Education (BScEd), 3 Years, 1,300,000 TZS' under 'Degree Programs Annual Tuition Fees'."
+    },
+    {
+      "code": "IA007",
+      "name": "Bachelor of Accountancy",
+      "institution": "Institute of Accountancy Arusha (IAA)",
+      "capacity": 490,
+      "what_is_it": "The study of how organisations record, check and report money: bookkeeping, financial statements, auditing, taxation and cost control. Graduates work as accountants, auditors, tax officers and finance staff in companies, government and NGOs, and it is the usual route towards professional accountancy qualifications.",
+      "cost": null,
+      "notes": "No citable fee. See not_found."
+    },
+    {
+      "code": "OU022",
+      "name": "Bachelor of Human Resource Management",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 450,
+      "what_is_it": "The study of how organisations recruit, pay, train, manage and keep their people, including employment law, workplace relations and performance management. Graduates work in HR and personnel departments of companies, government bodies and NGOs, in recruitment, and in training and staff-development roles.",
+      "cost": {
+        "amount_tzs": 2480000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT prices per unit, not per year. The Faculty of Business Management table (prospectus p.38 of the PDF, headed 'In the academic year 2025/2026') lists this programme at 40 total units for a tuition fee of 2,480,000 for the whole programme. Over the 3-year nominal duration that is about 827,000 per year, but OUT is an open/distance university and students set their own pace, so the annual figure is not a fact the source states. Direct university costs (examination 10,000 per exam, TCU quality assurance 20,000/year, registration 30,000, ID 20,000) and the 20,000/year student organisation fee are extra."
+    },
+    {
+      "code": "SA003",
+      "name": "Bachelor of Business Administration",
+      "institution": "St. Augustine University of Tanzania (SAUT)",
+      "capacity": 450,
+      "what_is_it": "A broad degree in how businesses are run, covering management, accounting, marketing, finance, human resources and entrepreneurship. Graduates work across private companies, banks, NGOs and government as managers, analysts and administrators, or start their own businesses.",
+      "cost": {
+        "amount_tzs": 1260000,
+        "basis": "per_year",
+        "year": "2025/26",
+        "source_url": "https://www.saut.ac.tz/fee-structure",
+        "document_url": "https://www.saut.ac.tz/saut_website/public/storage/feePdf/z6NZfRJ3urqTGCoWkq0ct2rqLj5PbikJn9FYNu8j.pdf"
+      },
+      "notes": "Covered by SAUT's single 'Undergraduate Degree Programmes (Except Engineering Programmes)' tuition rate of TZS 1,260,000 per year."
+    },
+    {
+      "code": "AM001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Archbishop Mihayo University College of Tabora (AMUCTA)",
+      "capacity": 400,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them, including supervised teaching practice. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1260000,
+        "basis": "per_year",
+        "year": "2026/2027",
+        "source_url": "https://www.amucta.ac.tz/admissions/fees",
+        "document_url": "https://www.amucta.ac.tz/attachments/files/fee_structure_2026_2027_1783509379.pdf"
+      },
+      "notes": "Scanned PDF headed 'AMUCTA FEES STRUCTURE ACADEMIC YEAR 2026/2027', table '3. Bachelor of Arts Education (BAED)'. Tuition 1,260,000 in each of years 1-3; total payable 1,566,000 in year 1. A 2025/2026 version is also on the site (fee_structure_2025_2026_1783098772.pdf) if the earlier year is wanted."
+    },
+    {
+      "code": "MK002",
+      "name": "Bachelor of Laws",
+      "institution": "Tumaini University Makumira (TUMA)",
+      "capacity": 400,
+      "what_is_it": "The study of the legal system: how laws are made, what they mean, and how they are argued and applied — contracts, criminal law, constitutional law, human rights and legal research and writing. Graduates go on to further professional training to practise as advocates, and also work as legal officers in government, companies and NGOs, or in the courts.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "2025/26",
+        "source_url": "https://makumira.ac.tz/fee_structure/",
+        "document_url": "https://makumira.ac.tz/docs/FEE_STRUCTURE/Fee%20Structure%20Bachelor%20of%20Laws%202025_26.pdf"
+      },
+      "notes": "Billed per semester: tuition 750,000 x 2 = 1,500,000 per year. Scan stamped by the TUMA Bursar 01 Aug 2025. Note the fee sheet covers a three-year LLB, matching the duration_years=3 in our record; many Tanzanian LLBs are four years, so this is worth a human check."
+    },
+    {
+      "code": "OU017",
+      "name": "Bachelor of Business Administration in Accounting",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 400,
+      "what_is_it": "A business management degree specialising in accounting: alongside management, marketing and finance you learn to keep, check and interpret an organisation's financial records. Graduates work as accountants and finance officers in companies, government and NGOs, and often continue towards professional accountancy qualifications.",
+      "cost": {
+        "amount_tzs": 2480000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Business Management table: 40 units, tuition 2,480,000 for the whole programme. See OU022 note on why this is a programme total, not an annual figure."
+    },
+    {
+      "code": "OU019",
+      "name": "Bachelor of Business Administration in Marketing",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 400,
+      "what_is_it": "A business management degree specialising in marketing: understanding customers, pricing, branding, advertising, sales and market research. Graduates work in marketing, sales, communications and brand roles in companies, agencies and NGOs.",
+      "cost": {
+        "amount_tzs": 2480000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Business Management table: 40 units, tuition 2,480,000 for the whole programme. See OU022 note."
+    },
+    {
+      "code": "OU020",
+      "name": "Bachelor of Business Administration in Human",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 400,
+      "what_is_it": "A business management degree specialising in human resource management: alongside general management you learn how organisations recruit, pay, train and manage their staff, and the employment law around it. Graduates work in HR and personnel departments, recruitment, and training and staff-development roles.",
+      "cost": {
+        "amount_tzs": 2480000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "Our stored programme name is truncated. The OUT 2025/2026 prospectus gives the full name as 'Bachelor of Business Administration in Human Resource Management', code OU020, 40 units, tuition 2,480,000 for the whole programme. Worth fixing the name in the knowledge base. See OU022 note on basis."
+    },
+    {
+      "code": "SU003",
+      "name": "Bachelor of Science in Agriculture",
+      "institution": "Sokoine University of Agriculture (SUA)",
+      "capacity": 400,
+      "what_is_it": "The science of growing crops and raising animals: soils, plant and animal biology, pests and disease, irrigation, farm machinery and the economics of running a farm. Graduates work as agricultural officers and extension staff, in agribusiness, seed and input companies, research stations, and NGOs and government programmes.",
+      "cost": {
+        "amount_tzs": 1263000,
+        "basis": "per_year",
+        "year": "fee structure approved March 2019; still the current schedule published on SUA's fees page as of 2026-07-25",
+        "source_url": "https://www.sua.ac.tz/study/fees-and-funding/tuition-fees/fee-structure-undergraduate-degree-programmes",
+        "document_url": "https://www.sua.ac.tz/sites/default/files/documents/page/Fees%20Structure%20SUAA.pdf"
+      },
+      "notes": "Table 2, row 'B.Sc. Agriculture General (BSc. AGC)' — 1,263,000 for Tanzanian students, the rate for all of SUA's science-cluster degrees. IMPORTANT CAVEAT: the PDF SUA currently publishes is the structure approved by the University Council at its 154th meeting on 28 March 2019. It is the document SUA links from its live fees page today, but it is seven years old and should be confirmed with SUA before being shown to a student. Other fees (library 50,000, examination 30,000, registration 10,000 etc.) and living costs are billed separately."
+    },
+    {
+      "code": "IF006",
+      "name": "Bachelor of Science in Tax Management",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 350,
+      "what_is_it": "The study of taxation: how income, business and consumption taxes work, how tax law is applied, and how organisations calculate, pay and plan for what they owe. Graduates work in revenue authorities, in the tax departments of accounting firms and companies, and as tax advisers.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "NAME MISMATCH — check before merging. The TCU guidebook calls this 'Bachelor of Science in Tax Management'; IFM's own fee page lists 'Bachelor of Science in Taxation' at tuition 1,500,000 in each of years 1-3 (total year 1 including other charges: 1,755,000). They are very likely the same programme, but the match is by inference. IFM's fee page states no academic year."
+    },
+    {
+      "code": "IF007",
+      "name": "Bachelor of Science in Computer Science",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 350,
+      "what_is_it": "The study of how computers and software actually work: programming, algorithms and data structures, databases, networks and how to build software systems. Graduates work as software developers, systems and database administrators, and IT specialists across almost any industry.",
+      "cost": {
+        "amount_tzs": 1700000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM's fee page lists 'Bachelor of Computer Science' at tuition 1,700,000 in each of years 1-3 (total year 1: 1,955,000). IFM charges 1,700,000 for its computing degrees and 1,500,000 for the rest. No academic year stated on the page."
+    },
+    {
+      "code": "MW001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Mwenge Catholic University (MWECAU)",
+      "capacity": 350,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them, including supervised teaching practice in schools. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 1080000,
+        "basis": "per_year",
+        "year": "2025/2026",
+        "source_url": "https://mwecau.ac.tz/uni-pdf-preview/1758532934-Undergraduate%20Programmes.pdf"
+      },
+      "notes": "Scanned table headed 'FEE STRUCTURE FOR ACADEMIC YEAR 2025/2026 - DEGREE PROGRAMMES', signed by the DVC Planning, Finance and Administration. 'Bachelor of Arts with Education' falls in the arts/humanities column: tuition 1,080,000 in each of years 1-3 (MWECAU's science degrees are 1,280,000). Total payable to the university is 1,479,600 in year 1; the sheet also lists items payable directly by the student (meals 2,590,000, field training 410,000, accommodation 350,000, books 200,000)."
+    },
+    {
+      "code": "OU005",
+      "name": "Bachelor of Arts in Sociology",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 350,
+      "what_is_it": "The study of how human societies work: families, communities, class, gender, crime, migration and social change, and the research methods used to investigate them. Graduates work in social research, community and development programmes, NGOs, government social services, and in policy and administration roles.",
+      "cost": {
+        "amount_tzs": 2240000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Arts and Social Sciences table (headed 'In the academic year 2025/26'): 36 minimum units, tuition 2,240,000 for the whole programme. See OU022 note on basis."
+    },
+    {
+      "code": "RD008",
+      "name": "Bachelor Degree in Community Development",
+      "institution": "Institute of Rural Development Planning (IRDP)",
+      "capacity": 350,
+      "what_is_it": "The study of how communities improve their own lives — how to work with local people to plan, run and evaluate projects in areas like water, health, income and education, and how to mobilise the funding and organisations behind them. Graduates work as community development officers in local government, with NGOs, and on donor-funded development programmes.",
+      "cost": {
+        "amount_tzs": 1130000,
+        "basis": "per_year",
+        "year": "2025/2026",
+        "source_url": "https://irdp.ac.tz/assets/uploads/attachments/1757592333.pdf"
+      },
+      "notes": "IRDP joining instructions headed 'ACADEMIC YEAR 2025/2026'. 'Table 1: Fees Structure for Bachelor Degree Programmes' — tuition 1,130,000 for all three-year bachelor degrees, of which 'Bachelor Degree in Community Development' is item 8 in the listed set. Total payable 1,240,000 per year; NHIF 50,400, application 10,000 and optional hostel 350,000/year are extra."
+    },
+    {
+      "code": "UD032",
+      "name": "Bachelor of Science with Education",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "capacity": 350,
+      "what_is_it": "A teaching degree in science subjects: you study subjects such as biology, chemistry, physics or mathematics to degree level, and at the same time learn how to teach them, including laboratory work and teaching practice. Graduates most commonly teach science in secondary schools, and also work in curriculum development, education administration and science communication.",
+      "cost": {
+        "amount_tzs": 1300000,
+        "basis": "per_year",
+        "year": "current rate published on UDSM's undergraduate fees page as of 2026-07-25; the table itself states no academic year (the site's almanac and prospectus are 2025/2026)",
+        "source_url": "https://www.udsm.ac.tz/undergraduate/fees-funding"
+      },
+      "notes": "Row 'SoEd, DUCE, MUCE — Bachelor of Education (BEd) in Science, BSc with Education — 1,300,000' in the table 'Tuition Fees for Tanzanian Nationals (TZS)'. Non-Tanzanian rate is USD 2,700."
+    },
+    {
+      "code": "AR023",
+      "name": "Bachelor of Arts in Community Development Studies",
+      "institution": "Ardhi University (ARU)",
+      "capacity": 320,
+      "what_is_it": "The study of how communities improve their own lives — working with local people to plan, run and evaluate projects in areas like housing, water, health and income, and understanding the social and economic forces around them. Graduates work as community development officers in local government, with NGOs, and on donor-funded development programmes.",
+      "cost": {
+        "amount_tzs": 1300000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://www.aru.ac.tz/pages/fee-structure-for-undergraduate-programmes"
+      },
+      "notes": "ARU publishes two tuition bands, 1,100,000 and 1,300,000 'Amount per year'. 'Bachelor of Arts in Community Development Studies (B.A. CDS)' is explicitly named in the 1,300,000 band (foreigners USD 2,100). The page states no academic year. Other charges (registration, examination, TCU QA, etc.) and NHIF 50,400 are listed separately."
+    },
+    {
+      "code": "AM006",
+      "name": "Bachelor of Education in Special Needs",
+      "institution": "Archbishop Mihayo University College of Tabora (AMUCTA)",
+      "capacity": 300,
+      "what_is_it": "A teaching degree focused on learners with disabilities and other special learning needs — visual and hearing impairment, intellectual disability, learning difficulties — and how to adapt teaching, materials and assessment so those learners can succeed. Graduates teach in special and inclusive schools and work in units that support inclusive education.",
+      "cost": {
+        "amount_tzs": 1260000,
+        "basis": "per_year",
+        "year": "2026/2027",
+        "source_url": "https://www.amucta.ac.tz/admissions/fees",
+        "document_url": "https://www.amucta.ac.tz/attachments/files/fee_structure_2026_2027_1783509379.pdf"
+      },
+      "notes": "Table '2. Bachelor of Education in Special Needs (BEDSN)' in the 2026/2027 fee structure. Tuition 1,260,000 in each of years 1-3; total payable 1,616,000 in year 1 (it carries a 50,000 laboratory fee that BAED does not)."
+    },
+    {
+      "code": "IA015",
+      "name": "Bachelor of Library Studies and Information Science",
+      "institution": "Institute of Accountancy Arusha (IAA)",
+      "capacity": 300,
+      "what_is_it": "The study of how information is organised, stored, found and preserved — cataloguing, records management, digital archives and library and information systems. Graduates work as librarians, archivists and records or information managers in universities, government bodies, companies and research institutions.",
+      "cost": null,
+      "notes": "No citable fee. See not_found."
+    },
+    {
+      "code": "IA021",
+      "name": "Bachelor Degree in Marketing and Public Relations",
+      "institution": "Institute of Accountancy Arusha (IAA)",
+      "capacity": 300,
+      "what_is_it": "Two related skills in one degree: marketing (understanding customers, pricing, branding, advertising and sales) and public relations (managing what an organisation says publicly, its reputation and its relationships with media and the community). Graduates work in marketing, communications, PR and brand roles in companies, agencies, NGOs and government.",
+      "cost": null,
+      "notes": "No citable fee. See not_found."
+    },
+    {
+      "code": "IF001",
+      "name": "Bachelor of Accounting",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 300,
+      "what_is_it": "The study of how organisations record, check and report money: bookkeeping, financial statements, auditing, taxation and cost control. Graduates work as accountants, auditors and finance officers in companies, government and NGOs, and it is the usual route towards professional accountancy qualifications.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM fee page, 'Bachelor of Accounting': tuition 1,500,000 in each of years 1-3; total year 1 including other charges 1,755,000 (international USD 1,928). No academic year stated on the page."
+    },
+    {
+      "code": "IF003",
+      "name": "Bachelor of Science in Information Technology",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 300,
+      "what_is_it": "The applied side of computing: setting up and running the systems, networks, databases and applications an organisation depends on, and keeping them secure and working. Graduates work as IT officers, systems and network administrators, database and support specialists, and application developers.",
+      "cost": {
+        "amount_tzs": 1700000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM fee page, 'Bachelor of Science in Information Technology': tuition 1,700,000 in each of years 1-3; total year 1 1,955,000. No academic year stated."
+    },
+    {
+      "code": "IF004",
+      "name": "Bachelor of Science in Insurance and Risk Management",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 300,
+      "what_is_it": "The study of how organisations and people protect themselves against things going wrong: how insurance products are designed and priced, how claims are assessed, and how a business identifies and reduces its risks. Graduates work in insurance companies, broking firms, banks and the risk departments of large organisations.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM fee page, 'Bachelor of Science in Insurance and Risk Management': tuition 1,500,000 in each of years 1-3; total year 1 1,755,000. No academic year stated."
+    },
+    {
+      "code": "IF005",
+      "name": "Bachelor of Science in Social Protection",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 300,
+      "what_is_it": "The study of the systems that support people through old age, illness, unemployment, disability and poverty — pensions, social security and health insurance funds, and cash-transfer and safety-net programmes — including how they are financed and administered. Graduates work in social security and pension funds, health insurance bodies, government social-policy units and NGOs.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM fee page, 'Bachelor of Science in Social Protection': tuition 1,500,000 in each of years 1-3; total year 1 1,755,000. No academic year stated."
+    },
+    {
+      "code": "IF010",
+      "name": "Bachelor of Accounting with Information Technology",
+      "institution": "Institute of Finance Management (IFM)",
+      "capacity": 300,
+      "what_is_it": "Accounting combined with the computer systems that now do most of it: financial reporting, auditing and taxation alongside databases, accounting software and information systems. Graduates work as accountants and finance officers, and in the systems-and-audit roles that sit between finance and IT.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "not stated on source; page retrieved 2026-07-25",
+        "source_url": "https://ifm.ac.tz/fee_structure"
+      },
+      "notes": "IFM fee page, 'Bachelor of Accounting with Information Technology': tuition 1,500,000 in each of years 1-3; total year 1 1,755,000. No academic year stated."
+    },
+    {
+      "code": "OU001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 300,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects such as history, geography, Kiswahili, English or literature to degree level while also learning how to teach them. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": {
+        "amount_tzs": 2530000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Education table (headed 'In the academic year 2025/26'), column 'Total fees': OU001, 38 minimum units, 2,530,000 for the whole programme. See OU022 note on basis."
+    },
+    {
+      "code": "OU006",
+      "name": "Bachelor of Social Work",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 300,
+      "what_is_it": "Training to help people in difficulty — children at risk, families in crisis, people with disabilities, the elderly, people affected by addiction or violence — through counselling, casework and connecting them to services. Graduates work as social welfare officers, in NGOs and hospitals, in child-protection and community services, and in rehabilitation programmes.",
+      "cost": {
+        "amount_tzs": 2240000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Arts and Social Sciences table: 36 minimum units, tuition 2,240,000 for the whole programme. See OU022 note on basis."
+    },
+    {
+      "code": "OU033",
+      "name": "Bachelor of Arts In Public Administration",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 300,
+      "what_is_it": "The study of how government and public bodies are actually run: policy, public finance and budgeting, human resources, local government and the law and ethics of public service. Graduates work as administrative and human-resource officers in central and local government, in public agencies and parastatals, and in NGOs.",
+      "cost": {
+        "amount_tzs": 2240000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Arts and Social Sciences table: 36 minimum units, tuition 2,240,000 for the whole programme. See OU022 note on basis."
+    },
+    {
+      "code": "OU040",
+      "name": "Bachelor of Procurement and Supply Chain Management",
+      "institution": "Open University of Tanzania (OUT)",
+      "capacity": 300,
+      "what_is_it": "The study of how organisations buy things and move them: tendering and contracts, supplier selection, stock and warehousing, transport and logistics, and the rules governing public procurement. Graduates work as procurement and supplies officers, logistics and stores managers, and contract officers in government, companies and NGOs.",
+      "cost": {
+        "amount_tzs": 2480000,
+        "basis": "total_programme",
+        "year": "2025/2026",
+        "source_url": "https://cms.out.ac.tz/uploads/documents/en-1756709842-UNDERGRADUATE%20PROSPECTUS%202025-2026%20FINAL_30-08-2025.pdf"
+      },
+      "notes": "OUT Faculty of Business Management table: 40 units, tuition 2,480,000 for the whole programme. See OU022 note on basis."
+    },
+    {
+      "code": "RD001",
+      "name": "Bachelor Degree in Development Finance and Investment Planning",
+      "institution": "Institute of Rural Development Planning (IRDP)",
+      "capacity": 300,
+      "what_is_it": "The study of how development is paid for: how projects and programmes are costed and appraised, where the money comes from (government budgets, banks, donors, investors), and how to judge whether an investment is worth making. Graduates work in planning and finance units of local and central government, in development banks and microfinance, and with NGOs and donor programmes.",
+      "cost": {
+        "amount_tzs": 1130000,
+        "basis": "per_year",
+        "year": "2025/2026",
+        "source_url": "https://irdp.ac.tz/assets/uploads/attachments/1757592333.pdf"
+      },
+      "notes": "IRDP joining instructions for 2025/2026, Table 1. 'Bachelor Degree in Development Finance and Investment Planning' is item 4 in the list of three-year bachelor degrees charged the 1,130,000 tuition rate. Total payable 1,240,000 per year."
+    },
+    {
+      "code": "UA001",
+      "name": "Bachelor of Arts with Education",
+      "institution": "University of Arusha (UoA)",
+      "capacity": 300,
+      "what_is_it": "A teaching degree in arts subjects: you study arts subjects to degree level while also learning how to teach them. Graduates most commonly teach in secondary schools, and also work in curriculum, education administration and training roles.",
+      "cost": null,
+      "notes": "No citable fee. See not_found."
+    },
+    {
+      "code": "UI002",
+      "name": "Bachelor of Laws",
+      "institution": "University of Iringa (UoI)",
+      "capacity": 300,
+      "what_is_it": "The study of the legal system: how laws are made, what they mean, and how they are argued and applied — contracts, criminal law, constitutional law, human rights and legal research and writing. Graduates go on to further professional training to practise as advocates, and also work as legal officers in government, companies and NGOs, or in the courts.",
+      "cost": {
+        "amount_tzs": 1570000,
+        "basis": "per_year",
+        "year": "2026/2027",
+        "source_url": "https://uoi.ac.tz/wp-content/uploads/2026/06/Revised-reviewed-FEE-STRUCTURE-FOR-UOI-ACADEMIC-YEAR-2026-2027.pdf"
+      },
+      "notes": "DERIVED FIGURE — read the caveat. The document 'UNIVERSITY OF IRINGA (UoI) - 2026/2027 FEE STRUCTURE' quotes one rate for all bachelor's degrees: 'Tuition (3 years): TZS 4,710,000 / Administrative Fees: TZS 1,118,000', total 5,828,000. The 1,570,000 here is 4,710,000 divided by the 3 years the document itself states; the source does not print a per-year tuition line. Year-by-year totals including admin fees are 1,988,000 / 1,970,000 / 1,870,000. Note also that UoI's schedule treats the LLB as a 3-year bachelor's, matching duration_years=3 in our record."
+    },
+    {
+      "code": "UI006",
+      "name": "Bachelor of Arts in Community Development",
+      "institution": "University of Iringa (UoI)",
+      "capacity": 300,
+      "what_is_it": "The study of how communities improve their own lives — working with local people to plan, run and evaluate projects in areas like water, health, income and education, and how to organise and fund them. Graduates work as community development officers in local government, with NGOs, and on donor-funded development programmes.",
+      "cost": {
+        "amount_tzs": 1570000,
+        "basis": "per_year",
+        "year": "2026/2027",
+        "source_url": "https://uoi.ac.tz/wp-content/uploads/2026/06/Revised-reviewed-FEE-STRUCTURE-FOR-UOI-ACADEMIC-YEAR-2026-2027.pdf"
+      },
+      "notes": "Same derived figure and caveat as UI002 — UoI publishes a single bachelor's-degree rate of TZS 4,710,000 tuition over 3 years, not a per-year line."
+    },
+    {
+      "code": "UD041",
+      "name": "Bachelor of Commerce in Accounting",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "capacity": 285,
+      "what_is_it": "A commerce degree specialising in accounting: alongside business, economics and finance you learn to prepare, audit and interpret financial statements, and how tax and cost control work. Graduates work as accountants, auditors and finance officers in companies, banks, government and NGOs, and often continue towards professional accountancy qualifications.",
+      "cost": {
+        "amount_tzs": 1500000,
+        "basis": "per_year",
+        "year": "current rate published on UDSM's undergraduate fees page as of 2026-07-25; the table itself states no academic year (the site's almanac and prospectus are 2025/2026)",
+        "source_url": "https://www.udsm.ac.tz/undergraduate/fees-funding"
+      },
+      "notes": "Row 'UDBS, UDSoL, CoICT — BCommerce (Accounting), LLB, BSc in Electronic Science and Communication, BSc in Computer Science ... — 1,500,000'. Note UDSM charges 1,300,000 for BCommerce in every other specialisation; accounting is in the higher band. Non-Tanzanian rate USD 3,500."
+    }
+  ],
+  "not_found": [
+    "IA007 (Bachelor of Accountancy, IAA) — no citable fee. iaa.ac.tz serves an incomplete TLS certificate chain so it cannot be fetched without disabling certificate verification, and every WebFetch attempt against iaa.ac.tz and accounts.iaa.ac.tz returned HTTP 503 across the session. A search engine surfaced two mutually inconsistent figures attributed to IAA (TZS 1,733,000 and TZS 4,200,000), one via a third-party document-sharing site, and neither could be verified against IAA's own pages or shown to be tuition rather than a total. Blank beats wrong. Retry when the site is reachable; the fee tables appear to live at https://iaa.ac.tz/bachelor-programmes and https://accounts.iaa.ac.tz/programmeDetails.",
+    "IA015 (Bachelor of Library Studies and Information Science, IAA) — same reason as IA007.",
+    "IA021 (Bachelor Degree in Marketing and Public Relations, IAA) — same reason as IA007.",
+    "UA001 (Bachelor of Arts with Education, University of Arusha) — uoa.ac.tz was serving a WordPress 'Database Error' page (HTTP 500) on every path tried, including the fee page https://uoa.ac.tz/fees/, throughout the session. Only third-party aggregator figures were available (one quoting TZS 1,495,000 from 2021/2022), which do not meet the sourcing bar. Retry when the site is back up."
+  ],
+  "open_flags_for_a_human": [
+    "Seven institutions publish a fee figure with no academic year attached to it: TEKU, SJUT, IFM, ARU and UDSM. These are recorded as 'not stated on source' plus the retrieval date rather than assumed to be 2025/26. If the UI is going to render a year next to the number, these five need confirming with the institution first.",
+    "SUA's published undergraduate fee schedule is the one approved in March 2019. It is what SUA links from its live fees page today, but a seven-year-old figure should be confirmed before a student plans around it.",
+    "OUT does not price by year at all — it charges per unit, and the prospectus quotes a whole-programme tuition total. Any UI that renders cost as 'per year' will misrepresent OUT's nine programmes unless it reads the `basis` field.",
+    "UoI publishes tuition only as a 3-year total; the per-year figure in this file is that total divided by three, and is marked as derived.",
+    "IF006 is 'Bachelor of Science in Tax Management' in the guidebook but 'Bachelor of Science in Taxation' on IFM's fee page. Same-programme match is by inference, not by a stated equivalence.",
+    "OU020's stored name is truncated to 'Bachelor of Business Administration in Human'. The OUT 2025/2026 prospectus gives it as 'Bachelor of Business Administration in Human Resource Management' — a free correction to the knowledge base.",
+    "MK002 (TUMA) and UI002 (UoI) are Bachelor of Laws recorded at 3 years, and both institutions' own fee sheets are indeed built around a 3-year LLB — consistent, but worth noting since 4-year LLBs are common elsewhere.",
+    "Every amount here is tuition only. Administrative fees, NHIF medical capitation (typically 50,400), accommodation, meals and books are billed separately and are a large share of what a student actually pays. Showing tuition alone as 'what it costs' would understate the real figure at every one of these institutions."
+  ]
+}
