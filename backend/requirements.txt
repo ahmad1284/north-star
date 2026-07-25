@@ -1,5 +1,5 @@
 # Pinned runtime dependencies for reproducible deploys.
-# These are the versions the 63-test suite is verified against.
+# These are the versions the test suite is verified against.
 # NOTE: this is a name-allowlisted freeze, not a full lock - a few transitive
 # deps (annotated-types, typing-inspection, annotated-doc) still float. For a
 # real deployment prefer: pip-compile --generate-hashes, installed with
