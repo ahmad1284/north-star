@@ -54,6 +54,7 @@ class Programme:
     duration_years: float | None
     checklist: dict[str, str | None]
     source: str
+    machine_parsed: bool = False  # extracted by script (vs human-curated)
 
 
 @dataclass(frozen=True)
@@ -109,6 +110,7 @@ class ProgrammeResult:
                 "duration_years": p.duration_years,
                 "checklist": p.checklist,
                 "source": p.source,
+                "machine_parsed": p.machine_parsed,
             },
             "eligible": self.eligible,
             "reasons": [r.to_dict() for r in self.reasons],

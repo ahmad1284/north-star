@@ -22,6 +22,10 @@
     { "id": "chinese", "name": "Chinese" },
     { "id": "divinity", "name": "Divinity / Islamic Knowledge" },
     { "id": "physical_education", "name": "Physical Education" },
-    { "id": "general_studies", "name": "General Studies" }
+    { "id": "general_studies", "name": "General Studies" },
+    { "id": "education", "name": "Education" },
+    { "id": "music", "name": "Music" },
+    { "id": "theatre_arts", "name": "Theatre Arts" },
+    { "id": "business_studies", "name": "Business Studies" }
   ]
 }

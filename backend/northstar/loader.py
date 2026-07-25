@@ -81,41 +81,55 @@ def _parse_slot(raw: dict, prog_id: str, known_subjects: set[str], grades: set[s
     return Slot(choose=choose, subjects=subjects, min_grade=min_grade)
 
 
+def _parse_programme(p: dict, known_subjects: set[str], grades: set[str]) -> Programme:
+    pid = p["id"]
+    if p["points_basis"] not in ("slots", "best_three"):
+        raise DataError(f"programme {pid}: bad points_basis '{p['points_basis']}'")
+    slots = tuple(_parse_slot(s, pid, known_subjects, grades) for s in p["slots"])
+    if not slots:
+        raise DataError(f"programme {pid}: no requirement slots")
+    return Programme(
+        id=pid,
+        code=p["code"],
+        name=p["name"],
+        institution=p["institution"],
+        location=p["location"],
+        tags=frozenset(p["tags"]),
+        requirement_text=p["requirement_text"],
+        slots=slots,
+        min_points=float(p["min_points"]),
+        points_basis=p["points_basis"],
+        additional_requirements=tuple(p.get("additional_requirements", [])),
+        capacity=p.get("capacity"),
+        duration_years=p.get("duration_years"),
+        checklist=p.get("checklist", {}),
+        source=p.get("source", ""),
+        machine_parsed=bool(p.get("machine_parsed", False)),
+    )
+
+
 def load_programmes(known_subjects: set[str], scale: GradeScale) -> list[Programme]:
-    raw = _read("programmes.json")
+    """Curated programmes plus machine-extracted ones (if present). Curated
+    entries always win on programme-code conflict — human judgement over
+    machine parsing."""
     grades = set(scale.points)
     programmes: list[Programme] = []
     seen_ids: set[str] = set()
-    for p in raw["programmes"]:
-        pid = p["id"]
-        if pid in seen_ids:
-            raise DataError(f"duplicate programme id: {pid}")
-        seen_ids.add(pid)
-        if p["points_basis"] not in ("slots", "best_three"):
-            raise DataError(f"programme {pid}: bad points_basis '{p['points_basis']}'")
-        slots = tuple(_parse_slot(s, pid, known_subjects, grades) for s in p["slots"])
-        if not slots:
-            raise DataError(f"programme {pid}: no requirement slots")
-        checklist = p.get("checklist", {})
-        programmes.append(
-            Programme(
-                id=pid,
-                code=p["code"],
-                name=p["name"],
-                institution=p["institution"],
-                location=p["location"],
-                tags=frozenset(p["tags"]),
-                requirement_text=p["requirement_text"],
-                slots=slots,
-                min_points=float(p["min_points"]),
-                points_basis=p["points_basis"],
-                additional_requirements=tuple(p.get("additional_requirements", [])),
-                capacity=p.get("capacity"),
-                duration_years=p.get("duration_years"),
-                checklist=checklist,
-                source=p.get("source", ""),
-            )
-        )
+    seen_codes: set[str] = set()
+    for source_file in ("programmes.json", "programmes_extracted.json"):
+        if source_file != "programmes.json" and not (DATA_DIR / source_file).exists():
+            continue
+        for p in _read(source_file)["programmes"]:
+            if p["id"] in seen_ids:
+                raise DataError(f"duplicate programme id: {p['id']}")
+            if p["code"] in seen_codes:
+                if source_file == "programmes.json":
+                    raise DataError(f"duplicate programme code: {p['code']}")
+                continue  # curated version already loaded; skip extracted twin
+            prog = _parse_programme(p, known_subjects, grades)
+            seen_ids.add(prog.id)
+            seen_codes.add(prog.code)
+            programmes.append(prog)
     return programmes
 
 
