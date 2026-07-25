@@ -1,0 +1,18 @@
+[project]
+name = "northstar-backend"
+version = "0.1.0"
+description = "North Star: course eligibility & fit backend for Tanzanian Form 6 graduates"
+requires-python = ">=3.10"
+dependencies = ["fastapi>=0.100", "uvicorn>=0.23"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "httpx>=0.24"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["northstar*"]
+
+[tool.setuptools.package-data]
+northstar = ["data/*.json"]

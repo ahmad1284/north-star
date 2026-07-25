@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 depends_on: [unit-02-engine]
 branch: claude/tanzania-career-guidance-murut8
 discipline: backend
@@ -16,9 +16,9 @@ Turn raw engine results into the grouped, ranked structure clients render: "For 
 heuristic; structured JSON-ready output with reasons carried through.
 
 ## Success Criteria
-- [ ] Documented, single-place tunable heuristic for discovery classification
-- [ ] Groups: for_you, discoveries, other_eligible (rich but organized — nothing hidden)
-- [ ] Ranked by strength within groups; ties stable
-- [ ] Tests: a PCB student gets health programmes in for_you and a non-obvious
+- [x] Documented, single-place tunable heuristic for discovery classification
+- [x] Groups: for_you, discoveries, other_eligible (rich but organized — nothing hidden)
+- [x] Ranked by strength within groups; ties stable
+- [x] Tests: a PCB student gets health programmes in for_you and a non-obvious
       strong-fit programme in discoveries
-- [ ] All tests pass
+- [x] All tests pass

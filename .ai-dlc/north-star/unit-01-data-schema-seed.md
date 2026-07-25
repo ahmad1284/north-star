@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 depends_on: []
 branch: claude/tanzania-career-guidance-murut8
 discipline: backend
@@ -18,9 +18,9 @@ representative subset of REAL programmes from the TCU 2026/27 guidebook
 rules, common combinations (PCB, PCM, EGM, HGE, HKL), and Zanzibar + mainland institutions.
 
 ## Success Criteria
-- [ ] JSON data files with a documented schema (README in data dir)
-- [ ] Canonical grade scale A=5 B=4 C=3 D=2 E=1 S=0.5 (F=0, fail)
-- [ ] ≥20 real programmes spanning every rule shape (defining-subjects points rule,
+- [x] JSON data files with a documented schema (README in data dir)
+- [x] Canonical grade scale A=5 B=4 C=3 D=2 E=1 S=0.5 (F=0, fail)
+- [x] ≥20 real programmes spanning every rule shape (defining-subjects points rule,
       per-subject grade floors, health harmonised rules)
-- [ ] Checklist fields present per programme; unknown values explicitly marked, never invented
-- [ ] Data loads and validates via a loader module with clear errors
+- [x] Checklist fields present per programme; unknown values explicitly marked, never invented
+- [x] Data loads and validates via a loader module with clear errors

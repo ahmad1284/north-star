@@ -1,5 +1,5 @@
 ---
-status: pending
+status: completed
 depends_on: [unit-03-ranking]
 branch: claude/tanzania-career-guidance-murut8
 discipline: backend
@@ -15,8 +15,8 @@ GET /programmes, GET /subjects + combinations (for clients to build input UIs), 
 Thin transport layer only — all logic stays in the core modules.
 
 ## Success Criteria
-- [ ] POST /match validates input (unknown subjects/grades → clear 422)
-- [ ] Response = grouped ranked JSON with reasons and checklist fields
-- [ ] Reference endpoints for subjects/combinations/programmes
-- [ ] Runnable locally (uvicorn), demonstrated via curl
-- [ ] API tests pass (happy path + validation errors)
+- [x] POST /match validates input (unknown subjects/grades → clear 422)
+- [x] Response = grouped ranked JSON with reasons and checklist fields
+- [x] Reference endpoints for subjects/combinations/programmes
+- [x] Runnable locally (uvicorn), demonstrated via curl
+- [x] API tests pass (happy path + validation errors)
