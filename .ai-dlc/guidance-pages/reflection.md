@@ -34,6 +34,27 @@ opposite meaning: a failure became the letter's method.
   that moved, and principle 1 ("unknown renders as —") now contradicted the product.
   Cheap to fix, misleading to leave.
 
+## Follow-up in the same cycle
+Ahmad: *"before asking the questions, i believe they should see the world of work circle
+first in its entirety as well."* Two changes:
+
+- **`/dunia-ya-kazi` became the whole map, not four words.** Fetched ACT's real structure
+  from davetgc.com — both axes as documented opposites, 6 clusters, all 26 job families
+  under their published A–Z names — and rendered it as inline SVG with Swahili glosses.
+  The 26 letters run counter-clockwise from 31° so each cluster lands beside the interest
+  it belongs to; get that offset wrong and the map misinforms.
+- **The journey is now ordered `barua` → `dunia-ya-kazi` → `maswali`** on every page. See
+  the field before narrowing it; the questions land differently after you've seen how much
+  of the world of work exists.
+
+Ahmad then asked why the map was drawn when the image was an input. Worth recording: the
+image was **never uploaded** — `inputs/references.md` had it as pending the whole time.
+The taxonomy is ACT's, used as-is; only the rendering is ours, and it was drawn because
+the client forbids external requests, the labels must be Swahili, and the original is ACT's
+copyrighted artwork. **The lesson is not the decision, it's the silence** — that reasoning
+should have been surfaced when made, not when challenged. If the image arrives, embedding
+it is a one-file change.
+
 ## What this changes about the roadmap
 R1 (gather cost/salary/insider data) is no longer a blocker for shipping — it is an
 enhancement. The tool is now honest and useful without it. The researched fee proposals

@@ -3,41 +3,66 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dunia ya kazi — North Star</title>
+<title>Dunia ya kazi — ramani nzima — North Star</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
 <style>
-  :root{
-    --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
-    --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#fff; --chip:#eef2f6;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
-           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; }
-  }
+  :root{--bg:#f7f8fa;--card:#fff;--ink:#1c2733;--muted:#5b6b7b;--line:#e3e8ee;
+    --accent:#0f6b5c;--accent-ink:#fff;--chip:#eef2f6;
+    --c0:#0f6b5c;--c1:#1d6a8f;--c2:#8a5a1e;--c3:#7a3f8f;--c4:#a8442f;--c5:#2f7d4f;}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#12181f;--card:#1a222b;--ink:#e8eef4;--muted:#93a3b3;--line:#2a3541;
+      --accent:#2fa08c;--chip:#232e3a;
+      --c0:#3fae97;--c1:#5aa8cf;--c2:#c9964a;--c3:#b183c4;--c4:#d97f68;--c5:#5fb883;}}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.65;
+  body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
     font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  .wrap{max-width:660px;margin:0 auto;padding:16px 16px 40px}
+  .wrap{max-width:680px;margin:0 auto;padding:16px 16px 40px}
   nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
   nav a{font-size:.85rem;text-decoration:none;color:var(--ink);background:var(--chip);
     border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
   nav a.here{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
   h1{font-size:1.4rem;margin:.4rem 0 .2rem}
-  .lede{color:var(--muted);font-size:.92rem;margin:0 0 20px}
+  .lede{color:var(--muted);font-size:.92rem;margin:0 0 18px}
   p{margin:0 0 1em}
-  .areas{display:grid;gap:12px;margin:18px 0 26px}
-  .area{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-  .area h3{margin:0 0 .3rem;font-size:1.05rem;display:flex;align-items:center;gap:8px}
-  .area .sw{color:var(--muted);font-weight:400;font-size:.9rem}
-  .area p{margin:.3rem 0 .5rem;font-size:.95rem}
-  .area .eg{font-size:.86rem;color:var(--muted)}
-  .area .eg b{color:var(--ink);font-weight:600}
+  figure{margin:0 0 8px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:10px 6px 4px}
+  svg{width:100%;height:auto;display:block}
+  .axis{font:600 13px system-ui;fill:var(--ink)}
+  .axis-sub{font:10px system-ui;fill:var(--muted)}
+  .quad{opacity:.10}
+  .ring{fill:none;stroke:var(--line);stroke-width:1}
+  .fam{stroke:var(--card);stroke-width:1.5}
+  .fl{font:700 11px system-ui;fill:#fff;text-anchor:middle}
+  .cl{font:600 9.5px system-ui;fill:var(--muted)}
+  .c0{fill:var(--c0)} .c1{fill:var(--c1)} .c2{fill:var(--c2)}
+  .c3{fill:var(--c3)} .c4{fill:var(--c4)} .c5{fill:var(--c5)}
+  figcaption{color:var(--muted);font-size:.8rem;text-align:center;padding:6px 8px 4px}
+  .axes-key{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 26px}
+  .ax{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+  .ax b{display:block;font-size:.95rem}
+  .ax span{color:var(--muted);font-size:.85rem}
+  h2{font-size:1.1rem;margin:28px 0 8px}
+  .cluster{margin:0 0 16px}
+  .cluster h3{font-size:1rem;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .dot{width:12px;height:12px;border-radius:50%;flex:none;display:inline-block}
+  .c0.dot{background:var(--c0)} .c1.dot{background:var(--c1)} .c2.dot{background:var(--c2)}
+  .c3.dot{background:var(--c3)} .c4.dot{background:var(--c4)} .c5.dot{background:var(--c5)}
+  .en-h{color:var(--muted);font-weight:400;font-size:.8rem}
+  ul.fams{list-style:none;padding:0;margin:0}
+  ul.fams li{display:flex;align-items:baseline;gap:8px;background:var(--card);
+    border:1px solid var(--line);border-radius:9px;padding:.45rem .65rem;margin-bottom:5px}
+  .k{width:1.5rem;height:1.5rem;border-radius:6px;color:#fff;font-weight:700;
+    font-size:.78rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+  .c0.k{background:var(--c0)} .c1.k{background:var(--c1)} .c2.k{background:var(--c2)}
+  .c3.k{background:var(--c3)} .c4.k{background:var(--c4)} .c5.k{background:var(--c5)}
+  .nm{font-size:.93rem}
+  .en{color:var(--muted);font-size:.78rem;margin-left:auto;text-align:right}
   .note{background:var(--chip);border:1px solid var(--line);border-radius:12px;
-    padding:14px 16px;font-size:.93rem;margin:24px 0}
+    padding:14px 16px;font-size:.93rem;margin:26px 0}
   .note a{color:var(--accent);font-weight:600}
-  h2{font-size:1.1rem;margin:26px 0 6px}
-  footer{color:var(--muted);font-size:.8rem;margin-top:30px;
-    border-top:1px solid var(--line);padding-top:12px}
+  .next{display:block;background:var(--accent);color:var(--accent-ink);text-decoration:none;
+    text-align:center;padding:.85rem;border-radius:12px;font-weight:700;margin:22px 0 0}
+  footer{color:var(--muted);font-size:.8rem;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
   footer a{color:var(--accent)}
 </style>
 </head>
@@ -46,74 +71,104 @@
   <nav>
     <a href="./">← Rudi kwenye kifaa</a>
     <a href="barua">Barua</a>
-    <a href="maswali">Maswali ya kuuliza</a>
     <a href="dunia-ya-kazi" class="here">Dunia ya kazi</a>
+    <a href="maswali">Maswali ya kuuliza</a>
   </nav>
 
-  <h1>Dunia ya kazi: njia nne</h1>
-  <p class="lede">Kuna maelfu ya kazi duniani. Lakini karibu zote zinaingia kwenye njia
-  nne tu. Ukijua njia yako, orodha ndefu inakuwa fupi.</p>
+  <h1>Dunia ya kazi: ramani nzima</h1>
+  <p class="lede">Kazi zote duniani zimepangwa hapa — <b>familia 26 za kazi</b>, kwenye
+  makundi 6, kuzunguka njia nne. Iangalie yote kabla ya kuamua.</p>
 
-  <p>Watafiti wa ACT walipanga kazi zote kwa kutumia swali moja rahisi:
-  <b>unafanya kazi zaidi na nini?</b> Sio "unapenda somo gani" — bali <i>siku yako ya
-  kazi inaonekanaje</i>.</p>
+  <figure>
+    <svg viewBox="0 0 400 400" role="img"
+         aria-label="Ramani ya dunia ya kazi: duara lenye njia nne (Takwimu, Watu, Mawazo, Vifaa) na familia 26 za kazi zilizopangwa kwa herufi A hadi Z.">
+      <!-- quadrant washes -->
+      <path d="M200,200 L200,58 A142,142 0 0,1 342,200 Z" class="quad c1"/>
+      <path d="M200,200 L342,200 A142,142 0 0,1 200,342 Z" class="quad c5"/>
+      <path d="M200,200 L200,342 A142,142 0 0,1 58,200 Z" class="quad c4"/>
+      <path d="M200,200 L58,200 A142,142 0 0,1 200,58 Z" class="quad c2"/>
+      <circle cx="200" cy="200" r="142" class="ring"/>
+      <circle cx="200" cy="200" r="104" class="ring"/>
+      <!-- axes -->
+      <line x1="200" y1="58" x2="200" y2="342" stroke="var(--line)"/>
+      <line x1="58" y1="200" x2="342" y2="200" stroke="var(--line)"/>
+      <text x="200" y="20" class="axis" text-anchor="middle">TAKWIMU</text>
+      <text x="200" y="32" class="axis-sub" text-anchor="middle">Data · namba, kumbukumbu</text>
+      <text x="200" y="380" class="axis" text-anchor="middle">MAWAZO</text>
+      <text x="200" y="392" class="axis-sub" text-anchor="middle">Ideas · ubunifu, nadharia</text>
+      <text x="374" y="197" class="axis" text-anchor="end">WATU</text>
+      <text x="374" y="209" class="axis-sub" text-anchor="end">People</text>
+      <text x="26" y="197" class="axis" text-anchor="start">VIFAA</text>
+      <text x="26" y="209" class="axis-sub" text-anchor="start">Things</text>
+      <!-- cluster labels -->
+<text y="133.7" class="cl" text-anchor="middle"><tspan x="248.3" dy="0">Uongozi</tspan><tspan x="248.3" dy="10.5">na mauzo</tspan></text>
+<text y="123.2" class="cl" text-anchor="middle"><tspan x="186.1" dy="0">Biashara</tspan></text>
+<text y="185.7" class="cl" text-anchor="middle"><tspan x="123.3" dy="0">Ufundi</tspan></text>
+<text y="274.4" class="cl" text-anchor="middle"><tspan x="176.6" dy="0">Sayansi</tspan></text>
+<text y="261.5" class="cl" text-anchor="middle"><tspan x="247.9" dy="0">Sanaa</tspan></text>
+<text y="199.9" class="cl" text-anchor="middle"><tspan x="277.8" dy="0">Huduma</tspan><tspan x="277.8" dy="10.5">za jamii</tspan></text>
+      <!-- 26 job families -->
+<circle cx="308.0" cy="135.1" r="12" class="fam c0"/><text x="308.0" y="139.1" class="fl">A</text>
+<circle cx="289.3" cy="111.1" r="12" class="fam c0"/><text x="289.3" y="115.1" class="fl">B</text>
+<circle cx="265.5" cy="92.3" r="12" class="fam c0"/><text x="265.5" y="96.3" class="fl">C</text>
+<circle cx="237.8" cy="79.8" r="12" class="fam c0"/><text x="237.8" y="83.8" class="fl">D</text>
+<circle cx="207.9" cy="74.3" r="12" class="fam c1"/><text x="207.9" y="78.3" class="fl">E</text>
+<circle cx="177.6" cy="76.0" r="12" class="fam c1"/><text x="177.6" y="80.0" class="fl">F</text>
+<circle cx="148.6" cy="85.0" r="12" class="fam c1"/><text x="148.6" y="89.0" class="fl">G</text>
+<circle cx="122.6" cy="100.6" r="12" class="fam c2"/><text x="122.6" y="104.6" class="fl">H</text>
+<circle cx="101.0" cy="122.0" r="12" class="fam c2"/><text x="101.0" y="126.0" class="fl">I</text>
+<circle cx="85.2" cy="148.0" r="12" class="fam c2"/><text x="85.2" y="152.0" class="fl">J</text>
+<circle cx="76.1" cy="177.0" r="12" class="fam c2"/><text x="76.1" y="181.0" class="fl">K</text>
+<circle cx="74.2" cy="207.3" r="12" class="fam c2"/><text x="74.2" y="211.3" class="fl">L</text>
+<circle cx="79.6" cy="237.2" r="12" class="fam c2"/><text x="79.6" y="241.2" class="fl">M</text>
+<circle cx="92.0" cy="264.9" r="12" class="fam c2"/><text x="92.0" y="268.9" class="fl">N</text>
+<circle cx="110.7" cy="288.9" r="12" class="fam c3"/><text x="110.7" y="292.9" class="fl">O</text>
+<circle cx="134.5" cy="307.7" r="12" class="fam c3"/><text x="134.5" y="311.7" class="fl">P</text>
+<circle cx="162.2" cy="320.2" r="12" class="fam c3"/><text x="162.2" y="324.2" class="fl">Q</text>
+<circle cx="192.1" cy="325.7" r="12" class="fam c3"/><text x="192.1" y="329.7" class="fl">R</text>
+<circle cx="222.4" cy="324.0" r="12" class="fam c3"/><text x="222.4" y="328.0" class="fl">S</text>
+<circle cx="251.4" cy="315.0" r="12" class="fam c4"/><text x="251.4" y="319.0" class="fl">T</text>
+<circle cx="277.4" cy="299.4" r="12" class="fam c4"/><text x="277.4" y="303.4" class="fl">U</text>
+<circle cx="299.0" cy="278.0" r="12" class="fam c4"/><text x="299.0" y="282.0" class="fl">V</text>
+<circle cx="314.8" cy="252.0" r="12" class="fam c5"/><text x="314.8" y="256.0" class="fl">W</text>
+<circle cx="323.9" cy="223.0" r="12" class="fam c5"/><text x="323.9" y="227.0" class="fl">X</text>
+<circle cx="325.8" cy="192.7" r="12" class="fam c5"/><text x="325.8" y="196.7" class="fl">Y</text>
+<circle cx="320.4" cy="162.8" r="12" class="fam c5"/><text x="320.4" y="166.8" class="fl">Z</text>
+    </svg>
+    <figcaption>Njia mbili zinazopingana: <b>Takwimu ↔ Mawazo</b>, na <b>Watu ↔ Vifaa</b>.
+    Kila kazi ipo mahali fulani kwenye duara hili.</figcaption>
+  </figure>
 
-  <div class="areas">
-    <div class="area">
-      <h3>💡 Mawazo <span class="sw">· Ideas</span></h3>
-      <p>Kufanya kazi na maneno, hesabu, sanaa, nadharia, ubunifu. Unatengeneza kitu
-      kipya au unaelewa kitu kigumu.</p>
-      <p class="eg">Mfano: <b>mwandishi, mbunifu (architect), mtaalamu wa hesabu,
-      mtafiti, msanii, mwanasheria wa kutunga hoja</b></p>
-    </div>
-    <div class="area">
-      <h3>🤝 Watu <span class="sw">· People</span></h3>
-      <p>Kusaidia, kufundisha, kutibu, kuuza, kuongoza. Siku yako imejaa watu, na
-      mafanikio yako yanategemea uhusiano.</p>
-      <p class="eg">Mfano: <b>daktari, mwalimu, muuguzi, mshauri, meneja,
-      mtaalamu wa maendeleo ya jamii</b></p>
-    </div>
-    <div class="area">
-      <h3>📊 Takwimu <span class="sw">· Data</span></h3>
-      <p>Kufanya kazi na namba, kumbukumbu, hesabu za fedha, taratibu. Unapanga
-      taarifa mpaka zieleweke.</p>
-      <p class="eg">Mfano: <b>mhasibu, mchumi, mtaalamu wa takwimu, benki,
-      ukaguzi, ugavi</b></p>
-    </div>
-    <div class="area">
-      <h3>🔧 Vifaa <span class="sw">· Things</span></h3>
-      <p>Kufanya kazi na mashine, vifaa, majengo, mimea, wanyama. Mwisho wa siku
-      kuna kitu unaweza kukigusa.</p>
-      <p class="eg">Mfano: <b>mhandisi, fundi, mkulima, daktari wa mifugo,
-      mtaalamu wa maabara, ujenzi</b></p>
-    </div>
+  <div class="axes-key">
+    <div class="ax"><b>💡 Mawazo</b><span>Maneno, hesabu, sanaa, nadharia. Unatengeneza au unaelewa.</span></div>
+    <div class="ax"><b>🤝 Watu</b><span>Kusaidia, kufundisha, kutibu, kuuza, kuongoza.</span></div>
+    <div class="ax"><b>📊 Takwimu</b><span>Namba, kumbukumbu, fedha, taratibu.</span></div>
+    <div class="ax"><b>🔧 Vifaa</b><span>Mashine, vifaa, majengo, mimea, wanyama.</span></div>
   </div>
 
-  <h2>Kozi nyingi ni mchanganyiko</h2>
-  <p>Udaktari ni <b>Watu</b> na <b>Vifaa</b>. Uhandisi ni <b>Vifaa</b> na <b>Mawazo</b>.
-  Uhasibu ni <b>Takwimu</b> na <b>Watu</b>. Hii ndio maana North Star inakuruhusu
-  kuchagua zaidi ya moja.</p>
-
-  <h2>Kwa nini hili linasaidia</h2>
-  <p>Wanafunzi wengi huchagua kozi kwa <i>jina</i> — kwa sababu inaheshimika, au kwa
-  sababu rafiki anasoma hiyo. Lakini utakaa kwenye kazi hiyo miaka thelathini, si
-  kwenye jina lake.</p>
-  <p>Mtu anayependa <b>Vifaa</b> akiingia kazi ya <b>Takwimu</b> atachoka — hata kama
-  mshahara ni mzuri, hata kama alipata alama za juu. Swali sio "naweza?" bali
-  "nitafurahia?"</p>
+  <h2>Familia zote 26 za kazi</h2>
+  <p style="color:var(--muted);font-size:.88rem;margin-top:-4px">Herufi zinalingana na duara hapo juu.</p>
+  <section class="cluster"><h3><span class="dot c0"></span>Uongozi na mauzo<span class="en-h">Administration and Sales</span></h3><ul class="fams"><li><span class="k c0">A</span><span class="nm">Huduma za ajira</span><span class="en">Employment-Related Services</span></li><li><span class="k c0">B</span><span class="nm">Masoko na mauzo</span><span class="en">Marketing & Sales</span></li><li><span class="k c0">C</span><span class="nm">Uongozi</span><span class="en">Management</span></li><li><span class="k c0">D</span><span class="nm">Udhibiti na ulinzi</span><span class="en">Regulation & Protection</span></li></ul></section>
+<section class="cluster"><h3><span class="dot c1"></span>Uendeshaji wa biashara<span class="en-h">Business Operations</span></h3><ul class="fams"><li><span class="k c1">E</span><span class="nm">Mawasiliano na kumbukumbu</span><span class="en">Communications & Records</span></li><li><span class="k c1">F</span><span class="nm">Miamala ya fedha</span><span class="en">Financial Transactions</span></li><li><span class="k c1">G</span><span class="nm">Usambazaji</span><span class="en">Distribution & Dispatching</span></li></ul></section>
+<section class="cluster"><h3><span class="dot c2"></span>Ufundi<span class="en-h">Technical</span></h3><ul class="fams"><li><span class="k c2">H</span><span class="nm">Usafirishaji</span><span class="en">Transport Operation & Related</span></li><li><span class="k c2">I</span><span class="nm">Kilimo na misitu</span><span class="en">Agriculture, Forestry & Related</span></li><li><span class="k c2">J</span><span class="nm">Kompyuta na taarifa</span><span class="en">Computer & Information Specialties</span></li><li><span class="k c2">K</span><span class="nm">Ujenzi na matengenezo</span><span class="en">Construction & Maintenance</span></li><li><span class="k c2">L</span><span class="nm">Ufundi wa mikono</span><span class="en">Crafts & Related</span></li><li><span class="k c2">M</span><span class="nm">Viwanda na usindikaji</span><span class="en">Manufacturing & Processing</span></li><li><span class="k c2">N</span><span class="nm">Mitambo na umeme</span><span class="en">Mechanical & Electrical Specialties</span></li></ul></section>
+<section class="cluster"><h3><span class="dot c3"></span>Sayansi na teknolojia<span class="en-h">Science and Technology</span></h3><ul class="fams"><li><span class="k c3">O</span><span class="nm">Uhandisi</span><span class="en">Engineering & Technologies</span></li><li><span class="k c3">P</span><span class="nm">Sayansi asilia</span><span class="en">Natural Science & Technologies</span></li><li><span class="k c3">Q</span><span class="nm">Teknolojia ya afya</span><span class="en">Medical Technologies</span></li><li><span class="k c3">R</span><span class="nm">Uchunguzi na matibabu</span><span class="en">Medical Diagnosis & Treatment</span></li><li><span class="k c3">S</span><span class="nm">Sayansi ya jamii</span><span class="en">Social Science</span></li></ul></section>
+<section class="cluster"><h3><span class="dot c4"></span>Sanaa<span class="en-h">Arts</span></h3><ul class="fams"><li><span class="k c4">T</span><span class="nm">Sanaa za kuona</span><span class="en">Applied Arts (Visual)</span></li><li><span class="k c4">U</span><span class="nm">Sanaa za maonyesho</span><span class="en">Creative & Performing Arts</span></li><li><span class="k c4">V</span><span class="nm">Sanaa za maandishi na usemi</span><span class="en">Applied Arts (Written & Spoken)</span></li></ul></section>
+<section class="cluster"><h3><span class="dot c5"></span>Huduma za jamii<span class="en-h">Social Service</span></h3><ul class="fams"><li><span class="k c5">W</span><span class="nm">Huduma za afya</span><span class="en">Health Care</span></li><li><span class="k c5">X</span><span class="nm">Elimu</span><span class="en">Education</span></li><li><span class="k c5">Y</span><span class="nm">Huduma za jamii</span><span class="en">Community Services</span></li><li><span class="k c5">Z</span><span class="nm">Huduma binafsi</span><span class="en">Personal Services</span></li></ul></section>
 
   <div class="note">
-    <p style="margin:0 0 .5rem"><b>North Star inatumia njia hizi nne.</b></p>
-    <p style="margin:0">Ukiziweka kwenye kifaa, tutakuonyesha pia <b>daraja</b> — kozi
-    unazozipenda ambazo bado hukidhi vigezo vyake, na kinachokosekana. Ni njia ya
-    kuona milango isiyokuwa mbele yako.</p>
-    <p style="margin:.7rem 0 0"><a href="./">→ Jaribu na matokeo yako</a></p>
+    <p style="margin:0 0 .5rem"><b>Umeiona yote. Sasa jiulize:</b></p>
+    <p style="margin:0">Herufi gani zilikuvutia? Je ni upande mmoja wa duara, au zimetawanyika?
+    Hilo linakuambia kitu kuhusu wewe ambacho alama zako haziwezi kukuambia.</p>
+    <p style="margin:.7rem 0 0">Kozi nyingi ni mchanganyiko: udaktari ni <b>Watu + Vifaa</b>,
+    uhandisi ni <b>Vifaa + Mawazo</b>, uhasibu ni <b>Takwimu + Watu</b>.</p>
   </div>
 
+  <a class="next" href="maswali">Sasa chukua maswali ya kuuliza →</a>
+
   <footer>
-    Njia nne zimetoka <a href="https://davetgc.com/Worldwork.htm" rel="noopener">World of
-    Work Map</a> ya ACT. Maelezo na mifano yamewekwa kwa mazingira ya Tanzania.
-    <a href="./">Rudi kwenye kifaa</a>
+    Ramani hii ni <a href="https://davetgc.com/Worldwork.htm" rel="noopener">World of Work Map</a>
+    ya ACT — familia 26 za kazi katika makundi 6. Maelezo ya Kiswahili na mifano yamewekwa
+    kwa mazingira ya Tanzania. <a href="./">Rudi kwenye kifaa</a>
   </footer>
 </div>
 </body>

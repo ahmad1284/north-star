@@ -7,7 +7,14 @@
 
 ## Pending file uploads
 - **TCU undergraduate handbook** — PDF (not yet uploaded). Source page: https://tcu.go.tz/services/admissions-coordination-and-database-management/admission-guidebooks/undergraduate
-- **"World of work"** — image (not yet uploaded). Link: https://davetgc.com/Worldwork.htm (site: https://davetgc.com/)
+- **"World of work"** — image (**still not uploaded**). Link: https://davetgc.com/Worldwork.htm (site: https://davetgc.com/)
+  - Interim: `web/dunia-ya-kazi.html` renders the map as inline SVG using ACT's own
+    structure fetched from that page — both axes as documented opposites, the 6 clusters,
+    all 26 job families under their real A–Z names, with Swahili glosses added. Drawn
+    rather than embedded because the client forbids external requests (test-enforced), the
+    labels must be in Swahili, and the original is ACT's copyrighted artwork.
+  - If the image is supplied, embed it as a data URI (keeps the no-external-requests rule)
+    and decide whether it replaces the SVG or sits above it.
 
 ## References & ideas provided
 - **careervillage.org** — reference product/site.
