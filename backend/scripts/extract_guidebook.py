@@ -58,6 +58,7 @@ SUBJECT_VARIANTS: dict[str, str] = {
     "accountancy": "accountancy",
     "accounting": "accountancy",
     "accounts": "accountancy",
+    "science and practice of agriculture": "agriculture",
     "agriculture": "agriculture",
     "food and human nutrition": "nutrition",
     "food and nutrition": "nutrition",
@@ -119,6 +120,23 @@ def norm(text: str) -> str:
     return text
 
 
+# Some subject NAMES contain the word "and" ("Science and Practice of
+# Agriculture", "Food and Human Nutrition"). Splitting a list on "and" would
+# tear them apart and make a choice-list look conjunctive, so protect them
+# first by collapsing them to an underscore form (also a valid lookup key).
+_AND_NAMES = sorted(
+    (v for v in SUBJECT_VARIANTS if " and " in v), key=len, reverse=True
+)
+SUBJECT_VARIANTS.update({v.replace(" ", "_"): SUBJECT_VARIANTS[v] for v in _AND_NAMES})
+
+
+def protect_names(text: str) -> str:
+    low = text.lower()
+    for name in _AND_NAMES:
+        low = low.replace(name, name.replace(" ", "_"))
+    return low
+
+
 def map_subject(item: str) -> str | None:
     item = norm(item).lower().strip(" .;:")
     item = re.sub(r"\bat a[- ]level\b", "", item).strip()
@@ -131,7 +149,7 @@ def map_subject(item: str) -> str | None:
 def parse_subject_list(text: str) -> list[str] | None:
     """Parse 'History, Geography, Kiswahili or English Language' -> ids.
     Returns None if any item is unrecognized."""
-    low = norm(text).lower()
+    low = protect_names(norm(text))
     low = re.sub(r"^(?:any\s+)?one of the following subjects?:?\s*", "", low)
     low = re.sub(r"^the following subjects?:?\s*", "", low)
     if any(p in low for p in POISON):
@@ -309,6 +327,11 @@ def parse_requirement(text: str) -> tuple[list[dict] | None, float | None, list[
 # and therefore never enforced. Only encoded when EVERY subject named is one we
 # model — enforcing a partial alternatives list would reject students who
 # actually satisfy the guidebook rule.
+# A sentence offering an O-level alternative ("... or a D in ordinary level
+# Mathematics") is only half-checkable: we never see O-level results, so
+# enforcing the A-level half alone would reject students who satisfy the rule.
+OLEVEL_ESCAPE_RE = re.compile(r"o-level|ordinary\s+level|o\s*'?\s*level", re.IGNORECASE)
+
 MUST_INCLUDE_RE = re.compile(
     r"\bone of the (?:two|three)\s+(?:principal|passes|principal level passes|principal passes)"
     r"[^.]*?\bmust be (?:in|a pass in)\s+(?P<list>[^.]+)",
@@ -328,6 +351,22 @@ PRINCIPAL_ONE_OF_RE = re.compile(
 FLOOR_ONE_OF_RE = re.compile(
     r"minimum of\s*[\"']?([A-E])[\"']?\s*grade\s+in\s+(?:either\s+)?(?P<list>[^.]+?)"
     r"\s*at\s*A-?\s?level",
+    re.IGNORECASE,
+)
+# "If one of the principal passes is not in Advanced Mathematics, an applicant
+#  must have a subsidiary pass in Basic Applied Mathematics"
+IF_NOT_MATCHED_RE = re.compile(
+    r"\bif one of the principal passes?\s*(?:do(?:es)? not include|is not(?: in)?|are not)\s*"
+    r"(?P<trigger>[^,]+?)[,.]?\s*(?:an?\s+)?applicant\s+(?:must have|MUST HAVE)\s*"
+    r"(?:at least\s+)?a?\s*subsidiary pass in\s*(?P<list>[^.]+)",
+    re.IGNORECASE,
+)
+# "at least C grade in Chemistry and at least D grade in Biology and E grade in
+#  Physics, Mathematics, Nutrition, Geography, or Agriculture"
+# Each clause is a separate holding requirement with its own floor.
+FLOOR_CLAUSE_RE = re.compile(
+    r"(?:minimum of\s*|at least\s*)?[\"']?([A-E])[\"']?\s*grades?\s+in\s+"
+    r"(?P<list>[^.]+?)(?=\s+and\s+(?:at least\s+|a\s+)?(?:minimum of\s*)?[\"']?[A-E][\"']?\s*grades?\s+in\b|\s*[.$]|$)",
     re.IGNORECASE,
 )
 
@@ -372,17 +411,56 @@ def extract_constraints(additional: list[str]) -> tuple[list[dict], list[str]]:
                         "min_grade": m.group(1).upper(), "source_text": s,
                     })
                     consumed = True
+        # Conditional: "if one of the principal passes is not X, need subsidiary in Y".
+        # Skip when there is an O-level escape clause — we can't check that half.
+        if not consumed and not OLEVEL_ESCAPE_RE.search(low):
+            m = IF_NOT_MATCHED_RE.search(low)
+            if m:
+                trig = parse_subject_list(m.group("trigger"))
+                subs = parse_subject_list(m.group("list"))
+                if trig and subs:
+                    constraints.append({
+                        "kind": "if_not_matched_subsidiary", "subjects": subs,
+                        "trigger_subjects": trig, "source_text": s,
+                    })
+                    consumed = True
+
+        # Multi-clause floors: "C grade in Chemistry and D grade in Biology and
+        # E grade in Physics, Maths, ..." -> one holding requirement per clause.
+        if not consumed and not OLEVEL_ESCAPE_RE.search(low):
+            clauses = FLOOR_CLAUSE_RE.findall(low)
+            if len(clauses) >= 2:
+                parsed = [(g, parse_subject_list(lst)) for g, lst in clauses]
+                if all(subs for _, subs in parsed):
+                    for grade, subs in parsed:
+                        constraints.append({
+                            "kind": "subsidiary_from", "subjects": subs,
+                            "min_grade": grade.upper(), "source_text": s,
+                        })
+                    consumed = True
+
         if not consumed:
             m = SUBSIDIARY_RE.search(low)
             # Only when the sentence has no O-level fallback clause ("subsidiary
             # OR an O-level grade" is not fully checkable), and only when the
             # alternatives are joined by "or" — "Physics and Mathematics" means
             # BOTH, and encoding it as a choice would be too permissive.
-            if m and not re.search(r"o-level", low, re.I):
+            if m and not OLEVEL_ESCAPE_RE.search(low):
                 raw_list = m.group("list")
-                is_choice = re.search(r"\bor\b|/", raw_list, re.I) or "," not in raw_list
                 subs = parse_subject_list(raw_list)
-                if subs and is_choice and not re.search(r"\band\b", raw_list, re.I):
+                # detect conjunction on the PROTECTED text, so "Science and
+                # Practice of Agriculture" isn't mistaken for an "and" list
+                protected = protect_names(raw_list)
+                has_or = bool(re.search(r"\bor\b|/", protected, re.I))
+                has_and = bool(re.search(r"\band\b", protected, re.I))
+                if subs and has_and and not has_or:
+                    # "Physics AND Mathematics" — both required
+                    constraints.append(
+                        {"kind": "subsidiary_all", "subjects": subs, "source_text": s}
+                    )
+                    consumed = True
+                elif subs and not has_and:
+                    # a choice list (or a single subject)
                     constraints.append(
                         {"kind": "subsidiary_from", "subjects": subs, "source_text": s}
                     )

@@ -115,6 +115,79 @@ def test_subsidiary_floor_is_enforced(kb):
     assert evaluate_programme(kb, ok, p).eligible
 
 
+# --- subsidiary_all (conjunctive) -------------------------------------------
+
+def test_subsidiary_all_requires_every_subject(kb):
+    p = _synthetic((Constraint("subsidiary_all", frozenset({"physics", "advanced_mathematics"})),))
+    partial = StudentProfile(grades={"chemistry": "A", "biology": "A", "physics": "S"})
+    r = evaluate_programme(kb, partial, p)
+    assert not r.eligible, "holding only one of an AND-list must not qualify"
+    assert any("missing" in x.detail.lower() for x in r.reasons if not x.ok)
+    both = StudentProfile(
+        grades={"chemistry": "A", "biology": "A", "physics": "S", "advanced_mathematics": "S"}
+    )
+    assert evaluate_programme(kb, both, p).eligible
+
+
+# --- if_not_matched_subsidiary (conditional) ---------------------------------
+
+def test_conditional_subsidiary_does_not_fire_when_trigger_is_used(kb):
+    """'If one of the passes is NOT Adv Maths, you need a subsidiary in it' —
+    a student who USES Adv Maths as a pass needs nothing extra."""
+    p = _synthetic((
+        Constraint("if_not_matched_subsidiary", frozenset({"basic_applied_mathematics"}),
+                   trigger_subjects=frozenset({"advanced_mathematics"})),
+    ))
+    student = StudentProfile(grades={"advanced_mathematics": "B", "physics": "B"})
+    r = evaluate_programme(kb, student, p)
+    assert r.eligible
+    assert any(x.rule == "conditional_subsidiary" and x.ok for x in r.reasons)
+
+
+def test_conditional_subsidiary_fires_when_trigger_absent(kb):
+    p = _synthetic((
+        Constraint("if_not_matched_subsidiary", frozenset({"basic_applied_mathematics"}),
+                   trigger_subjects=frozenset({"advanced_mathematics"})),
+    ))
+    without = StudentProfile(grades={"chemistry": "B", "physics": "B"})
+    assert not evaluate_programme(kb, without, p).eligible
+    with_bam = StudentProfile(
+        grades={"chemistry": "B", "physics": "B", "basic_applied_mathematics": "S"}
+    )
+    assert evaluate_programme(kb, with_bam, p).eligible
+
+
+def test_conditional_subsidiary_prefers_an_assignment_that_satisfies_it(kb):
+    """Regression: the rule is evaluated DURING assignment search. A student
+    holding the trigger subject must not be rejected just because the
+    highest-scoring assignment happened to leave it out."""
+    p = _synthetic((
+        Constraint("if_not_matched_subsidiary", frozenset({"basic_applied_mathematics"}),
+                   trigger_subjects=frozenset({"advanced_mathematics"})),
+    ))
+    # chemistry A + biology A scores highest but omits Adv Maths; the student
+    # has no Basic Applied Maths, so the engine must pick an assignment
+    # that uses Advanced Mathematics instead.
+    student = StudentProfile(
+        grades={"chemistry": "A", "biology": "A", "advanced_mathematics": "D"}
+    )
+    r = evaluate_programme(kb, student, p)
+    assert r.eligible, "a valid assignment using the trigger subject must be found"
+    assert "advanced_mathematics" in r.matched_subjects
+
+
+def test_unencodable_conditions_stay_conditional_not_enforced(kb):
+    """The 5 remaining prose conditions are unencodable for stated reasons
+    (3 truncated by the PDF, 2 with O-level escape clauses). They must surface
+    as `conditional`, never be silently enforced or silently dropped."""
+    truncated_or_olevel = {"AR003", "AR026", "JC007", "DM041", "DM045"}
+    present = {p.code for p in kb.programmes} & truncated_or_olevel
+    assert present, "expected these programmes in the knowledge base"
+    for code in present:
+        p = next(x for x in kb.programmes if x.code == code)
+        assert p.unverified_conditions, f"{code} must keep its condition visible"
+
+
 # --- data integrity ---------------------------------------------------------
 
 def test_constraints_validate_against_known_subjects(tmp_path, monkeypatch):

@@ -46,19 +46,31 @@ class Constraint:
       Physics or Chemistry or Biology"). The subject still counts toward the
       slots — this is a filter on the assignment, not an extra position.
     - ``subsidiary_from``: the student must hold a subsidiary (S) pass or better
-      in one of these subjects.
+      in ONE of these subjects (a *holding* requirement — the subject need not
+      count toward the slots).
+    - ``subsidiary_all``: the student must hold ALL of these subjects
+      (e.g. "a subsidiary pass in Physics **and** Mathematics").
+    - ``if_not_matched_subsidiary``: fires only when none of
+      ``trigger_subjects`` were used to satisfy the slots; then the student must
+      hold one of ``subjects`` (e.g. "if one of the principal passes is not
+      Advanced Mathematics, an applicant must have a subsidiary pass in it").
+      Evaluated during assignment search, so a student who can satisfy it by
+      choosing a different valid assignment is not wrongly rejected.
 
     Only encode a constraint when every alternative it names is a subject we
     model. If any alternative is unknown to us we cannot fairly enforce it —
     enforcing a partial list would reject students who satisfy the real rule.
     """
 
-    kind: str  # "must_include" | "subsidiary_from"
+    kind: str
     subjects: frozenset[str]
     source_text: str = ""
     # Optional grade floor: the qualifying subject must also meet this grade
     # (e.g. "a minimum of 'E' grade in either Chemistry or Geography").
     min_grade: str | None = None
+    # For ``if_not_matched_subsidiary``: the rule only fires when NONE of these
+    # subjects were used to satisfy the slots.
+    trigger_subjects: frozenset[str] = frozenset()
 
 
 @dataclass(frozen=True)

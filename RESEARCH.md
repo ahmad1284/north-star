@@ -62,25 +62,25 @@ blank one — a student may choose a life path on it.
 
 ---
 
-## R1b — Finish encoding the constraints still in prose
+## R1b — Constraints in prose — ✅ DONE (cycle 7)
 
-Cycle 6 moved cross-slot conditions out of prose and into enforced data
-(`must_include`, `subsidiary_from`), fixing a false-positive class where students were
-told they qualified when they did not. **13 programmes still carry an A-level condition
-in prose** (down from 25). They now surface as `conditional: true`, so nobody is misled —
-but they are not enforced. The remaining shapes:
+Cycles 6–7 moved every encodable cross-slot condition out of prose and into enforced
+data. **25 → 5 programmes**, and the remaining five are unencodable for stated reasons,
+not for want of effort:
 
-| Shape | Example | Why it's still prose |
-|---|---|---|
-| Conjunctive subsidiary | *"subsidiary pass in Physics **and** Mathematics"* | Needs an ALL variant; encoding as a choice would be too permissive |
-| Conditional rule | *"if one of the principal passes is not Advanced Mathematics, must have a subsidiary in it"* | Genuinely different logic: a rule that fires based on the assignment |
-| Multi-subject floors | *"C in Chemistry **and** D in Biology **and** E in Physics"* | One sentence, several different floors |
-| PDF-truncated | *"…subsidiary level pass in"* (sentence cut off) | Can't encode what isn't there — fix extraction first |
+| Programme | Why it cannot be encoded |
+|---|---|
+| AR003, AR026, DM045 | The PDF truncated the sentence mid-clause — the rule literally isn't in the document |
+| JC007, DM041 | Offer an O-level alternative ("…or a D in ordinary level Mathematics"). We never see O-level results, so enforcing only the A-level half would reject students who satisfy the real rule |
 
-**Careful:** each new shape must ship with a test proving it rejects the right students
-*and* accepts the right ones. The reviewer pass on cycle 6 caught a false negative where
-a *holding* requirement was encoded as an *assignment* requirement — see
-`data/README.md` for the distinction.
+All five surface as `conditional: true`. Constraint kinds now enforced: `must_include`,
+`subsidiary_from` (with optional floor), `subsidiary_all`, `if_not_matched_subsidiary`.
+Verified by sweeping the whole knowledge base in both error directions: **0 false
+positives, 0 false negatives**.
+
+**If you revisit this:** the O-level cases become encodable the day the tool collects
+O-level grades — which would be a product decision (more typing for the student) as much
+as an engineering one. The truncated ones need better PDF extraction first (R2).
 
 ## R2 — Triage the 311 quarantined rows
 

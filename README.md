@@ -47,6 +47,26 @@ uvicorn northstar.api:app               # http://127.0.0.1:8000
 
 No database, no build step, no API keys. One process.
 
+## Deploy it
+
+```bash
+docker build -t northstar .
+docker run -p 8000:8000 northstar        # API + client on :8000
+```
+
+One container, one process, no database, no secrets, no outbound calls at
+runtime — so it runs on the cheapest tier of anything that takes a container
+(Fly, Render, Railway, a $5 VPS). It listens on `$PORT` (default 8000), runs as
+a non-root user, and its healthcheck fails if the knowledge base doesn't load —
+a North Star serving zero programmes should look broken, not fine.
+
+Dependencies are pinned in `backend/requirements.txt`; CI (`.github/workflows/tests.yml`)
+runs the suite and separately re-validates the knowledge base on every push, so
+a corrupt rule file fails the build instead of reaching a student.
+
+Before putting it in front of strangers, read the limitations below — the
+engine is ready, the *course information* is not.
+
 ## Repository map
 
 ```
@@ -92,13 +112,22 @@ touching the engine.
 
 ## Where the project stands
 
-- **The API is done.** Engine, knowledge base, interests, bridge, and documentation are
-  complete and test-covered.
-- **The client exists** as a working reference implementation for real-student feedback.
-- **What remains is research**, not code — see **[RESEARCH.md](RESEARCH.md)**. The
-  highest-value open items are the ones the letter itself asks about: what a course
-  actually costs, how long until employment, what it pays, and what people already in it
-  say. None of that is in the guidebook; it has to be gathered.
+- **The engine is finished.** Every requirement shape the guidebook uses is now enforced
+  data, not prose: subject slots, grade floors, points thresholds, and cross-slot
+  constraints (`must_include`, `subsidiary_from`, `subsidiary_all`,
+  `if_not_matched_subsidiary`). 63 tests, swept in both error directions.
+- **It ships.** Dockerfile, pinned dependencies, CI, healthcheck.
+- **Five conditions remain unencodable** — three sentences the PDF truncated mid-clause,
+  two offering an O-level alternative we can't see. They surface as `conditional`
+  ("you qualify *if* …"), never as a plain yes.
+- **The course information is the gap.** Cost, time-to-employment, salary and insider
+  notes are empty for all programmes; descriptions exist for 30 of 362. These are the
+  letter's own questions and none of them are in the guidebook — they have to be
+  gathered. See **[RESEARCH.md](RESEARCH.md)** (R1).
+
+**Honest readiness call:** ready for a student *with you sitting beside them* (that's
+R4 — validation). Not yet ready for a stranger who finds it alone, because it answers
+"can I get in?" well and "should I go?" not at all.
 
 ## Picking this up later
 

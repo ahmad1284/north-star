@@ -1,0 +1,45 @@
+name: tests
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install (pinned runtime + test deps)
+        run: |
+          pip install -r backend/requirements.txt
+          pip install pytest httpx
+      - name: Run the suite
+        run: pytest -q
+        working-directory: backend
+
+  # The knowledge base is data, and data can rot. Verify it still loads and
+  # validates from a clean checkout — a broken rule file must fail the build,
+  # not reach a student.
+  knowledge-base:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r backend/requirements.txt
+      - name: Load and validate the knowledge base
+        working-directory: backend
+        run: |
+          python -c "
+          from northstar.loader import load_knowledge_base
+          kb = load_knowledge_base()
+          assert len(kb.programmes) > 300, f'only {len(kb.programmes)} programmes'
+          for p in kb.programmes:
+              assert p.source, f'{p.id} has no guidebook source'
+          print(f'OK: {len(kb.programmes)} programmes, {len({p.institution for p in kb.programmes})} institutions')
+          "

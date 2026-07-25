@@ -46,23 +46,39 @@ def _fits(kb: KnowledgeBase, subject: str, grade: str, slot: Slot) -> bool:
     return True
 
 
-def _satisfies_must_include(
+def _holds(kb: KnowledgeBase, profile: StudentProfile, subject: str, floor: str | None) -> bool:
+    """Student holds `subject` at `floor` or better (any pass if floor is None)."""
+    grade = profile.grades.get(subject)
+    if grade is None:
+        return False
+    return kb.scale.at_least(grade, floor) if floor else grade != "F"
+
+
+def _satisfies_assignment_constraints(
     kb: KnowledgeBase,
     profile: StudentProfile,
     assignment: tuple[str, ...],
     constraints: tuple[Constraint, ...],
 ) -> bool:
-    """Every must_include constraint is met by this particular assignment."""
+    """Constraints whose truth depends on WHICH subjects filled the slots.
+
+    Checked inside the assignment search so that a student who could satisfy
+    them by choosing a different valid assignment is never wrongly rejected.
+    """
     for c in constraints:
-        if c.kind != "must_include":
-            continue
-        ok = any(
-            s in c.subjects
-            and (c.min_grade is None or kb.scale.at_least(profile.grades[s], c.min_grade))
-            for s in assignment
-        )
-        if not ok:
-            return False
+        if c.kind == "must_include":
+            if not any(
+                s in c.subjects
+                and (c.min_grade is None or kb.scale.at_least(profile.grades[s], c.min_grade))
+                for s in assignment
+            ):
+                return False
+        elif c.kind == "if_not_matched_subsidiary":
+            # rule only fires if none of the trigger subjects were used
+            if set(assignment) & c.trigger_subjects:
+                continue
+            if not any(_holds(kb, profile, s, c.min_grade) for s in c.subjects):
+                return False
     return True
 
 
@@ -91,7 +107,7 @@ def _best_assignment(
             _fits(kb, subj, profile.grades[subj], pos) for subj, pos in zip(perm, positions)
         ):
             continue
-        if not _satisfies_must_include(kb, profile, perm, constraints):
+        if not _satisfies_assignment_constraints(kb, profile, perm, constraints):
             continue
         pts = sum(kb.scale.points_for(profile.grades[s]) for s in perm)
         if best is None or pts > best[0]:
@@ -145,18 +161,30 @@ def evaluate_programme(
         # deserves to know which wall they hit.
         if programme.constraints and _best_assignment(kb, profile, programme.slots):
             for c in programme.constraints:
-                if c.kind != "must_include":
-                    continue
                 names = ", ".join(sorted(kb.subjects[s] for s in c.subjects))
                 floor = f" at grade {c.min_grade} or better" if c.min_grade else ""
-                result.reasons.append(
-                    Reason(
-                        rule="must_include",
-                        ok=False,
-                        detail=f"At least one of your qualifying passes must be in: "
-                        f"{names}{floor}. " + (c.source_text or ""),
+                if c.kind == "must_include":
+                    result.reasons.append(
+                        Reason(
+                            rule="must_include",
+                            ok=False,
+                            detail=f"At least one of your qualifying passes must be in: "
+                            f"{names}{floor}. " + (c.source_text or ""),
+                        )
                     )
-                )
+                elif c.kind == "if_not_matched_subsidiary":
+                    triggers = ", ".join(
+                        sorted(kb.subjects[s] for s in c.trigger_subjects)
+                    )
+                    result.reasons.append(
+                        Reason(
+                            rule="conditional_subsidiary",
+                            ok=False,
+                            detail=f"Because none of your qualifying passes is in {triggers}, "
+                            f"you also need at least a subsidiary pass in: {names}. "
+                            + (c.source_text or ""),
+                        )
+                    )
         result.reasons.append(
             Reason(rule="overall", ok=False, detail="Subject requirements not met.")
         )
@@ -190,19 +218,10 @@ def evaluate_programme(
             # A holding requirement: the student must HAVE one of these
             # subjects at the required grade. It need not be one of the
             # passes counted toward the slots.
-            floor = c.min_grade
-            held = sorted(
-                s for s in c.subjects
-                if s in profile.grades
-                and (
-                    kb.scale.at_least(profile.grades[s], floor)
-                    if floor
-                    else profile.grades[s] != "F"
-                )
-            )
+            held = sorted(s for s in c.subjects if _holds(kb, profile, s, c.min_grade))
             ok = bool(held)
             constraints_ok = constraints_ok and ok
-            need = f"grade {floor} or better" if floor else "at least a subsidiary pass"
+            need = f"grade {c.min_grade} or better" if c.min_grade else "at least a subsidiary pass"
             result.reasons.append(
                 Reason(
                     rule="subsidiary_requirement",
@@ -212,6 +231,43 @@ def evaluate_programme(
                         f"which satisfies the requirement of {need}."
                         if ok
                         else f"Requires {need} in: {names}."
+                    ),
+                )
+            )
+        elif c.kind == "subsidiary_all":
+            # ALL of these subjects are required (e.g. "Physics AND Mathematics")
+            missing = sorted(
+                kb.subjects[s] for s in c.subjects if not _holds(kb, profile, s, c.min_grade)
+            )
+            ok = not missing
+            constraints_ok = constraints_ok and ok
+            need = f"grade {c.min_grade} or better" if c.min_grade else "at least a subsidiary pass"
+            result.reasons.append(
+                Reason(
+                    rule="subsidiary_all_requirement",
+                    ok=ok,
+                    detail=(
+                        f"You hold all the required subjects ({names}) at {need}."
+                        if ok
+                        else f"Requires {need} in ALL of: {names}. "
+                        f"You are missing: {', '.join(missing)}."
+                    ),
+                )
+            )
+        elif c.kind == "if_not_matched_subsidiary":
+            # Guaranteed by _best_assignment; recorded so the student sees why.
+            triggers = ", ".join(sorted(kb.subjects[s] for s in c.trigger_subjects))
+            used_trigger = bool(set(matched) & c.trigger_subjects)
+            result.reasons.append(
+                Reason(
+                    rule="conditional_subsidiary",
+                    ok=True,
+                    detail=(
+                        f"One of your qualifying passes is in {triggers}, so the extra "
+                        f"subsidiary requirement does not apply."
+                        if used_trigger
+                        else f"You hold the subsidiary pass in {names} required when none "
+                        f"of your qualifying passes is in {triggers}."
                     ),
                 )
             )

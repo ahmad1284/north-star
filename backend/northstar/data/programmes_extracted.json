@@ -2,8 +2,8 @@
  "description": "Machine-extracted from the TCU 2026/27 guidebook by scripts/extract_guidebook.py. Only cleanly parsed entries are included (see extraction_review.json for the rest). Curated programmes.json wins on any code conflict.",
  "stats": {
   "rows_found": 666,
-  "accepted": 326,
-  "needs_review": 311,
+  "accepted": 332,
+  "needs_review": 305,
   "curated_skipped": 30
  },
  "programmes": [
@@ -767,10 +767,17 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "In addition, an applicant must have at least a Subsidiary level pass in Physics and Mathematics at A-Level."
+   "constraints": [
+    {
+     "kind": "subsidiary_all",
+     "subjects": [
+      "physics",
+      "advanced_mathematics"
+     ],
+     "source_text": "In addition, an applicant must have at least a Subsidiary level pass in Physics and Mathematics at A-Level."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 30,
    "duration_years": 4.0,
    "checklist": {
@@ -848,10 +855,17 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "In addition, an applicant must have at least a subsidiary pass in Physics and Mathematics at A-Level."
+   "constraints": [
+    {
+     "kind": "subsidiary_all",
+     "subjects": [
+      "physics",
+      "advanced_mathematics"
+     ],
+     "source_text": "In addition, an applicant must have at least a subsidiary pass in Physics and Mathematics at A-Level."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 40,
    "duration_years": 4.0,
    "checklist": {
@@ -1068,6 +1082,47 @@
     "insider_notes": null
    },
    "source": "TCU 2026/27 guidebook, PDF p.41 (Arusha Technical College (ATC))",
+   "machine_parsed": true
+  },
+  {
+   "id": "wm003-bachelor-degree-in-environmental-and-waste-management",
+   "code": "WM003",
+   "name": "Bachelor Degree in Environmental and Waste Management",
+   "institution": "College of African Wildlife Management (CAWM)",
+   "location": "Mweka- Kilimanjaro",
+   "tags": [
+    "environment"
+   ],
+   "requirement_text": "Two principal passes in Biology, Chemistry, Physics, Geography, or Agriculture, Advanced Mathematics, Food and Human Nutrition or Computer Science.",
+   "slots": [
+    {
+     "choose": 2,
+     "from": [
+      "biology",
+      "chemistry",
+      "physics",
+      "geography",
+      "agriculture",
+      "advanced_mathematics",
+      "nutrition",
+      "computer_science"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [],
+   "capacity": 100,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.46 (College of African Wildlife Management (CAWM))",
    "machine_parsed": true
   },
   {
@@ -8083,10 +8138,37 @@
    ],
    "min_points": 6.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "In addition, an applicant must have at least C grade in Chemistry and at least D grade in Biology and E grade in Physics, Mathematics, Nutrition, Geography, or Agriculture."
+   "constraints": [
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "chemistry"
+     ],
+     "min_grade": "C",
+     "source_text": "In addition, an applicant must have at least C grade in Chemistry and at least D grade in Biology and E grade in Physics, Mathematics, Nutrition, Geography, or Agriculture."
+    },
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "biology"
+     ],
+     "min_grade": "D",
+     "source_text": "In addition, an applicant must have at least C grade in Chemistry and at least D grade in Biology and E grade in Physics, Mathematics, Nutrition, Geography, or Agriculture."
+    },
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "physics",
+      "advanced_mathematics",
+      "nutrition",
+      "geography",
+      "agriculture"
+     ],
+     "min_grade": "E",
+     "source_text": "In addition, an applicant must have at least C grade in Chemistry and at least D grade in Biology and E grade in Physics, Mathematics, Nutrition, Geography, or Agriculture."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 40,
    "duration_years": 4.0,
    "checklist": {
@@ -8269,6 +8351,54 @@
     "insider_notes": null
    },
    "source": "TCU 2026/27 guidebook, PDF p.217 (Sokoine University of Agriculture (SUA))",
+   "machine_parsed": true
+  },
+  {
+   "id": "su014-bachelor-of-science-in-environmental-science-and-management",
+   "code": "SU014",
+   "name": "Bachelor of Science in Environmental Science and Management",
+   "institution": "Sokoine University of Agriculture (SUA)",
+   "location": "Morogoro",
+   "tags": [
+    "environment",
+    "science"
+   ],
+   "requirement_text": "Two principal passes in Chemistry and one of the following subjects: Biology, Advanced Mathematics, Geography, Physics, Food and Nutrition or Agriculture. An applicant without a subsidiary pass in either Biology or Advanced Mathematics at A-Level must have a minimum of \"C\" grade in either Biology or Basic Mathematics at O-Level.",
+   "slots": [
+    {
+     "choose": 1,
+     "from": [
+      "chemistry"
+     ]
+    },
+    {
+     "choose": 1,
+     "from": [
+      "biology",
+      "advanced_mathematics",
+      "geography",
+      "physics",
+      "nutrition",
+      "agriculture"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [
+    "An applicant without a subsidiary pass in either Biology or Advanced Mathematics at A-Level must have a minimum of \"C\" grade in either Biology or Basic Mathematics at O-Level."
+   ],
+   "capacity": null,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.218 (Sokoine University of Agriculture (SUA))",
    "machine_parsed": true
   },
   {
@@ -8492,6 +8622,52 @@
    "machine_parsed": true
   },
   {
+   "id": "su031-bachelor-of-agricultural-investment-and-banking",
+   "code": "SU031",
+   "name": "Bachelor of Agricultural Investment and Banking",
+   "institution": "Sokoine University of Agriculture (SUA)",
+   "location": "Morogoro",
+   "tags": [
+    "business",
+    "agriculture"
+   ],
+   "requirement_text": "Two principal passes in the following subjects: Economics, Advanced Mathematics, Geography, Accountancy, Commerce, Physics, Chemistry, Food and Nutrition, Agriculture or Biology. In addition, an applicant must have a minimum of a \"D\" grade in Basic Mathematics at O-Level.",
+   "slots": [
+    {
+     "choose": 2,
+     "from": [
+      "economics",
+      "advanced_mathematics",
+      "geography",
+      "accountancy",
+      "commerce",
+      "physics",
+      "chemistry",
+      "nutrition",
+      "agriculture",
+      "biology"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [
+    "In addition, an applicant must have a minimum of a \"D\" grade in Basic Mathematics at O-Level."
+   ],
+   "capacity": 80,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.223 (Sokoine University of Agriculture (SUA))",
+   "machine_parsed": true
+  },
+  {
    "id": "su035-bachelor-of-science-in-wood-technologies-and-value-addition",
    "code": "SU035",
    "name": "Bachelor of Science in Wood Technologies and Value Addition",
@@ -8557,10 +8733,19 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "In addition, the applicant must have at least a subsidiary pass in one of the following subjects: Geography, Physics or Science and Practice of Agriculture or Advanced Mathematics."
+   "constraints": [
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "geography",
+      "physics",
+      "agriculture",
+      "advanced_mathematics"
+     ],
+     "source_text": "In addition, the applicant must have at least a subsidiary pass in one of the following subjects: Geography, Physics or Science and Practice of Agriculture or Advanced Mathematics."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 80,
    "duration_years": 3.0,
    "checklist": {
@@ -9091,10 +9276,20 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "If one of the principal passes is Not in Advanced Mathematics an applicant must have a subsidiary pass in Advanced Mathematics/Basic Applied Mathematics at A-Level."
+   "constraints": [
+    {
+     "kind": "if_not_matched_subsidiary",
+     "subjects": [
+      "advanced_mathematics",
+      "basic_applied_mathematics"
+     ],
+     "trigger_subjects": [
+      "advanced_mathematics"
+     ],
+     "source_text": "If one of the principal passes is Not in Advanced Mathematics an applicant must have a subsidiary pass in Advanced Mathematics/Basic Applied Mathematics at A-Level."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 70,
    "duration_years": 3.0,
    "checklist": {
@@ -12358,10 +12553,33 @@
    ],
    "min_points": 6.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "A minimum of \"C\" grade in Chemistry and \"D\" grade in Biology and at least E grade in Physics."
+   "constraints": [
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "chemistry"
+     ],
+     "min_grade": "C",
+     "source_text": "A minimum of \"C\" grade in Chemistry and \"D\" grade in Biology and at least E grade in Physics."
+    },
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "biology"
+     ],
+     "min_grade": "D",
+     "source_text": "A minimum of \"C\" grade in Chemistry and \"D\" grade in Biology and at least E grade in Physics."
+    },
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "physics"
+     ],
+     "min_grade": "E",
+     "source_text": "A minimum of \"C\" grade in Chemistry and \"D\" grade in Biology and at least E grade in Physics."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 200,
    "duration_years": 4.0,
    "checklist": {
@@ -12452,10 +12670,19 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "If one of the principal passes is not in Advanced Mathematics, an applicant must have a subsidiary pass in Basic Applied Mathematics."
+   "constraints": [
+    {
+     "kind": "if_not_matched_subsidiary",
+     "subjects": [
+      "basic_applied_mathematics"
+     ],
+     "trigger_subjects": [
+      "advanced_mathematics"
+     ],
+     "source_text": "If one of the principal passes is not in Advanced Mathematics, an applicant must have a subsidiary pass in Basic Applied Mathematics."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 80,
    "duration_years": 3.0,
    "checklist": {
@@ -12546,10 +12773,20 @@
    ],
    "min_points": 4.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "If one of the principal passes is not in Advanced Mathematics or Economics, an applicant must have a subsidiary pass in Basic Applied Mathematics."
+   "constraints": [
+    {
+     "kind": "if_not_matched_subsidiary",
+     "subjects": [
+      "basic_applied_mathematics"
+     ],
+     "trigger_subjects": [
+      "advanced_mathematics",
+      "economics"
+     ],
+     "source_text": "If one of the principal passes is not in Advanced Mathematics or Economics, an applicant must have a subsidiary pass in Basic Applied Mathematics."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 80,
    "duration_years": 3.0,
    "checklist": {
@@ -12886,6 +13123,53 @@
    "machine_parsed": true
   },
   {
+   "id": "dm027-bachelor-of-arts-in-economics",
+   "code": "DM027",
+   "name": "Bachelor of Arts in Economics",
+   "institution": "University of Dodoma (UDOM)",
+   "location": "Dodoma",
+   "tags": [
+    "economics"
+   ],
+   "requirement_text": "Two principal passes in the following subjects at A-Level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Basic Mathematics at O-Level.",
+   "slots": [
+    {
+     "choose": 2,
+     "from": [
+      "physics",
+      "chemistry",
+      "advanced_mathematics",
+      "biology",
+      "geography",
+      "economics",
+      "commerce",
+      "agriculture",
+      "nutrition",
+      "business_studies",
+      "accountancy",
+      "computer_science"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [
+    "If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Basic Mathematics at O-Level."
+   ],
+   "capacity": 60,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.333 (University of Dodoma (UDOM))",
+   "machine_parsed": true
+  },
+  {
    "id": "dm032-bachelor-of-arts-in-sociology",
    "code": "DM032",
    "name": "Bachelor of Arts in Sociology",
@@ -12968,9 +13252,12 @@
    "points_basis": "slots",
    "constraints": [
     {
-     "kind": "subsidiary_from",
+     "kind": "if_not_matched_subsidiary",
      "subjects": [
       "basic_applied_mathematics"
+     ],
+     "trigger_subjects": [
+      "advanced_mathematics"
      ],
      "source_text": "If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics."
     }
@@ -13021,9 +13308,12 @@
    "points_basis": "slots",
    "constraints": [
     {
-     "kind": "subsidiary_from",
+     "kind": "if_not_matched_subsidiary",
      "subjects": [
       "basic_applied_mathematics"
+     ],
+     "trigger_subjects": [
+      "advanced_mathematics"
      ],
      "source_text": "If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics"
     }
@@ -13093,6 +13383,54 @@
     "insider_notes": null
    },
    "source": "TCU 2026/27 guidebook, PDF p.340 (University of Dodoma (UDOM))",
+   "machine_parsed": true
+  },
+  {
+   "id": "dm041-bachelor-of-arts-in-environmental-economics-and-policy",
+   "code": "DM041",
+   "name": "Bachelor of Arts in Environmental Economics and Policy",
+   "institution": "University of Dodoma (UDOM)",
+   "location": "Dodoma",
+   "tags": [
+    "economics",
+    "environment"
+   ],
+   "requirement_text": "Two principal passes in the following subjects: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant must have at least a subsidiary pass in Advanced Mathematics or Basic Applied Mathematics or D in ordinary level Mathematics.",
+   "slots": [
+    {
+     "choose": 2,
+     "from": [
+      "physics",
+      "chemistry",
+      "advanced_mathematics",
+      "biology",
+      "geography",
+      "economics",
+      "commerce",
+      "agriculture",
+      "nutrition",
+      "business_studies",
+      "accountancy",
+      "computer_science"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [
+    "If one of the principal passes is not in Advanced Mathematics, an applicant must have at least a subsidiary pass in Advanced Mathematics or Basic Applied Mathematics or D in ordinary level Mathematics."
+   ],
+   "capacity": null,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.343 (University of Dodoma (UDOM))",
    "machine_parsed": true
   },
   {
@@ -13403,6 +13741,63 @@
    "constraints": [],
    "additional_requirements": [],
    "capacity": 70,
+   "duration_years": 3.0,
+   "checklist": {
+    "what_is_it": null,
+    "cost": null,
+    "time_to_employment": null,
+    "salary": null,
+    "insider_notes": null
+   },
+   "source": "TCU 2026/27 guidebook, PDF p.350 (University of Dodoma (UDOM))",
+   "machine_parsed": true
+  },
+  {
+   "id": "dm066-bachelor-of-commerce-in-procurement-and-logistics-management",
+   "code": "DM066",
+   "name": "Bachelor of Commerce in Procurement and Logistics Management",
+   "institution": "University of Dodoma (UDOM)",
+   "location": "Dodoma",
+   "tags": [
+    "business"
+   ],
+   "requirement_text": "Two principal passes in the following subjects: History, French, Geography, Kiswahili, Fasihi ya Kiswahili, English Language, Literature in English, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Mathematics, Agriculture, Computer Science, Chinese, Business Studies, Islamic Knowledge, Divinity or Food and Human Nutrition. ). If one of the Principal Passes is not in Mathematics, the applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics (BAM) or a D-grade in Mathematics at O-Level.",
+   "slots": [
+    {
+     "choose": 2,
+     "from": [
+      "history",
+      "french",
+      "geography",
+      "kiswahili",
+      "english_language",
+      "literature_in_english",
+      "arabic",
+      "fine_arts",
+      "economics",
+      "commerce",
+      "accountancy",
+      "physics",
+      "chemistry",
+      "biology",
+      "advanced_mathematics",
+      "agriculture",
+      "computer_science",
+      "chinese",
+      "business_studies",
+      "divinity",
+      "nutrition"
+     ]
+    }
+   ],
+   "min_points": 4.0,
+   "points_basis": "slots",
+   "constraints": [],
+   "additional_requirements": [
+    ").",
+    "If one of the Principal Passes is not in Mathematics, the applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics (BAM) or a D-grade in Mathematics at O-Level."
+   ],
+   "capacity": null,
    "duration_years": 3.0,
    "checklist": {
     "what_is_it": null,
@@ -14824,10 +15219,31 @@
    ],
    "min_points": 5.0,
    "points_basis": "slots",
-   "constraints": [],
-   "additional_requirements": [
-    "A minimum of D grades in Chemistry and Biology and at least E grade in Physics, Advanced Mathematics, Nutrition, Geography, Agriculture or Commerce."
+   "constraints": [
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "chemistry",
+      "biology"
+     ],
+     "min_grade": "D",
+     "source_text": "A minimum of D grades in Chemistry and Biology and at least E grade in Physics, Advanced Mathematics, Nutrition, Geography, Agriculture or Commerce."
+    },
+    {
+     "kind": "subsidiary_from",
+     "subjects": [
+      "physics",
+      "advanced_mathematics",
+      "nutrition",
+      "geography",
+      "agriculture",
+      "commerce"
+     ],
+     "min_grade": "E",
+     "source_text": "A minimum of D grades in Chemistry and Biology and at least E grade in Physics, Advanced Mathematics, Nutrition, Geography, Agriculture or Commerce."
+    }
    ],
+   "additional_requirements": [],
    "capacity": 70,
    "duration_years": 3.0,
    "checklist": {

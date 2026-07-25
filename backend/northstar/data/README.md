@@ -38,6 +38,8 @@ Two kinds, and picking the wrong one is a real bug (it happened once, see below)
 |---|---|---|
 | `must_include` | At least one of the subjects **counted toward the slots** must come from this set. The subject still fills a slot — this filters the assignment, it does not add a position. | *"One of the two principal passes must be in Physics or Chemistry."* |
 | `subsidiary_from` | The student must **hold** one of these subjects at `min_grade` (default: any pass, i.e. subsidiary `S` or better). It need **not** count toward the slots. | *"Must have at least a subsidiary pass in Advanced Mathematics."* · *"A minimum of 'E' grade in either Chemistry or Geography."* |
+| `subsidiary_all` | The student must hold **every** subject listed (not a choice). | *"A subsidiary pass in Physics **and** Mathematics."* |
+| `if_not_matched_subsidiary` | Fires **only** when none of `trigger_subjects` were used to fill the slots; then one of `subjects` must be held. Evaluated during assignment search. | *"If one of the principal passes is not Advanced Mathematics, an applicant must have a subsidiary pass in it."* |
 
 Getting this backwards makes a rule unsatisfiable: encoding a *holding* requirement as
 `must_include` rejects every student whenever the named subject isn't in the slot list —
@@ -48,9 +50,16 @@ Enforcing a partial alternatives list rejects students who satisfy the real rule
 why *"subsidiary in Advanced Mathematics **or** Basic Applied Mathematics"* could only be
 encoded once Basic Applied Mathematics existed in `subjects.json`.
 
-`must_include` is applied **during** the assignment search, not after it — picking the
-highest-scoring assignment first and then testing the constraint would reject a student
-who has a valid, lower-scoring one.
+`must_include` and `if_not_matched_subsidiary` are applied **during** the assignment
+search, not after it — picking the highest-scoring assignment first and then testing the
+constraint would reject a student who has a valid, lower-scoring one. (A student holding
+Advanced Mathematics at D must not be failed just because Chemistry A + Biology A scored
+higher and left it out.)
+
+**"and" inside a subject name is not a conjunction.** *"Science and Practice of
+Agriculture"* and *"Food and Human Nutrition"* are single subjects; the parser protects
+those names before splitting a list, otherwise a choice-list reads as conjunctive and the
+rule silently becomes stricter than the guidebook.
 
 ### Conditional eligibility
 

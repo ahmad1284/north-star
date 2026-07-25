@@ -81,7 +81,12 @@ def _parse_slot(raw: dict, prog_id: str, known_subjects: set[str], grades: set[s
     return Slot(choose=choose, subjects=subjects, min_grade=min_grade)
 
 
-CONSTRAINT_KINDS = ("must_include", "subsidiary_from")
+CONSTRAINT_KINDS = (
+    "must_include",
+    "subsidiary_from",
+    "subsidiary_all",
+    "if_not_matched_subsidiary",
+)
 
 # A prose condition that is advisory rather than a hard rule: it changes a
 # student's chances, not their eligibility, so it must not make a result
@@ -104,11 +109,18 @@ def _parse_constraint(
     min_grade = raw.get("min_grade")
     if min_grade is not None and grades is not None and min_grade not in grades:
         raise DataError(f"programme {prog_id}: constraint has unknown min_grade '{min_grade}'")
+    triggers = raw.get("trigger_subjects") or []
+    for s in triggers:
+        if s not in known_subjects:
+            raise DataError(f"programme {prog_id}: constraint trigger has unknown subject '{s}'")
+    if kind == "if_not_matched_subsidiary" and not triggers:
+        raise DataError(f"programme {prog_id}: if_not_matched_subsidiary needs trigger_subjects")
     return Constraint(
         kind=kind,
         subjects=frozenset(subjects),
         source_text=raw.get("source_text", ""),
         min_grade=min_grade,
+        trigger_subjects=frozenset(triggers),
     )
 
 

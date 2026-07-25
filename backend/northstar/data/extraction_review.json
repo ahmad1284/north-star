@@ -254,16 +254,7 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Biology, Chemistry, Physics, Geography, or Agriculture, Advanced Mathematics, Food and Human Nutrition or Computer Science'",
-   "page": 46,
-   "institution": "College of African Wildlife Management (CAWM)",
-   "code": "WM003",
-   "name": "Bachelor Degree in Environmental and Waste Management",
-   "requirement_text": "Two principal passes in Biology, Chemistry, Physics, Geography, or Agriculture, Advanced Mathematics, Food and Human Nutrition or Computer Science.",
-   "points_cell": "4.0"
-  },
-  {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Biology, Chemistry, Physics, Geography, Agriculture, Computer Science, English Language, Food and Human Nutrition, or Advanced Mathematics'",
+   "why": "no tags inferrable from name (interest mapping would fail)",
    "page": 46,
    "institution": "College of African Wildlife Management (CAWM)",
    "code": "WM004",
@@ -1118,7 +1109,7 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: English, History, Kiswahili, Geography, Agriculture, Economics, Commerce, Accounts, Arabic, Food and Nutrition, Biology, Chemistry or Physics'",
+   "why": "no tags inferrable from name (interest mapping would fail)",
    "page": 158,
    "institution": "Mwalimu Nyerere Memorial Academy (MNMA)",
    "code": "MN011",
@@ -1649,15 +1640,6 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Chemistry and one of the following subjects: Biology, Advanced Mathematics, Geography, Physics, Food and Nutrition or Agriculture'",
-   "page": 218,
-   "institution": "Sokoine University of Agriculture (SUA)",
-   "code": "SU014",
-   "name": "Bachelor of Science in Environmental Science and Management",
-   "requirement_text": "Two principal passes in Chemistry and one of the following subjects: Biology, Advanced Mathematics, Geography, Physics, Food and Nutrition or Agriculture. An applicant without a subsidiary pass in either Biology or Advanced Mathematics at A-Level must have a minimum of \"C\" grade in either Biology or Basic Mathematics at O-Level.",
-   "points_cell": "4.0"
-  },
-  {
    "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Chemistry and Biology and a subsidiary pass in one of the following subjects: Geography, Physics or Agriculture or Advanced Mathematics'",
    "page": 219,
    "institution": "Sokoine University of Agriculture (SUA)",
@@ -1694,7 +1676,7 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in any of the following subjects: History, Kiswahili, English, Economics, Accountancy, Nutrition, Biology, Chemistry, Physics, Geography, Advanced Mathematics, Computer Science or Science and Practice of Agriculture'",
+   "why": "no tags inferrable from name (interest mapping would fail)",
    "page": 222,
    "institution": "Sokoine University of Agriculture (SUA)",
    "code": "SU029",
@@ -1709,15 +1691,6 @@
    "code": "SU030",
    "name": "Bachelor of Community Development",
    "requirement_text": "Two principal passes in the following subjects: History, Geography, Economics, Biology, Chemistry, Agriculture, Accountancy, Commerce, Kiswahili,EnglishLanguage,Advanced Mathematics or Physics.",
-   "points_cell": "4.0"
-  },
-  {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: Economics, Advanced Mathematics, Geography, Accountancy, Commerce, Physics, Chemistry, Food and Nutrition, Agriculture or Biology'",
-   "page": 223,
-   "institution": "Sokoine University of Agriculture (SUA)",
-   "code": "SU031",
-   "name": "Bachelor of Agricultural Investment and Banking",
-   "requirement_text": "Two principal passes in the following subjects: Economics, Advanced Mathematics, Geography, Accountancy, Commerce, Physics, Chemistry, Food and Nutrition, Agriculture or Biology. In addition, an applicant must have a minimum of a \"D\" grade in Basic Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
@@ -2423,15 +2396,6 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects at A-Level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science'",
-   "page": 333,
-   "institution": "University of Dodoma (UDOM)",
-   "code": "DM027",
-   "name": "Bachelor of Arts in Economics",
-   "requirement_text": "Two principal passes in the following subjects at A-Level: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant MUST HAVE at least a subsidiary pass in Basic Applied Mathematics or a minimum of \"D\" grade in Basic Mathematics at O-Level.",
-   "points_cell": "4.0"
-  },
-  {
    "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Geography and one from thefollowingsubjects:History,Economics,Agriculture ,Chemistry,Mathematics,Physics or Biology'",
    "page": 334,
    "institution": "University of Dodoma (UDOM)",
@@ -2486,15 +2450,6 @@
    "points_cell": "4.0"
   },
   {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science'",
-   "page": 343,
-   "institution": "University of Dodoma (UDOM)",
-   "code": "DM041",
-   "name": "Bachelor of Arts in Environmental Economics and Policy",
-   "requirement_text": "Two principal passes in the following subjects: Physics, Chemistry, Advanced Mathematics, Biology, Geography, Economics, Commerce, Agriculture, Food and Human Nutrition, Business Studies, Accountancy, Computer Science. If one of the principal passes is not in Advanced Mathematics, an applicant must have at least a subsidiary pass in Advanced Mathematics or Basic Applied Mathematics or D in ordinary level Mathematics.",
-   "points_cell": "4.0"
-  },
-  {
    "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in Geography and in one of the following subjects: Economics, Agriculture, Physics, Mathematics, Chemistry, Biology, and Computer Sciences'",
    "page": 343,
    "institution": "University of Dodoma (UDOM)",
@@ -2546,15 +2501,6 @@
    "code": "DM064",
    "name": "Bachelor of Science in Petroleum Engineering",
    "requirement_text": "Two principal passes in Advanced Mathematics and Physics and at least a subsidiary pass in Chemistry. Those without a principal or subsidiary pass in Chemistry MUST HAVE at least a \"D\" grade in Chemistry at O-Level.",
-   "points_cell": "4.0"
-  },
-  {
-   "why": "requirement not cleanly parsed: no pattern matched: 'Two principal passes in the following subjects: History, French, Geography, Kiswahili, Fasihi ya Kiswahili, English Language, Literature in English, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Mathematics, Agriculture, Computer Science, Chinese, Business Studies, Islamic Knowledge, Divinity or Food and Human Nutrition'",
-   "page": 350,
-   "institution": "University of Dodoma (UDOM)",
-   "code": "DM066",
-   "name": "Bachelor of Commerce in Procurement and Logistics Management",
-   "requirement_text": "Two principal passes in the following subjects: History, French, Geography, Kiswahili, Fasihi ya Kiswahili, English Language, Literature in English, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Mathematics, Agriculture, Computer Science, Chinese, Business Studies, Islamic Knowledge, Divinity or Food and Human Nutrition. ). If one of the Principal Passes is not in Mathematics, the applicant MUST HAVE a subsidiary pass in Basic Applied Mathematics (BAM) or a D-grade in Mathematics at O-Level.",
    "points_cell": "4.0"
   },
   {
