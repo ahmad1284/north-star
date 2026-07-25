@@ -106,14 +106,20 @@
 </div>
 
 <script>
+// Where the North Star API lives. Empty = same origin (the backend serves this
+// page at /). Set window.NORTH_STAR_API before this script — or edit here — to
+// point the client at an API hosted elsewhere, e.g. "http://127.0.0.1:8000".
+const API = (window.NORTH_STAR_API ?? '').replace(/\/$/, '');
+const url = path => API ? `${API}/${path}` : path;
+
 const state = { grades:{}, interests:new Set(), ref:null };
 const $ = s => document.querySelector(s);
 
 async function boot(){
   const [sub, com, int_] = await Promise.all([
-    fetch('subjects').then(r=>r.json()),
-    fetch('combinations').then(r=>r.json()),
-    fetch('interests').then(r=>r.json()),
+    fetch(url('subjects')).then(r=>r.json()),
+    fetch(url('combinations')).then(r=>r.json()),
+    fetch(url('interests')).then(r=>r.json()),
   ]);
   state.ref = { subjects:Object.fromEntries(sub.subjects.map(s=>[s.id,s.name])),
                 grades:sub.grades, combos:com.combinations, areas:int_.areas };
@@ -180,7 +186,7 @@ $('#f').onsubmit = async (e)=>{
   try{
     const body = { grades };
     if(state.interests.size) body.interests=[...state.interests];
-    const r = await fetch('match',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+    const r = await fetch(url('match'),{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
     const data = await r.json();
     if(!r.ok){ out.innerHTML = `<p class="err">${(data.detail||[]).join('; ')||'Hitilafu.'}</p>`; return; }
     render(data, out);
@@ -242,7 +248,12 @@ function card(r){
     </div>`;
   return det;
 }
-boot();
+boot().catch(err => {
+  $('#out').innerHTML = `<p class="err">Haiwezi kufikia API (${err}). ` +
+    `Washa backend: <code>uvicorn northstar.api:app</code>, kisha fungua ` +
+    `<a href="http://127.0.0.1:8000/">127.0.0.1:8000</a> — au weka ` +
+    `<code>window.NORTH_STAR_API</code>.</p>`;
+});
 </script>
 </body>
 </html>

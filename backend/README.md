@@ -17,10 +17,14 @@ pytest                      # full suite
 uvicorn northstar.api:app   # serves on http://127.0.0.1:8000
 ```
 
-**Open http://127.0.0.1:8000/ for the built-in web client** — a single
-self-contained, mobile-first page (Swahili + English) served by the API
-itself: pick a combination, tap grades, optionally pick interests, and get
-the grouped results with explanations, the bridge, and provenance badges.
+The API also serves the reference web client at **http://127.0.0.1:8000/** as a
+convenience. That client is a **separate deliverable** living in [`web/`](../web/)
+— the API is complete without it, and `/` returns 404 (with the path it looked
+in) if no client is present. Set `NORTH_STAR_WEB_DIR` to serve one from
+elsewhere.
+
+CORS is permissive (`*`): the API serves public, read-only data and accepts no
+credentials, so a client hosted on another origin works without configuration.
 
 **Interactive API docs are built in** (FastAPI): with the server running, open
 
@@ -143,7 +147,12 @@ backend/
     data/         # the knowledge base (JSON) — see data/README.md for the schema
     loader.py     # load + validate the knowledge base
     engine.py     # eligibility + strength (pure core)
-    ranking.py    # For you / Discoveries grouping
+    ranking.py    # For you / Discoveries / Bridge grouping
     api.py        # FastAPI transport (thin)
-  tests/          # loader, engine, ranking, API, and persona sanity tests
+  scripts/        # extract_guidebook.py — PDF → structured programme data
+  tests/          # loader, engine, ranking, interests, pipeline, API, client,
+                  # and six student personas as regressions
 ```
+
+Clients live outside this directory (`web/`). Project overview and the open
+research agenda are in the repo root: `README.md` and `RESEARCH.md`.

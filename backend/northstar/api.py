@@ -4,9 +4,11 @@ modules (loader/engine/ranking), which stay importable without any web stack.
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
@@ -22,6 +24,16 @@ app = FastAPI(
     description="Course eligibility & fit for Tanzanian Form 6 graduates. "
     "Deterministic, explainable expert system over TCU guidebook data.",
     version="0.1.0",
+)
+
+# The API serves public, read-only reference data and takes no credentials, so
+# any client origin may call it — a client hosted apart from the API (or opened
+# from disk) still works.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
 )
 
 
@@ -41,13 +53,25 @@ class MatchRequest(BaseModel):
     )
 
 
-_CLIENT = Path(__file__).parent / "static" / "index.html"
+# Clients live outside this package (see web/). The API is complete without
+# them; serving the bundled one is a convenience for local use and demos.
+# NORTH_STAR_WEB_DIR overrides the location (e.g. when deployed separately).
+_WEB_DIR = Path(
+    os.environ.get("NORTH_STAR_WEB_DIR", Path(__file__).resolve().parents[2] / "web")
+)
 
 
 @app.get("/", include_in_schema=False)
 def client() -> FileResponse:
-    """The thin web client — a single static page over this same API."""
-    return FileResponse(_CLIENT, media_type="text/html")
+    """Serve the bundled web client, if one is present next to the backend."""
+    page = _WEB_DIR / "index.html"
+    if not page.is_file():
+        raise HTTPException(
+            status_code=404,
+            detail="No web client found. The API itself is at /docs. "
+            f"Looked in {_WEB_DIR} (override with NORTH_STAR_WEB_DIR).",
+        )
+    return FileResponse(page, media_type="text/html")
 
 
 @app.get("/health")
