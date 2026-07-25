@@ -430,6 +430,171 @@
       "source": "TCU 2026/27 guidebook, p.20 (ARU)"
     },
     {
+      "id": "ifm-bachelor-of-accounting",
+      "code": "IF001",
+      "name": "Bachelor of Accounting",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Professional accounting at Tanzania's finance-focused institute.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.81 (IFM)"
+    },
+    {
+      "id": "ifm-banking-and-finance",
+      "code": "IF002",
+      "name": "Bachelor of Banking and Finance",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 250,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Banking operations and financial services.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.81 (IFM)"
+    },
+    {
+      "id": "ifm-bsc-information-technology",
+      "code": "IF003",
+      "name": "Bachelor of Science in Information Technology",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["ict"],
+      "requirement_text": "Two principal passes, one in Physics, Chemistry or Advanced Mathematics and one in: Biology, Geography, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 1, "from": ["physics", "chemistry", "advanced_mathematics"] },
+        { "choose": 1, "from": ["biology", "geography", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "IT systems with a finance-sector orientation.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.82 (IFM)"
+    },
+    {
+      "id": "ifm-insurance-risk-management",
+      "code": "IF004",
+      "name": "Bachelor of Science in Insurance and Risk Management",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Insurance, actuarial basics and organisational risk.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.82 (IFM)"
+    },
+    {
+      "id": "mzumbe-public-sector-accounting",
+      "code": "MU001",
+      "name": "Bachelor of Public Sector Accounting and Finance",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "If no principal pass in Advanced Mathematics, Economics, Accountancy, Chemistry or Physics: must have a subsidiary pass in Basic Applied Mathematics at A-level AND minimum 'C' in Mathematics, Book-Keeping or Physics at O-Level."
+      ],
+      "capacity": 140,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Accounting and finance for government and public institutions.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.165 (Mzumbe)"
+    },
+    {
+      "id": "mzumbe-bachelor-of-laws",
+      "code": "MU006",
+      "name": "Bachelor of Laws (LL.B)",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["law"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without principal or subsidiary passes in English and History must have minimum 'C' grade in English and History at O-Level."
+      ],
+      "capacity": 200,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Law degree — route to advocacy, corporate counsel, judiciary.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.166 (Mzumbe)"
+    },
+    {
+      "id": "mzumbe-public-administration",
+      "code": "MU008",
+      "name": "Bachelor of Public Administration",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["social", "business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary at A-Level.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 140,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Managing public institutions and policy implementation.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.166 (Mzumbe)"
+    },
+    {
+      "id": "udsm-bachelor-of-laws",
+      "code": "UD053",
+      "name": "Bachelor of Laws (LL.B)",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["law"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": [
+        "Applicants without principal passes in History and English must meet the stated O-Level conditions (see guidebook)."
+      ],
+      "capacity": 150,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Law at Tanzania's oldest law faculty.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.299 (UDSM)"
+    },
+    {
       "id": "aru-bsc-interior-design",
       "code": "AR002",
       "name": "Bachelor of Science in Interior Design",

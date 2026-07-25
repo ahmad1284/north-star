@@ -56,8 +56,12 @@ def rank_and_group(
         else:
             other.append(r)
 
-    # Rank by strength; stable tiebreak by programme name for determinism.
-    key = lambda r: (-r.strength, r.programme.name)
+    # Rank by the admission points the student brings to each programme's
+    # defining subjects — TCU's own currency, not an invented weighting. This
+    # rewards programmes that use MORE of the student's strengths (14 points
+    # into Medicine outranks 10 points into a two-subject programme).
+    # Strength breaks ties; programme name keeps ordering deterministic.
+    key = lambda r: (-r.matched_points, -r.strength, r.programme.name)
     for group in (for_you, discoveries, other):
         group.sort(key=key)
 

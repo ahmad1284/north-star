@@ -13,7 +13,7 @@ carries its source page).
 ```bash
 cd backend
 pip install -e .[dev]
-pytest                      # 30 tests
+pytest                      # full suite (run from backend/)
 uvicorn northstar.api:app   # serves on http://127.0.0.1:8000
 ```
 
@@ -104,16 +104,17 @@ Errors: invalid input → `422` with a list of problems
 3. **Grouping** — programmes in areas typical for the student's combination →
    **For you**; strong fits outside those areas → **Discoveries**; the rest →
    **Other eligible**. Thresholds are tunables at the top of `ranking.py`.
+4. **Ranking within groups** — by `matched_points`, the admission points the
+   student brings to that programme's defining subjects (TCU's own currency):
+   14 points into Medicine outranks 10 points into a two-subject programme.
+   Strength breaks ties.
 
 Known limitations (deliberate, documented):
 - `additional_requirements` (O-level conditions, fitness tests) are surfaced
   to the user but not machine-evaluated — the MVP input is A-level only.
-- Strength is relative to each programme's own requirements, so a programme
-  asking for 2 subjects can outrank one asking for 3 for a straight-A student.
-  Open tuning question, tracked in the PR discussion.
-- The seed covers 22 real programmes across 5 institutions; business-heavy
-  combinations (ECA) currently see few options — a data-breadth artifact, not
-  the real market. More transcription widens it.
+- The seed covers 30 real programmes across 8 institutions (SUZA, MUHAS,
+  UDSM, SUA, ARU, IFM, Mzumbe) — representative, not complete. More
+  transcription widens it; the schema absorbs it without code changes.
 
 ## Layout
 

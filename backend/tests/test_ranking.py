@@ -33,11 +33,20 @@ def test_strong_pcb_student_for_you_and_discoveries(kb):
     assert counts["eligible"] == counts["for_you"] + counts["discoveries"] + counts["other_eligible"]
 
 
-def test_groups_ranked_by_strength(kb):
+def test_groups_ranked_by_matched_points_then_strength(kb):
     out = grouped(kb, {"physics": "C", "chemistry": "A", "biology": "B"})
     for group in out["groups"].values():
-        strengths = [r["strength"] for r in group]
-        assert strengths == sorted(strengths, reverse=True)
+        keys = [(-r["matched_points"], -r["strength"]) for r in group]
+        assert keys == sorted(keys)
+
+
+def test_three_subject_programme_outranks_two_subject_for_strong_student(kb):
+    """Regression: MD (uses 3 strong subjects, 14 pts) must rank above
+    Agriculture (uses 2, 10 pts) for a straight-A PCB student — ranking is
+    by TCU points brought to the programme, not fill-ratio alone."""
+    out = grouped(kb, {"physics": "B", "chemistry": "A", "biology": "A"})
+    fy = ids(out["groups"]["for_you"])
+    assert fy.index("suza-doctor-of-medicine") < fy.index("sua-bsc-agriculture")
 
 
 def test_obvious_areas_reflect_combination(kb):

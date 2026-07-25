@@ -91,6 +91,7 @@ class ProgrammeResult:
     strength: float = 0.0
     strength_detail: str = ""
     matched_subjects: tuple[str, ...] = ()
+    matched_points: float = 0.0
 
     def to_dict(self) -> dict:
         p = self.programme
@@ -114,4 +115,5 @@ class ProgrammeResult:
             "strength": round(self.strength, 4),
             "strength_detail": self.strength_detail,
             "matched_subjects": list(self.matched_subjects),
+            "matched_points": self.matched_points,
         }

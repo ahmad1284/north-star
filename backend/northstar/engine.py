@@ -142,6 +142,7 @@ def evaluate_programme(
     if result.eligible:
         n = len(matched)
         achieved = sum(kb.scale.points_for(profile.grades[s]) for s in matched)
+        result.matched_points = achieved
         result.strength = achieved / (5.0 * n) if n else 0.0
         result.strength_detail = (
             f"{achieved:g} of {5 * n:g} possible points in {matched_names}"

@@ -85,11 +85,14 @@ def test_neema_pcm_engineering_focus(kb):
     assert "udsm-ba-economics" in all_ids(out)
 
 
-def test_salma_eca_narrow_but_real(kb):
-    """ECA against the current seed: few options, but the right ones."""
+def test_salma_eca_sees_the_business_world(kb):
+    """ECA: the business institutions (IFM, Mzumbe) must show up."""
     out = run(kb, {"economics": "C", "commerce": "D", "accountancy": "C"})
     everything = all_ids(out)
     assert "suza-accounting-finance" in everything
     assert "udsm-ba-economics" in everything
+    assert "ifm-bachelor-of-accounting" in everything
+    assert "ifm-banking-and-finance" in everything
+    assert out["counts"]["eligible"] >= 8, "business student must see a real landscape"
     # No science/health leakage
     assert "muhas-bachelor-of-pharmacy" not in everything

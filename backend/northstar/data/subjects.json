@@ -21,6 +21,7 @@
     { "id": "french", "name": "French" },
     { "id": "chinese", "name": "Chinese" },
     { "id": "divinity", "name": "Divinity / Islamic Knowledge" },
+    { "id": "physical_education", "name": "Physical Education" },
     { "id": "general_studies", "name": "General Studies" }
   ]
 }

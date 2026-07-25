@@ -5,7 +5,7 @@ git:
   auto_merge: false
   auto_squash: false
 announcements: []
-status: active
+status: completed
 epic: ""
 ---
 
