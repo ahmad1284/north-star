@@ -9,7 +9,7 @@ status: active
 epic: ""
 ---
 
-# North Star — Course Eligibility Matcher (MVP)
+# North Star — Course Eligibility Matcher (MVP: backend-first)
 
 ## Problem
 Tanzanian Form 6 graduates must choose what to apply for as a high-stakes, one-shot decision
@@ -18,54 +18,50 @@ made under social noise and low information. Many don't know which programs they
 vocational/technical (NACTVET) tracks. See `discovery.md` for full domain synthesis.
 
 ## Solution
-A mobile-first web app where a student enters their NECTA subject combination and grades and
-immediately sees a **small, ranked** set of programs — not a data dump — organized as
-**"For you"** (eligible + a strong grade-based fit) and **"Discoveries"** (eligible programs
-their strengths open up that they likely never considered). Each program shows the letter's
-due-diligence checklist, with **HESLB loan availability/priority** treated as a first-class
-factor. Eligibility and strength-scoring are computed by a **deterministic, explainable rules
-engine** (expert-system style) running client-side over curated data — no AI, no server. Core
-logic is channel-agnostic so a WhatsApp layer and an LLM+RAG chat layer can wrap it later.
+A **headless backend** (the "expert system") that, given a student's NECTA subject combination,
+grades, and A-level year, returns a **ranked, grouped** set of programmes — **"For you"**
+(eligible + strong grade-based fit) and **"Discoveries"** (eligible programmes their strengths
+open up that they likely never considered) — each with the letter's due-diligence checklist.
+Eligibility and strength scoring are computed by a **deterministic, explainable rules engine**
+over curated data. The backend is exercised via API calls + tests (fast dev loop, no UI to
+babysit). Clients — a web/mobile UI and a Meta (WhatsApp) integration — come later as thin
+layers over the same API; the core stays channel-agnostic.
 
-See `discovery.md` for the three-lens model (Eligibility / Strengths / Interests) and the
-anti-analysis-paralysis output rule.
+See `discovery.md` for the three-lens model (Eligibility / Strengths / Interests), the
+"rich but in style" presentation principle, and the backend-first architecture decision.
 
-Scope boundaries for THIS intent (MVP):
-- IN: eligibility matching; **strength scoring derived from NECTA grades**; **"Discoveries"**
-  (serendipitous strong-fit programs); **disciplined ranked output** (small sets, progressive
-  disclosure — the anti-paralysis rule); per-program due-diligence checklist with **HESLB
-  loan availability/priority** as a first-class dimension; explainable "why you qualify /
-  why this fits" reasons; mobile-first web UI.
-- OUT (deferred to the NEXT intent — the World of Work interests layer, which unlocks the
-  "Bridge" for interests beyond a student's subjects): interests capture, interest-based
-  "Bridge" recommendations, LLM+RAG chat, WhatsApp channel, CareerVillage-style Q&A,
-  "still-in-school" (Newport) track.
+Scope boundaries for THIS intent (MVP = the backend):
+- IN: the data model + seed dataset; the **eligibility + strength-scoring engine**;
+  **"Discoveries"** (serendipitous strong-fit programmes); **ranked, grouped output** the UI
+  can render richly; explainable "why you qualify / why this fits" reasons; a **backend API**
+  that returns this as structured JSON; tests.
+- OUT (deferred): any **UI**; **WhatsApp/Meta** integration; the World of Work **interests**
+  layer and the interest-based **"Bridge"**; LLM+RAG chat; CareerVillage-style Q&A;
+  "still-in-school" (Newport) track. Loan boards (ZHELB/HESLB) are explicitly **not modeled**.
 
 ## Success Criteria
-- [ ] A student can enter their NECTA A-level subject combination, grades, **A-level year**
-      (grade→points scale depends on year cohort), and **region** (Zanzibar/mainland, for the
-      right loan board) in a simple mobile UI.
-- [ ] The app computes eligibility from curated seed data covering at least the common
-      combinations (PCB, PCM, EGM, HGE, …).
-- [ ] The app derives a **strength score** per program from the student's NECTA grades
-      (e.g. grades in subjects the program values), used for ranking — not just pass/fail.
-- [ ] Results are **ranked and grouped** — **"For you"**, **"Discoveries"** (eligible
-      strong-fit programs likely outside the student's radar), and optional stretches — and may
-      be rich/wide, but the presentation must carry it in style (grouped, layered, progressive
-      disclosure), never an undifferentiated wall of text ("rich, but in style").
-- [ ] Each result explains WHY (which requirement was met) and WHY IT FITS (which strengths).
-- [ ] Each program shows the letter's checklist fields (duration, cost, institutions offering
-      it, indicative time-to-employment, indicative salary) and the correct **government loan**
-      picture for the student's region — **ZHELB (Zanzibar)** or **HESLB (mainland)** with their
-      different mechanics, plus loan availability/priority — filled where data exists, clearly
-      marked where it doesn't.
-- [ ] The eligibility + scoring logic is separated from the UI (channel-agnostic core module)
-      so it can be reused by a future WhatsApp/chat layer.
-- [ ] Data (combinations, grade points, programs, requirements, HESLB flags) lives in
-      structured files (JSON/YAML) so non-developers can update it and real TCU/NACTVET data
-      can slot in.
-- [ ] Runs with no backend server (static hosting / opens from a link) and works on a phone.
-- [ ] All tests for the rules + scoring engine pass (decisions covered by unit tests).
+- [ ] The API accepts a request with the student's NECTA subject combination, grades, and
+      **A-level year** (the grade→points scale depends on year cohort) and returns structured
+      JSON.
+- [ ] The engine computes eligibility from curated seed data covering at least the common
+      combinations (PCB, PCM, EGM, HGE, …), using the real TCU rule structure (defining
+      subjects, min principal passes, min points, per-subject grade floors).
+- [ ] The engine derives a **strength score** per programme from the student's NECTA grades
+      (grades in the subjects the programme values), used for ranking — not just pass/fail.
+- [ ] Output is **ranked and grouped** — **"For you"** and **"Discoveries"** (eligible
+      strong-fit programmes likely outside the student's radar) — structured so a future client
+      can present it richly ("rich, but in style"), not as a flat list.
+- [ ] Each result carries machine-readable reasons: WHY eligible (which requirement was met)
+      and WHY IT FITS (which strengths) — so any client can explain the recommendation.
+- [ ] Each programme includes the letter's checklist fields (duration, cost, institutions
+      offering it, indicative time-to-employment, indicative salary) — filled where data
+      exists, clearly marked where it doesn't. (Loan boards are NOT modeled.)
+- [ ] The engine is a pure, channel-agnostic core module, separate from the API/transport, so
+      the same logic backs a future web UI and WhatsApp client.
+- [ ] Data (combinations, grade points by year, programmes, requirements) lives in structured
+      files (JSON/YAML) so non-developers can update it and more TCU/NACTVET data can slot in.
+- [ ] All tests for the rules + scoring engine pass (decisions covered by unit tests); the API
+      is runnable locally and callable (e.g. via curl) without any UI.
 
 ## Open dependencies / risks
 - **TCU handbook acquired:** `inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf`
@@ -79,9 +75,12 @@ Scope boundaries for THIS intent (MVP):
   clearly sourced, never invented.
 
 ## Units
-- unit-01 — Data schema + seed dataset (combinations, grade points, programs, requirements,
-  strength-weighting per program, HESLB flags)
-- unit-02 — Eligibility + strength-scoring engine (channel-agnostic core) + tests
-- unit-03 — Ranking & output shaping ("For you" / "Discoveries", anti-paralysis small sets)
-- unit-04 — Mobile-first web UI (input → explained, ranked results)
-- unit-05 — Program detail view with the letter's checklist + HESLB dimension
+- unit-01 — Data schema + seed dataset (combinations; grade→points by A-level year; programmes
+  with defining subjects, min passes, min points, grade floors, capacity, duration; per-
+  programme strength weighting; checklist fields)
+- unit-02 — Eligibility + strength-scoring engine (pure, channel-agnostic core) + tests
+- unit-03 — Ranking & output shaping ("For you" / "Discoveries") as structured JSON
+- unit-04 — Backend API exposing the engine (request → grouped, ranked JSON; runnable + curl-able)
+
+Deferred to later intents (clients & layers): web/mobile UI · WhatsApp/Meta integration ·
+World of Work interests + "Bridge" · LLM+RAG chat · CareerVillage-style Q&A.

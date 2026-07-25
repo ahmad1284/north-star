@@ -62,17 +62,12 @@ The lever is PRESENTATION quality, not fewer options:
 - Beautiful, calm, well-structured density > artificial scarcity. Widen horizons (the letter's
   "exposure") with a presentation that carries the weight.
 
-## Government loan boards are REGION-dependent (ZHELB vs HESLB)
-The loan mechanism differs by where the student is from — a real input dimension, not a detail:
-- **ZHELB — Zanzibar Higher Education Loans Board:** pays the student's **tuition directly to
-  the institution**, then provides the student a separate **allowance**.
-- **HESLB — Higher Education Students' Loans Board (mainland Tanzania):** disburses funds **to
-  the student**, who then allocates across fees/tuition/living themselves.
-- Implication: capture the student's **region** and apply the correct board + mechanics.
-- Loan **availability and priority** often decides affordability (some programmes are
-  prioritized for government loans). Per program, track: `loan_available` / priority tier,
-  indicative coverage (full/partial), indicative repayment burden — all shown as indicative,
-  never invented. Affordability is frequently the real constraint → also a ranking signal.
+## Loan boards (ZHELB / HESLB) — OUT OF SCOPE for our logic
+Decision (Ahmad): the government loan boards have **no input whatsoever** into this project.
+They are just loan boards — ZHELB (Zanzibar) and HESLB (mainland) — with different mechanics,
+but we do NOT model them, do NOT take region as an input for them, and do NOT use them as a
+ranking or eligibility signal. Not a dimension. (Left here only as a note so we don't
+re-introduce it.)
 
 ## TCU eligibility rule structure (from the 2026/27 handbook — now in `inputs/`)
 Source: `inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf` (376pp, direct-entry /
@@ -107,13 +102,18 @@ For any course/program the student weighs:
 - (Later) crowdsourced insider answers — **CareerVillage-style** ask-a-professional Q&A,
   which directly operationalizes the letter's "talk to people in the course."
 
-## Delivery channel (open decision)
-- **WhatsApp** — lowest friction for the audience; but needs WhatsApp Business API, Meta
-  approval, hosting, a number → real infra + cost + approval lead time.
-- **Web app** — fastest to prototype/iterate, shareable by link, mobile-first; no approval gate.
+## Architecture: BACKEND-FIRST (decided)
+Decision (Ahmad): build the **backend first** for a fast dev cycle, then extend with clients.
+- **MVP = a headless backend** housing the engine, exercised via API calls + tests (no UI to
+  babysit → tight loop).
+- **Then extend** with thin clients over the same API: a web/mobile UI, and/or a **Meta
+  (WhatsApp)** integration. WhatsApp needs a server webhook anyway, so a backend is the shared
+  foundation for both.
+- Core stays **channel-agnostic**; channels are just clients.
 - **Constraint (hard):** *simplify for the end user regardless of backend complexity.*
-- Working recommendation: **build the core logic channel-agnostic; ship web first;
-  wrap WhatsApp later.**
+- Stack (to confirm at execution): lean toward one language end-to-end (e.g. TypeScript —
+  shared types for a future web UI + easy JSON/Meta webhooks; Python also viable, esp. for
+  data work + future RAG). Final call at start of Execution.
 
 ## Backend approach (open decision — user raised this explicitly)
 Two philosophies the user named — best treated as **layers, not either/or**:
