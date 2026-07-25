@@ -18,8 +18,8 @@ made under social noise and low information. Many don't know which programs they
 vocational/technical (NACTVET) tracks. See `discovery.md` for full domain synthesis.
 
 ## Solution
-A **headless backend** (the "expert system") that, given a student's NECTA subject combination,
-grades, and A-level year, returns a **ranked, grouped** set of programmes — **"For you"**
+A **headless backend** (the "expert system") that, given a student's NECTA subject combination
+and grades, returns a **ranked, grouped** set of programmes — **"For you"**
 (eligible + strong grade-based fit) and **"Discoveries"** (eligible programmes their strengths
 open up that they likely never considered) — each with the letter's due-diligence checklist.
 Eligibility and strength scoring are computed by a **deterministic, explainable rules engine**
@@ -40,9 +40,8 @@ Scope boundaries for THIS intent (MVP = the backend):
   "still-in-school" (Newport) track. Loan boards (ZHELB/HESLB) are explicitly **not modeled**.
 
 ## Success Criteria
-- [ ] The API accepts a request with the student's NECTA subject combination, grades, and
-      **A-level year** (the grade→points scale depends on year cohort) and returns structured
-      JSON.
+- [ ] The API accepts a request with the student's NECTA subject combination and grades and
+      returns structured JSON (single canonical grade→points scale; A-level year not required).
 - [ ] The engine computes eligibility from curated seed data covering at least the common
       combinations (PCB, PCM, EGM, HGE, …), using the real TCU rule structure (defining
       subjects, min principal passes, min points, per-subject grade floors).
@@ -75,7 +74,7 @@ Scope boundaries for THIS intent (MVP = the backend):
   clearly sourced, never invented.
 
 ## Units
-- unit-01 — Data schema + seed dataset (combinations; grade→points by A-level year; programmes
+- unit-01 — Data schema + seed dataset (combinations; single canonical grade→points scale; programmes
   with defining subjects, min passes, min points, grade floors, capacity, duration; per-
   programme strength weighting; checklist fields)
 - unit-02 — Eligibility + strength-scoring engine (pure, channel-agnostic core) + tests

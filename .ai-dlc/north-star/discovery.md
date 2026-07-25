@@ -74,10 +74,11 @@ Source: `inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf` (376pp, dir
 Form Six pathway — our audience). A separate handbook covers Diploma/equivalent entry.
 Rule model to encode:
 - **Entry schemes:** direct entry (Form Six holders — our target) vs equivalent (diploma, etc.).
-- **Grade → points map depends on the student's A-level YEAR cohort** (this is the NECTA
-  grading input):
-  - Before 2014 AND 2016-onwards: A=5, B=4, C=3, D=2, E=1, S=0.5
-  - 2014–2015: A=5, B+=4, B=3, C=2, D=1, E=0.5
+- **Grade → points map** — treat as a single canonical scale (Ahmad: effectively unchanged
+  across years, so NOT worth taking A-level year as an input for the MVP):
+  - Canonical: A=5, B=4, C=3, D=2, E=1, S=0.5
+  - (Edge case, deferred: the 2014–2015 cohort used A=5, B+=4, B=3, C=2, D=1, E=0.5.
+    Ignore for MVP; revisit only if needed.)
 - **General minimum (non-health, Table 1):** two principal passes ('E' and above) totalling
   **≥ 4.0 points** in the **two subjects "defining admission"** to the specific programme.
 - **Health/allied (harmonised, Table 2):** stricter per-programme rules, e.g. MD/MBBS = three
