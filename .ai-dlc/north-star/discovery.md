@@ -51,22 +51,47 @@ Regions that matter:
 | Interested but NOT eligible / outside combination | wants it but can't (yet) | **"Bridge"** — foundation programs, alt combinations, honest "what it'd take" |
 | Eligible but neither strong nor interested | filler | **downranked / hidden** (anti-paralysis) |
 
-## Anti-analysis-paralysis principle (hard design rule)
-Widening horizons (the letter's "exposure") must NOT overwhelm. The lever is disciplined
-OUTPUT, not fewer inputs:
-- Never dump the full eligible list. Show a small ranked set: a few "For you", 2–3
-  "Discoveries", an optional "Stretch/Bridge".
-- Progressive disclosure — details on demand, one clear primary action.
-- Sensible defaults; full list only if explicitly requested.
+## "Rich, but in style" — the presentation principle (updated)
+Ahmad's steer: *"it's ok to overwhelm, just do it in style."* So the goal is NOT to hide
+options — it's to make even a large, wide-horizon result set feel like exploration, not chaos.
+The lever is PRESENTATION quality, not fewer options:
+- It's fine to surface many eligible programmes AND discoveries AND stretches — provided the
+  UI organizes them (grouped: "For you" / "Discoveries" / "Stretch–Bridge"), ranks them,
+  and uses layering/progressive disclosure so the student is never hit with an undifferentiated
+  wall of text.
+- Beautiful, calm, well-structured density > artificial scarcity. Widen horizons (the letter's
+  "exposure") with a presentation that carries the weight.
 
-## HESLB as a first-class dimension (not just a repayment %)
-In Tanzania, HESLB loan **availability and priority** often decides whether a student can
-afford a program at all. Treat per program:
-- `loan_available` / priority tier (some programmes are prioritized for government loans),
-- indicative coverage (full / partial),
-- indicative repayment burden (% of salary) — shown as indicative, never invented.
-Affordability is frequently the real constraint, so this can act as both an attribute and a
-signal in ranking.
+## Government loan boards are REGION-dependent (ZHELB vs HESLB)
+The loan mechanism differs by where the student is from — a real input dimension, not a detail:
+- **ZHELB — Zanzibar Higher Education Loans Board:** pays the student's **tuition directly to
+  the institution**, then provides the student a separate **allowance**.
+- **HESLB — Higher Education Students' Loans Board (mainland Tanzania):** disburses funds **to
+  the student**, who then allocates across fees/tuition/living themselves.
+- Implication: capture the student's **region** and apply the correct board + mechanics.
+- Loan **availability and priority** often decides affordability (some programmes are
+  prioritized for government loans). Per program, track: `loan_available` / priority tier,
+  indicative coverage (full/partial), indicative repayment burden — all shown as indicative,
+  never invented. Affordability is frequently the real constraint → also a ranking signal.
+
+## TCU eligibility rule structure (from the 2026/27 handbook — now in `inputs/`)
+Source: `inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf` (376pp, direct-entry /
+Form Six pathway — our audience). A separate handbook covers Diploma/equivalent entry.
+Rule model to encode:
+- **Entry schemes:** direct entry (Form Six holders — our target) vs equivalent (diploma, etc.).
+- **Grade → points map depends on the student's A-level YEAR cohort** (this is the NECTA
+  grading input):
+  - Before 2014 AND 2016-onwards: A=5, B=4, C=3, D=2, E=1, S=0.5
+  - 2014–2015: A=5, B+=4, B=3, C=2, D=1, E=0.5
+- **General minimum (non-health, Table 1):** two principal passes ('E' and above) totalling
+  **≥ 4.0 points** in the **two subjects "defining admission"** to the specific programme.
+- **Health/allied (harmonised, Table 2):** stricter per-programme rules, e.g. MD/MBBS = three
+  principal passes in Physics, Chemistry, Biology, **≥ 6 points**, minimum **'D'** in each.
+- Therefore each programme record needs: defining subject(s)/combinations, min principal
+  passes, min total points, optional per-subject grade floors, plus capacity & duration
+  (the handbook also lists programme capacities and durations per institution).
+- Institutions include Zanzibar ones (e.g. SUMAIT, IPA Zanzibar) alongside mainland — good
+  audience coverage.
 
 ## The letter's checklist = the per-program data model
 For any course/program the student weighs:

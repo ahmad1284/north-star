@@ -42,18 +42,23 @@ Scope boundaries for THIS intent (MVP):
   "still-in-school" (Newport) track.
 
 ## Success Criteria
-- [ ] A student can enter a NECTA A-level subject combination and grades in a simple mobile UI.
+- [ ] A student can enter their NECTA A-level subject combination, grades, **A-level year**
+      (grade→points scale depends on year cohort), and **region** (Zanzibar/mainland, for the
+      right loan board) in a simple mobile UI.
 - [ ] The app computes eligibility from curated seed data covering at least the common
       combinations (PCB, PCM, EGM, HGE, …).
 - [ ] The app derives a **strength score** per program from the student's NECTA grades
       (e.g. grades in subjects the program values), used for ranking — not just pass/fail.
-- [ ] Results are presented as a **small ranked set**, split into **"For you"** and
-      **"Discoveries"** (eligible strong-fit programs likely outside the student's radar),
-      never a full undifferentiated dump (anti-paralysis rule).
+- [ ] Results are **ranked and grouped** — **"For you"**, **"Discoveries"** (eligible
+      strong-fit programs likely outside the student's radar), and optional stretches — and may
+      be rich/wide, but the presentation must carry it in style (grouped, layered, progressive
+      disclosure), never an undifferentiated wall of text ("rich, but in style").
 - [ ] Each result explains WHY (which requirement was met) and WHY IT FITS (which strengths).
 - [ ] Each program shows the letter's checklist fields (duration, cost, institutions offering
-      it, indicative time-to-employment, indicative salary) and **HESLB loan
-      availability/priority** — filled where data exists, clearly marked where it doesn't.
+      it, indicative time-to-employment, indicative salary) and the correct **government loan**
+      picture for the student's region — **ZHELB (Zanzibar)** or **HESLB (mainland)** with their
+      different mechanics, plus loan availability/priority — filled where data exists, clearly
+      marked where it doesn't.
 - [ ] The eligibility + scoring logic is separated from the UI (channel-agnostic core module)
       so it can be reused by a future WhatsApp/chat layer.
 - [ ] Data (combinations, grade points, programs, requirements, HESLB flags) lives in
@@ -63,9 +68,13 @@ Scope boundaries for THIS intent (MVP):
 - [ ] All tests for the rules + scoring engine pass (decisions covered by unit tests).
 
 ## Open dependencies / risks
-- Real eligibility rules require the **TCU undergraduate handbook** (PDF not yet uploaded) and
-  **NECTA grading** details. MVP starts with a small hand-curated, clearly-labeled seed dataset
-  and a schema built to absorb the official data later.
+- **TCU handbook acquired:** `inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf`
+  (376pp) gives the real rule format (grade→points by year cohort; general vs health entry;
+  per-programme "defining subjects", points, grade floors, capacity, duration). See
+  `discovery.md`. Seed dataset can now be transcribed from real data rather than invented.
+  Transcribing all programmes is large — MVP seeds a representative subset (incl. Zanzibar
+  institutions) with the schema built to absorb the rest.
+- **NACTVET** (vocational) data still to source.
 - Salary / time-to-employment / loan-% data is sparse locally — shown as "indicative" and
   clearly sourced, never invented.
 
