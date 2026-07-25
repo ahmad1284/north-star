@@ -116,16 +116,44 @@ The original intent covered **both** university (TCU) and technical/vocational
 a nice-to-have: many Form 6 graduates are better served by a technical path, and the
 tool currently behaves as if that world doesn't exist.
 
-**Blocking:** no NACTVET admission document in hand. Needed: their equivalent of the TCU
-guidebook (programmes, entry requirements, institutions).
+**Source: FOUND** (researched 2026-07-25 — full assessment in
+`inputs/research/nactvet-findings.md`). The 2026/27 guidebook is downloaded to
+`inputs/nactvet-GUIDEBOOK_FOR_ALL_2026_2027.pdf` (200 pages, from nactvet.go.tz —
+`nacte.go.tz` is the legacy domain for the same body). It has **real ruled tables**, so
+extraction is *easier* than TCU: 415 institutions, 1,599 programmes, 2,406 entry routes.
+No public API/CSV exists; the PDF is the source.
 
-**How to attack:** obtain the source, then assess whether its structure is close enough
-to reuse `extract_guidebook.py` or needs its own parser. The data schema already
-supports it — a NACTVET programme is just a programme with different tags. Add a
-`sector`/`track` field so clients can distinguish university from vocational.
+**The blocker moved — and it is now a product question, not an engineering one.**
+NACTVET has no admission points (3 rows in 2,406 mention them), and 538 of the 718
+A-level (ACSEE) routes require only *"one Principal Pass and one Subsidiary"*. Encoding
+that is trivial with existing slot shapes. The consequence is the problem:
 
-**Done when:** a student who doesn't qualify for a degree programme still sees real
-options, rather than a short list and an implied dead end.
+- **Every A-level passer qualifies for almost everything** → eligibility filtering
+  discriminates nothing.
+- **Ranking has no currency.** Our ordering is "admission points brought to the
+  programme's defining subjects". Neither exists here. Inventing a merit-looking score
+  would breach principle 5 harder than leaving the list unranked.
+- **For you / Discoveries / Bridge collapse** — Bridge would be empty (nobody fails to
+  qualify), Discoveries would be ~1,000 items of noise.
+
+**Two findings beyond the brief:**
+1. **The NACTVET guidebook contains official tuition fees** — 1,558 fee strings covering
+   94% of programmes, all in a clean `TSH. N,NNN,NNN/=` format. R1 below says no
+   machine-readable cost source exists; that is true for TCU and **false for NACTVET**.
+2. Institution registration codes embed an official subject board (`REG/HAS/…` = health,
+   `BTP` = business/tourism, …) — a free, reliable sector signal, better than tags
+   inferred from names.
+
+**How to attack:** (1) write `scripts/extract_nactvet.py` as a *sibling* script — the TCU
+requirement parser scores **0/718** on NACTVET phrasing (measured, not estimated), so it
+needs its own grammar, but a much narrower one; (2) default the view to the 718 ACSEE
+routes, since those are our users'; (3) **settle ordering before shipping** — candidates:
+published fee, region, ownership, interest match — and disclose the basis in the UI.
+
+**Done when:** a student who doesn't qualify for a degree sees real options — *and* those
+options are presented in a way that helps rather than burying them. Worth noting: the
+Form 6 route is generous (179 programme names, ~122,000 seats, and 704 of 718 routes take
+**2 years instead of 3**). R4 should probably see this list before it ships.
 
 ---
 
