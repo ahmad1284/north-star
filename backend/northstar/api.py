@@ -4,7 +4,10 @@ modules (loader/engine/ranking), which stay importable without any web stack.
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from .engine import evaluate_all, validate_profile
@@ -36,6 +39,15 @@ class MatchRequest(BaseModel):
         "for, with reasons for what it would take.",
         examples=[["things", "ideas"]],
     )
+
+
+_CLIENT = Path(__file__).parent / "static" / "index.html"
+
+
+@app.get("/", include_in_schema=False)
+def client() -> FileResponse:
+    """The thin web client — a single static page over this same API."""
+    return FileResponse(_CLIENT, media_type="text/html")
 
 
 @app.get("/health")

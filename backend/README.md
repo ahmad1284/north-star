@@ -13,9 +13,14 @@ carries its source page).
 ```bash
 cd backend
 pip install -e .[dev]
-pytest                      # full suite (run from backend/)
+pytest                      # full suite
 uvicorn northstar.api:app   # serves on http://127.0.0.1:8000
 ```
+
+**Open http://127.0.0.1:8000/ for the built-in web client** — a single
+self-contained, mobile-first page (Swahili + English) served by the API
+itself: pick a combination, tap grades, optionally pick interests, and get
+the grouped results with explanations, the bridge, and provenance badges.
 
 **Interactive API docs are built in** (FastAPI): with the server running, open
 

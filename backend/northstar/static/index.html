@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>North Star — chagua kozi yako kwa hekima</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+<style>
+  :root{
+    --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
+    --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#ffffff;
+    --gold:#b7791f; --bad:#a33; --chip:#eef2f6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
+           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; --gold:#d9a441; }
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5}
+  .wrap{max-width:760px;margin:0 auto;padding:16px}
+  header h1{font-size:1.5rem;margin:.2rem 0}
+  header p{color:var(--muted);margin:.2rem 0 1rem;font-size:.95rem}
+  fieldset{border:1px solid var(--line);border-radius:12px;background:var(--card);
+    padding:12px 14px;margin:0 0 14px}
+  legend{font-weight:600;font-size:.95rem;padding:0 6px}
+  .hint{color:var(--muted);font-size:.85rem;margin:.2rem 0 .6rem}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);
+    border-radius:999px;padding:.45rem .9rem;font-size:.9rem;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .subject-row{display:flex;align-items:center;gap:10px;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+  .subject-row:last-child{border-bottom:none}
+  .subject-row .name{flex:1;font-size:.95rem}
+  .grades{display:flex;gap:4px}
+  .grades button{width:2.1rem;height:2.1rem;border-radius:8px;border:1px solid var(--line);
+    background:var(--chip);color:var(--ink);cursor:pointer;font-weight:600}
+  .grades button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .rm{border:none;background:none;color:var(--bad);font-size:1.1rem;cursor:pointer}
+  select{padding:.5rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:100%}
+  .go{display:block;width:100%;padding:.9rem;border:none;border-radius:12px;background:var(--accent);
+    color:var(--accent-ink);font-size:1.05rem;font-weight:700;cursor:pointer;margin:6px 0 20px}
+  .go:disabled{opacity:.5}
+  .summary{color:var(--muted);font-size:.92rem;margin-bottom:10px}
+  h2.group{font-size:1.05rem;margin:22px 0 4px;display:flex;align-items:baseline;gap:8px}
+  h2.group .count{color:var(--muted);font-weight:500;font-size:.85rem}
+  .groupdesc{color:var(--muted);font-size:.85rem;margin:0 0 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .card summary{list-style:none;cursor:pointer;padding:12px 14px;display:block}
+  .card summary::-webkit-details-marker{display:none}
+  .card .title{font-weight:600}
+  .card .sub{color:var(--muted);font-size:.86rem;margin-top:2px}
+  .badges{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
+  .badge{font-size:.74rem;border-radius:6px;padding:.12rem .5rem;background:var(--chip);color:var(--muted)}
+  .badge.match{background:var(--accent);color:var(--accent-ink)}
+  .badge.auto{border:1px solid var(--gold);color:var(--gold);background:transparent}
+  .body{padding:0 14px 12px;border-top:1px dashed var(--line);font-size:.9rem}
+  .body h4{margin:.8rem 0 .3rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .body ul{margin:.2rem 0;padding-left:1.2rem}
+  .body .ok::marker{color:var(--accent)}
+  .facts{display:grid;grid-template-columns:auto 1fr;gap:.15rem .8rem}
+  .facts dt{color:var(--muted)} .facts dd{margin:0}
+  .src{color:var(--muted);font-size:.8rem;margin-top:.6rem}
+  .more{width:100%;padding:.6rem;border:1px dashed var(--line);border-radius:10px;background:none;
+    color:var(--accent);cursor:pointer;font-size:.9rem;margin:2px 0 6px}
+  .err{color:var(--bad);font-weight:600}
+  footer{color:var(--muted);font-size:.8rem;margin:28px 0 12px;border-top:1px solid var(--line);padding-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🌟 North Star</h1>
+    <p>Umemaliza Form Six? Weka combination na matokeo yako — uone kozi <b>unazoweza kusoma</b>, na labda chache ambazo hujawahi kuzifikiria.</p>
+  </header>
+
+  <form id="f">
+    <fieldset>
+      <legend>1 · Combination yako</legend>
+      <p class="hint">Gusa combination yako, au ongeza somo moja moja hapo chini.</p>
+      <div class="chips" id="combos"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Masomo na madaraja</legend>
+      <p class="hint">Chagua daraja (A–E principal, S subsidiary, F fail) kwa kila somo.</p>
+      <div id="subjects"></div>
+      <select id="addsub"><option value="">+ ongeza somo…</option></select>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Unavutiwa na nini? <span style="font-weight:400;color:var(--muted)">(hiari)</span></legend>
+      <p class="hint">Ukichagua, tutaonyesha pia “daraja” — kozi unazozipenda ambazo bado hukidhi vigezo, na kinachokosekana.</p>
+      <div class="chips" id="interests"></div>
+    </fieldset>
+
+    <button class="go" id="go" type="submit">Nionyeshe kozi zangu →</button>
+  </form>
+
+  <div id="out"></div>
+
+  <footer>
+    Data: TCU Undergraduate Admission Guidebook 2026/27. Kozi zilizoandikwa
+    <i>auto-extracted</i> zimesomwa kwa programu — <b>hakikisha na chuo husika</b>.
+    North Star inakupa mwanga, si jibu la mwisho: uliza maswali, tembelea vyuo, ongea na wanafunzi.
+  </footer>
+</div>
+
+<script>
+const state = { grades:{}, interests:new Set(), ref:null };
+const $ = s => document.querySelector(s);
+
+async function boot(){
+  const [sub, com, int_] = await Promise.all([
+    fetch('subjects').then(r=>r.json()),
+    fetch('combinations').then(r=>r.json()),
+    fetch('interests').then(r=>r.json()),
+  ]);
+  state.ref = { subjects:Object.fromEntries(sub.subjects.map(s=>[s.id,s.name])),
+                grades:sub.grades, combos:com.combinations, areas:int_.areas };
+  const combos = $('#combos');
+  for(const c of state.ref.combos){
+    const b = document.createElement('button');
+    b.type='button'; b.className='chip'; b.textContent=c.code; b.title=c.name;
+    b.setAttribute('aria-pressed','false');
+    b.onclick = ()=>{ pickCombo(c); refreshCombos(c.code); };
+    combos.appendChild(b);
+  }
+  const AREA_SW = {ideas:'Mawazo & ubunifu', people:'Watu & kusaidia', data:'Takwimu & biashara', things:'Vifaa & mashine'};
+  const ints = $('#interests');
+  for(const a of state.ref.areas){
+    const b = document.createElement('button');
+    b.type='button'; b.className='chip'; b.setAttribute('aria-pressed','false');
+    b.textContent = `${a.name} · ${AREA_SW[a.id]||''}`;
+    b.title = a.description;
+    b.onclick = ()=>{ state.interests.has(a.id)?state.interests.delete(a.id):state.interests.add(a.id);
+                      b.setAttribute('aria-pressed', state.interests.has(a.id)); };
+    ints.appendChild(b);
+  }
+  const add = $('#addsub');
+  for(const [id,name] of Object.entries(state.ref.subjects)){
+    add.add(new Option(name,id));
+  }
+  add.onchange = ()=>{ if(add.value){ setGrade(add.value, null); add.value=''; } };
+}
+function refreshCombos(active){
+  for(const b of $('#combos').children) b.setAttribute('aria-pressed', String(b.textContent===active));
+}
+function pickCombo(c){
+  state.grades = {}; for(const s of c.subjects) state.grades[s]=null; renderSubjects();
+}
+function setGrade(sid, g){ state.grades[sid]=g; renderSubjects(); }
+function renderSubjects(){
+  const host = $('#subjects'); host.innerHTML='';
+  for(const [sid,g] of Object.entries(state.grades)){
+    const row = document.createElement('div'); row.className='subject-row';
+    const nm = document.createElement('div'); nm.className='name'; nm.textContent=state.ref.subjects[sid]||sid;
+    const gr = document.createElement('div'); gr.className='grades';
+    for(const letter of state.ref.grades){
+      const b=document.createElement('button'); b.type='button'; b.textContent=letter;
+      b.setAttribute('aria-pressed', String(g===letter));
+      b.onclick=()=>setGrade(sid, letter); gr.appendChild(b);
+    }
+    const rm=document.createElement('button'); rm.type='button'; rm.className='rm'; rm.textContent='✕';
+    rm.title='ondoa somo'; rm.onclick=()=>{ delete state.grades[sid]; renderSubjects(); };
+    row.append(nm,gr,rm); host.appendChild(row);
+  }
+}
+const GROUPS = [
+  ['for_you','Kwa ajili yako · For you','Unakidhi vigezo na una nguvu kwenye masomo yanayohitajika.'],
+  ['discoveries','Ugunduzi · Discoveries','Milango ambayo nguvu zako zinafungua — labda hujawahi kuifikiria.'],
+  ['bridge','Daraja · The bridge','Unazovutiwa nazo lakini bado huna vigezo — hiki ndicho kinachokosekana.'],
+  ['other_eligible','Nyingine unazostahili · Other eligible','Pia unakidhi vigezo vya hizi.'],
+];
+$('#f').onsubmit = async (e)=>{
+  e.preventDefault();
+  const grades = Object.fromEntries(Object.entries(state.grades).filter(([,g])=>g));
+  const out = $('#out');
+  if(!Object.keys(grades).length){ out.innerHTML='<p class="err">Weka angalau somo moja na daraja lake.</p>'; return; }
+  $('#go').disabled = true; out.innerHTML = '<p class="summary">Inatafuta…</p>';
+  try{
+    const body = { grades };
+    if(state.interests.size) body.interests=[...state.interests];
+    const r = await fetch('match',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+    const data = await r.json();
+    if(!r.ok){ out.innerHTML = `<p class="err">${(data.detail||[]).join('; ')||'Hitilafu.'}</p>`; return; }
+    render(data, out);
+  } catch(err){ out.innerHTML = `<p class="err">Network error: ${err}</p>`; }
+  finally { $('#go').disabled=false; }
+};
+function render(data, out){
+  out.innerHTML='';
+  const c = data.counts;
+  const p = document.createElement('p'); p.className='summary';
+  p.textContent = `Kozi ${c.eligible} unazokidhi vigezo` +
+    (c.bridge!=null?` · daraja ${c.bridge}`:'') + ` · (hazikufikiwa: ${c.not_eligible})`;
+  out.appendChild(p);
+  for(const [key,title,desc] of GROUPS){
+    const list = data.groups[key]; if(!list || !list.length) continue;
+    const h = document.createElement('h2'); h.className='group';
+    h.innerHTML = `${title} <span class="count">${list.length}</span>`;
+    const d = document.createElement('p'); d.className='groupdesc'; d.textContent=desc;
+    out.append(h,d);
+    const N = 6;
+    list.slice(0,N).forEach(r=>out.appendChild(card(r)));
+    if(list.length>N){
+      const more=document.createElement('button'); more.className='more';
+      more.textContent=`Onyesha zote ${list.length}…`;
+      more.onclick=()=>{ list.slice(N).forEach(r=>more.before(card(r))); more.remove(); };
+      out.appendChild(more);
+    }
+  }
+}
+function card(r){
+  const p=r.programme;
+  const det=document.createElement('details'); det.className='card';
+  const pct=Math.round(r.strength*100);
+  const badges=[];
+  if(r.interest_match) badges.push(`<span class="badge match">inalingana na: ${r.interest_match.join(', ')}</span>`);
+  if(r.eligible) badges.push(`<span class="badge">nguvu ${pct}%</span>`);
+  if(p.duration_years) badges.push(`<span class="badge">miaka ${p.duration_years}</span>`);
+  if(p.capacity) badges.push(`<span class="badge">nafasi ${p.capacity}</span>`);
+  if(p.machine_parsed) badges.push(`<span class="badge auto">auto-extracted · hakikisha</span>`);
+  det.innerHTML = `
+    <summary>
+      <div class="title">${p.name}</div>
+      <div class="sub">${p.institution} · ${p.location||''}</div>
+      <div class="badges">${badges.join('')}</div>
+    </summary>
+    <div class="body">
+      <h4>${r.eligible?'Kwa nini unastahili':'Kinachokosekana'}</h4>
+      <ul>${r.reasons.map(x=>`<li class="${x.ok?'ok':''}">${x.detail}</li>`).join('')}</ul>
+      ${p.additional_requirements.length?`<h4>Vigezo vya ziada (hakikisha mwenyewe)</h4>
+        <ul>${p.additional_requirements.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}
+      <h4>Kuhusu kozi</h4>
+      <dl class="facts">
+        <dt>Ni nini?</dt><dd>${p.checklist.what_is_it??'—'}</dd>
+        <dt>Gharama</dt><dd>${p.checklist.cost??'—'}</dd>
+        <dt>Muda hadi ajira</dt><dd>${p.checklist.time_to_employment??'—'}</dd>
+        <dt>Mshahara</dt><dd>${p.checklist.salary??'—'}</dd>
+      </dl>
+      <div class="src">Chanzo: ${p.source} · Vigezo kamili: “${p.requirement_text}”</div>
+    </div>`;
+  return det;
+}
+boot();
+</script>
+</body>
+</html>
