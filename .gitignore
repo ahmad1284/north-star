@@ -7,3 +7,7 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 .venv/
+
+# prior-art/ is imported reference material, not a buildable project
+prior-art/**/node_modules/
+prior-art/**/dist/

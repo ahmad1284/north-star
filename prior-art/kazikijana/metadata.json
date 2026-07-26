@@ -1,0 +1,6 @@
+{
+  "name": "Tanzania University & Career Guide",
+  "description": "An interactive guidance portal for Tanzanian Form 6 graduates to select university courses, explore local job market trends, get AI-tailored career roadmaps, and interact in a mentor Q&A forum.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
