@@ -28,8 +28,13 @@ CI running the suite *and* separately re-validating the knowledge base.
 ## Honest status
 - Criterion "A-level constraints drop to 4" → **5**, each unencodable for a documented
   reason. Recorded as met-in-substance with the number stated, not rounded down.
-- Criterion "Dockerfile builds" → **unverified** (no daemon). Everything it depends on is
-  verified. Needs one `docker build` on a machine with Docker before trusting it.
+- Criterion "Dockerfile builds" → was **unverified** (no daemon). **Closed in cycle 8**:
+  built and run on Docker 29.3.1, including a `PORT` override and a negative healthcheck
+  test. See the criterion in `intent.md` for what was checked. Two things worth keeping:
+  the `$PORT`-aware healthcheck was not paranoia — the override genuinely works and a
+  hardcoded 8000 would have failed forever on it; and killing uvicorn does flip the
+  container to `unhealthy`, which is the only evidence that distinguishes a healthcheck
+  from a decoration.
 
 ## Next
 The engine and the shipping path are done. What stands between this and a student is no

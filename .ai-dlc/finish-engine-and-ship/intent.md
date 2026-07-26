@@ -53,10 +53,15 @@ API + client can be hosted anywhere that runs a container.
 - [x] No false positives: a student failing a newly-encoded rule is rejected with a reason
 - [x] No false negatives: for every constraint, a student who satisfies it still passes
       (verified programmatically across the whole knowledge base)
-- [~] Dockerfile builds and the container serves both API and client → **UNVERIFIED**:
-      no Docker daemon in this environment. The container's exact CMD, env and
-      healthcheck were executed directly and pass; the image build itself still needs
-      one `docker build` on a machine with Docker.
+- [x] Dockerfile builds and the container serves both API and client → **VERIFIED in
+      cycle 8** on a real daemon (Docker 29.3.1). Built clean, ran, and checked: `/health`
+      reports 362 programmes; all four routes return 200; `/../Dockerfile` still 404s;
+      the process runs as uid 10001 (non-root); `POST /match` returns a full result
+      (234 eligible) from inside the container; `.dockerignore` keeps `tests/`,
+      `scripts/`, `inputs/`, `.git/` and `.ai-dlc/` out of the image (227 MB).
+      `PORT=9999` is honoured and the HEALTHCHECK follows it — healthy on 9999 with
+      nothing listening on 8000. Negative test: killing uvicorn inside the container
+      flips it to `unhealthy`, so the check can actually fail.
 - [x] Dependencies pinned; CI runs the test suite on push
 - [x] Deployment documented in README
 - [x] Whole suite passes

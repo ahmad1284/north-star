@@ -55,7 +55,18 @@ No database, no build step, no API keys. One process.
 ```bash
 docker build -t northstar .
 docker run -p 8000:8000 northstar        # API + client on :8000
+docker run -e PORT=9999 -p 9999:9999 northstar   # hosts that inject $PORT
 ```
+
+The image runs as a non-root user (uid 10001) and carries a healthcheck that fails if the
+API is down **or** the knowledge base loads empty — a North Star serving no programmes is
+worse than one that is visibly broken. The healthcheck probes `$PORT`, so it keeps working
+on Render / Railway / Cloud Run, which inject their own.
+
+> Building behind a TLS-intercepting corporate proxy? `pip install` will fail with
+> *"self-signed certificate in certificate chain"*. That is the proxy, not the Dockerfile:
+> copy your CA into the build context and trust it in an early layer. Don't disable
+> verification.
 
 One container, one process, no database, no secrets, no outbound calls at
 runtime — so it runs on the cheapest tier of anything that takes a container
