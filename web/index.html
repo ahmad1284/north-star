@@ -28,10 +28,14 @@
   .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);
     border-radius:999px;padding:.45rem .9rem;font-size:.9rem;cursor:pointer}
   .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-  .subject-row{display:flex;align-items:center;gap:10px;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+  /* Wraps rather than overflowing: seven grade buttons plus the remove control
+     do not fit beside a subject name on a 360px phone, which is the width most
+     of this audience actually has. */
+  .subject-row{display:flex;align-items:center;gap:10px;padding:.35rem 0;
+    border-bottom:1px dashed var(--line);flex-wrap:wrap}
   .subject-row:last-child{border-bottom:none}
-  .subject-row .name{flex:1;font-size:.95rem}
-  .grades{display:flex;gap:4px}
+  .subject-row .name{flex:1 1 100%;font-size:.95rem;min-width:0}
+  .grades{display:flex;gap:4px;flex:1 1 auto;flex-wrap:wrap}
   .grades button{width:2.1rem;height:2.1rem;border-radius:8px;border:1px solid var(--line);
     background:var(--chip);color:var(--ink);cursor:pointer;font-weight:600}
   .grades button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
@@ -45,9 +49,26 @@
   h2.group .count{color:var(--muted);font-weight:500;font-size:.85rem}
   .groupdesc{color:var(--muted);font-size:.85rem;margin:0 0 10px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
-  .card summary{list-style:none;cursor:pointer;padding:12px 14px;display:block}
+  .card summary{list-style:none;cursor:pointer;padding:12px 14px;display:block;position:relative}
   .card summary::-webkit-details-marker{display:none}
-  .card .title{font-weight:600}
+  /* The reasons are the product; without a marker nothing said the card opened. */
+  .card summary::after{content:'';position:absolute;right:14px;top:16px;width:7px;height:7px;
+    border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);
+    transform:rotate(45deg);transition:transform .15s ease}
+  .card[open] summary::after{transform:rotate(-135deg)}
+  .card .title{font-weight:600;padding-right:22px}
+  /* Filters narrow an ALREADY-ELIGIBLE set. Never phrased as matching. */
+  .filters{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:10px 12px;margin:4px 0 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .filters input,.filters select{font:inherit;font-size:.9rem;padding:.45rem .55rem;
+    border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);
+    min-width:0;flex:1 1 150px}
+  .filters input{flex:1 1 100%}
+  .filters .reset{flex:0 0 auto;border:1px solid var(--line);background:var(--chip);
+    color:var(--ink);border-radius:8px;padding:.45rem .7rem;font-size:.85rem;cursor:pointer}
+  .filters .hint{flex:1 1 100%;color:var(--muted);font-size:.78rem;margin:0}
+  .empty{color:var(--muted);font-size:.86rem;background:var(--chip);border:1px solid var(--line);
+    border-radius:10px;padding:.6rem .8rem;margin-bottom:10px}
   .card .sub{color:var(--muted);font-size:.86rem;margin-top:2px}
   .badges{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
   .badge{font-size:.74rem;border-radius:6px;padding:.12rem .5rem;background:var(--chip);color:var(--muted)}
@@ -222,37 +243,135 @@ $('#f').onsubmit = async (e)=>{
   } catch(err){ out.innerHTML = `<p class="err">Network error: ${esc(err)}</p>`; }
   finally { $('#go').disabled=false; }
 };
+// Last /match payload, kept so filtering re-renders without another request.
+// Filtering must never re-decide eligibility — it narrows what the engine
+// already decided. Anything else would be matching, and this is search.
+let LAST = null;
+const filters = { q:'', inst:'', loc:'' };
+
+function keeps(r){
+  const p = r.programme;
+  if(filters.inst && p.institution !== filters.inst) return false;
+  if(filters.loc && (p.location||'') !== filters.loc) return false;
+  if(filters.q){
+    const hay = `${p.name} ${p.institution} ${p.location||''} ${p.code} ${p.requirement_text}`;
+    if(!hay.toLowerCase().includes(filters.q.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function optionsFor(data, pick){
+  const n = new Map();
+  for(const key of Object.keys(data.groups))
+    for(const r of data.groups[key]){
+      const v = pick(r.programme); if(!v) continue;
+      n.set(v, (n.get(v)||0)+1);
+    }
+  return [...n.entries()].sort((a,b)=> b[1]-a[1] || a[0].localeCompare(b[0]));
+}
+
+function filterBar(data, out){
+  const box = document.createElement('div'); box.className='filters';
+  const q = document.createElement('input');
+  q.type='search'; q.placeholder='Tafuta jina la kozi, chuo, au somo…';
+  q.value = filters.q; q.setAttribute('aria-label','Tafuta kwenye matokeo yako');
+
+  const mk = (label, key, opts) => {
+    const s = document.createElement('select');
+    s.setAttribute('aria-label', label);
+    s.innerHTML = `<option value="">${esc(label)}</option>` +
+      opts.map(([v,c])=>`<option value="${esc(v)}">${esc(v)} (${c})</option>`).join('');
+    s.value = filters[key];
+    s.onchange = ()=>{ filters[key]=s.value; render(LAST, out); };
+    return s;
+  };
+  const inst = mk('Chuo chochote','inst', optionsFor(data,p=>p.institution));
+  const loc  = mk('Mahali popote','loc',  optionsFor(data,p=>p.location));
+
+  const reset = document.createElement('button');
+  reset.type='button'; reset.className='reset'; reset.textContent='Ondoa vichujio';
+  reset.onclick = ()=>{ filters.q=''; filters.inst=''; filters.loc=''; render(LAST,out); };
+
+  const hint = document.createElement('p'); hint.className='hint';
+  hint.textContent='Hivi vinachuja tu kozi ambazo tayari unakidhi vigezo vyake — havibadilishi majibu.';
+
+  // Re-render on a debounce, and restore focus + caret: rebuilding the DOM
+  // under a typing user otherwise drops every second keystroke.
+  let t;
+  q.oninput = ()=>{
+    filters.q = q.value; clearTimeout(t);
+    t = setTimeout(()=>{ const at=q.selectionStart; render(LAST,out);
+      const f=out.querySelector('.filters input');
+      if(f){ f.focus(); try{ f.setSelectionRange(at,at); }catch(e){} } }, 180);
+  };
+  box.append(q, inst, loc, reset, hint);
+  out.appendChild(box);
+}
+
+const PAGE = 20;
 function render(data, out){
+  LAST = data;
   out.innerHTML='';
   const c = data.counts;
   const p = document.createElement('p'); p.className='summary';
   p.textContent = `Kozi ${c.eligible} unazokidhi vigezo` +
     (c.bridge!=null?` · daraja ${c.bridge}`:'') + ` · (hazikufikiwa: ${c.not_eligible})`;
   out.appendChild(p);
+
+  filterBar(data, out);
+
+  const active = filters.q || filters.inst || filters.loc;
+  let shown = 0;
   for(const [key,title,desc] of GROUPS){
-    const list = data.groups[key]; if(!list || !list.length) continue;
+    const all = data.groups[key];
+    if(!all || !all.length) continue;            // group genuinely absent
+    const list = all.filter(keeps);
+    shown += list.length;
     const h = document.createElement('h2'); h.className='group';
-    h.innerHTML = `${esc(title)} <span class="count">${list.length}</span>`;
+    h.innerHTML = `${esc(title)} <span class="count">${list.length}${
+      list.length!==all.length?` / ${all.length}`:''}</span>`;
     const d = document.createElement('p'); d.className='groupdesc'; d.textContent=desc;
     out.append(h,d);
-    const N = 6;
-    list.slice(0,N).forEach(r=>out.appendChild(card(r)));
-    if(list.length>N){
+    if(!list.length){
+      // Say so rather than letting the group vanish — a group that disappears
+      // reads as "you have no options here", not "your filter hid them".
+      const e=document.createElement('p'); e.className='empty';
+      e.textContent=`Hakuna inayolingana na vichujio vyako (kati ya ${all.length}).`;
+      out.appendChild(e); continue;
+    }
+    let n = Math.min(PAGE, list.length);
+    list.slice(0,n).forEach(r=>out.appendChild(card(r)));
+    if(list.length>n){
       const more=document.createElement('button'); more.className='more';
-      more.textContent=`Onyesha zote ${list.length}…`;
-      more.onclick=()=>{ list.slice(N).forEach(r=>more.before(card(r))); more.remove(); };
+      const label=()=>`Onyesha ${Math.min(PAGE,list.length-n)} zaidi (bado ${list.length-n})`;
+      more.textContent=label();
+      more.onclick=()=>{
+        // Append a page at a time: building 400+ cards at once visibly freezes
+        // a budget phone, and nobody reads 400 cards anyway.
+        list.slice(n, n+PAGE).forEach(r=>more.before(card(r)));
+        n += PAGE;
+        if(n>=list.length) more.remove(); else more.textContent=label();
+      };
       out.appendChild(more);
     }
+  }
+  if(active && !shown){
+    const e=document.createElement('p'); e.className='empty';
+    e.textContent='Hakuna kozi inayolingana na vichujio vyako. Jaribu kuondoa kimoja.';
+    out.appendChild(e);
   }
 }
 function card(r){
   const p=r.programme;
   const det=document.createElement('details'); det.className='card';
-  const pct=Math.round(r.strength*100);
   const badges=[];
   if(r.interest_match) badges.push(`<span class="badge match">inalingana na: ${esc(r.interest_match.join(', '))}</span>`);
   if(r.conditional) badges.push(`<span class="badge cond">unastahili KAMA… · conditional</span>`);
-  if(r.eligible) badges.push(`<span class="badge">nguvu ${pct}%</span>`);
+  // Points, not a percentage. Students and TCU both reason in admission points;
+  // the old "nguvu 80%" was a unit we invented, shown with the authority of a
+  // number, while the guidebook's own figures sat unused in the payload.
+  if(r.eligible && p.min_points != null)
+    badges.push(`<span class="badge">pointi ${r.matched_points} · inahitajika ${p.min_points}</span>`);
   if(p.duration_years) badges.push(`<span class="badge">miaka ${p.duration_years}</span>`);
   if(p.capacity) badges.push(`<span class="badge">nafasi ${p.capacity}</span>`);
   if(p.machine_parsed) badges.push(`<span class="badge auto">auto-extracted · hakikisha</span>`);

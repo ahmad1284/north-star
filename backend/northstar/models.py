@@ -154,6 +154,11 @@ class ProgrammeResult:
                 "additional_requirements": list(p.additional_requirements),
                 "capacity": p.capacity,
                 "duration_years": p.duration_years,
+                # The admission threshold, exposed so the client can show the
+                # student their points against the bar in the guidebook's own
+                # currency. Without it the card had to invent a unit.
+                "min_points": p.min_points,
+                "points_basis": p.points_basis,
                 "checklist": p.checklist,
                 "source": p.source,
                 "machine_parsed": p.machine_parsed,

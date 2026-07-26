@@ -121,3 +121,71 @@ def test_cors_allows_a_separately_hosted_client():
         json={"grades": {"physics": "B", "chemistry": "A", "biology": "A"}},
     )
     assert r.headers.get("access-control-allow-origin") == "*"
+
+
+# --- results navigation (cycle 10) ------------------------------------------
+# Serving the whole guidebook took a PCM student from 275 eligible programmes to
+# 441. At that size an unfiltered list stops being an answer, so these guard the
+# affordances that make it navigable — and the honesty properties that make the
+# filtering safe.
+
+def _client_html() -> str:
+    return client.get("/").text
+
+
+def test_results_can_be_filtered():
+    """Search plus institution and region filters, or 441 results is a pile."""
+    body = _client_html()
+    assert "class='filters'" in body or 'class="filters"' in body or "className='filters'" in body \
+        or "filters" in body
+    assert "Ondoa vichujio" in body          # reset
+    assert "Chuo chochote" in body           # institution
+    assert "Mahali popote" in body           # region
+
+
+def test_filtering_is_labelled_as_search_not_matching():
+    """The prior-art app filtered with `subjects.some(s => text.includes(s))` and
+    showed Doctor of Medicine to PCM students. Ours narrows an already-verified
+    eligible set, and the UI has to say so — otherwise it reads as a second,
+    contradictory eligibility opinion."""
+    assert "havibadilishi majibu" in _client_html()
+
+
+def test_card_shows_admission_points_not_an_invented_unit():
+    """`nguvu 80%` was a unit we invented, shown with the authority of a number,
+    while the guidebook's own points sat unused in the payload."""
+    body = _client_html()
+    assert "pointi ${r.matched_points}" in body
+    assert "inahitajika ${p.min_points}" in body
+    assert "nguvu ${pct}%" not in body
+
+
+def test_min_points_is_exposed_by_the_api():
+    """The client cannot show the bar unless the payload carries it."""
+    r = client.post("/match", json={"grades": {"physics": "B", "chemistry": "C",
+                                               "advanced_mathematics": "C"}})
+    assert r.status_code == 200
+    first = next(iter(r.json()["groups"]["for_you"]), None)
+    assert first is not None
+    assert "min_points" in first["programme"]
+    assert first["programme"]["min_points"] is not None
+
+
+def test_results_paginate_rather_than_dumping():
+    """Building 400+ <details> nodes at once visibly freezes a budget phone."""
+    body = _client_html()
+    assert "const PAGE = 20" in body
+    assert "Onyesha zote" not in body        # the old dump-everything button
+
+
+def test_cards_signal_that_they_open():
+    """The reasons are the product; the marker was hidden with no replacement."""
+    body = _client_html()
+    assert ".card summary::after" in body
+    assert ".card[open] summary::after" in body
+
+
+def test_empty_groups_explain_themselves():
+    """A group that silently vanishes reads as "no options here" rather than
+    "your filter hid them"."""
+    assert "Hakuna inayolingana na vichujio vyako" in _client_html()
