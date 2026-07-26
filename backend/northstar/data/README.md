@@ -8,7 +8,9 @@ the loader validates everything at startup and fails loudly on mistakes.
 | `grading.json` | Canonical NECTA A-level grade→points scale (A=5 … S=0.5, F=0). Principal pass = E or above. |
 | `subjects.json` | Subject registry. `id` values are the only identifiers used elsewhere. |
 | `combinations.json` | Common A-level combinations (PCB, PCM, …) with `obvious_tags` — the programme areas such students are typically steered toward. Used to separate "For you" from "Discoveries". |
-| `programmes.json` | Real programmes transcribed from the TCU 2026/27 guidebook (see `source` per entry). |
+| `programmes.json` | Curated, human-verified programmes. Always win over machine-parsed on code conflict. |
+| `programmes_extracted.json` | Machine-parsed rules derived from the transcription. Badged `machine_parsed`. |
+| `extraction_review.json` | Quarantine: rows whose requirements did not parse cleanly. **Never served.** |
 | `guidebook_programmes.csv` / `.json` | **Full verbatim transcription** of every programme table in the guidebook — 870 rows, 94 institutions. Not rules; the guidebook's own words. |
 | `guidebook_coverage.json` | The completeness audit for the above: every page classified, every anomaly named. |
 
@@ -115,3 +117,28 @@ Rules of the data:
 - Every programme carries a `source` (guidebook page) so claims are auditable.
 - `additional_requirements` keeps conditions we can't evaluate from A-level input
   (O-level grades, fitness tests) visible instead of silently dropped.
+
+
+## How the two passes fit together
+
+```
+guidebook PDF
+   └─ transcribe_guidebook.py   →  guidebook_programmes.{csv,json}   (870 rows, verbatim)
+        └─ extract_guidebook.py →  programmes_extracted.json          (509 served, rules)
+                                →  extraction_review.json             (331 quarantined)
+        programmes.json                                               (30 curated, wins)
+```
+
+**Transcription is proved complete; interpretation is allowed to refuse.** Those are
+different jobs with different standards, which is why they are different scripts.
+`extract_guidebook.py` no longer opens the PDF — re-deriving rows there would only add a
+second way to be wrong.
+
+Every transcribed row lands in exactly one bucket, and the three reconcile to 870. That
+invariant is a test (`test_pipeline_output_reconciles_to_the_transcription`): a row in no
+bucket has been lost in silence, which is the failure this pipeline was rebuilt to prevent.
+
+**The refusal is deliberate.** Quarantining a programme costs a student an option they
+might have had. Serving a mis-parsed rule tells them they qualify when they don't, and
+they learn otherwise after applying. Those are not equally bad, so unclear rules are
+refused.

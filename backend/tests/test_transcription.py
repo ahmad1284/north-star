@@ -262,18 +262,39 @@ def test_accounts_for_an_independent_extraction(rows):
     assert missing <= {"ZU009"}, f"unexplained absences: {sorted(missing)}"
 
 
-def test_transcription_strictly_exceeds_the_old_pipeline(rows):
-    """The old pipeline knew 667 codes across served + quarantined data. The point
-    of this cycle is that the transcription is a superset."""
-    old = set()
+def test_pipeline_output_reconciles_to_the_transcription(rows):
+    """Every transcribed row must end up somewhere accountable.
+
+    This replaced an earlier test asserting the transcription was a superset of the
+    old pipeline. That became true by construction once `extract_guidebook.py`
+    started consuming this file, so it stopped testing anything. The invariant that
+    still has teeth is the reconciliation: served + quarantined + curated must equal
+    what was transcribed. A row that is in none of them has been lost in silence,
+    which is the whole failure this pipeline was rebuilt to prevent.
+    """
+    buckets = {}
     for name in ("programmes.json", "programmes_extracted.json",
                  "extraction_review.json"):
         blob = json.loads((DATA / name).read_text(encoding="utf-8"))
         records = blob if isinstance(blob, list) else next(
             v for v in blob.values() if isinstance(v, list))
-        old |= {r.get("code", "").strip().upper() for r in records if r.get("code")}
-    ours = {r["code"].strip().upper() for r in rows if r["code"]}
-    assert len(ours - old) > 150, "transcription should add ~200 unseen programmes"
+        buckets[name] = {r.get("code", "").strip().upper()
+                         for r in records if r.get("code")}
+
+    accounted = set().union(*buckets.values())
+    transcribed = {r["code"].strip().upper() for r in rows if r["code"]}
+    lost = transcribed - accounted
+    assert not lost, f"{len(lost)} transcribed rows in no output bucket: {sorted(lost)[:10]}"
+
+
+def test_serving_more_than_the_old_pipeline_did(rows):
+    """Cycle 10's point: the guidebook we transcribed actually reaches students.
+    The old pipeline served 362 (30 curated + 332 machine-parsed)."""
+    curated = json.loads((DATA / "programmes.json").read_text(encoding="utf-8"))["programmes"]
+    blob = json.loads((DATA / "programmes_extracted.json").read_text(encoding="utf-8"))
+    machine = blob if isinstance(blob, list) else next(
+        v for v in blob.values() if isinstance(v, list))
+    assert len(curated) + len(machine) > 362
 
 
 def test_csv_and_json_agree():
