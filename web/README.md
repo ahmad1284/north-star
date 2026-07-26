@@ -80,8 +80,8 @@ unit we invented and displayed with the authority of a number while the guideboo
 admission points sat unused in the payload. Students and TCU both reason in points.
 
 Entries extracted automatically from the guidebook carry an **auto-extracted** badge
-telling the student to confirm with the institution. Unknown facts render as "—", never
-as a guess.
+telling the student to confirm with the institution. Unknown facts render as
+*"hatujui — uliza"* linking to `/maswali` — never as a dash, and never as a guess.
 
 ## Conventions worth preserving
 

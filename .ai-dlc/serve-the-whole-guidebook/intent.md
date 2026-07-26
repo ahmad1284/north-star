@@ -5,7 +5,7 @@ git:
   auto_merge: false
   auto_squash: false
 announcements: []
-status: in_progress
+status: completed
 epic: ""
 quality_gates:
   - "cd backend && python -m pytest -q"
@@ -64,25 +64,25 @@ Close both gaps, in that order, keeping the honesty contract intact throughout.
 ## Success Criteria
 
 ### unit-01 — Serve the whole guidebook
-- [ ] The transcription feeds the rules pipeline; the served knowledge base grows well
+- [x] The transcription feeds the rules pipeline; the served knowledge base grows well
       beyond 362 toward the 870 transcribed
-- [ ] The honesty contract holds: only cleanly-parsed rules served, everything else
+- [x] The honesty contract holds: only cleanly-parsed rules served, everything else
       quarantined **and countable**; no page or row lost in silence
-- [ ] Curated entries still win over machine-parsed on conflict
-- [ ] `machine_parsed` provenance is preserved and still badged in the client
-- [ ] No false positives introduced: spot-checked against known-hard programmes
-- [ ] The count served, quarantined and rejected is reported and reconciles to 870
+- [x] Curated entries still win over machine-parsed on conflict
+- [x] `machine_parsed` provenance is preserved and still badged in the client
+- [x] No false positives introduced: spot-checked against known-hard programmes
+- [x] The count served, quarantined and rejected is reported and reconciles to 870
 
 ### unit-02 — Navigate the answer
-- [ ] Text search over programme name, institution, location and requirement text
-- [ ] Institution filter and region filter, built from the returned data with counts
-- [ ] Filters narrow an already-computed eligible set and are labelled as search
-- [ ] Collapsed card shows real points (`pointi 12 · inahitajika 6`), not `nguvu %`
-- [ ] `min_points` exposed in the programme payload
-- [ ] Cards visibly indicate they open
-- [ ] Results paginate rather than building the whole list at once
-- [ ] Empty groups explain themselves; a reset clears all filters
-- [ ] Works at 360px, both themes, no new dependencies, no external requests
+- [x] Text search over programme name, institution, location and requirement text
+- [x] Institution filter and region filter, built from the returned data with counts
+- [x] Filters narrow an already-computed eligible set and are labelled as search
+- [x] Collapsed card shows real points (`pointi 12 · inahitajika 6`), not `nguvu %`
+- [x] `min_points` exposed in the programme payload
+- [x] Cards visibly indicate they open
+- [x] Results paginate rather than building the whole list at once
+- [x] Empty groups explain themselves; a reset clears all filters
+- [x] Works at 360px, both themes, no new dependencies, no external requests
 
 ## Units
 - unit-01 — Serve the whole guidebook (rules from the transcription)
