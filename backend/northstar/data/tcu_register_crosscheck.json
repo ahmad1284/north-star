@@ -1,0 +1,1179 @@
+{
+  "source": "https://tcu.go.tz/services/accreditation/academic-programmes-offered-universities-tanzania",
+  "caveat": "Verifies institution, programme name and duration only. The register carries no programme codes, entry requirements, points or capacity, so this cannot validate the matching rules.",
+  "register_rows_bachelor": 677,
+  "register_institutions": 48,
+  "our_rows": 870,
+  "confirmed": 398,
+  "name_differs": 53,
+  "absent_from_register": 113,
+  "unverifiable_institution_not_in_register": 306,
+  "name_differs_detail": [
+    {
+      "code": "AKU01",
+      "institution": "Aga Khan University (AKU), Dar es Salaam",
+      "ours": "Bachelor of Science in Nursing",
+      "register_candidates": [
+        "Bachelor of Science in Nursing (inservice)",
+        "Bachelor of Science in Nursing (Directly Entry)"
+      ]
+    },
+    {
+      "code": "AR033",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Integrated Water and Environmental Resource Engineering",
+      "register_candidates": [
+        "Bachelor of Science in Environmental Engineering"
+      ]
+    },
+    {
+      "code": "TD005",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Information Systems Management",
+      "register_candidates": [
+        "Bachelor of Information Management"
+      ]
+    },
+    {
+      "code": "TD008",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Laws (Evening Session)",
+      "register_candidates": [
+        "Bachelor of Laws"
+      ]
+    },
+    {
+      "code": "TD011",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Accounting with Computing (Evening Session)",
+      "register_candidates": [
+        "Bachelor of Accounting with Computing"
+      ]
+    },
+    {
+      "code": "TD014",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Arts with Education (evening)",
+      "register_candidates": [
+        "Bachelor of Arts with Education"
+      ]
+    },
+    {
+      "code": "JC006",
+      "institution": "Jordan University College (JUCo), Morogoro",
+      "ours": "Bachelor of Arts in Education with Religeous Studies",
+      "register_candidates": [
+        "Bachelor of Arts with Education"
+      ]
+    },
+    {
+      "code": "KC001",
+      "institution": "KCMC University, Kilimanjaro",
+      "ours": "Bachelor of Science in Health Laboratory",
+      "register_candidates": [
+        "Bachelor of Science in Health Laboratory Sciences"
+      ]
+    },
+    {
+      "code": "MB006",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Computer Engineering and Technology",
+      "register_candidates": [
+        "Bachelor Degree in Computer Engineering.",
+        "Bachelor of Computer Science"
+      ]
+    },
+    {
+      "code": "MB013",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Technical Education in Mechanical Engineering",
+      "register_candidates": [
+        "Bachelor of Science with Education",
+        "Bachelor of Mechanical Engineering"
+      ]
+    },
+    {
+      "code": "MB024",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Technical Education in Telecommunications Engineering",
+      "register_candidates": [
+        "Bachelor of Science with Education"
+      ]
+    },
+    {
+      "code": "MB030",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Technical Education in Computer Science",
+      "register_candidates": [
+        "Bachelor of Science with Education",
+        "Bachelor of Computer Science"
+      ]
+    },
+    {
+      "code": "MB038",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Information and Computer Networking",
+      "register_candidates": [
+        "Bachelor of Computer Science"
+      ]
+    },
+    {
+      "code": "MH014",
+      "institution": "Muhimbili University of Health and Allied Sciences (MUHAS), Dar es Salaam",
+      "ours": "Bachelor of Engineering in Biomedical Engineering",
+      "register_candidates": [
+        "Bachelor of Biomedical Engineering"
+      ]
+    },
+    {
+      "code": "MUM012",
+      "institution": "Muslim University of Morogoro (MUM), Morogoro",
+      "ours": "Shahada ya Awali katika Kiswahili na Lugha za Kigeni",
+      "register_candidates": [
+        "Bachelor of Arts in Kiswahili"
+      ]
+    },
+    {
+      "code": "MUM013",
+      "institution": "Muslim University of Morogoro (MUM), Morogoro",
+      "ours": "Bachelor of Islamic Studies",
+      "register_candidates": [
+        "Bachelor of Islamic Studies with Education"
+      ]
+    },
+    {
+      "code": "MUM015",
+      "institution": "Muslim University of Morogoro (MUM), Morogoro",
+      "ours": "Bachelor of Arts in Literature and English Language Studies",
+      "register_candidates": [
+        "Bachelor of Arts in Literature and Language Studies"
+      ]
+    },
+    {
+      "code": "MJN05",
+      "institution": "Mwalimu Nyerere University of Agriculture and Technology (MNUAT), Musoma",
+      "ours": "Bachelor of Science in Fisheries and Aquaculture",
+      "register_candidates": [
+        "Bachelor of Science in Aquaculture"
+      ]
+    },
+    {
+      "code": "MU002",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Business Accounting and Finance",
+      "register_candidates": [
+        "Bachelor of Accounting and Finance in Business Sector"
+      ]
+    },
+    {
+      "code": "MU013",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor Human Resources Management",
+      "register_candidates": [
+        "Bachelor of Human Resource Management"
+      ]
+    },
+    {
+      "code": "MU018",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Science in Economics (Project Planning and Management)",
+      "register_candidates": [
+        "Bachelor of Science in Economics (Economic Project Planning & Management)"
+      ]
+    },
+    {
+      "code": "MU025",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Science with Education- Mathematics and Computer Science",
+      "register_candidates": [
+        "Bachelor of Arts with Education"
+      ]
+    },
+    {
+      "code": "OU030",
+      "institution": "Open University of Tanzania (OUT), Dar es Salaam",
+      "ours": "Bachelor of Natural Resources Assesment and Management",
+      "register_candidates": [
+        "Bachelor of Arts in Natural Resources Management"
+      ]
+    },
+    {
+      "code": "RU002",
+      "institution": "Ruaha Catholic University (RUCU), Iringa",
+      "ours": "Bachelor of Laws",
+      "register_candidates": [
+        "Bachelor of Law"
+      ]
+    },
+    {
+      "code": "RU005",
+      "institution": "Ruaha Catholic University (RUCU), Iringa",
+      "ours": "Bachelor of Accounting and Finance",
+      "register_candidates": [
+        "Bachelor of Accounting and Finance with IT"
+      ]
+    },
+    {
+      "code": "RU010",
+      "institution": "Ruaha Catholic University (RUCU), Iringa",
+      "ours": "Bachelor of Business Administration in accounting",
+      "register_candidates": [
+        "Bachelor of Business Administration"
+      ]
+    },
+    {
+      "code": "SU003",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Science in Agriculture",
+      "register_candidates": [
+        "Bachelor of Science in Agriculture General"
+      ]
+    },
+    {
+      "code": "SU006",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Science in Animal Science and Production",
+      "register_candidates": [
+        "Bachelor of Science in Animal Science"
+      ]
+    },
+    {
+      "code": "SU014",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Science in Environmental Science and Management",
+      "register_candidates": [
+        "Bachelor of Science in Environmental Sciences and Management"
+      ]
+    },
+    {
+      "code": "SU038",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Crop Production with Education",
+      "register_candidates": [
+        "Bachelor of Science with Education"
+      ]
+    },
+    {
+      "code": "SU039",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Textiles and Clothing with Education",
+      "register_candidates": [
+        "Bachelor of Science with Education"
+      ]
+    },
+    {
+      "code": "SU040",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Horticulture with education",
+      "register_candidates": [
+        "Bachelor of Science in Horticulture",
+        "Bachelor of Science with Education"
+      ]
+    },
+    {
+      "code": "SAA02",
+      "institution": "St. Augustine University of Tanzania (SAUT) Arusha Centre, Arusha",
+      "ours": "Bachelor of Science in Tourism",
+      "register_candidates": [
+        "Bachelor of Science in Tourism and Hospitality Management"
+      ]
+    },
+    {
+      "code": "SZ022",
+      "institution": "State University of Zanzibar (SUZA), Zanzibar",
+      "ours": "Bachelor of",
+      "register_candidates": [
+        "Bachelor of Science in Environmental Health",
+        "Bachelor of Banking and Finance",
+        "Bachelor of Arts in Geography and Environmental Studies"
+      ]
+    },
+    {
+      "code": "MK012",
+      "institution": "Tumaini University Makumira (TUMA), Arusha",
+      "ours": "Bachelor of Education in Early Childhood Education",
+      "register_candidates": [
+        "Bachelor of Arts with Education"
+      ]
+    },
+    {
+      "code": "UN002",
+      "institution": "United African University of Tanzania (UAUT), Dar es Salaam",
+      "ours": "Bachelor of Business Administration",
+      "register_candidates": [
+        "Bachelor of Business Administration (Accounting)"
+      ]
+    },
+    {
+      "code": "UA001",
+      "institution": "University of Arusha (UoA), Arusha",
+      "ours": "Bachelor of Arts with Education",
+      "register_candidates": [
+        "Bachelors of Arts with Education (Geography, English& Kiswahili)"
+      ]
+    },
+    {
+      "code": "UD006",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Arts in History and Archives Management",
+      "register_candidates": [
+        "Bachelor of Arts in History"
+      ]
+    },
+    {
+      "code": "UD022",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Science in Zoology",
+      "register_candidates": [
+        "Bachelor of Science in Applied Zoology"
+      ]
+    },
+    {
+      "code": "UD037",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Journalism and Media Studies",
+      "register_candidates": [
+        "Bachelor of Arts in Journalism"
+      ]
+    },
+    {
+      "code": "UD038",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Arts in Mass Communication and Multimedia Studies",
+      "register_candidates": [
+        "Bachelor of Arts in Mass Communication"
+      ]
+    },
+    {
+      "code": "UD050",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Sport Sciences and Physical Education",
+      "register_candidates": [
+        "Bachelor of Education in Physical Education and Sports Sciences",
+        "Bachelor of Science with Education"
+      ]
+    },
+    {
+      "code": "UD085",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Arts with Education (Chinese and English)",
+      "register_candidates": [
+        "Bachelor of Science with Education",
+        "Bachelor of Arts with Education (Chinese and English Language)"
+      ]
+    },
+    {
+      "code": "UD092",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Science in Geology with Geothermal Resources Exploration",
+      "register_candidates": [
+        "Bachelor of Science in Geology and Geothermal Resources",
+        "Bachelor of Science with Geology"
+      ]
+    },
+    {
+      "code": "DM009",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Science in Applied Physics",
+      "register_candidates": [
+        "Bachelor of Science in Physics"
+      ]
+    },
+    {
+      "code": "DM018",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Arts in History and Cultural Heritage",
+      "register_candidates": [
+        "Bachelor of Arts in History"
+      ]
+    },
+    {
+      "code": "DM031",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Geography and Environmental Management",
+      "register_candidates": [
+        "Bachelor of Science in Environmental Science"
+      ]
+    },
+    {
+      "code": "DM037",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Commerce in Entrepreneurship and Innovation",
+      "register_candidates": [
+        "Bachelor of Commerce in Entrepreneurship"
+      ]
+    },
+    {
+      "code": "DM079",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Science in Environmental Sciences",
+      "register_candidates": [
+        "Bachelor of Science in Environmental Science"
+      ]
+    },
+    {
+      "code": "DM090",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Science in Chemical and Process Engineering",
+      "register_candidates": [
+        "Bachelor of Science in Chemical and Processing Engineering"
+      ]
+    },
+    {
+      "code": "ZU004",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Science inBusiness Information Technology",
+      "register_candidates": [
+        "Bachelor of Science in Business Information Technology"
+      ]
+    },
+    {
+      "code": "ZU005",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Arts inEconomics",
+      "register_candidates": [
+        "Bachelor of Arts in Economics"
+      ]
+    },
+    {
+      "code": "ZU007",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Arts in Languages",
+      "register_candidates": [
+        "Bachelor of Art in Languages"
+      ]
+    }
+  ],
+  "absent_detail": [
+    {
+      "code": "SUM03",
+      "institution": "Abdulrahman Al- Sumait University (SUMAIT), Zanzibar",
+      "ours": "Bachelor of Arts in Counselling Psychology",
+      "register_candidates": []
+    },
+    {
+      "code": "AM007",
+      "institution": "Archbishop Mihayo University College of Tabora (AMUCTA), Tabora",
+      "ours": "Bachelor of Arts in Geography, Environment and Natural Resources Management",
+      "register_candidates": []
+    },
+    {
+      "code": "AR014",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Municipal and Industrial Services Engineerig",
+      "register_candidates": []
+    },
+    {
+      "code": "AR015",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Property and Facility Management",
+      "register_candidates": []
+    },
+    {
+      "code": "AR017",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Real Estate, Finance and Investment",
+      "register_candidates": []
+    },
+    {
+      "code": "AR028",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Construction Management",
+      "register_candidates": []
+    },
+    {
+      "code": "AR029",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Building Surveying and Construction Maintenance",
+      "register_candidates": []
+    },
+    {
+      "code": "AR030",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Data Science and Artificial Intelligence",
+      "register_candidates": []
+    },
+    {
+      "code": "AR031",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Hydrology and Water Resources Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "AR032",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Hydrographic and Oceanographic Sciences",
+      "register_candidates": []
+    },
+    {
+      "code": "AR034",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Business Administration",
+      "register_candidates": []
+    },
+    {
+      "code": "AR035",
+      "institution": "Ardhi University (ARU), Dar es Salaam",
+      "ours": "Bachelor of Science in Geospatial Information and Communication Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "CM007",
+      "institution": "Catholic University of Mbeya (CUoM), Mbeya",
+      "ours": "Bachelor of Arts in Social Work",
+      "register_candidates": []
+    },
+    {
+      "code": "CM008",
+      "institution": "Catholic University of Mbeya (CUoM), Mbeya",
+      "ours": "Bachelor of Procurement and Supply Chain Management",
+      "register_candidates": []
+    },
+    {
+      "code": "CM009",
+      "institution": "Catholic University of Mbeya (CUoM), Mbeya",
+      "ours": "Bachelor of Public Relations and Marketing",
+      "register_candidates": []
+    },
+    {
+      "code": "TD004",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Business Administration (Corporate Services)",
+      "register_candidates": []
+    },
+    {
+      "code": "TD012",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Theology",
+      "register_candidates": []
+    },
+    {
+      "code": "TD013",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Science in Information Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "TD015",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Business Administration in Marketing",
+      "register_candidates": []
+    },
+    {
+      "code": "TD016",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Business Administration in Accounting",
+      "register_candidates": []
+    },
+    {
+      "code": "TD017",
+      "institution": "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+      "ours": "Bachelor of Science in Computer Science (Cybersecurity)",
+      "register_candidates": []
+    },
+    {
+      "code": "UDD06",
+      "institution": "Dar es Salaam University College of Education (DUCE), Dar es Salaam",
+      "ours": "Bachelor of Arts in Economics",
+      "register_candidates": []
+    },
+    {
+      "code": "KUC011 KUC012",
+      "institution": "Kampala International University in Tanzania (KIUT), Dar es Salaam",
+      "ours": "Bachelor of Business Administration (Human Resources Management) Bachelor of Business Administration (Marketing Management)",
+      "register_candidates": []
+    },
+    {
+      "code": "KIC01",
+      "institution": "Kizumbi Institute of Co-operative and Business Education (KICoB), Shinyanga",
+      "ours": "Bachelor of Accounting with Cooperative Management",
+      "register_candidates": []
+    },
+    {
+      "code": "KIC02",
+      "institution": "Kizumbi Institute of Co-operative and Business Education (KICoB), Shinyanga",
+      "ours": "Bachelor of Business Administration with Information Systems",
+      "register_candidates": []
+    },
+    {
+      "code": "MB001",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Business Administration",
+      "register_candidates": []
+    },
+    {
+      "code": "MB008",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Laboratory Sciences and Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB009",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Telecommunication Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB020",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Agribusiness Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MB021",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Environmental Science and Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB023",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Chemistry",
+      "register_candidates": []
+    },
+    {
+      "code": "MB025",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Applied Nuclear Sciences",
+      "register_candidates": []
+    },
+    {
+      "code": "MB026",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Aquatic Sciences and Aquaculture Technologies",
+      "register_candidates": []
+    },
+    {
+      "code": "MB027",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Health Informatics",
+      "register_candidates": []
+    },
+    {
+      "code": "MB028",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Urban and Regional Planning",
+      "register_candidates": []
+    },
+    {
+      "code": "MB029",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Applied Informatics in Industrial Automation",
+      "register_candidates": []
+    },
+    {
+      "code": "MB032",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Electronics and Automation Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB033",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Engineering in Construction Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB034",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Mechatronics Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB035",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Petroleum Storage and Transportation Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB036",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Electrical and Renewable Energy Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB037",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor in Instrumentation and Control Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB039",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Applied Informatics in Marketing",
+      "register_candidates": []
+    },
+    {
+      "code": "MB041",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Software Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB042",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Food and Human Nutrition",
+      "register_candidates": []
+    },
+    {
+      "code": "MB043",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Crop Production and Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB044",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Diary Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB045",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Environmental Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "MB046",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Science in Environmental Health with Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MB047",
+      "institution": "Mbeya University of Science and Technology (MUST), Mbeya",
+      "ours": "Bachelor of Lingustics and Media Studies",
+      "register_candidates": []
+    },
+    {
+      "code": "MBR01",
+      "institution": "Mbeya University of Science and Technology (MUST)– Rukwa Campus College",
+      "ours": "Bachelor of Business Administration",
+      "register_candidates": []
+    },
+    {
+      "code": "MBR03",
+      "institution": "Mbeya University of Science and Technology (MUST)– Rukwa Campus College",
+      "ours": "Bachelor of Agribusiness Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MBM01",
+      "institution": "Mbeya University of Science and Technology – Mtwara Campus College of Technical Education (MUST – MCCTE)",
+      "ours": "Bachelor of Technical Education in Civil Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "UDM06",
+      "institution": "Mkwawa University College of Education (MUCE), Iringa",
+      "ours": "Bachelor of Arts in Historic Archives and Heritage Studies",
+      "register_candidates": []
+    },
+    {
+      "code": "UDM07",
+      "institution": "Mkwawa University College of Education (MUCE), Iringa",
+      "ours": "Bachelor of Science in Data Science and Artificial Intelligence",
+      "register_candidates": []
+    },
+    {
+      "code": "MC002",
+      "institution": "Moshi Co-operative University (MoCU), Kilimanjaro",
+      "ours": "Bachelor of Accounting with Cooperative Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MC003",
+      "institution": "Moshi Co-operative University (MoCU), Kilimanjaro",
+      "ours": "Bachelor of Banking and Microfinance",
+      "register_candidates": []
+    },
+    {
+      "code": "MC012",
+      "institution": "Moshi Co-operative University (MoCU), Kilimanjaro",
+      "ours": "Bachelor of Cooperative Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MH007",
+      "institution": "Muhimbili University of Health and Allied Sciences (MUHAS), Dar es Salaam",
+      "ours": "Bachelor of Science in Environmental Health",
+      "register_candidates": []
+    },
+    {
+      "code": "MUM014",
+      "institution": "Muslim University of Morogoro (MUM), Morogoro",
+      "ours": "Bachelor of Arts in Geography and Environmental Studies",
+      "register_candidates": []
+    },
+    {
+      "code": "MUM016",
+      "institution": "Muslim University of Morogoro (MUM), Morogoro",
+      "ours": "Bachelor of Science in Economics and Finance",
+      "register_candidates": []
+    },
+    {
+      "code": "MJN01",
+      "institution": "Mwalimu Nyerere University of Agriculture and Technology (MNUAT), Musoma",
+      "ours": "Bachelor of Science in Agricultural Economics and Agribusiness",
+      "register_candidates": []
+    },
+    {
+      "code": "MJN04",
+      "institution": "Mwalimu Nyerere University of Agriculture and Technology (MNUAT), Musoma",
+      "ours": "Bachelor of Science in Business Information Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "MJN06",
+      "institution": "Mwalimu Nyerere University of Agriculture and Technology (MNUAT), Musoma",
+      "ours": "Bachelor of Science in Crop Science and Production",
+      "register_candidates": []
+    },
+    {
+      "code": "MU009",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Business Administration in Entrepreneurship and Innovation Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MU011",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Business Administration in Marketing and Communication Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MU017",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Science in Economics Development and Planning",
+      "register_candidates": []
+    },
+    {
+      "code": "MU021",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Public Administration in Records, Archives and Information Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MU029",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Health Systems in Monitoringand Evaluation",
+      "register_candidates": []
+    },
+    {
+      "code": "MU031",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Transport and Logistics Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MU032",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Business Administration in Customer Service Management and Public Relations",
+      "register_candidates": []
+    },
+    {
+      "code": "MU033",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Procurement and Assets Management",
+      "register_candidates": []
+    },
+    {
+      "code": "MU034",
+      "institution": "Mzumbe University (MU), Morogoro",
+      "ours": "Bachelor of Science in Natural Resources Economics",
+      "register_candidates": []
+    },
+    {
+      "code": "OU027",
+      "institution": "Open University of Tanzania (OUT), Dar es Salaam",
+      "ours": "Bachelor of Arts in English Language and Linguistics",
+      "register_candidates": []
+    },
+    {
+      "code": "OU042",
+      "institution": "Open University of Tanzania (OUT), Dar es Salaam",
+      "ours": "Bachelor of Science in Food Processing Technologies",
+      "register_candidates": []
+    },
+    {
+      "code": "RU007",
+      "institution": "Ruaha Catholic University (RUCU), Iringa",
+      "ours": "Bachelor of Environmental Health Sciences",
+      "register_candidates": []
+    },
+    {
+      "code": "RU011",
+      "institution": "Ruaha Catholic University (RUCU), Iringa",
+      "ours": "Bachelor of Science in Nursing",
+      "register_candidates": []
+    },
+    {
+      "code": "SU023",
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "ours": "Bachelor of Science in Irrigation and Water Resource Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "SAA04",
+      "institution": "St. Augustine University of Tanzania (SAUT) Arusha Centre, Arusha",
+      "ours": "Bachelor of Accounting and Finance",
+      "register_candidates": []
+    },
+    {
+      "code": "SF001",
+      "institution": "St. Francis University College of Health and Allied Sciences (SFUCHAS), Ifakara",
+      "ours": "Doctor of Medicine",
+      "register_candidates": []
+    },
+    {
+      "code": "SJ018",
+      "institution": "St. John's University of Tanzania (SJUT), Dodoma",
+      "ours": "Bachelor of Arts in Urban Mission",
+      "register_candidates": []
+    },
+    {
+      "code": "SZ018",
+      "institution": "State University of Zanzibar (SUZA), Zanzibar",
+      "ours": "Bachelor of Entrepreneurs hip and Innovation",
+      "register_candidates": []
+    },
+    {
+      "code": "SZ021",
+      "institution": "State University of Zanzibar (SUZA), Zanzibar",
+      "ours": "Bachelor of Science in Urban Planning and Sustainable Development",
+      "register_candidates": []
+    },
+    {
+      "code": "SAM02",
+      "institution": "Stella Maris Mtwara University College (STEMMUCo), Mtwara",
+      "ours": "Bachelor of Arts in Sociology",
+      "register_candidates": []
+    },
+    {
+      "code": "SAM04",
+      "institution": "Stella Maris Mtwara University College (STEMMUCo), Mtwara",
+      "ours": "Bachelor of Philosophy with Political Science",
+      "register_candidates": []
+    },
+    {
+      "code": "TK007",
+      "institution": "Teofilo Kisanji University (TEKU), Mbeya",
+      "ours": "Bachelor of Arts in Social Work",
+      "register_candidates": []
+    },
+    {
+      "code": "TK010",
+      "institution": "Teofilo Kisanji University (TEKU), Mbeya",
+      "ours": "Bachelor of Divinity",
+      "register_candidates": []
+    },
+    {
+      "code": "TK013",
+      "institution": "Teofilo Kisanji University (TEKU), Mbeya",
+      "ours": "Bachelor of Laws",
+      "register_candidates": []
+    },
+    {
+      "code": "TK015",
+      "institution": "Teofilo Kisanji University (TEKU), Mbeya",
+      "ours": "Bachelor of Science in Environmen tal Science",
+      "register_candidates": []
+    },
+    {
+      "code": "UN003",
+      "institution": "United African University of Tanzania (UAUT), Dar es Salaam",
+      "ours": "Bachelor of Science in Business Information Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "UA008",
+      "institution": "University of Arusha (UoA), Arusha",
+      "ours": "Bachelor of Arts in Religious Studies",
+      "register_candidates": []
+    },
+    {
+      "code": "UD018",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Science in Textile Design and Technology Actuarial Sciences",
+      "register_candidates": []
+    },
+    {
+      "code": "UD039",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Arts in Public Relations and Strategic Communication",
+      "register_candidates": []
+    },
+    {
+      "code": "UD047",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Lifelong Learning and Community Development",
+      "register_candidates": []
+    },
+    {
+      "code": "UD075",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Science in Bee Science and Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "UD088",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Arts in Diplomatic and Defence Studies",
+      "register_candidates": []
+    },
+    {
+      "code": "UD100",
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "ours": "Bachelor of Science in Physics (Medical Physics)",
+      "register_candidates": []
+    },
+    {
+      "code": "DM006",
+      "institution": "University of Dodoma ( UDOM), Dodoma",
+      "ours": "Bachelor of Information Technology with Business Analytics",
+      "register_candidates": []
+    },
+    {
+      "code": "DM039",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Commerce in Tourism and Hospitality Management",
+      "register_candidates": []
+    },
+    {
+      "code": "DM043",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Disaster Risk Management",
+      "register_candidates": []
+    },
+    {
+      "code": "DM066",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Commerce in Procurement and Logistics Management",
+      "register_candidates": []
+    },
+    {
+      "code": "DM069",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Chinese Language and Culture",
+      "register_candidates": []
+    },
+    {
+      "code": "DM077",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Science in Geo-informatics",
+      "register_candidates": []
+    },
+    {
+      "code": "DM092",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Pharmacy",
+      "register_candidates": []
+    },
+    {
+      "code": "DM093",
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "ours": "Bachelor of Science in Biomedical Engineering",
+      "register_candidates": []
+    },
+    {
+      "code": "UI004",
+      "institution": "University of Iringa (UoI), Iringa",
+      "ours": "Bachelor of Counselling Psychology",
+      "register_candidates": []
+    },
+    {
+      "code": "UI013",
+      "institution": "University of Iringa (UoI), Iringa",
+      "ours": "Bachelor of Business in Marketing Management",
+      "register_candidates": []
+    },
+    {
+      "code": "UI014",
+      "institution": "University of Iringa (UoI), Iringa",
+      "ours": "Bachelor of Applied Marketing and Entrepreneurship",
+      "register_candidates": []
+    },
+    {
+      "code": "ZU012",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Science inComputer Engineering and Information Technology",
+      "register_candidates": []
+    },
+    {
+      "code": "ZU018",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Science in Counselling Psychology",
+      "register_candidates": []
+    },
+    {
+      "code": "ZU025",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Community Development",
+      "register_candidates": []
+    },
+    {
+      "code": "ZU027",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Science in Occupational Health and Environmental Safety",
+      "register_candidates": []
+    },
+    {
+      "code": "ZU028",
+      "institution": "Zanzibar University (ZU), Zanzibar",
+      "ours": "Bachelor of Science in Disaster and Emergency Management",
+      "register_candidates": []
+    }
+  ],
+  "unverifiable_institutions": [
+    "Arusha Technical College (ATC), Arusha",
+    "College of African Wildlife Management (CAWM), Mweka- Kilimanjaro",
+    "College of Business Education (CBE), Dar es Salaam",
+    "College of Business Education (CBE), Dodoma",
+    "College of Business Education (CBE), Mbeya",
+    "College of Business Education (CBE), Mwanza",
+    "Dar es Salaam Institute of Technology (DIT), Dar es Salaam",
+    "Dar es Salaam Institute of Technology (DIT), Mwanza Campus",
+    "Dar es Salaam Maritime Institute (DMI), Dar es Salaam",
+    "Dr. Salim Ahmed Salim Centre for Foreign Relations (CFR), Dar es Salaam",
+    "Eastern Africa Statistical Training Centre (EASTC), Dar es Salaam",
+    "Institute of Accountancy Arusha (IAA), Arusha",
+    "Institute of Accountancy Arusha (IAA), Babati Campus",
+    "Institute of Accountancy Arusha (IAA), Dar es Salaam Campus",
+    "Institute of Adult Education (IAE), Dar es Salaam",
+    "Institute of Finance Management (IFM), Dar es Salaam",
+    "Institute of Finance Management (IFM), Dodoma",
+    "Institute of Finance Management (IFM), Mwanza",
+    "Institute of Finance Management (IFS), Simiyu",
+    "Institute of Public Administration (IPA), Zanzibar",
+    "Institute of Rural Development Planning (IRDP), Dodoma",
+    "Institute of Rural Development Planning (IRDP), Mwanza",
+    "Institute of Social Work (ISW) Kisangara Campus, Kilimanjaro",
+    "Institute of Social Work (ISW), Dar es Salaam",
+    "Institute of Tax Administration (ITA), Dar es Salaam",
+    "Karume Institute of Science and Technology (KIST), Zanzibar",
+    "Local Government Training Institute (LGTI), Dodoma",
+    "MS Training Centre for Development Cooperation (MS-TCDC), Arusha",
+    "Mwalimu Nyerere Memorial Academy (MNMA) - Pemba Campus",
+    "Mwalimu Nyerere Memorial Academy (MNMA), Dar es Salaam",
+    "Mwalimu Nyerere Memorial Academy (MNMA), Zanzibar Campus",
+    "Mzumbe University Dar es Salaam Campus College (MUDCCo), Dar es Salaam",
+    "Mzumbe University Mbeya Campus College (MUMCCo), Mbeya",
+    "National Institute of Transport (NIT), Dar es Salaam",
+    "Sokoine University of Agriculture - Mizengo Pinda Campus College (SUA-MPCCo), Katavi",
+    "Songea Catholic Institute of Technical Education (SOCAITE) , Songea",
+    "St. Joseph University College of Engineering and Technology (SJCET), Dar es Salaam",
+    "Tanzania Institute of Accountancy (TIA), Dar es Salaam",
+    "Tanzania Institute of Accountancy (TIA), Kigoma",
+    "Tanzania Institute of Accountancy (TIA), Mbeya",
+    "Tanzania Institute of Accountancy (TIA), Mtwara",
+    "Tanzania Institute of Accountancy (TIA), Mwanza",
+    "Tanzania Institute of Accountancy (TIA), Singida",
+    "Tanzania Institute of Accountancy (TIA), Tanga",
+    "Tanzania Institute of Project Management (TIPM), Dar es Salaam",
+    "Tanzania Public Service College (TPSC), Dar es Salaam",
+    "Tanzania Public Service College (TPSC), Tabora",
+    "Tengeru Institute of Community Development (TICD), Arusha",
+    "Unique Academy Dar es Salaam (UAD)",
+    "Water Institute (WI), Dar es Salaam"
+  ]
+}
