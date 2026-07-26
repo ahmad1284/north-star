@@ -1,0 +1,2943 @@
+{
+  "source_pdf": "tcu-undergraduate-admission-guidebook-2026-2027.pdf",
+  "pages_total": 376,
+  "pages_with_programme_table": 309,
+  "pages_without_table": 14,
+  "pages_with_other_table": 53,
+  "rows_transcribed": 870,
+  "rows_with_problems": 0,
+  "institutions": 94,
+  "sn_audit_findings": [
+    {
+      "institution": "Kampala International University in Tanzania (KIUT), Dar es Salaam",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        9,
+        10
+      ],
+      "max": 13,
+      "pages": [
+        116,
+        117,
+        118
+      ]
+    },
+    {
+      "institution": "Moshi Co-operative University (MoCU), Kilimanjaro",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        4,
+        5,
+        6,
+        7,
+        11
+      ],
+      "max": 12,
+      "pages": [
+        143,
+        145
+      ]
+    },
+    {
+      "institution": "Open University of Tanzania (OUT), Dar es Salaam",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        32
+      ],
+      "max": 33,
+      "pages": [
+        199,
+        200,
+        201,
+        202,
+        203,
+        204,
+        205,
+        206,
+        207,
+        208,
+        209,
+        210
+      ]
+    },
+    {
+      "institution": "Sokoine University of Agriculture (SUA), Morogoro",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        13,
+        19,
+        26
+      ],
+      "max": 29,
+      "pages": [
+        216,
+        217,
+        218,
+        219,
+        220,
+        221,
+        222,
+        223,
+        224
+      ]
+    },
+    {
+      "institution": "State University of Zanzibar (SUZA), Zanzibar",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        11
+      ],
+      "max": 20,
+      "pages": [
+        246,
+        247,
+        248,
+        249,
+        250,
+        251,
+        252
+      ]
+    },
+    {
+      "institution": "Stella Maris Mtwara University College (STEMMUCo), Mtwara",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        3,
+        6
+      ],
+      "max": 8,
+      "pages": [
+        255,
+        256,
+        257
+      ]
+    },
+    {
+      "institution": "University of Dar es Salaam (UDSM), Dar es Salaam",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        18,
+        19
+      ],
+      "max": 88,
+      "pages": [
+        292,
+        293,
+        294,
+        295,
+        296,
+        298,
+        299,
+        300,
+        301,
+        302,
+        303,
+        304,
+        305,
+        306,
+        307,
+        308,
+        309,
+        310,
+        311,
+        312,
+        313,
+        314,
+        315,
+        316,
+        317,
+        318,
+        319,
+        320,
+        321,
+        322
+      ]
+    },
+    {
+      "institution": "University of Dodoma (UDOM), Dodoma",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        24,
+        51,
+        68
+      ],
+      "max": 72,
+      "pages": [
+        327,
+        328,
+        329,
+        330,
+        331,
+        332,
+        333,
+        334,
+        336,
+        337,
+        339,
+        340,
+        342,
+        343,
+        344,
+        345,
+        346,
+        347,
+        348,
+        349,
+        350,
+        351,
+        352,
+        353,
+        354,
+        355,
+        357
+      ]
+    },
+    {
+      "institution": "University of Iringa (UoI), Iringa",
+      "issue": "S/N absent from the guidebook itself",
+      "missing": [
+        8,
+        9,
+        10
+      ],
+      "max": 16,
+      "pages": [
+        359,
+        360,
+        361,
+        363,
+        364
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 2,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 3,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 4,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 5,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 6,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 7,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 8,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 9,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 10,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 11,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 12,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 13,
+      "tables": 2,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x3 table with no programme header; 8x3 table with no programme header"
+    },
+    {
+      "page": 14,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "10x3 table with no programme header"
+    },
+    {
+      "page": 15,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x3 table with no programme header"
+    },
+    {
+      "page": 16,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "16x5 table with no programme header"
+    },
+    {
+      "page": 17,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "19x5 table with no programme header"
+    },
+    {
+      "page": 18,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "18x5 table with no programme header"
+    },
+    {
+      "page": 19,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "16x5 table with no programme header"
+    },
+    {
+      "page": 20,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "17x5 table with no programme header"
+    },
+    {
+      "page": 21,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "17x5 table with no programme header"
+    },
+    {
+      "page": 22,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "14x5 table with no programme header"
+    },
+    {
+      "page": 23,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "15x4 table with no programme header"
+    },
+    {
+      "page": 24,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x4 table with no programme header"
+    },
+    {
+      "page": 25,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    },
+    {
+      "page": 26,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 27,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 28,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 29,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 30,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 31,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 32,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 33,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 34,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 35,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 36,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 37,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 38,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 39,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 40,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 41,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 42,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 43,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 44,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 6,
+      "detail": ""
+    },
+    {
+      "page": 45,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 46,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 47,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 48,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 49,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 50,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 51,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 52,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 53,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 54,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 55,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 56,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 57,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 58,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 59,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 60,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 61,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 62,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 63,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 64,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 65,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 66,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 67,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 68,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 69,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 70,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 71,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 72,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 73,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 74,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 75,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 76,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 77,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 78,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 79,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 80,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 81,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 82,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 83,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 84,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 85,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 86,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 87,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 88,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 89,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 90,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 91,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 92,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 93,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 94,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 95,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 96,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 97,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 98,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 99,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 100,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 101,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 102,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 103,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 104,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 105,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 106,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 107,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 108,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 109,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 110,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 111,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 112,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 113,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 114,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 115,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 116,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 117,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 118,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 119,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 120,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 121,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 122,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 123,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 124,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 125,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 126,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 127,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 128,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 129,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 130,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 131,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 132,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 133,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 134,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 135,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 136,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 137,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 138,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 139,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 140,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 141,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 142,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 143,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 144,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 145,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 146,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 147,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 148,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 149,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 150,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 151,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 152,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 153,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 154,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 155,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 156,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 157,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 158,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 159,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 160,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 161,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 162,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 163,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 164,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 165,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 166,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 167,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 168,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 169,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 170,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 171,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "5x7 table with no programme header"
+    },
+    {
+      "page": 172,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 173,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 174,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 175,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 176,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 177,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 178,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 179,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 180,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 181,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 182,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 183,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 184,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 185,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 186,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 187,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 188,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 189,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 190,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 191,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 192,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 193,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 194,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 195,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 196,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 197,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 198,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 199,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 200,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 201,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 202,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 203,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 204,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 205,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 206,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 207,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 208,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 209,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 210,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 211,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "5x7 table with no programme header"
+    },
+    {
+      "page": 212,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 213,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 214,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 215,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 216,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 217,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 218,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 219,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 220,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 221,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 222,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 223,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 224,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 225,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 226,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 227,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 228,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 229,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 230,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 231,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 232,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "5x7 table with no programme header"
+    },
+    {
+      "page": 233,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 234,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 235,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 236,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 237,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 238,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 239,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 240,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 241,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 242,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 243,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 244,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 245,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 246,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 247,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 248,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 249,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 250,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 251,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 252,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 253,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 254,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 255,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 256,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 257,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 258,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 259,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 260,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 261,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 262,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 263,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 264,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 265,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 266,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 267,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 268,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 269,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 270,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 271,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 272,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 273,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 274,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 275,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 276,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 277,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 278,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 279,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 280,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 281,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 282,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 6,
+      "detail": ""
+    },
+    {
+      "page": 283,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 284,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 285,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 286,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 287,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 288,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 289,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 290,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 291,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 292,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 293,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 294,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 295,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 296,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 297,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 298,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 299,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 300,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 301,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 302,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 303,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 304,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 305,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 306,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 307,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 308,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 309,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 310,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 311,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 312,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 313,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 314,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 315,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 316,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 317,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 318,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 319,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 320,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 321,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 322,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 323,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 324,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "6x7 table with no programme header"
+    },
+    {
+      "page": 325,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "9x9 table with no programme header"
+    },
+    {
+      "page": 326,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 327,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 328,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 329,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 330,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 331,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 332,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 5,
+      "detail": ""
+    },
+    {
+      "page": 333,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 334,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 335,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 336,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 337,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 338,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 339,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 340,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 341,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 342,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 343,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 344,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 345,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 346,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 347,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 1,
+      "detail": ""
+    },
+    {
+      "page": 348,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 349,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 350,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 351,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 352,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 353,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 354,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 355,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 356,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "1x7 table with no programme header"
+    },
+    {
+      "page": 357,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 358,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "4x7 table with no programme header"
+    },
+    {
+      "page": 359,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 360,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 361,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 362,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "3x7 table with no programme header"
+    },
+    {
+      "page": 363,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 364,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 365,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 366,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 367,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 2,
+      "detail": ""
+    },
+    {
+      "page": 368,
+      "tables": 1,
+      "status": "not_programme_table",
+      "rows": 0,
+      "detail": "2x7 table with no programme header"
+    },
+    {
+      "page": 369,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 370,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 371,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 372,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 373,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 374,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 3,
+      "detail": ""
+    },
+    {
+      "page": 375,
+      "tables": 1,
+      "status": "programme_table",
+      "rows": 4,
+      "detail": ""
+    },
+    {
+      "page": 376,
+      "tables": 0,
+      "status": "no_table",
+      "rows": 0,
+      "detail": "no ruled table detected"
+    }
+  ],
+  "institution_list": [
+    "Abdulrahman Al- Sumait University (SUMAIT), Zanzibar",
+    "Aga Khan University (AKU), Dar es Salaam",
+    "Archbishop Mihayo University College of Tabora (AMUCTA), Tabora",
+    "Ardhi University (ARU), Dar es Salaam",
+    "Arusha Technical College (ATC), Arusha",
+    "Catholic University of Health and Allied Sciences (CUHAS), Mwanza",
+    "Catholic University of Mbeya (CUoM), Mbeya",
+    "College of African Wildlife Management (CAWM), Mweka- Kilimanjaro",
+    "College of Business Education (CBE), Dar es Salaam",
+    "College of Business Education (CBE), Dodoma",
+    "College of Business Education (CBE), Mbeya",
+    "College of Business Education (CBE), Mwanza",
+    "Dar es Salaam Institute of Technology (DIT), Dar es Salaam",
+    "Dar es Salaam Institute of Technology (DIT), Mwanza Campus",
+    "Dar es Salaam Maritime Institute (DMI), Dar es Salaam",
+    "Dar es Salaam Tumaini University (DarTU), Dar es Salaam",
+    "Dar es Salaam University College of Education (DUCE), Dar es Salaam",
+    "Dr. Salim Ahmed Salim Centre for Foreign Relations (CFR), Dar es Salaam",
+    "Eastern Africa Statistical Training Centre (EASTC), Dar es Salaam",
+    "Institute of Accountancy Arusha (IAA), Arusha",
+    "Institute of Accountancy Arusha (IAA), Babati Campus",
+    "Institute of Accountancy Arusha (IAA), Dar es Salaam Campus",
+    "Institute of Adult Education (IAE), Dar es Salaam",
+    "Institute of Finance Management (IFM), Dar es Salaam",
+    "Institute of Finance Management (IFM), Dodoma",
+    "Institute of Finance Management (IFM), Mwanza",
+    "Institute of Finance Management (IFS), Simiyu",
+    "Institute of Public Administration (IPA), Zanzibar",
+    "Institute of Rural Development Planning (IRDP), Dodoma",
+    "Institute of Rural Development Planning (IRDP), Mwanza",
+    "Institute of Social Work (ISW) Kisangara Campus, Kilimanjaro",
+    "Institute of Social Work (ISW), Dar es Salaam",
+    "Institute of Tax Administration (ITA), Dar es Salaam",
+    "Jordan University College (JUCo), Morogoro",
+    "KCMC University, Kilimanjaro",
+    "Kairuki University (KU), Dar es Salaam",
+    "Kampala International University in Tanzania (KIUT), Dar es Salaam",
+    "Karume Institute of Science and Technology (KIST), Zanzibar",
+    "Kizumbi Institute of Co-operative and Business Education (KICoB), Shinyanga",
+    "Local Government Training Institute (LGTI), Dodoma",
+    "MS Training Centre for Development Cooperation (MS-TCDC), Arusha",
+    "Marian University College (MARUCo), Bagamoyo",
+    "Mbeya University of Science and Technology (MUST), Mbeya",
+    "Mbeya University of Science and Technology (MUST)– Rukwa Campus College",
+    "Mbeya University of Science and Technology – Mtwara Campus College of Technical Education (MUST – MCCTE)",
+    "Mkwawa University College of Education (MUCE), Iringa",
+    "Moshi Co-operative University (MoCU), Kilimanjaro",
+    "Muhimbili University of Health and Allied Sciences (MUHAS), Dar es Salaam",
+    "Muslim University of Morogoro (MUM), Morogoro",
+    "Mwalimu Nyerere Memorial Academy (MNMA) - Pemba Campus",
+    "Mwalimu Nyerere Memorial Academy (MNMA), Dar es Salaam",
+    "Mwalimu Nyerere Memorial Academy (MNMA), Zanzibar Campus",
+    "Mwalimu Nyerere University of Agriculture and Technology (MNUAT), Musoma",
+    "Mwenge Catholic University (MWECAU), Hedaru Campus College",
+    "Mwenge Catholic University (MWECAU), Kilimanjaro",
+    "Mzumbe University (MU), Morogoro",
+    "Mzumbe University Dar es Salaam Campus College (MUDCCo), Dar es Salaam",
+    "Mzumbe University Mbeya Campus College (MUMCCo), Mbeya",
+    "National Institute of Transport (NIT), Dar es Salaam",
+    "Open University of Tanzania (OUT), Dar es Salaam",
+    "Ruaha Catholic University (RUCU), Iringa",
+    "Sokoine University of Agriculture (SUA), Morogoro",
+    "Sokoine University of Agriculture - Mizengo Pinda Campus College (SUA-MPCCo), Katavi",
+    "Songea Catholic Institute of Technical Education (SOCAITE) , Songea",
+    "St. Augustine University of Tanzania (SAUT) Arusha Centre, Arusha",
+    "St. Augustine University of Tanzania (SAUT), Mwanza",
+    "St. Francis University College of Health and Allied Sciences (SFUCHAS), Ifakara",
+    "St. John's University of Tanzania (SJUT), Dodoma",
+    "St. Joseph University College of Engineering and Technology (SJCET), Dar es Salaam",
+    "St. Joseph University College of Health and Allied Sciences (SJCHAS), Dar es Salaam",
+    "State University of Zanzibar (SUZA), Zanzibar",
+    "Stella Maris Mtwara University College (STEMMUCo), Mtwara",
+    "Tanzania Institute of Accountancy (TIA), Dar es Salaam",
+    "Tanzania Institute of Accountancy (TIA), Kigoma",
+    "Tanzania Institute of Accountancy (TIA), Mbeya",
+    "Tanzania Institute of Accountancy (TIA), Mtwara",
+    "Tanzania Institute of Accountancy (TIA), Mwanza",
+    "Tanzania Institute of Accountancy (TIA), Singida",
+    "Tanzania Institute of Accountancy (TIA), Tanga",
+    "Tanzania Institute of Project Management (TIPM), Dar es Salaam",
+    "Tanzania Public Service College (TPSC), Dar es Salaam",
+    "Tanzania Public Service College (TPSC), Tabora",
+    "Tengeru Institute of Community Development (TICD), Arusha",
+    "Teofilo Kisanji University (TEKU), Mbeya",
+    "Tumaini University Makumira (TUMA), Arusha",
+    "Unique Academy Dar es Salaam (UAD)",
+    "United African University of Tanzania (UAUT), Dar es Salaam",
+    "University of Arusha (UoA), Arusha",
+    "University of Dar es Salaam (UDSM), Dar es Salaam",
+    "University of Dodoma ( UDOM), Dodoma",
+    "University of Dodoma (UDOM), Dodoma",
+    "University of Iringa (UoI), Iringa",
+    "Water Institute (WI), Dar es Salaam",
+    "Zanzibar University (ZU), Zanzibar"
+  ]
+}
