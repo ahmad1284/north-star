@@ -1,0 +1,32 @@
+{
+  "description": "Canonical A-level subject registry. IDs are the only values used in programmes.json and API requests.",
+  "subjects": [
+    { "id": "physics", "name": "Physics" },
+    { "id": "chemistry", "name": "Chemistry" },
+    { "id": "biology", "name": "Biology" },
+    { "id": "advanced_mathematics", "name": "Advanced Mathematics" },
+    { "id": "basic_applied_mathematics", "name": "Basic Applied Mathematics" },
+    { "id": "computer_science", "name": "Computer Science" },
+    { "id": "geography", "name": "Geography" },
+    { "id": "history", "name": "History" },
+    { "id": "kiswahili", "name": "Kiswahili" },
+    { "id": "english_language", "name": "English Language" },
+    { "id": "literature_in_english", "name": "Literature in English" },
+    { "id": "economics", "name": "Economics" },
+    { "id": "commerce", "name": "Commerce" },
+    { "id": "accountancy", "name": "Accountancy" },
+    { "id": "agriculture", "name": "Agriculture" },
+    { "id": "nutrition", "name": "Food and Human Nutrition" },
+    { "id": "fine_arts", "name": "Fine Arts" },
+    { "id": "arabic", "name": "Arabic" },
+    { "id": "french", "name": "French" },
+    { "id": "chinese", "name": "Chinese" },
+    { "id": "divinity", "name": "Divinity / Islamic Knowledge" },
+    { "id": "physical_education", "name": "Physical Education" },
+    { "id": "general_studies", "name": "General Studies" },
+    { "id": "education", "name": "Education" },
+    { "id": "music", "name": "Music" },
+    { "id": "theatre_arts", "name": "Theatre Arts" },
+    { "id": "business_studies", "name": "Business Studies" }
+  ]
+}

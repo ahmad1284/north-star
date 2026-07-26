@@ -1,0 +1,619 @@
+{
+  "description": "Representative seed of REAL programmes transcribed from the TCU 2026/27 Bachelor's Degree Admission Guidebook (inputs/tcu-undergraduate-admission-guidebook-2026-2027.pdf). Structured rules in 'slots'; conditions outside A-level scope (O-level etc.) are kept visible in 'additional_requirements' but not machine-evaluated in the MVP. Checklist fields with null = data not yet available (never invented).",
+  "programmes": [
+    {
+      "id": "suza-doctor-of-medicine",
+      "code": "SZ001",
+      "name": "Doctor of Medicine",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["health", "medicine"],
+      "requirement_text": "Three principal passes in Physics, Chemistry and Biology with minimum of 6 points. A minimum of 'D' grade in Chemistry, Biology and Physics.",
+      "slots": [
+        { "choose": 1, "from": ["chemistry"], "min_grade": "D" },
+        { "choose": 1, "from": ["biology"], "min_grade": "D" },
+        { "choose": 1, "from": ["physics"], "min_grade": "D" }
+      ],
+      "min_points": 6.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 50,
+      "duration_years": 5,
+      "checklist": { "what_is_it": "Trains medical doctors (clinical medicine).", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.237 (SUZA)"
+    },
+    {
+      "id": "suza-bsc-with-education",
+      "code": "SZ002",
+      "name": "Bachelor of Science with Education",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["education", "science"],
+      "requirement_text": "Two principal passes in the following subjects: Physics, Chemistry, Biology, Geography, Advanced Mathematics or Computer Science.",
+      "slots": [
+        { "choose": 2, "from": ["physics", "chemistry", "biology", "geography", "advanced_mathematics", "computer_science"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 150,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Prepares secondary-school science teachers.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.237 (SUZA)"
+    },
+    {
+      "id": "suza-bit-application-management",
+      "code": "SZ003",
+      "name": "Bachelor of Information Technology Application and Management",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["ict"],
+      "requirement_text": "Two principal passes in the following subjects: History, Geography, Kiswahili, English Language, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 40,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Applied IT: using and managing technology in organisations.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.237 (SUZA)"
+    },
+    {
+      "id": "suza-bsc-environmental-health",
+      "code": "SZ004",
+      "name": "Bachelor of Science in Environmental Health",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["health", "environment"],
+      "requirement_text": "Three principal passes in Chemistry, Biology and either Physics or Mathematics or Nutrition or Geography or Agriculture with a minimum of 6 points. A minimum of 'C' grade in Chemistry and D grade in Biology and at least E grade in the third subject.",
+      "slots": [
+        { "choose": 1, "from": ["chemistry"], "min_grade": "C" },
+        { "choose": 1, "from": ["biology"], "min_grade": "D" },
+        { "choose": 1, "from": ["physics", "advanced_mathematics", "nutrition", "geography", "agriculture"], "min_grade": "E" }
+      ],
+      "min_points": 6.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 45,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Public/environmental health: sanitation, disease prevention, inspection.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.237 (SUZA)"
+    },
+    {
+      "id": "suza-bsc-computer-science",
+      "code": "SZ005",
+      "name": "Bachelor of Science in Computer Science",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["ict", "science"],
+      "requirement_text": "Two principal passes in Advanced Mathematics/Computer Science and in one of the following subjects: Geography, Economics, Commerce, Accountancy, Physics, Chemistry, or Biology.",
+      "slots": [
+        { "choose": 1, "from": ["advanced_mathematics", "computer_science"] },
+        { "choose": 1, "from": ["geography", "economics", "commerce", "accountancy", "physics", "chemistry", "biology"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 30,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Programming, algorithms, software and systems (Ahmad's course!).", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.238 (SUZA)"
+    },
+    {
+      "id": "suza-ba-with-education",
+      "code": "SZ006",
+      "name": "Bachelor of Arts with Education",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["education", "arts"],
+      "requirement_text": "Two principal passes in the following subjects: History, Geography, Kiswahili, English Language or Arabic.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "arabic"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 200,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Prepares secondary-school arts/humanities teachers.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.238 (SUZA)"
+    },
+    {
+      "id": "suza-accounting-finance",
+      "code": "SZ008",
+      "name": "Bachelor Degree in Accounting and Finance",
+      "institution": "State University of Zanzibar (SUZA)",
+      "location": "Zanzibar",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in the following subjects: History, Geography, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Kiswahili, English.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "kiswahili", "english_language"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 110,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Accounting, financial reporting and finance for organisations.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.238 (SUZA)"
+    },
+    {
+      "id": "muhas-bachelor-of-pharmacy",
+      "code": "MH001",
+      "name": "Bachelor of Pharmacy",
+      "institution": "Muhimbili University of Health and Allied Sciences (MUHAS)",
+      "location": "Dar es Salaam",
+      "tags": ["health", "medicine"],
+      "requirement_text": "Three principal passes at grade 'C' in Chemistry, Biology, and Physics or Mathematics.",
+      "slots": [
+        { "choose": 1, "from": ["chemistry"], "min_grade": "C" },
+        { "choose": 1, "from": ["biology"], "min_grade": "C" },
+        { "choose": 1, "from": ["physics", "advanced_mathematics"], "min_grade": "C" }
+      ],
+      "min_points": 6.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Preference to candidates with grade 'B' in Chemistry, then Biology. Candidates with 'D' in Physics/Mathematics may be considered if they have 'B' in Chemistry and/or Biology."
+      ],
+      "capacity": 85,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Medicines: their science, preparation and safe use.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.139 (MUHAS)"
+    },
+    {
+      "id": "muhas-bsc-environmental-health",
+      "code": "MH007",
+      "name": "Bachelor of Science in Environmental Health",
+      "institution": "Muhimbili University of Health and Allied Sciences (MUHAS)",
+      "location": "Dar es Salaam",
+      "tags": ["health", "environment"],
+      "requirement_text": "Three principal passes in Chemistry, Biology, and either Physics, Nutrition, Geography, or Agriculture with a minimum of 6 points.",
+      "slots": [
+        { "choose": 1, "from": ["chemistry"] },
+        { "choose": 1, "from": ["biology"] },
+        { "choose": 1, "from": ["physics", "nutrition", "geography", "agriculture"] }
+      ],
+      "min_points": 6.0,
+      "points_basis": "slots",
+      "additional_requirements": ["Candidates with a 'C' grade in Chemistry given high priority."],
+      "capacity": 85,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Public/environmental health at Tanzania's leading health university.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.139 (MUHAS)"
+    },
+    {
+      "id": "muhas-bsc-radiography",
+      "code": "MH008",
+      "name": "Bachelor of Science in Diagnostic and Therapeutic Radiography",
+      "institution": "Muhimbili University of Health and Allied Sciences (MUHAS)",
+      "location": "Dar es Salaam",
+      "tags": ["health", "medicine"],
+      "requirement_text": "Three principal passes at grade 'D' in Physics, Biology, and Chemistry with a pass in Mathematics.",
+      "slots": [
+        { "choose": 1, "from": ["physics"], "min_grade": "D" },
+        { "choose": 1, "from": ["biology"], "min_grade": "D" },
+        { "choose": 1, "from": ["chemistry"], "min_grade": "D" }
+      ],
+      "min_points": 6.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Requires a pass in Mathematics. Preference to grade 'C' in Physics, then Biology; 'E' in Physics or a pass in Mathematics may be considered with 'C' in Biology and/or Chemistry."
+      ],
+      "capacity": 35,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Medical imaging (X-ray, ultrasound, radiotherapy).", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.139 (MUHAS)"
+    },
+    {
+      "id": "udsm-ba-archaeology",
+      "code": "UD001",
+      "name": "Bachelor of Arts in Archaeology",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["arts", "social"],
+      "requirement_text": "Two principal level passes in History, Language, Geography, Physics, Chemistry, Biology and Advanced Mathematics.",
+      "slots": [
+        { "choose": 2, "from": ["history", "kiswahili", "english_language", "french", "arabic", "chinese", "literature_in_english", "geography", "physics", "chemistry", "biology", "advanced_mathematics"] }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": ["Guidebook lists 'Language' generically; all language subjects accepted here."],
+      "capacity": 52,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Study of human history through excavation and material remains.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.283 (UDSM)"
+    },
+    {
+      "id": "udsm-ba-economics",
+      "code": "UD002",
+      "name": "Bachelor of Arts in Economics",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["economics", "business"],
+      "requirement_text": "Two principal passes one of which must be in Economics or Advanced Mathematics.",
+      "slots": [
+        { "choose": 1, "from": ["economics", "advanced_mathematics"] },
+        { "choose": 1, "from": "any" }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": ["Candidates without Advanced Mathematics must have a credit pass or above in Basic Mathematics at O-Level."],
+      "capacity": 270,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "How economies work: markets, policy, development.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.283 (UDSM)"
+    },
+    {
+      "id": "udsm-ba-history-archives",
+      "code": "UD006",
+      "name": "Bachelor of Arts in History and Archives Management",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["arts", "social"],
+      "requirement_text": "Principal pass in History at 'D' or above and a principal pass from: English, Kiswahili, Chinese, Economics, Geography, Fine Arts, French or Arabic.",
+      "slots": [
+        { "choose": 1, "from": ["history"], "min_grade": "D" },
+        { "choose": 1, "from": ["english_language", "kiswahili", "chinese", "economics", "geography", "fine_arts", "french", "arabic"] }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": [],
+      "capacity": 100,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "History plus managing archives and records.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.284 (UDSM)"
+    },
+    {
+      "id": "udsm-ba-language-studies",
+      "code": "UD007",
+      "name": "Bachelor of Arts in Language Studies",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["arts", "education"],
+      "requirement_text": "Two principal passes, one of which must be a minimum of 'C' grade in: English Language, Kiswahili, French, Chinese or Arabic.",
+      "slots": [
+        { "choose": 1, "from": ["english_language", "kiswahili", "french", "chinese", "arabic"], "min_grade": "C" },
+        { "choose": 1, "from": "any" }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": [],
+      "capacity": 100,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Linguistics and language: how languages work and are used.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.284 (UDSM)"
+    },
+    {
+      "id": "udsm-ba-literature",
+      "code": "UD008",
+      "name": "Bachelor of Arts in Literature",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["arts"],
+      "requirement_text": "Two principal passes one of which must be at 'C' grade or above in Kiswahili, English or French.",
+      "slots": [
+        { "choose": 1, "from": ["kiswahili", "english_language", "french", "literature_in_english"], "min_grade": "C" },
+        { "choose": 1, "from": "any" }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": [],
+      "capacity": 95,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Literature: reading, criticism and creative traditions.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.284 (UDSM)"
+    },
+    {
+      "id": "udsm-ba-political-science",
+      "code": "UD009",
+      "name": "Bachelor of Arts in Political Science and Public Administration",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["social", "arts"],
+      "requirement_text": "Two principal passes in the following subjects: History, Geography, Kiswahili, English (and related arts subjects).",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "economics", "literature_in_english"] }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": ["Requirement text truncated in extraction; subject list slightly conservative."],
+      "capacity": 250,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Politics, governance and public administration.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.284 (UDSM)"
+    },
+    {
+      "id": "udsm-bsc-mining-engineering",
+      "code": "UD016",
+      "name": "Bachelor of Science in Mining Engineering",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["engineering", "science"],
+      "requirement_text": "Two principal passes in Advanced Mathematics and Physics.",
+      "slots": [
+        { "choose": 1, "from": ["advanced_mathematics"] },
+        { "choose": 1, "from": ["physics"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Applicant without at least a subsidiary pass in Chemistry must have a minimum of 'C' grade at O-Level. Special requirement: physical fitness."
+      ],
+      "capacity": 40,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Engineering for mineral extraction — a major Tanzanian industry.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.287 (UDSM)"
+    },
+    {
+      "id": "udsm-bsc-textile-engineering",
+      "code": "UD017",
+      "name": "Bachelor of Science in Textile Engineering",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["engineering", "science"],
+      "requirement_text": "Two principal level passes in Advanced Mathematics or Physics and in one of: Chemistry, Geography, Biology or Computer Science.",
+      "slots": [
+        { "choose": 1, "from": ["advanced_mathematics", "physics"] },
+        { "choose": 1, "from": ["chemistry", "geography", "biology", "computer_science"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Without subsidiary pass in Chemistry at A-level: at least 'C' in Chemistry at O-level. Without principal Advanced Mathematics: at least 'C' in Mathematics at O-level."
+      ],
+      "capacity": 40,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Engineering of textile production and materials.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.287 (UDSM)"
+    },
+    {
+      "id": "sua-bsc-agricultural-engineering",
+      "code": "SU002",
+      "name": "Bachelor of Science in Agricultural Engineering",
+      "institution": "Sokoine University of Agriculture (SUA)",
+      "location": "Morogoro",
+      "tags": ["engineering", "agriculture"],
+      "requirement_text": "Two principal passes in Advanced Mathematics and one of: Physics, Chemistry, or Geography.",
+      "slots": [
+        { "choose": 1, "from": ["advanced_mathematics"] },
+        { "choose": 1, "from": ["physics", "chemistry", "geography"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": ["Must have a minimum of 'D' grade in Physics, Chemistry and Biology at O-Level."],
+      "capacity": 65,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Engineering applied to farming: irrigation, machinery, processing.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.207 (SUA)"
+    },
+    {
+      "id": "sua-bsc-agriculture",
+      "code": "SU003",
+      "name": "Bachelor of Science in Agriculture",
+      "institution": "Sokoine University of Agriculture (SUA)",
+      "location": "Morogoro",
+      "tags": ["agriculture", "science"],
+      "requirement_text": "Two principal passes in Biology and one of the following: Chemistry, Physics or Agriculture.",
+      "slots": [
+        { "choose": 1, "from": ["biology"] },
+        { "choose": 1, "from": ["chemistry", "physics", "agriculture"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 400,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Crop and animal production science — agriculture employs most Tanzanians.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.207 (SUA)"
+    },
+    {
+      "id": "aru-bachelor-of-architecture",
+      "code": "AR001",
+      "name": "Bachelor of Architecture",
+      "institution": "Ardhi University (ARU)",
+      "location": "Dar es Salaam",
+      "tags": ["engineering", "arts", "design"],
+      "requirement_text": "Two principal passes in any of: Advanced Mathematics, Physics, Chemistry, Biology, Geography, Computer Science or Fine Arts.",
+      "slots": [
+        { "choose": 2, "from": ["advanced_mathematics", "physics", "chemistry", "biology", "geography", "computer_science", "fine_arts"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "At least a subsidiary pass in Advanced/Basic Applied Mathematics at A-level, or minimum 'C' in Basic Mathematics at O-Level."
+      ],
+      "capacity": 70,
+      "duration_years": 5,
+      "checklist": { "what_is_it": "Designing buildings — art meets engineering.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.20 (ARU)"
+    },
+    {
+      "id": "ifm-bachelor-of-accounting",
+      "code": "IF001",
+      "name": "Bachelor of Accounting",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Professional accounting at Tanzania's finance-focused institute.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.81 (IFM)"
+    },
+    {
+      "id": "ifm-banking-and-finance",
+      "code": "IF002",
+      "name": "Bachelor of Banking and Finance",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 250,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Banking operations and financial services.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.81 (IFM)"
+    },
+    {
+      "id": "ifm-bsc-information-technology",
+      "code": "IF003",
+      "name": "Bachelor of Science in Information Technology",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["ict"],
+      "requirement_text": "Two principal passes, one in Physics, Chemistry or Advanced Mathematics and one in: Biology, Geography, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 1, "from": ["physics", "chemistry", "advanced_mathematics"] },
+        { "choose": 1, "from": ["biology", "geography", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without a principal/subsidiary pass in Advanced Mathematics or a pass in Basic Applied Mathematics must have a credit in Mathematics at O-Level."
+      ],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "IT systems with a finance-sector orientation.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.82 (IFM)"
+    },
+    {
+      "id": "ifm-insurance-risk-management",
+      "code": "IF004",
+      "name": "Bachelor of Science in Insurance and Risk Management",
+      "institution": "Institute of Finance Management (IFM)",
+      "location": "Dar es Salaam",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Chinese, Arabic, Fine Art, Physical Education, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "chinese", "arabic", "fine_arts", "physical_education", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 300,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Insurance, actuarial basics and organisational risk.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.82 (IFM)"
+    },
+    {
+      "id": "mzumbe-public-sector-accounting",
+      "code": "MU001",
+      "name": "Bachelor of Public Sector Accounting and Finance",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "If no principal pass in Advanced Mathematics, Economics, Accountancy, Chemistry or Physics: must have a subsidiary pass in Basic Applied Mathematics at A-level AND minimum 'C' in Mathematics, Book-Keeping or Physics at O-Level."
+      ],
+      "capacity": 140,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Accounting and finance for government and public institutions.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.165 (Mzumbe)"
+    },
+    {
+      "id": "mzumbe-bachelor-of-laws",
+      "code": "MU006",
+      "name": "Bachelor of Laws (LL.B)",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["law"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "Those without principal or subsidiary passes in English and History must have minimum 'C' grade in English and History at O-Level."
+      ],
+      "capacity": 200,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Law degree — route to advocacy, corporate counsel, judiciary.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.166 (Mzumbe)"
+    },
+    {
+      "id": "mzumbe-public-administration",
+      "code": "MU008",
+      "name": "Bachelor of Public Administration",
+      "institution": "Mzumbe University (MU)",
+      "location": "Morogoro",
+      "tags": ["social", "business"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition, and one subsidiary at A-Level.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 4.5,
+      "points_basis": "slots",
+      "additional_requirements": [],
+      "capacity": 140,
+      "duration_years": 3,
+      "checklist": { "what_is_it": "Managing public institutions and policy implementation.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.166 (Mzumbe)"
+    },
+    {
+      "id": "udsm-bachelor-of-laws",
+      "code": "UD053",
+      "name": "Bachelor of Laws (LL.B)",
+      "institution": "University of Dar es Salaam (UDSM)",
+      "location": "Dar es Salaam",
+      "tags": ["law"],
+      "requirement_text": "Two principal passes in: History, Geography, Kiswahili, English Language, French, Arabic, Fine Arts, Economics, Commerce, Accountancy, Physics, Chemistry, Biology, Advanced Mathematics, Agriculture, Computer Science or Nutrition.",
+      "slots": [
+        { "choose": 2, "from": ["history", "geography", "kiswahili", "english_language", "french", "arabic", "fine_arts", "economics", "commerce", "accountancy", "physics", "chemistry", "biology", "advanced_mathematics", "agriculture", "computer_science", "nutrition"] }
+      ],
+      "min_points": 5.0,
+      "points_basis": "best_three",
+      "additional_requirements": [
+        "Applicants without principal passes in History and English must meet the stated O-Level conditions (see guidebook)."
+      ],
+      "capacity": 150,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Law at Tanzania's oldest law faculty.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.299 (UDSM)"
+    },
+    {
+      "id": "aru-bsc-interior-design",
+      "code": "AR002",
+      "name": "Bachelor of Science in Interior Design",
+      "institution": "Ardhi University (ARU)",
+      "location": "Dar es Salaam",
+      "tags": ["arts", "design"],
+      "requirement_text": "Two principal passes in any of: Physics, Chemistry, Biology, Advanced Mathematics, Geography, Computer Science or Fine Arts.",
+      "slots": [
+        { "choose": 2, "from": ["physics", "chemistry", "biology", "advanced_mathematics", "geography", "computer_science", "fine_arts"] }
+      ],
+      "min_points": 4.0,
+      "points_basis": "slots",
+      "additional_requirements": [
+        "At least a subsidiary pass in Advanced/Basic Applied Mathematics at A-level, or minimum 'C' in Basic Mathematics at O-Level."
+      ],
+      "capacity": 55,
+      "duration_years": 4,
+      "checklist": { "what_is_it": "Designing interior spaces: aesthetics, function, materials.", "cost": null, "time_to_employment": null, "salary": null, "insider_notes": null },
+      "source": "TCU 2026/27 guidebook, p.20 (ARU)"
+    }
+  ]
+}

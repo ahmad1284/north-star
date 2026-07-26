@@ -1,0 +1,16 @@
+{
+  "description": "Common NECTA A-level subject combinations. 'obvious_tags' = programme areas a student with this combination is typically steered toward; used by the ranking layer to tell 'For you' from 'Discoveries' (a Discovery is a strong fit OUTSIDE these tags).",
+  "combinations": [
+    { "code": "PCB", "name": "Physics, Chemistry, Biology", "subjects": ["physics", "chemistry", "biology"], "obvious_tags": ["health", "medicine", "science"] },
+    { "code": "PCM", "name": "Physics, Chemistry, Advanced Mathematics", "subjects": ["physics", "chemistry", "advanced_mathematics"], "obvious_tags": ["engineering", "science", "ict"] },
+    { "code": "PGM", "name": "Physics, Geography, Advanced Mathematics", "subjects": ["physics", "geography", "advanced_mathematics"], "obvious_tags": ["engineering", "science", "ict"] },
+    { "code": "CBG", "name": "Chemistry, Biology, Geography", "subjects": ["chemistry", "biology", "geography"], "obvious_tags": ["health", "science", "agriculture", "environment"] },
+    { "code": "CBN", "name": "Chemistry, Biology, Nutrition", "subjects": ["chemistry", "biology", "nutrition"], "obvious_tags": ["health", "science"] },
+    { "code": "EGM", "name": "Economics, Geography, Advanced Mathematics", "subjects": ["economics", "geography", "advanced_mathematics"], "obvious_tags": ["business", "economics", "ict"] },
+    { "code": "ECA", "name": "Economics, Commerce, Accountancy", "subjects": ["economics", "commerce", "accountancy"], "obvious_tags": ["business", "economics"] },
+    { "code": "HGE", "name": "History, Geography, Economics", "subjects": ["history", "geography", "economics"], "obvious_tags": ["arts", "social", "business", "economics", "education"] },
+    { "code": "HGK", "name": "History, Geography, Kiswahili", "subjects": ["history", "geography", "kiswahili"], "obvious_tags": ["arts", "social", "education"] },
+    { "code": "HKL", "name": "History, Kiswahili, Literature in English", "subjects": ["history", "kiswahili", "literature_in_english"], "obvious_tags": ["arts", "education", "law"] },
+    { "code": "HGL", "name": "History, Geography, English Language", "subjects": ["history", "geography", "english_language"], "obvious_tags": ["arts", "social", "education"] }
+  ]
+}

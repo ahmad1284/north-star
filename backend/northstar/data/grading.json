@@ -1,0 +1,6 @@
+{
+  "description": "Canonical NECTA A-level grade to points scale (TCU 2026/27 guidebook, Table 1). Principal pass = E or above. S = subsidiary pass (not a principal pass). F = fail.",
+  "points": { "A": 5.0, "B": 4.0, "C": 3.0, "D": 2.0, "E": 1.0, "S": 0.5, "F": 0.0 },
+  "principal_pass_grades": ["A", "B", "C", "D", "E"],
+  "grade_order": ["A", "B", "C", "D", "E", "S", "F"]
+}
