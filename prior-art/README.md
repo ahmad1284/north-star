@@ -131,16 +131,21 @@ extraction damage (one row reads `College of Business Education (CBE), Thâm Quy
 
 ---
 
-## What happens next
+## What happened next
 
-1. **Fix `CODE_RE` and add the silent-skip back-stop**, re-extract, and re-run the parser
-   tests. Biggest single win available: the knowledge base is missing ~190 programmes and
-   does not know it.
-2. **Add the 146-row catalog as a coverage fixture** so this class of gap fails a test
-   instead of waiting for a zip file.
-3. **Mine the sector content for `/dunia-ya-kazi`** — fact-check first, then port the
-   Tanzanian context and the combination→sector mapping.
-4. Leave the forum, the Gemini paths, and the stack where they are.
+1. ✅ **The extractor was replaced, not patched.** `transcribe_guidebook.py` now reads the
+   PDF's own ruled table cells and produces all **870** programmes verbatim, checked against
+   an oracle independent of code shape (each institution's S/N column). `CODE_RE` and the
+   row-finder are deleted. `extract_guidebook.py` only interprets requirement prose now.
+2. ✅ **The 146-row catalog is a coverage fixture** in `test_transcription.py`. 145 of its
+   codes are accounted for; the one absence, `ZU009`, is genuinely not in this edition —
+   that catalog cites pages up to 392 in a **376-page** document, so it came from a
+   different edition.
+3. ✅ **Served programmes went 362 → 539**, and the results became navigable (search,
+   institution and region filters, pagination, real admission points on the card).
+4. ⬜ **The sector content for `/dunia-ya-kazi`** — still to do, and the section below is
+   the brief. Structure adopted as-is; Tanzania claims blocked on verification.
+5. Forum, Gemini paths and the stack stay where they are.
 
 ---
 
