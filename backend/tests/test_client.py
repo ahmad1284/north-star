@@ -121,3 +121,122 @@ def test_cors_allows_a_separately_hosted_client():
         json={"grades": {"physics": "B", "chemistry": "A", "biology": "A"}},
     )
     assert r.headers.get("access-control-allow-origin") == "*"
+
+
+# --- results navigation (cycle 10) ------------------------------------------
+# Serving the whole guidebook took a PCM student from 275 eligible programmes to
+# 441. At that size an unfiltered list stops being an answer, so these guard the
+# affordances that make it navigable — and the honesty properties that make the
+# filtering safe.
+
+def _client_html() -> str:
+    return client.get("/").text
+
+
+def test_results_can_be_filtered():
+    """Search plus institution and region filters, or 441 results is a pile."""
+    body = _client_html()
+    assert "class='filters'" in body or 'class="filters"' in body or "className='filters'" in body \
+        or "filters" in body
+    assert "Ondoa vichujio" in body          # reset
+    assert "Chuo chochote" in body           # institution
+    assert "Mahali popote" in body           # region
+
+
+def test_filtering_is_labelled_as_search_not_matching():
+    """The prior-art app filtered with `subjects.some(s => text.includes(s))` and
+    showed Doctor of Medicine to PCM students. Ours narrows an already-verified
+    eligible set, and the UI has to say so — otherwise it reads as a second,
+    contradictory eligibility opinion."""
+    assert "havibadilishi majibu" in _client_html()
+
+
+def test_card_shows_admission_points_not_an_invented_unit():
+    """`nguvu 80%` was a unit we invented, shown with the authority of a number,
+    while the guidebook's own points sat unused in the payload."""
+    body = _client_html()
+    assert "pointi ${r.matched_points}" in body
+    assert "inahitajika ${p.min_points}" in body
+    assert "nguvu ${pct}%" not in body
+
+
+def test_min_points_is_exposed_by_the_api():
+    """The client cannot show the bar unless the payload carries it."""
+    r = client.post("/match", json={"grades": {"physics": "B", "chemistry": "C",
+                                               "advanced_mathematics": "C"}})
+    assert r.status_code == 200
+    first = next(iter(r.json()["groups"]["for_you"]), None)
+    assert first is not None
+    assert "min_points" in first["programme"]
+    assert first["programme"]["min_points"] is not None
+
+
+def test_results_paginate_rather_than_dumping():
+    """Building 400+ <details> nodes at once visibly freezes a budget phone."""
+    body = _client_html()
+    assert "const PAGE = 20" in body
+    assert "Onyesha zote" not in body        # the old dump-everything button
+
+
+def test_cards_signal_that_they_open():
+    """The reasons are the product; the marker was hidden with no replacement."""
+    body = _client_html()
+    assert ".card summary::after" in body
+    assert ".card[open] summary::after" in body
+
+
+def test_empty_groups_explain_themselves():
+    """A group that silently vanishes reads as "no options here" rather than
+    "your filter hid them"."""
+    assert "Hakuna inayolingana na vichujio vyako" in _client_html()
+
+
+# --- design tokens (cycle 11) -----------------------------------------------
+# Measured before this cycle: 20 distinct font sizes and ZERO box-shadows across
+# the four pages. That, not the palette, is why they read as unconsidered.
+#
+# These pages are separate self-contained files by design (no shared stylesheet =
+# no extra round trip on a slow phone connection), so the token block is
+# duplicated. Duplication needs a guard: dunia-ya-kazi.html shipped for one commit
+# with every `font-size:var(--fs-*)` referencing tokens its :root never defined,
+# because its CSS is written in a more compact style than the others and a
+# find-and-replace missed it. Undefined custom properties fail silently — the text
+# simply had no size, and nothing errored.
+
+PAGES = ("/", "/barua", "/dunia-ya-kazi", "/maswali")
+TOKENS = ("--fs-xs", "--fs-sm", "--fs-md", "--fs-lg", "--fs-xl", "--fs-2xl",
+          "--r-sm", "--r-md", "--r-pill", "--shadow", "--font-display")
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_every_page_defines_every_design_token(path):
+    """A page may only reference tokens it also defines."""
+    body = client.get(path).text
+    missing = [t for t in TOKENS if f"{t}:" not in body]
+    assert not missing, f"{path} references design tokens it never defines: {missing}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_no_page_uses_a_token_it_does_not_define(path):
+    """The general form of the bug above: catch any var(--x) with no --x: anywhere."""
+    body = client.get(path).text
+    used = set(re.findall(r"var\((--[a-z0-9-]+)\)", body))
+    defined = set(re.findall(r"(--[a-z0-9-]+)\s*:", body))
+    assert not (used - defined), f"{path} uses undefined: {sorted(used - defined)}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_font_sizes_come_from_the_scale(path):
+    """No raw rem font sizes: they are what the scale replaced."""
+    body = client.get(path).text
+    raw = re.findall(r"font-size:\s*[0-9.]+rem", body)
+    assert not raw, f"{path} has off-scale font sizes: {raw}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_dark_mode_redefines_the_elevation_token(path):
+    """A light-mode drop shadow is invisible on a dark background; dark mode needs
+    its own treatment or cards stop reading as objects in half the installs."""
+    body = client.get(path).text
+    dark = body.split("prefers-color-scheme")[1] if "prefers-color-scheme" in body else ""
+    assert "--shadow:" in dark, f"{path} does not redefine --shadow for dark mode"

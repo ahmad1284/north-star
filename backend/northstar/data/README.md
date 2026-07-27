@@ -8,7 +8,50 @@ the loader validates everything at startup and fails loudly on mistakes.
 | `grading.json` | Canonical NECTA A-level grade→points scale (A=5 … S=0.5, F=0). Principal pass = E or above. |
 | `subjects.json` | Subject registry. `id` values are the only identifiers used elsewhere. |
 | `combinations.json` | Common A-level combinations (PCB, PCM, …) with `obvious_tags` — the programme areas such students are typically steered toward. Used to separate "For you" from "Discoveries". |
-| `programmes.json` | Real programmes transcribed from the TCU 2026/27 guidebook (see `source` per entry). |
+| `programmes.json` | Curated, human-verified programmes. Always win over machine-parsed on code conflict. |
+| `programmes_extracted.json` | Machine-parsed rules derived from the transcription. Badged `machine_parsed`. |
+| `extraction_review.json` | Quarantine: rows whose requirements did not parse cleanly. **Never served.** |
+| `guidebook_programmes.csv` / `.json` | **Full verbatim transcription** of every programme table in the guidebook — 870 rows, 94 institutions. Not rules; the guidebook's own words. |
+| `guidebook_coverage.json` | The completeness audit for the above: every page classified, every anomaly named. |
+
+## The transcription layer (`guidebook_*`)
+
+`scripts/transcribe_guidebook.py` reproduces the guidebook's tables **verbatim** into CSV
+and JSON. It does no interpretation — that stays in `extract_guidebook.py`. Splitting the
+two is the point.
+
+**Why it exists.** The extractor found rows by matching codes against
+`^[A-Z]{2,4}\d{3}$`. Codes shaped `CBD01`, `SUM01`, `CBMZ1` never matched, so
+`extract_rows()` hit `if not code_words: continue` and abandoned whole pages **in
+silence** — 190 programmes neither served, nor quarantined, nor logged. The corpus looked
+healthy because the thing measuring its health sat downstream of the thing that failed.
+
+Two rules follow, and both matter more than tidy output:
+
+1. **Rows come from the PDF's own ruled cells** (`page.find_tables()`), not from guesses
+   about column positions or code shape. The structure was already in the file; inferring
+   it was the mistake.
+2. **Nothing is ever dropped in silence.** Every page is classified, every table is
+   classified, and a row that cannot be read cleanly is emitted with its problem attached.
+
+**How completeness is proved.** Each institution numbers its rows in an S/N column — a
+signal *independent* of how rows are found, so it catches a systematic detection failure
+instead of agreeing with it. The audit separates two very different things: a number the
+guidebook never printed (its gap) from a number it printed and we lack (**our** lost row).
+Conflating them would either hide our bugs or invent ones we don't have. Current state:
+**0 rows lost**; 9 findings, all guidebook numbering skips verified against the PDF text.
+
+**Regenerate:**
+
+```bash
+cd backend && python scripts/transcribe_guidebook.py
+```
+
+The guidebook's real malformations are recorded as tests in `tests/test_transcription.py`
+— `S/ N` split headers, 9-column grids with empty sub-divisions, stacked
+`Minimum / Institutional / Admission / Points` labels, institution names split across
+cells, and page 280, whose header omits the word "Programme" entirely and so hid an entire
+institution. Treat those as a regression fence, not trivia.
 
 ## Programme rule schema
 
@@ -74,3 +117,28 @@ Rules of the data:
 - Every programme carries a `source` (guidebook page) so claims are auditable.
 - `additional_requirements` keeps conditions we can't evaluate from A-level input
   (O-level grades, fitness tests) visible instead of silently dropped.
+
+
+## How the two passes fit together
+
+```
+guidebook PDF
+   └─ transcribe_guidebook.py   →  guidebook_programmes.{csv,json}   (870 rows, verbatim)
+        └─ extract_guidebook.py →  programmes_extracted.json          (509 served, rules)
+                                →  extraction_review.json             (331 quarantined)
+        programmes.json                                               (30 curated, wins)
+```
+
+**Transcription is proved complete; interpretation is allowed to refuse.** Those are
+different jobs with different standards, which is why they are different scripts.
+`extract_guidebook.py` no longer opens the PDF — re-deriving rows there would only add a
+second way to be wrong.
+
+Every transcribed row lands in exactly one bucket, and the three reconcile to 870. That
+invariant is a test (`test_pipeline_output_reconciles_to_the_transcription`): a row in no
+bucket has been lost in silence, which is the failure this pipeline was rebuilt to prevent.
+
+**The refusal is deliberate.** Quarantining a programme costs a student an option they
+might have had. Serving a mis-parsed rule tells them they qualify when they don't, and
+they learn otherwise after applying. Those are not equally bad, so unclear rules are
+refused.

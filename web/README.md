@@ -62,14 +62,54 @@ for the backend process.
 2. **Grades** — tap A–E, S, or F per subject
 3. **Interests** (optional) — Ideas / People / Data / Things, from the ACT World of Work
    Map (see `/dunia-ya-kazi` for the whole map). Sending these adds the **Bridge** group
-4. **Results** — grouped (For you · Discoveries · Bridge · Other eligible), ranked,
-   long groups collapsed behind "show all". Each card expands to show why the student
-   qualifies (or what's missing), the programme's own requirement text, duration,
-   capacity, the checklist fields, and the guidebook page it came from
+4. **Results** — grouped (For you · Discoveries · Bridge · Other eligible), ranked, and
+   **filterable**: free-text search over name/institution/location/requirement text, plus
+   institution and region selects built from the returned data with counts. Groups paginate
+   20 at a time. Each card expands to show why the student qualifies (or what's missing),
+   the programme's own requirement text, duration, capacity, the checklist fields, and the
+   guidebook page it came from
+
+**Two rules about the filters.** They narrow a set the engine has *already* ruled eligible —
+they never re-decide anything — and the UI says so (*"havibadilishi majibu"*). The prior-art
+app filtered with `subjects.some(s => requirementText.includes(s))` and showed Doctor of
+Medicine to PCM students on the word "Chemistry"; that is matching wearing a filter's
+clothes. Ours is search, and is labelled as search.
+
+The collapsed card shows **`pointi 9 · inahitajika 4`**, not a percentage. `nguvu 80%` was a
+unit we invented and displayed with the authority of a number while the guidebook's own
+admission points sat unused in the payload. Students and TCU both reason in points.
 
 Entries extracted automatically from the guidebook carry an **auto-extracted** badge
-telling the student to confirm with the institution. Unknown facts render as "—", never
-as a guess.
+telling the student to confirm with the institution. Unknown facts render as
+*"hatujui — uliza"* linking to `/maswali` — never as a dash, and never as a guess.
+
+## Design tokens
+
+Every page defines the **same** token block in its own `:root` — six type steps, four radii,
+one elevation token, one display font:
+
+```css
+--fs-xs:.78rem; --fs-sm:.86rem; --fs-md:.94rem;
+--fs-lg:1.02rem; --fs-xl:1.12rem; --fs-2xl:1.45rem;
+--r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+--shadow: …;  --font-display:Georgia,"Times New Roman",serif;
+```
+
+Before this there were **20 distinct font sizes and zero box-shadows** across the four
+pages. That, not the palette, is what made them read as unconsidered. Radius decreases as
+you nest inward (container → item → chip), and `--shadow` is redefined for dark mode, where
+a light drop shadow is invisible.
+
+Georgia is used for headings only: it ships on effectively every device, so it buys
+editorial character for **zero bytes and no external request**.
+
+**The block is duplicated on purpose.** A shared stylesheet would be one more round trip on
+the slow connection this audience actually has. Duplication needs a guard, so four tests in
+`test_client.py` enforce it — including one that fails if a page uses any `var(--x)` it does
+not define. That is not hypothetical: `dunia-ya-kazi.html` shipped for one commit with every
+`font-size` referencing tokens its `:root` never declared, because its CSS is written more
+compactly and a find-and-replace missed it. **Undefined custom properties fail silently** —
+the text simply had no size and nothing errored.
 
 ## Conventions worth preserving
 

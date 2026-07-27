@@ -9,35 +9,49 @@
   :root{
     --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
     --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#fff; --chip:#eef2f6;
+    /* --- design tokens -------------------------------------------------
+       Six type steps, reused everywhere. There were 20 ad-hoc font sizes across
+       these four pages and zero shadows, which is the measurable reason they
+       read as unconsidered — not the colours, not the layout.
+       Radius decreases as you nest inward: container -> item -> chip. */
+    --fs-xs:.78rem; --fs-sm:.86rem; --fs-md:.94rem;
+    --fs-lg:1.02rem; --fs-xl:1.12rem; --fs-2xl:1.45rem;
+    --r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+    --shadow:0 1px 2px rgb(0 0 0/.04), 0 1px 8px rgb(0 0 0/.03);
+    /* Georgia ships on effectively every device: editorial character for zero
+       bytes and no external request. Headings only. */
+    --font-display:Georgia,"Times New Roman",serif;
   }
   @media (prefers-color-scheme: dark){
     :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
-           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; }
+           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a;
+           --shadow:inset 0 1px 0 rgb(255 255 255/.04), 0 1px 10px rgb(0 0 0/.30);
+  }
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);line-height:1.7;
     font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   .wrap{max-width:660px;margin:0 auto;padding:16px 16px 40px}
   nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-  nav a{font-size:.85rem;text-decoration:none;color:var(--ink);background:var(--chip);
-    border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
+  nav a{font-size:var(--fs-sm);text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:var(--r-pill);padding:.35rem .8rem}
   nav a.here{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-  h1{font-size:1.4rem;margin:.4rem 0 .2rem}
-  .lede{color:var(--muted);font-size:.92rem;margin:0 0 22px}
-  .letter{background:var(--card);border:1px solid var(--line);border-radius:14px;
-    padding:20px 22px;font-size:1.02rem}
+  h1{font-family:var(--font-display);font-size:var(--fs-2xl);margin:.4rem 0 .2rem}
+  .lede{color:var(--muted);font-size:var(--fs-md);margin:0 0 22px}
+  .letter{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
+    padding:20px 22px;font-size:var(--fs-lg);box-shadow:var(--shadow)}
   .letter p{margin:0 0 1.1em}
   .letter .salaam{font-style:italic;color:var(--muted);margin-bottom:.4em}
   .letter .to{font-weight:600;margin-bottom:1.4em}
   .questions{border-left:3px solid var(--accent);padding-left:14px;margin:0 0 1.1em}
   .questions li{margin:.25em 0}
   .sig{margin-top:1.8em;padding-top:1em;border-top:1px dashed var(--line);
-    color:var(--muted);font-size:.95rem}
+    color:var(--muted);font-size:var(--fs-md)}
   .sig b{color:var(--ink)}
   .after{margin-top:26px;background:var(--chip);border:1px solid var(--line);
-    border-radius:12px;padding:14px 16px;font-size:.94rem}
+    border-radius:var(--r-md);padding:14px 16px;font-size:var(--fs-md)}
   .after a{color:var(--accent);font-weight:600}
-  footer{color:var(--muted);font-size:.8rem;margin-top:28px;
+  footer{color:var(--muted);font-size:var(--fs-xs);margin-top:28px;
     border-top:1px solid var(--line);padding-top:12px}
 </style>
 </head>

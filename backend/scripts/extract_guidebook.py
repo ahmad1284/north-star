@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-"""Extract programme records from the TCU 2026/27 admission guidebook PDF.
+"""Turn the guidebook's requirement prose into engine rules.
 
-Column-aware table extraction (via PyMuPDF word coordinates) + pattern-based
-parsing of requirement text into engine slots.
+This script **interprets**. It no longer reads the PDF: `transcribe_guidebook.py`
+does that, and this consumes its output (`guidebook_programmes.json`, 870 rows).
+
+Why the split. This script used to do both jobs, and finding rows meant matching
+programme codes against ``^[A-Z]{2,4}\\d{3}$``. Codes shaped CBD01 / SUM01 / CBMZ1
+never matched, so whole pages were abandoned by ``if not code_words: continue``
+without recording anything — 190 programmes neither served, nor quarantined, nor
+logged. That row-finding code is gone rather than patched: transcription is proved
+complete against an independent oracle, so re-deriving rows here would only add a
+second way to be wrong.
 
 HONESTY CONTRACT
 ----------------
@@ -12,7 +20,13 @@ subjects, unmatched grade-floor sentences, unparseable points — goes to the
 review file with its raw text and is NOT served to students. Curated entries
 in programmes.json always win over extracted ones on programme-code conflict.
 
+The asymmetry is deliberate and worth stating: quarantining a programme costs a
+student an option they might have had. Serving a mis-parsed rule tells them they
+qualify when they do not, and they find that out after applying. Those are not
+equally bad, so when a rule is unclear this script refuses it.
+
 Usage:  python3 scripts/extract_guidebook.py  (from backend/)
+Reads:  northstar/data/guidebook_programmes.json  (the transcription)
 Writes: northstar/data/programmes_extracted.json  (accepted entries)
         northstar/data/extraction_review.json    (rejected, with reasons)
 """
@@ -24,12 +38,7 @@ import re
 import sys
 from pathlib import Path
 
-import fitz  # PyMuPDF
-
-PDF = Path(__file__).resolve().parents[2] / "inputs" / "tcu-undergraduate-admission-guidebook-2026-2027.pdf"
 DATA = Path(__file__).resolve().parents[1] / "northstar" / "data"
-
-CODE_RE = re.compile(r"^[A-Z]{2,4}\d{3}$")
 
 # ---- subject vocabulary (longest-match-first) -------------------------------
 SUBJECT_VARIANTS: dict[str, str] = {
@@ -106,6 +115,21 @@ TAG_KEYWORDS = [
      r"history|translation|journalism|communication", "arts"),
     (r"sociolog|social|community|development studies|political|public admin|"
      r"gender|psycholog|counsel", "social"),
+    # Vocabulary gap found in cycle 10: 51 programmes parsed their requirements
+    # cleanly and were quarantined ONLY because no tag could be inferred from the
+    # name, which would have broken interest mapping. These are whole fields the
+    # keyword list simply never named — planning, diplomacy, records management,
+    # theology. Each maps onto an EXISTING tag, so `interests.json` and the bridge
+    # logic are untouched; this widens what we can describe, not what we assert.
+    (r"international relation|diplomacy|governance|leadership|"
+     r"development planning|regional planning|population|policy analysis|"
+     r"project planning|public relation", "social"),
+    (r"records|archiv|achieves|library|information studies|"
+     r"information management|auditing|assurance|supply chain|transport", "business"),
+    (r"information system", "ict"),
+    (r"theolog|religio|islamic studies|divinity|philosoph", "arts"),
+    (r"natural resource|disaster|urban and regional|land management|"
+     r"land survey|geomatic|geospatial", "environment"),
     (r"science", "science"),
 ]
 
@@ -525,115 +549,54 @@ def parse_points_cell(text: str) -> tuple[float | None, str]:
 
 # ---- PDF table extraction ----------------------------------------------------
 
-def extract_rows(doc: fitz.Document) -> list[dict]:
-    rows: list[dict] = []
-    HEADER_VOCAB = {"S/N", "SN", "Programme", "Programm", "Code", "Admission",
-                    "Requirements", "Minimum", "Institutional", "Points",
-                    "Capacity", "Duration", "(Yrs)", "Yrs", "e"}
-    for pno in range(15, doc.page_count):
-        page = doc[pno]
-        words = page.get_text("words")  # x0,y0,x1,y1,word,block,line,wno
-        code_hdr = next((w for w in words if w[4] == "Code"), None)
-        if code_hdr is None:
-            continue
-        code_y = code_hdr[1]
-        # header words live in a band around the "Code" line (headers stack
-        # multiple lines, e.g. "Minimum / Institutional / Admission / Points")
-        band = [w for w in words if abs(w[1] - code_y) < 55 and w[4] in HEADER_VOCAB]
-        header_bottom = max((w[3] for w in band), default=code_y + 12)
-        header_top = min((w[1] for w in band), default=code_y)
+INSTITUTION_RE = re.compile(
+    r"^(.*?\([A-Za-z .&'-]+\)|.*?University|.*?College|.*?Institute|.*?Academy|.*?Centre)"
+    r"\s*[,-]?\s*(.*)$")
 
-        def hx(word: str, pick=min) -> float | None:
-            xs = [w[0] for w in band if w[4] == word]
-            return pick(xs) if xs else None
 
-        pts_x = hx("Points")
-        cap_x = hx("Capacity")
-        dur_x = hx("Duration")
-        if pts_x is None or cap_x is None:
-            continue
-        if dur_x is None:
-            dur_x = cap_x + 60
+def split_institution(full: str) -> tuple[str, str]:
+    """Split "Ardhi University (ARU), Dar es Salaam" into institution + location.
 
-        # institution header = the non-numeric text just above the table header
-        inst_words = [w[4] for w in words if w[1] < header_top - 2 and not re.match(r"^\d+$", w[4])]
-        inst_text = norm(" ".join(inst_words))
-        # drop the running page header if present
-        inst_text = re.sub(r"^Bachelor's Degree Admission Guidebook.*?Qualifications\)\s*", "", inst_text)
-        im = re.search(r"([A-Z][^()]*?\([A-Za-z .&'-]+\))\s*,?\s*([A-Za-z' -]+?)(?:\s*Campus)?(?:\s*S/?N)?$", inst_text)
-        institution = im.group(1).strip() if im else None
-        location = im.group(2).strip() if im else None
+    The transcription keeps the guidebook's own string intact, which is the right
+    thing for a verbatim record but not what the engine wants. Splitting here, at
+    the point of interpretation, keeps the transcription faithful.
+    """
+    full = (full or "").strip()
+    m = INSTITUTION_RE.match(full)
+    if not m:
+        return full, ""
+    inst, loc = m.group(1).strip().rstrip(","), m.group(2).strip()
+    loc = re.sub(r"\s*Campus\s*$", "", loc).strip(" ,-")
+    return inst, loc
 
-        body = [w for w in words if w[1] > header_bottom + 2]
 
-        # The code column is the one reliably-positioned reference: detect the
-        # actual code words under the (center-aligned) "Code" header and derive
-        # the prog|code|req boundaries from THEIR real x-extent. The numeric
-        # right-hand columns use their header left edges with margin (headers
-        # there are near-left-aligned and cells are short numbers).
-        code_words = [
-            w for w in body
-            if CODE_RE.match(w[4]) and code_hdr[0] - 45 <= w[0] <= code_hdr[0] + 60
-        ]
-        if not code_words:
-            continue
-        code_left = min(w[0] for w in code_words) - 4
-        code_right = max(w[2] for w in code_words) + 1
+def rows_from_transcription() -> list[dict]:
+    """Adapt transcription rows to the shape `build()` expects.
 
-        def col_of(x0: float) -> str:
-            if x0 >= dur_x - 10:
-                return "dur"
-            if x0 >= cap_x - 10:
-                return "cap"
-            if x0 >= pts_x - 10:
-                return "pts"
-            if x0 >= code_right:
-                return "req"
-            if x0 >= code_left:
-                return "code"
-            return "prog"
-        codes = sorted(code_words, key=lambda w: w[1])
-        for i, cw in enumerate(codes):
-            # each row's content starts on the code's own line (top-aligned)
-            top = cw[1] - 3
-            bot = codes[i + 1][1] - 3 if i + 1 < len(codes) else page.rect.height
-            cells: dict[str, list] = {k: [] for k in ("prog", "req", "pts", "cap", "dur")}
-            for w in body:
-                if top <= w[1] < bot:
-                    c = col_of(w[0])
-                    if c in cells:
-                        cells[c].append(w)
-            def cell_text(c):
-                # sort into visual lines (3pt y-buckets) then left-to-right;
-                # strip stray page numbers that fall into the last row's cell
-                t = norm(" ".join(w[4] for w in sorted(cells[c], key=lambda w: (round(w[1] / 3), w[0]))))
-                return re.sub(r"\s+\d{1,3}$", "", t)
-            rows.append({
-                "page": pno + 1,
-                "institution": institution,
-                "location": location,
-                "code": cw[4],
-                "name": norm(re.sub(r"\b\d{1,3}\.?\s*", "", cell_text("prog"))),
-                "requirement_text": cell_text("req"),
-                "points_cell": cell_text("pts"),
-                "capacity_cell": cell_text("cap"),
-                "duration_cell": cell_text("dur"),
-            })
-
-    # Backfill missing institution/location from the code prefix, but ONLY
-    # when the prefix maps to exactly one (institution, location) pair across
-    # the whole book — never guess between campuses.
-    by_prefix: dict[str, set[tuple[str, str]]] = {}
-    for r in rows:
-        if r["institution"]:
-            prefix = re.match(r"^[A-Z]+", r["code"]).group()
-            by_prefix.setdefault(prefix, set()).add((r["institution"], r["location"] or ""))
-    for r in rows:
-        if not r["institution"]:
-            prefix = re.match(r"^[A-Z]+", r["code"]).group()
-            pairs = by_prefix.get(prefix, set())
-            if len(pairs) == 1:
-                r["institution"], r["location"] = next(iter(pairs))
+    Rows carrying a recorded transcription problem are passed through anyway —
+    `build()` decides what is servable, and a row that failed transcription will
+    fail parsing too and land in the review file with a reason. Dropping it here
+    would remove it from BOTH outputs, which is exactly the silent loss this
+    pipeline was rebuilt to prevent.
+    """
+    src = DATA / "guidebook_programmes.json"
+    if not src.exists():
+        raise SystemExit(
+            f"error: {src} missing — run scripts/transcribe_guidebook.py first")
+    rows = []
+    for r in json.loads(src.read_text(encoding="utf-8")):
+        institution, location = split_institution(r["institution"])
+        rows.append({
+            "page": r["page"],
+            "institution": institution,
+            "location": location,
+            "code": r["code"],
+            "name": r["programme"],
+            "requirement_text": r["requirements"],
+            "points_cell": r["points"],
+            "capacity_cell": r["capacity"],
+            "duration_cell": r["duration"],
+        })
     return rows
 
 
@@ -706,8 +669,7 @@ def main() -> int:
     curated_codes = {p["code"] for p in curated["programmes"]}
     subjects = {s["id"] for s in json.loads((DATA / "subjects.json").read_text())["subjects"]}
 
-    doc = fitz.open(PDF)
-    rows = extract_rows(doc)
+    rows = rows_from_transcription()
     accepted, review = build(rows, curated_codes, subjects)
 
     (DATA / "programmes_extracted.json").write_text(json.dumps({

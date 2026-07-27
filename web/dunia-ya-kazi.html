@@ -8,24 +8,37 @@
 <style>
   :root{--bg:#f7f8fa;--card:#fff;--ink:#1c2733;--muted:#5b6b7b;--line:#e3e8ee;
     --accent:#0f6b5c;--accent-ink:#fff;--chip:#eef2f6;
-    --c0:#0f6b5c;--c1:#1d6a8f;--c2:#8a5a1e;--c3:#7a3f8f;--c4:#a8442f;--c5:#2f7d4f;}
+    --c0:#0f6b5c;--c1:#1d6a8f;--c2:#8a5a1e;--c3:#7a3f8f;--c4:#a8442f;--c5:#2f7d4f;
+    /* --- design tokens: identical across all four pages ------------------
+       Six type steps, reused everywhere. There were 20 ad-hoc font sizes across
+       these pages and zero shadows, which is the measurable reason they read as
+       unconsidered — not the colours, not the layout.
+       Radius decreases as you nest inward: container -> item -> chip. */
+    --fs-xs:.78rem; --fs-sm:.86rem; --fs-md:.94rem;
+    --fs-lg:1.02rem; --fs-xl:1.12rem; --fs-2xl:1.45rem;
+    --r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+    --shadow:0 1px 2px rgb(0 0 0/.04), 0 1px 8px rgb(0 0 0/.03);
+    /* Georgia ships on effectively every device: editorial character for zero
+       bytes and no external request. Headings only. */
+    --font-display:Georgia,"Times New Roman",serif;}
   @media (prefers-color-scheme:dark){
     :root{--bg:#12181f;--card:#1a222b;--ink:#e8eef4;--muted:#93a3b3;--line:#2a3541;
       --accent:#2fa08c;--chip:#232e3a;
-      --c0:#3fae97;--c1:#5aa8cf;--c2:#c9964a;--c3:#b183c4;--c4:#d97f68;--c5:#5fb883;}}
+      --c0:#3fae97;--c1:#5aa8cf;--c2:#c9964a;--c3:#b183c4;--c4:#d97f68;--c5:#5fb883;
+      --shadow:inset 0 1px 0 rgb(255 255 255/.04), 0 1px 10px rgb(0 0 0/.30);}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
     font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   .wrap{max-width:680px;margin:0 auto;padding:16px 16px 40px}
   nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-  nav a{font-size:.85rem;text-decoration:none;color:var(--ink);background:var(--chip);
-    border:1px solid var(--line);border-radius:999px;padding:.35rem .8rem}
+  nav a{font-size:var(--fs-sm);text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:var(--r-pill);padding:.35rem .8rem}
   nav a.here{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-  h1{font-size:1.4rem;margin:.4rem 0 .2rem}
-  .lede{color:var(--muted);font-size:.92rem;margin:0 0 18px}
+  h1{font-family:var(--font-display);font-size:var(--fs-2xl);margin:.4rem 0 .2rem}
+  .lede{color:var(--muted);font-size:var(--fs-md);margin:0 0 18px}
   p{margin:0 0 1em}
   figure{margin:0 0 8px;background:var(--card);border:1px solid var(--line);
-    border-radius:14px;padding:10px 6px 4px}
+    border-radius:var(--r-lg);padding:10px 6px 4px;box-shadow:var(--shadow)}
   svg{width:100%;height:auto;display:block}
   .axis{font:600 13px system-ui;fill:var(--ink)}
   .axis-sub{font:10px system-ui;fill:var(--muted)}
@@ -36,33 +49,33 @@
   .cl{font:600 9.5px system-ui;fill:var(--muted)}
   .c0{fill:var(--c0)} .c1{fill:var(--c1)} .c2{fill:var(--c2)}
   .c3{fill:var(--c3)} .c4{fill:var(--c4)} .c5{fill:var(--c5)}
-  figcaption{color:var(--muted);font-size:.8rem;text-align:center;padding:6px 8px 4px}
+  figcaption{color:var(--muted);font-size:var(--fs-xs);text-align:center;padding:6px 8px 4px}
   .axes-key{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 26px}
-  .ax{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-  .ax b{display:block;font-size:.95rem}
-  .ax span{color:var(--muted);font-size:.85rem}
-  h2{font-size:1.1rem;margin:28px 0 8px}
+  .ax{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);padding:10px 12px}
+  .ax b{display:block;font-size:var(--fs-md)}
+  .ax span{color:var(--muted);font-size:var(--fs-sm)}
+  h2{font-size:var(--fs-xl);margin:28px 0 8px}
   .cluster{margin:0 0 16px}
-  .cluster h3{font-size:1rem;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+  .cluster h3{font-size:var(--fs-lg);margin:0 0 6px;display:flex;align-items:center;gap:8px}
   .dot{width:12px;height:12px;border-radius:50%;flex:none;display:inline-block}
   .c0.dot{background:var(--c0)} .c1.dot{background:var(--c1)} .c2.dot{background:var(--c2)}
   .c3.dot{background:var(--c3)} .c4.dot{background:var(--c4)} .c5.dot{background:var(--c5)}
-  .en-h{color:var(--muted);font-weight:400;font-size:.8rem}
+  .en-h{color:var(--muted);font-weight:400;font-size:var(--fs-xs)}
   ul.fams{list-style:none;padding:0;margin:0}
   ul.fams li{display:flex;align-items:baseline;gap:8px;background:var(--card);
-    border:1px solid var(--line);border-radius:9px;padding:.45rem .65rem;margin-bottom:5px}
-  .k{width:1.5rem;height:1.5rem;border-radius:6px;color:#fff;font-weight:700;
-    font-size:.78rem;display:inline-flex;align-items:center;justify-content:center;flex:none}
+    border:1px solid var(--line);border-radius:var(--r-sm);padding:.45rem .65rem;margin-bottom:5px;box-shadow:var(--shadow)}
+  .k{width:1.5rem;height:1.5rem;border-radius:var(--r-sm);color:#fff;font-weight:700;
+    font-size:var(--fs-xs);display:inline-flex;align-items:center;justify-content:center;flex:none}
   .c0.k{background:var(--c0)} .c1.k{background:var(--c1)} .c2.k{background:var(--c2)}
   .c3.k{background:var(--c3)} .c4.k{background:var(--c4)} .c5.k{background:var(--c5)}
-  .nm{font-size:.93rem}
-  .en{color:var(--muted);font-size:.78rem;margin-left:auto;text-align:right}
-  .note{background:var(--chip);border:1px solid var(--line);border-radius:12px;
-    padding:14px 16px;font-size:.93rem;margin:26px 0}
+  .nm{font-size:var(--fs-md)}
+  .en{color:var(--muted);font-size:var(--fs-xs);margin-left:auto;text-align:right}
+  .note{background:var(--chip);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:14px 16px;font-size:var(--fs-md);margin:26px 0}
   .note a{color:var(--accent);font-weight:600}
   .next{display:block;background:var(--accent);color:var(--accent-ink);text-decoration:none;
-    text-align:center;padding:.85rem;border-radius:12px;font-weight:700;margin:22px 0 0}
-  footer{color:var(--muted);font-size:.8rem;margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
+    text-align:center;padding:.85rem;border-radius:var(--r-md);font-weight:700;margin:22px 0 0}
+  footer{color:var(--muted);font-size:var(--fs-xs);margin-top:30px;border-top:1px solid var(--line);padding-top:12px}
   footer a{color:var(--accent)}
 </style>
 </head>
@@ -147,7 +160,7 @@
   </div>
 
   <h2>Familia zote 26 za kazi</h2>
-  <p style="color:var(--muted);font-size:.88rem;margin-top:-4px">Herufi zinalingana na duara hapo juu.</p>
+  <p style="color:var(--muted);font-size:var(--fs-sm);margin-top:-4px">Herufi zinalingana na duara hapo juu.</p>
   <section class="cluster"><h3><span class="dot c0"></span>Uongozi na mauzo<span class="en-h">Administration and Sales</span></h3><ul class="fams"><li><span class="k c0">A</span><span class="nm">Huduma za ajira</span><span class="en">Employment-Related Services</span></li><li><span class="k c0">B</span><span class="nm">Masoko na mauzo</span><span class="en">Marketing & Sales</span></li><li><span class="k c0">C</span><span class="nm">Uongozi</span><span class="en">Management</span></li><li><span class="k c0">D</span><span class="nm">Udhibiti na ulinzi</span><span class="en">Regulation & Protection</span></li></ul></section>
 <section class="cluster"><h3><span class="dot c1"></span>Uendeshaji wa biashara<span class="en-h">Business Operations</span></h3><ul class="fams"><li><span class="k c1">E</span><span class="nm">Mawasiliano na kumbukumbu</span><span class="en">Communications & Records</span></li><li><span class="k c1">F</span><span class="nm">Miamala ya fedha</span><span class="en">Financial Transactions</span></li><li><span class="k c1">G</span><span class="nm">Usambazaji</span><span class="en">Distribution & Dispatching</span></li></ul></section>
 <section class="cluster"><h3><span class="dot c2"></span>Ufundi<span class="en-h">Technical</span></h3><ul class="fams"><li><span class="k c2">H</span><span class="nm">Usafirishaji</span><span class="en">Transport Operation & Related</span></li><li><span class="k c2">I</span><span class="nm">Kilimo na misitu</span><span class="en">Agriculture, Forestry & Related</span></li><li><span class="k c2">J</span><span class="nm">Kompyuta na taarifa</span><span class="en">Computer & Information Specialties</span></li><li><span class="k c2">K</span><span class="nm">Ujenzi na matengenezo</span><span class="en">Construction & Maintenance</span></li><li><span class="k c2">L</span><span class="nm">Ufundi wa mikono</span><span class="en">Crafts & Related</span></li><li><span class="k c2">M</span><span class="nm">Viwanda na usindikaji</span><span class="en">Manufacturing & Processing</span></li><li><span class="k c2">N</span><span class="nm">Mitambo na umeme</span><span class="en">Mechanical & Electrical Specialties</span></li></ul></section>
