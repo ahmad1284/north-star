@@ -189,3 +189,54 @@ def test_empty_groups_explain_themselves():
     """A group that silently vanishes reads as "no options here" rather than
     "your filter hid them"."""
     assert "Hakuna inayolingana na vichujio vyako" in _client_html()
+
+
+# --- design tokens (cycle 11) -----------------------------------------------
+# Measured before this cycle: 20 distinct font sizes and ZERO box-shadows across
+# the four pages. That, not the palette, is why they read as unconsidered.
+#
+# These pages are separate self-contained files by design (no shared stylesheet =
+# no extra round trip on a slow phone connection), so the token block is
+# duplicated. Duplication needs a guard: dunia-ya-kazi.html shipped for one commit
+# with every `font-size:var(--fs-*)` referencing tokens its :root never defined,
+# because its CSS is written in a more compact style than the others and a
+# find-and-replace missed it. Undefined custom properties fail silently — the text
+# simply had no size, and nothing errored.
+
+PAGES = ("/", "/barua", "/dunia-ya-kazi", "/maswali")
+TOKENS = ("--fs-xs", "--fs-sm", "--fs-md", "--fs-lg", "--fs-xl", "--fs-2xl",
+          "--r-sm", "--r-md", "--r-pill", "--shadow", "--font-display")
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_every_page_defines_every_design_token(path):
+    """A page may only reference tokens it also defines."""
+    body = client.get(path).text
+    missing = [t for t in TOKENS if f"{t}:" not in body]
+    assert not missing, f"{path} references design tokens it never defines: {missing}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_no_page_uses_a_token_it_does_not_define(path):
+    """The general form of the bug above: catch any var(--x) with no --x: anywhere."""
+    body = client.get(path).text
+    used = set(re.findall(r"var\((--[a-z0-9-]+)\)", body))
+    defined = set(re.findall(r"(--[a-z0-9-]+)\s*:", body))
+    assert not (used - defined), f"{path} uses undefined: {sorted(used - defined)}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_font_sizes_come_from_the_scale(path):
+    """No raw rem font sizes: they are what the scale replaced."""
+    body = client.get(path).text
+    raw = re.findall(r"font-size:\s*[0-9.]+rem", body)
+    assert not raw, f"{path} has off-scale font sizes: {raw}"
+
+
+@pytest.mark.parametrize("path", PAGES)
+def test_dark_mode_redefines_the_elevation_token(path):
+    """A light-mode drop shadow is invisible on a dark background; dark mode needs
+    its own treatment or cards stop reading as objects in half the installs."""
+    body = client.get(path).text
+    dark = body.split("prefers-color-scheme")[1] if "prefers-color-scheme" in body else ""
+    assert "--shadow:" in dark, f"{path} does not redefine --shadow for dark mode"

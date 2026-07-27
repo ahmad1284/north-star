@@ -83,6 +83,34 @@ Entries extracted automatically from the guidebook carry an **auto-extracted** b
 telling the student to confirm with the institution. Unknown facts render as
 *"hatujui — uliza"* linking to `/maswali` — never as a dash, and never as a guess.
 
+## Design tokens
+
+Every page defines the **same** token block in its own `:root` — six type steps, four radii,
+one elevation token, one display font:
+
+```css
+--fs-xs:.78rem; --fs-sm:.86rem; --fs-md:.94rem;
+--fs-lg:1.02rem; --fs-xl:1.12rem; --fs-2xl:1.45rem;
+--r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+--shadow: …;  --font-display:Georgia,"Times New Roman",serif;
+```
+
+Before this there were **20 distinct font sizes and zero box-shadows** across the four
+pages. That, not the palette, is what made them read as unconsidered. Radius decreases as
+you nest inward (container → item → chip), and `--shadow` is redefined for dark mode, where
+a light drop shadow is invisible.
+
+Georgia is used for headings only: it ships on effectively every device, so it buys
+editorial character for **zero bytes and no external request**.
+
+**The block is duplicated on purpose.** A shared stylesheet would be one more round trip on
+the slow connection this audience actually has. Duplication needs a guard, so four tests in
+`test_client.py` enforce it — including one that fails if a page uses any `var(--x)` it does
+not define. That is not hypothetical: `dunia-ya-kazi.html` shipped for one commit with every
+`font-size` referencing tokens its `:root` never declared, because its CSS is written more
+compactly and a find-and-replace missed it. **Undefined custom properties fail silently** —
+the text simply had no size and nothing errored.
+
 ## Conventions worth preserving
 
 - **Swahili first, English alongside** — the audience is Tanzanian Form 6 graduates

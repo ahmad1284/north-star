@@ -10,23 +10,37 @@
     --bg:#f7f8fa; --card:#ffffff; --ink:#1c2733; --muted:#5b6b7b;
     --line:#e3e8ee; --accent:#0f6b5c; --accent-ink:#ffffff;
     --gold:#b7791f; --bad:#a33; --chip:#eef2f6;
+    /* --- design tokens -------------------------------------------------
+       Six type steps, reused everywhere. There were 20 ad-hoc font sizes across
+       these four pages and zero shadows, which is the measurable reason they
+       read as unconsidered — not the colours, not the layout.
+       Radius decreases as you nest inward: container -> item -> chip. */
+    --fs-xs:.78rem; --fs-sm:.86rem; --fs-md:.94rem;
+    --fs-lg:1.02rem; --fs-xl:1.12rem; --fs-2xl:1.45rem;
+    --r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+    --shadow:0 1px 2px rgb(0 0 0/.04), 0 1px 8px rgb(0 0 0/.03);
+    /* Georgia ships on effectively every device: editorial character for zero
+       bytes and no external request. Headings only. */
+    --font-display:Georgia,"Times New Roman",serif;
   }
   @media (prefers-color-scheme: dark){
     :root{ --bg:#12181f; --card:#1a222b; --ink:#e8eef4; --muted:#93a3b3;
-           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; --gold:#d9a441; }
+           --line:#2a3541; --accent:#2fa08c; --chip:#232e3a; --gold:#d9a441;
+           --shadow:inset 0 1px 0 rgb(255 255 255/.04), 0 1px 10px rgb(0 0 0/.30);
+  }
   }
   *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
     background:var(--bg);color:var(--ink);line-height:1.5}
   .wrap{max-width:760px;margin:0 auto;padding:16px}
-  header h1{font-size:1.5rem;margin:.2rem 0}
-  header p{color:var(--muted);margin:.2rem 0 1rem;font-size:.95rem}
-  fieldset{border:1px solid var(--line);border-radius:12px;background:var(--card);
-    padding:12px 14px;margin:0 0 14px}
-  legend{font-weight:600;font-size:.95rem;padding:0 6px}
-  .hint{color:var(--muted);font-size:.85rem;margin:.2rem 0 .6rem}
+  header h1{font-family:var(--font-display);font-size:var(--fs-2xl);margin:.2rem 0}
+  header p{color:var(--muted);margin:.2rem 0 1rem;font-size:var(--fs-md)}
+  fieldset{border:1px solid var(--line);border-radius:var(--r-md);background:var(--card);
+    padding:12px 14px;margin:0 0 14px;box-shadow:var(--shadow)}
+  legend{font-weight:600;font-size:var(--fs-md);padding:0 6px}
+  .hint{color:var(--muted);font-size:var(--fs-sm);margin:.2rem 0 .6rem}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{border:1px solid var(--line);background:var(--chip);color:var(--ink);
-    border-radius:999px;padding:.45rem .9rem;font-size:.9rem;cursor:pointer}
+    border-radius:var(--r-pill);padding:.45rem .9rem;font-size:var(--fs-md);cursor:pointer}
   .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
   /* Wraps rather than overflowing: seven grade buttons plus the remove control
      do not fit beside a subject name on a 360px phone, which is the width most
@@ -34,21 +48,21 @@
   .subject-row{display:flex;align-items:center;gap:10px;padding:.35rem 0;
     border-bottom:1px dashed var(--line);flex-wrap:wrap}
   .subject-row:last-child{border-bottom:none}
-  .subject-row .name{flex:1 1 100%;font-size:.95rem;min-width:0}
+  .subject-row .name{flex:1 1 100%;font-size:var(--fs-md);min-width:0}
   .grades{display:flex;gap:4px;flex:1 1 auto;flex-wrap:wrap}
-  .grades button{width:2.1rem;height:2.1rem;border-radius:8px;border:1px solid var(--line);
+  .grades button{width:2.1rem;height:2.1rem;border-radius:var(--r-sm);border:1px solid var(--line);
     background:var(--chip);color:var(--ink);cursor:pointer;font-weight:600}
   .grades button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-  .rm{border:none;background:none;color:var(--bad);font-size:1.1rem;cursor:pointer}
-  select{padding:.5rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:100%}
-  .go{display:block;width:100%;padding:.9rem;border:none;border-radius:12px;background:var(--accent);
-    color:var(--accent-ink);font-size:1.05rem;font-weight:700;cursor:pointer;margin:6px 0 20px}
+  .rm{border:none;background:none;color:var(--bad);font-size:var(--fs-xl);cursor:pointer}
+  select{padding:.5rem;border-radius:var(--r-sm);border:1px solid var(--line);background:var(--card);color:var(--ink);max-width:100%}
+  .go{display:block;width:100%;padding:.9rem;border:none;border-radius:var(--r-md);background:var(--accent);
+    color:var(--accent-ink);font-size:var(--fs-lg);font-weight:700;cursor:pointer;margin:6px 0 20px}
   .go:disabled{opacity:.5}
-  .summary{color:var(--muted);font-size:.92rem;margin-bottom:10px}
-  h2.group{font-size:1.05rem;margin:22px 0 4px;display:flex;align-items:baseline;gap:8px}
-  h2.group .count{color:var(--muted);font-weight:500;font-size:.85rem}
-  .groupdesc{color:var(--muted);font-size:.85rem;margin:0 0 10px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .summary{color:var(--muted);font-size:var(--fs-md);margin-bottom:10px}
+  h2.group{font-family:var(--font-display);font-size:var(--fs-lg);margin:22px 0 4px;display:flex;align-items:baseline;gap:8px}
+  h2.group .count{color:var(--muted);font-weight:500;font-size:var(--fs-sm)}
+  .groupdesc{color:var(--muted);font-size:var(--fs-sm);margin:0 0 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:10px;overflow:hidden;box-shadow:var(--shadow)}
   .card summary{list-style:none;cursor:pointer;padding:12px 14px;display:block;position:relative}
   .card summary::-webkit-details-marker{display:none}
   /* The reasons are the product; without a marker nothing said the card opened. */
@@ -58,43 +72,43 @@
   .card[open] summary::after{transform:rotate(-135deg)}
   .card .title{font-weight:600;padding-right:22px}
   /* Filters narrow an ALREADY-ELIGIBLE set. Never phrased as matching. */
-  .filters{background:var(--card);border:1px solid var(--line);border-radius:12px;
-    padding:10px 12px;margin:4px 0 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-  .filters input,.filters select{font:inherit;font-size:.9rem;padding:.45rem .55rem;
-    border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);
+  .filters{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:10px 12px;margin:4px 0 14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;box-shadow:var(--shadow)}
+  .filters input,.filters select{font:inherit;font-size:var(--fs-md);padding:.45rem .55rem;
+    border:1px solid var(--line);border-radius:var(--r-sm);background:var(--bg);color:var(--ink);
     min-width:0;flex:1 1 150px}
   .filters input{flex:1 1 100%}
   .filters .reset{flex:0 0 auto;border:1px solid var(--line);background:var(--chip);
-    color:var(--ink);border-radius:8px;padding:.45rem .7rem;font-size:.85rem;cursor:pointer}
-  .filters .hint{flex:1 1 100%;color:var(--muted);font-size:.78rem;margin:0}
-  .empty{color:var(--muted);font-size:.86rem;background:var(--chip);border:1px solid var(--line);
-    border-radius:10px;padding:.6rem .8rem;margin-bottom:10px}
-  .card .sub{color:var(--muted);font-size:.86rem;margin-top:2px}
+    color:var(--ink);border-radius:var(--r-sm);padding:.45rem .7rem;font-size:var(--fs-sm);cursor:pointer}
+  .filters .hint{flex:1 1 100%;color:var(--muted);font-size:var(--fs-xs);margin:0}
+  .empty{color:var(--muted);font-size:var(--fs-sm);background:var(--chip);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:.6rem .8rem;margin-bottom:10px}
+  .card .sub{color:var(--muted);font-size:var(--fs-sm);margin-top:2px}
   .badges{margin-top:6px;display:flex;flex-wrap:wrap;gap:6px}
-  .badge{font-size:.74rem;border-radius:6px;padding:.12rem .5rem;background:var(--chip);color:var(--muted)}
+  .badge{font-size:var(--fs-xs);border-radius:var(--r-sm);padding:.12rem .5rem;background:var(--chip);color:var(--muted)}
   .badge.match{background:var(--accent);color:var(--accent-ink)}
   .badge.auto{border:1px solid var(--gold);color:var(--gold);background:transparent}
   .badge.cond{border:1px solid var(--gold);color:var(--gold);background:transparent;font-weight:600}
   .body .cond-note{border-left:3px solid var(--gold);padding:.4rem .6rem;margin:.6rem 0;
     background:color-mix(in srgb, var(--gold) 8%, transparent);border-radius:0 6px 6px 0}
-  .body{padding:0 14px 12px;border-top:1px dashed var(--line);font-size:.9rem}
-  .body h4{margin:.8rem 0 .3rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
+  .body{padding:0 14px 12px;border-top:1px dashed var(--line);font-size:var(--fs-md)}
+  .body h4{margin:.8rem 0 .3rem;font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.03em;color:var(--muted)}
   .body ul{margin:.2rem 0;padding-left:1.2rem}
   .body .ok::marker{color:var(--accent)}
   .facts{display:grid;grid-template-columns:auto 1fr;gap:.15rem .8rem}
   .facts dt{color:var(--muted)} .facts dd{margin:0}
-  .src{color:var(--muted);font-size:.8rem;margin-top:.6rem}
-  .more{width:100%;padding:.6rem;border:1px dashed var(--line);border-radius:10px;background:none;
-    color:var(--accent);cursor:pointer;font-size:.9rem;margin:2px 0 6px}
+  .src{color:var(--muted);font-size:var(--fs-xs);margin-top:.6rem}
+  .more{width:100%;padding:.6rem;border:1px dashed var(--line);border-radius:var(--r-md);background:none;
+    color:var(--accent);cursor:pointer;font-size:var(--fs-md);margin:2px 0 6px}
   .err{color:var(--bad);font-weight:600}
   .unknown{color:var(--muted);font-style:italic}
   .unknown a{color:var(--accent)}
-  .ask{margin:.7rem 0 0;font-size:.85rem;color:var(--muted)}
+  .ask{margin:.7rem 0 0;font-size:var(--fs-sm);color:var(--muted)}
   .ask a{color:var(--accent);font-weight:600;white-space:nowrap}
   .topnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 14px}
-  .topnav a{font-size:.8rem;text-decoration:none;color:var(--ink);background:var(--chip);
-    border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem}
-  footer{color:var(--muted);font-size:.8rem;margin:28px 0 12px;border-top:1px solid var(--line);padding-top:10px}
+  .topnav a{font-size:var(--fs-xs);text-decoration:none;color:var(--ink);background:var(--chip);
+    border:1px solid var(--line);border-radius:var(--r-pill);padding:.3rem .7rem}
+  footer{color:var(--muted);font-size:var(--fs-xs);margin:28px 0 12px;border-top:1px solid var(--line);padding-top:10px}
 </style>
 </head>
 <body>
