@@ -141,3 +141,58 @@ extraction damage (one row reads `College of Business Education (CBE), Thâm Quy
 3. **Mine the sector content for `/dunia-ya-kazi`** — fact-check first, then port the
    Tanzanian context and the combination→sector mapping.
 4. Leave the forum, the Gemini paths, and the stack where they are.
+
+---
+
+## How KaziKijana structured the World of Work — adopt this, don't redesign it
+
+Read `kazikijana/src/components/WorldOfWork.tsx` before touching `web/dunia-ya-kazi.html`.
+Its *content* has problems (see below) but its **information architecture is better than
+ours and should be taken as-is**. Three decisions, in order of importance:
+
+**1. Selection happens at cluster level, not family level.** Six clickable wedges
+(`lines 411-463`), never 26 letters. The cluster is the unit of exploration; the families
+are its payload. Our page currently shows all 26 families as a static picture with no
+selection at all, which is why it reads as a diagram rather than something to explore.
+
+**2. A fixed six-slot template renders for whichever cluster is selected** (`lines 560-632`).
+Same slots, same order, every time — which is what lets a student compare clusters instead
+of re-reading each one:
+
+| Their slot | Ours becomes | Evidence status |
+|---|---|---|
+| Sector Overview | `Ni nini` | ACT cluster definition — **verified** |
+| Reality in Tanzania | `Hapa Tanzania` | **their text is LLM-generated — do not copy** |
+| Example Tasks (numbered card grid) | `Siku yako ingekuwaje` | ACT family descriptors — safe |
+| Ideal A-Level Streams (pills) | `Combination zinazoelekea hapa` | derive from our `combinations.json` |
+| Popular Careers (pills) | generic occupation names | dictionary facts — safe |
+| Recommended TCU Degrees | link into the tool | **their version substring-matches — reject** |
+
+Add one slot they don't have and we can compute: **`Mahali` — where the cluster sits on the
+map** ("Takwimu + Watu"). We derive it from ACT geometry, so it is verified for free.
+
+**3. A six-tile legend grid sits directly under the wheel** (`lines 511-532`), duplicating
+the wedges as full-size labelled buttons. This is the single best mobile decision in the
+file: nothing depends on hitting a small SVG shape with a thumb. Steal it literally.
+
+Also worth copying: **selection state is triple-encoded** — `fill`, `stroke` and
+`strokeWidth` all change together (`lines 413-415`), so the active cluster is legible at a
+glance and survives colour-blindness.
+
+### The one constraint that changes the implementation
+`test_client.py::test_guidance_pages_load_no_external_resources` asserts `"<script"` is
+absent from `/barua`, `/maswali` and `/dunia-ya-kazi`. **Those pages must stay
+JavaScript-free**, so their `useState` selection model becomes CSS: `<details>` for the
+dossiers, `:target` with SVG `<a>` anchors for the wheel. Only `index.html` may run JS.
+
+### What not to carry over
+- **`tanzanianContext`** — every employer, licensing board and salary in it is
+  LLM-generated. Keep the *slot*, render it as an honest unknown pointing at `/maswali`
+  until Ahmad supplies verified text. The tool already says it doesn't know what a course
+  costs; the map must not suddenly become confident about who is hiring.
+- **Their `fields` arrays** — wrong against ACT (`administration` claims "Personal
+  Services", which is family Z / Social Service; `technical` omits M and N; `stem` omits S).
+  Our family→cluster mapping is correct. Import the shape, never the taxonomy.
+- **The Likert quiz and its `X: {x.toFixed(1)}` readout** — false precision from eight
+  self-report answers. If a quiz is ever built it outputs a *region* and a set of letters,
+  never a number.
